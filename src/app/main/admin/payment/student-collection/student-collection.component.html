@@ -1,0 +1,138 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>{{ _schoolname }}</h1>
+    </section>
+    <section class="content">
+        <div class="box box-success2">
+            <div class="box-body">
+                <div class="searchsection3">
+                        <div class="row">
+                            <form [formGroup]="schoolSearchForm">
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                <div class="form-group">
+                                        <select class="form-control" formControlName="studentId">
+                                            <option value="" default>Student Name</option>
+                                            <option *ngFor="let data of _studentsNameArr" [value]="data.studentId">{{ data.studentName }}</option>
+                                        </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                <div class="form-group">
+                                    <input type="text" formControlName="fiscalYear"
+                                        class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                <div class="form-group">
+                                    <select class="form-control" formControlName="admissionForClass">
+                                        <option value="" default>Class</option>
+                                        <option *ngFor="let cl of _classList" value={{cl}}>{{ cl }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                <div class="form-group">
+                                    <select class="form-control" formControlName="admissionType">
+                                        <option value="">Payment For</option>
+                                        <option value="Admission">Admission</option>
+                                        <option value="Fees">Fees</option>
+                                        <option value="Books">Books</option>
+                                        <option value="Dress">Dress</option>
+                                        <option value="Pool">Pool</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                            <div class="form-group">
+                                <input  class="form-control border-right"  daterangepicker [options]="picker1"
+                                (selected)="selectedDate($event, chosenDate)" (applyDaterangepicker)="applyDatepicker($event)"
+                                (showDaterangepicker)="calendarEventsHandler($event)"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                            <button type="button" (click)="getPaymentList(_selectedSize,currentPage)"
+                                class="btn btn-success"> Search</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-success2">
+            <div class="box-header with-border bor">
+                <div class="pull-left">
+                    <div class="Showingbox"><span class="pull-left">Showing </span>
+                        <div class="pull-left drop">
+                            <select class="form-control" #limit (change)="getPaymentList(limit.value)">
+                                <option value="25" ng-reflect-value="25">25</option>
+                                <option value="50" ng-reflect-value="50">50</option>
+                                <option value="100" ng-reflect-value="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="pull-right dropdown"> &nbsp;
+                    <button *ngIf="_schoolsPaymentList.length > 0" type="button" (click)="downloadReport()"
+                        title="Add Users" class="btn link3"> <i class="fa fa-download" aria-hidden="true"></i> Reopt
+                        Download </button>
+                    &nbsp;
+                </div> -->
+                <div class="clearfix"></div>
+            </div>
+            <div class="box-body">
+                <div class="tablesection">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="">Academic Year</th>
+                                    <th width="">Student Name</th>
+                                    <th width="">Class</th>
+                                    <th width="">Payment Date</th>                                    
+                                    <th width="">Payment Type</th>
+                                    <!-- <th width="">Amount</th>                                     -->
+                                    <th width="">GST</th>
+                                    <th width="">Convenience</th>                                    
+                                    <th width="">Total Amount  (&#8377;)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of _schoolsPaymentList  | paginate:{
+                                    id:'_schoolsList',
+                                  itemsPerPage:itemsPerPage,
+                                  currentPage:currentPage,
+                                  totalItems:_schoolsListSize
+                                }; let i =index">
+                                    <td>{{ item.academicYear }}</td>
+                                    <td><button type="button" class="btn btn-link text-light-blue"><strong>{{ item.studentName }}
+                                            </strong></button></td>
+                                    <td>{{ item.admissionForClass }} </td>
+                                    <td>{{ item.paymentOn }} </td>                                    
+                                    <td>Admission</td>
+                                    <!-- <td>Amount</td> -->
+                                    <td> {{item?.actualGst}} </td>                                    
+                                    <td> {{item?.actualConvenieceFee}} </td>
+                                    <td>{{ item.payment }} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="paginationsectionbox">
+                            <span *ngIf="!isEmpty" class="Showingboxto">Showing {{currentPageStartingIndex}} to
+                                {{currentPageEndingIndex}} of
+                                {{_schoolsListSize}} results</span>
+                            <span *ngIf="isEmpty">No records found.</span>
+                            <pagination-controls *ngIf="!isEmpty" class="pagination" id="_schoolsList"
+                                (pageChange)="handlePageChange($event)"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+</div>

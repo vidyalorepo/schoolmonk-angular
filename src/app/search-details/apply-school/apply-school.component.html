@@ -1,0 +1,1062 @@
+<section class="inner-banner-section inner-banner-search">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Application Form</h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="breadcrumbs_section">
+          <ul>
+            <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+            <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+            <li><a routerLink="/auth/student/student-list"><button type="submit">User Profile</button></a></li>
+            <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+            <li><button type="submit">Application Form </button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="innersearchsection">
+  <div class="ApplicationFormbox">
+    <div class="container-fluid">
+      <div class="Student-List-section">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="form-group">
+              <label>Applying School</label>
+              <input type="text" class="form-control" [value]="_schoolsDetails?.schoolName" readonly>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="form-group">
+              <label>For Class</label>
+              <input type="text" class="form-control" [value]="_clsFees" readonly>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" *ngIf="_schoolsDetails?.customAdmissionForm === 'Y'">
+            <div class="form-group">
+              <label>Download Admission Form</label><br>
+              <!-- <input type="text" class="form-control" [value]="_clsFees"  readonly>
+               -->
+              <a class="btn link3 mx-2" href="{{_customFormDwnloadUrl}}" download="" target="_blank"
+                title="Admission Form pdf">
+                Admission Form <i class="fa fa-download" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="Student-List-section">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="tabssection">
+              <ul class="nav nav-tabs">
+                <li [ngClass]="activeTab1"><a data-toggle="tab" href="#menu1" (click)="tabChanged(1)">
+                    <font><img src="assets/images/Student-Details.png" alt=""></font> <span><img
+                        src="assets/images/Student-Details_h.png" alt=""></span> Student Details
+                  </a></li>
+                <li [ngClass]="activeTab2"><a data-toggle="tab" (click)="tabChanged(2)">
+                    <font> <img src="assets/images/Parent-Details.png" alt=""> </font><span> <img
+                        src="assets/images/Parent-Details_h.png" alt=""> </span> Parent's Details
+                  </a></li>
+                <li [ngClass]="activeTab3"><a data-toggle="tab" (click)="tabChanged(3)">
+                    <font> <img src="assets/images/Address-Details.png" alt=""> </font><span> <img
+                        src="assets/images/Address-Details_h.png" alt=""></span> Address Details
+                  </a></li>
+                <li [ngClass]="activeTab4"><a data-toggle="tab" (click)="tabChanged(4)">
+                    <font> <img src="assets/images/Other-Details.png" alt=""> </font><span> <img
+                        src="assets/images/Other-Details_h.png" alt=""></span> Other Details
+                  </a></li>
+
+
+                <li [ngClass]="activeTab5" *ngIf="_clsFees === 'XI'"><a data-toggle="tab" (click)="tabChanged(5)">
+                    <font> <img src="assets/images/Stream-Details.png" alt=""> </font><span> <img
+                        src="assets/images/Stream-Details_h.png" alt=""></span> Stream Details
+                  </a></li>
+
+
+                <li [ngClass]="activeTab6"><a data-toggle="tab" (click)="tabChanged(6)">
+                    <font> <img src="assets/images/Document-Uploads.png" alt=""> </font><span> <img
+                        src="assets/images/Document-Uploads_h.png" alt=""></span> Document Uploads
+                  </a></li>
+                <li [ngClass]="activeTab7"><a data-toggle="tab" (click)="tabChanged(7)">
+                    <font><img src="assets/images/payment.png" alt=""></font><span><img
+                        src="assets/images/payment_h.png" alt=""></span> Payment
+                  </a></li>
+              </ul>
+              <div class="tab-content">
+                <form [formGroup]="addStudentForm">
+                  <div *ngIf="_wizardForm === 1">
+                    <div id="menu1" class="tab-pane fade in active">
+
+
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                          <div class="form-group">
+                            <label>Student Name</label>
+                            <input type="text" formControlName="studentName" class="form-control"
+                              placeholder="Enter ...">
+                          </div>
+                        </div>
+
+                        <!-- <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                      <div class="form-group">
+                        <label>Select Mode of School</label>
+                        <select class="form-control">
+                          <option value="">Select</option>
+                          <option>English</option>
+                          <option>Bengali</option>
+                        </select>
+                      </div>
+                    </div> -->
+
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                          <div class="form-group">
+                            <label>Gender <span class="req">*</span></label>
+                            <select class="form-control" formControlName="gender">
+                              <option value="">Select</option>
+                              <option>Boy</option>
+                              <option>Girl</option>
+                              <option>Others</option>
+                            </select>
+                            <div class="invalid-text"
+                              *ngIf="addStudentForm.controls?.gender.touched && addStudentForm.controls?.gender.errors">
+                              <div *ngIf=" addStudentForm.controls?.gender.errors.required ">
+                                Gender is
+                                required
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                          <div class="form-group">
+                            <label>Religion <span class="req">*</span></label>
+                            <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="">  -->
+                            <select class="form-control" formControlName="religion">
+                              <option value="">Select..</option>
+                              <option value="Buddhism">Buddhism</option>
+                              <option value="Christianity">Christianity</option>
+                              <option value="Hinduism">Hinduism</option>
+                              <option value="Islam">Islam</option>
+                              <option value="Judaism">Judaism</option>
+                              <option value="Sikhism">Sikhism</option>
+                              <option value="Taoism">Taoism</option>
+                            </select>
+                            <div class="invalid-text"
+                              *ngIf="addStudentForm.controls?.religion.touched && addStudentForm.controls?.religion.errors">
+                              <div *ngIf=" addStudentForm.controls?.religion.errors.required ">
+                                Religion is
+                                required
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                          <div class="form-group">
+                            <label>Blood Group</label>
+                            <select class="form-control" formControlName="bloodGroup">
+                              <option value="">Select..</option>
+                              <option value="A+">A+</option>
+                              <option value="A-">A-</option>
+                              <option value="B+">B+</option>
+                              <option value="B-">B-</option>
+                              <option value="O+">O+</option>
+                              <option value="O-">O-</option>
+                              <option value="AB+">AB+</option>
+                              <option value="AB-">AB-</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                          <div class="form-group">
+                            <label>Nationality <span class="req">*</span></label>
+                            <select class="form-control" formControlName="nationallity">
+                              <option value="">Select..</option>
+                              <option value="Indian">Indian</option>
+                              <option value="Australian">Australian</option>
+                            </select>
+                            <div class="invalid-text"
+                              *ngIf="addStudentForm.controls?.nationallity.touched && addStudentForm.controls?.nationallity.errors">
+                              <div *ngIf=" addStudentForm.controls?.nationallity.errors.required ">
+                                Nationality is
+                                required
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                          <div class="form-group">
+                            <label>First Language <span class="req">*</span></label>
+                            <select class="form-control" formControlName="firstLanguage">
+                              <option value="">Select</option>
+                              <option value="English">English</option>
+                              <option value="Bengali">Bengali</option>
+                              <option value="Hindi">Hindi</option>
+                            </select>
+                            <div class="invalid-text"
+                              *ngIf="addStudentForm.controls?.firstLanguage.touched && addStudentForm.controls?.firstLanguage.errors">
+                              <div *ngIf=" addStudentForm.controls?.firstLanguage.errors.required ">
+                                First Language is
+                                required
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                          <div class="form-group">
+                            <label>Last School Attempt</label>
+                            <input type="text" class="form-control" placeholder="Enter ..."
+                              formControlName="lastSchoolAttempt">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                          <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input type="text" formControlName="dateOfBirth" class="form-control"
+                              placeholder="Enter ..." readonly>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div  class="box-footer align-center">
+                        <button  type="submit" class="btn link2 button_effects mx-1 button-size"> Previous </button>
+                        <button  type="submit" class="btn link1 button_effects mx-1 button-size" (click)="submitData()">Save & Next </button>
+                      </div>
+                    </div>
+                  </div> -->
+                      <!-- </form> -->
+                    </div>
+                  </div>
+
+                  <div *ngIf="_wizardForm === 2">
+                    <div class="tab-pane">
+
+                      <!-- <form [formGroup]="addStudentForm">  -->
+                      <ng-container formArrayName="studentGuardianVo">
+                        <div *ngFor="let item of studentGuardianVoFormArray.controls; let i=index" [formGroupName]="i">
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>Guardian Name</label>
+                                <input type="text" class="form-control" formControlName="guardianName">
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>Email <span class="req">*</span></label>
+                                <!--  -->
+                                <input type="text" class="form-control" placeholder="Enter ..."
+                                  formControlName="guardianEmail">
+                                <div class="invalid-text"
+                                  *ngIf="item.get('guardianEmail').touched && item.get('guardianEmail').errors">
+                                  <div *ngIf="item.get('guardianEmail').errors?.required">Guardian
+                                    Email is required</div>
+                                  <div
+                                    *ngIf="!item.get('guardianEmail').errors?.required && item.get('guardianEmail').errors?.invalidEmail">
+                                    Guardian Email is invalid</div>
+                                </div>
+                                <!-- <div class="invalid-text"
+                                  *ngIf="item.get('controls').get('guardianEmal')  ">
+                                  <div
+                                    *ngIf=" _streamAndSubjectFormControls?.controls.admissionForStream.errors['required']">
+                                    Stream is
+                                    required
+                                  </div>
+
+                                </div> -->
+
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>Phone <span class="req">*</span></label>
+                                <!--  -->
+                                <input type="number" (keypress)="checkLen($event, 'PHONE')"
+                                  formControlName="guardianPhone" class="form-control" placeholder="Enter ...">
+                                <div class="invalid-text"
+                                  *ngIf="item.get('guardianPhone').touched && item.get('guardianPhone').errors">
+                                  <div *ngIf="item.get('guardianPhone').errors?.required">Guardian
+                                    Phone is required</div>
+                                  <div
+                                    *ngIf="!item.get('guardianPhone').errors?.required && item.get('guardianPhone').errors?.guardianPhone">
+                                    Guardian Phone is invalid</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>Qualification <span class="req">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="Enter ..."
+                                  formControlName="guardianQualification">
+                                <div class="invalid-text"
+                                  *ngIf="item.get('guardianQualification').touched && item.get('guardianQualification').errors?.required">
+                                  <div>Guardian Qualification is required</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>Occupation <span class="req">*</span> </label>
+                                <!-- <input type="text" class="form-control" placeholder="Enter ..."
+                                  formControlName="guardianOccupation"> -->
+                                <select class="form-control" formControlName="guardianOccupation">
+                                  <option value="">select</option>
+                                  <option value="Government Job">Government Job Holder</option>
+                                  <option value="Public Sector">Public Sector</option>
+                                  <option value="Private Sector">Private Sector</option>
+                                  <option value="Bussiness">Bussinessman</option>
+                                  <option value="Retired">Retired</option>
+                                </select>
+                                <div class="invalid-text"
+                                  *ngIf="item.get('guardianOccupation').touched && item.get('guardianOccupation').errors?.required">
+                                  <div>Guardian Occupation is required</div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+
+                          <div class="row">
+
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>Annual Income <span class="req">*</span></label>
+                                <input type="number" class="form-control" placeholder="Enter ..."
+                                  formControlName="guardianAnnualIncome">
+                                <div class="invalid-text"
+                                  *ngIf="item.get('guardianAnnualIncome').touched && item.get('guardianAnnualIncome').errors?.required">
+                                  <div>Guardian Annual Income is required</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>ID Proof <span class="req">*</span></label>
+                                <select class="form-control" #idproof (click)="idProof(idproof.value)"
+                                  formControlName="iDProofType">
+                                  <option value="">Select..</option>
+                                  <option value="Voter">Voter Card</option>
+                                  <option value="Aadhar">Aadhar Card</option>
+                                </select>
+                                <div class="invalid-text"
+                                  *ngIf="item.get('iDProofType').touched && item.get('iDProofType').errors?.required">
+                                  <div>ID Proof is required</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" *ngIf='displayCardNo'>
+                              <div class="form-group">
+                                <label>Enter {{iputCardData}} Card Number <span class="req">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter ..."
+                                  formControlName="guardianIDProof">
+                                <div class="invalid-text"
+                                  *ngIf="item.get('guardianIDProof').touched && item.get('guardianIDProof').errors">
+                                  <div *ngIf="item.get('guardianIDProof').errors?.required">Guardian
+                                    ID Number is required</div>
+                                  <div
+                                    *ngIf="!item.get('guardianIDProof').errors?.required && item.get('guardianIDProof').errors?.invalidCardNo">
+                                    ID Number is invalid</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>Relation With Student <span class="req">*</span></label>
+                                <select class="form-control" formControlName="guardianRelationWithStudent">
+                                  <option value="">Select</option>
+                                  <option>Father</option>
+                                  <option>Mother</option>
+                                  <option>Others</option>
+                                </select>
+                                <div class="invalid-text"
+                                  *ngIf="item.get('guardianRelationWithStudent').touched && item.get('guardianRelationWithStudent').errors?.required">
+                                  <div>Relation with Guardian is required</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div  class="box-footer align-center">
+                          <button  type="submit" class="btn link2 button_effects mx-1 button-size"> Previous </button>
+                          <button  type="submit" class="btn link1 button_effects mx-1 button-size" (click)="submitData()">Save & Next </button>
+                        </div>
+                      </div>
+                    </div> -->
+                          <!-- </form> -->
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+
+                  <div *ngIf="_wizardForm === 3">
+                    <div class="tab-pane">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                          <div class="form-group">
+                            <label>Address Type</label><br>
+                            <label>Permanent Address</label>&nbsp;&nbsp;
+                            <!-- [checked]="item.value.addressType==='Permanent Yes'"
+                          [checked]="item.value.addressType==='Permanent No'" -->
+                            <input type="radio" id="Yes" name="permanentAddress" #val1 value="Permanent Yes"
+                              (click)="radioYes(val1.value)" [checked]="permanentAddYes">
+                            <label>&nbsp; Yes</label>&nbsp;&nbsp;&nbsp;
+                            <input type="radio" id="No" name="permanentAddress" #val2 value="Permanent No"
+                              (click)="radioNo(val2.value)" [checked]="permanentAddNo">
+                            <label>&nbsp; No</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <ng-container formArrayName="addressVo"
+                        *ngFor="let item of studentAddressVoFormArray.controls; let i=index">
+                        <div [formGroupName]="i">
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>Address Line 1 <span class="req">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter ..."
+                                  formControlName="addrLineOne">
+                                <div class="invalid-text"
+                                  *ngIf="item.get('addrLineOne').touched && item.get('addrLineOne').errors?.required">
+                                  <div>Address is required</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>Address Line 2</label>
+                                <input type="text" class="form-control" placeholder="Enter ..."
+                                  formControlName="addrLineTwo">
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>Country <span class="req">*</span></label>
+                                <select class="form-control" #countryVal formControlName="country"
+                                  (change)="selectCountry(i)">
+                                  <option value="">Select</option>
+                                  <option *ngFor="let data of countryList" [value]="data.id">{{data.name}}
+                                  </option>
+                                </select>
+                                <div class="invalid-text"
+                                  *ngIf="item.get('country').touched && item.get('country').errors?.required">
+                                  <div>Country is required</div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+
+
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>Postal Code <span class="req">*</span></label>
+                                <input type="number" (keypress)="checkLen($event, 'POSTAL')" class="form-control"
+                                  placeholder="Enter ..." formControlName="pin">
+                                <div class="invalid-text"
+                                  *ngIf="item.get('pin').touched && item.get('pin').errors?.required">
+                                  <div>Postal Code is required</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label>City <span class="req">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter ..." formControlName="city">
+                                <div class="invalid-text"
+                                  *ngIf="item.get('city').touched && item.get('city').errors?.required">
+                                  <div>City is required</div>
+                                </div>
+                              </div>
+                            </div>
+
+
+
+
+                            <!-- *ngIf='studentAddressVoFormArray.length <= 1' -->
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                              <div class="form-group">
+                                <label *ngIf="i===0 && checkIndia">State <span class="req">*</span></label>
+                                <label *ngIf="i===0 && !checkIndia">State/province/district <span
+                                    class="req">*</span></label>
+                                <label *ngIf="i===1 && checkIndiaTwo">State <span class="req">*</span></label>
+                                <label *ngIf="i===1 && !checkIndiaTwo">State/province/district <span
+                                    class="req">*</span></label>
+                                <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="state"> -->
+                                <select class="form-control" formControlName="state" #stateValOne
+                                  (change)="onState(stateValOne.value, i)" *ngIf="i===0">
+                                  <option value="">Select</option>
+                                  <option *ngFor="let data of stateListOne" value="{{ data.stateName }}">{{
+                                    data.stateName }}
+                                  </option>
+                                </select>
+                                <select class="form-control" formControlName="state" #stateValTwo
+                                  (change)="onState(stateValTwo.value, i)" *ngIf="i===1">
+                                  <option value="">Select</option>
+                                  <option *ngFor="let data of stateListTwo" value="{{ data.stateName }}">{{
+                                    data.stateName }}
+                                  </option>
+                                </select>
+                                <div class="invalid-text"
+                                  *ngIf="item.get('state').touched && item.get('state').errors?.required">
+                                  <div>State is required</div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                <label *ngIf="i===0 && checkIndia">District <span class="req">*</span></label>
+                                <label *ngIf="i===1 && checkIndiaTwo">District <span class="req">*</span></label>
+                                <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="district"> -->
+                                <select class="form-control" formControlName="district" *ngIf="i===0 && checkIndia">
+                                  <option value="">Select</option>
+                                  <option *ngFor="let data of indexOneDist" value="{{ data.districtName }}">{{
+                                    data.districtName
+                                    }}</option>
+                                </select>
+                                <select class="form-control" formControlName="district" *ngIf="i===1 && checkIndiaTwo">
+                                  <option value="">Select</option>
+                                  <option *ngFor="let data of indexTwoDist" value="{{ data.districtName }}">{{
+                                    data.districtName
+                                    }}</option>
+                                </select>
+                                <div class="invalid-text"
+                                  *ngIf="item.get('district').touched && item.get('district').errors?.required && countryVal.value === '101'">
+                                  <div>District is required</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div><br>
+                      </ng-container>
+                    </div>
+                  </div>
+
+                  <div *ngIf="_wizardForm === 4">
+                    <div>
+
+                      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="form-group">
+                          <label>Is your sibling/child studying in the same school?</label><br>
+                          <input type="radio" id="Yes" name="sibling" #siblingVal1 value="Yes"
+                            (click)="radioYesSibling(siblingVal1.value)" [checked]="showRadioYesSibling">
+                          <label>&nbsp; Yes</label><br>
+                          <input type="radio" id="No" name="sibling" #siblingVal2 value="No"
+                            (click)="radioNoSibling(siblingVal2.value)" [checked]="!showRadioYesSibling">
+                          <label>&nbsp; No</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="siblingDisplay">
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                          </div>
+                        </div>
+                        <div class="tablesection">
+                          <div class="table-responsive">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th width="300">Studen Name</th>
+                                  <th>Class</th>
+                                  <!-- <th>Section</th> -->
+                                  <!-- <th>Same School</th> -->
+                                  <!-- <th>Admission ID</th> -->
+                                  <th></th>
+                                  <th align="center" style="text-align: center;">Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <ng-container formArrayName="studentSiblingVo"
+                                  *ngFor="let item of siblingVoFormArray.controls; let i=index">
+                                  <tr [formGroupName]="i">
+                                    <td><select class="form-control" formControlName="siblingName" (change)="patchSiblingDetailsByIndex(i)">
+                                      <option value="">Select</option>
+                                      <option *ngFor="let sib of SiblingList" [value]="sib?.studentMstVo?.id">{{sib?.studentMstVo?.studentName}}</option>
+                                    </select></td>
+                                    <td>
+                                      <input type="text" formControlName="siblingClass" class="form-control" readonly>
+                                    </td>
+                                    <!-- <td>
+                                      <div class="form-group">
+                                        <input type="radio" id="YesSchool" [name]="i" #samSchoolVal1 value="Yes"
+                                          (click)="radioYesSameSchool(samSchoolVal1.value, i)">
+                                        <label>&nbsp; Yes</label><br>
+                                        <input type="radio" id="NoSchool" [name]="i" #samSchoolVal2 value="No"
+                                          (click)="radioYesSameSchool(samSchoolVal2.value, i)">
+                                        <label>&nbsp; No</label>
+                                      </div>
+                                    </td> -->
+                                    <!-- <td>
+                                      <select class="form-control" formControlName="siblingSection">
+                                        <option value="">Select</option>
+                                        <option>Section A</option>
+                                        <option>Section B</option>
+                                        <option>Section C</option>
+                                      </select>
+                                    </td> -->
+                                    <!-- <td>
+                                      <input type="text" formControlName="siblingAdmissionId" class="form-control" readonly>
+                                    </td> -->
+                                    <td></td>
+                                    <td style="text-align: center;">
+                                      <button (click)="removeItem(i, item.value.id)" type="button"
+                                        class="btn btn-danger"> <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                      </button>
+                                    </td>
+
+                                  </tr>
+                                </ng-container>
+                              </tbody>
+                              <tbody>
+                                <tr>
+                                  <th>&nbsp;</th>
+                                  <th>&nbsp;</th>
+                                  <th>&nbsp;</th>
+                                  <th align="center" style="text-align: center;"> <button type="submit"
+                                      class="btn btn-success" (click)="addSiblingDetails()"><i class="fa fa-plus"
+                                        aria-hidden="true"></i></button></th>
+                                </tr>
+                              </tbody>
+
+
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div *ngIf="_wizardForm === 5">
+                    <div id="menu1" class="tab-pane fade in active" formGroupName='schoolStudentMappingVo'>
+
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                          <div class="form-group">
+                            <label> Stream <span class="req">*</span></label>
+                            <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="">  -->
+                            <select class="form-control" formControlName="admissionForStream" #strm
+                              (change)="selectStream(strm.value)">
+                              <option value={{null}}>Select...</option>
+                              <option value={{stream}} *ngFor="let stream of _streamNames">{{stream}}</option>
+
+                            </select>
+                            <div class="invalid-text"
+                              *ngIf="_streamAndSubjectFormControls?.controls.admissionForStream.touched && _streamAndSubjectFormControls?.controls.admissionForStream.status.toLowerCase() === 'invalid'">
+                              <div
+                                *ngIf=" _streamAndSubjectFormControls?.controls.admissionForStream.errors['required']">
+                                Stream is
+                                required
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div *ngIf="_selectedStream" class="">
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <label> Subject 1 <span class="req">*</span></label>
+                              <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="">  -->
+                              <select class="form-control" formControlName="subjectOne" #sub1
+                                (change)="selectSubject(sub1.value)">
+                                <option value="">Select...</option>
+                                <option value={{subject}} *ngFor="let subject of _subject1_names">{{subject}}
+                                </option>
+                              </select>
+                              <div class="invalid-text"
+                                *ngIf="_streamAndSubjectFormControls?.controls.subjectOne?.touched  && _streamAndSubjectFormControls?.controls.subjectOne?.status.toLowerCase() === 'invalid'">
+                                <div *ngIf=" _streamAndSubjectFormControls?.controls.subjectOne?.errors['required']">
+                                  Subject 1 is
+                                  required
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <label> Subject 2 <span class="req">*</span> </label>
+                              <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="">  -->
+                              <select class="form-control" formControlName="subjectTwo" #sub2
+                                (change)="selectSubject(sub2.value)">
+                                <option value="">Select...</option>
+                                <option value={{subject}} *ngFor="let subject of _subject2_names">{{subject}}
+                                </option>
+                              </select>
+                              <div class="invalid-text"
+                                *ngIf="_streamAndSubjectFormControls?.controls.subjectTwo.touched && _streamAndSubjectFormControls?.controls.subjectTwo.status.toLowerCase() === 'invalid'">
+                                <div *ngIf=" _streamAndSubjectFormControls?.controls.subjectTwo.errors['required']">
+                                  Subject 2 is
+                                  required
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <label> Subject 3 <span class="req">*</span></label>
+                              <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="">  -->
+                              <select class="form-control" formControlName="subjectThree" #sub3
+                                (change)="selectSubject(sub3.value)">
+                                <option value="">Select...</option>
+                                <option value={{subject}} *ngFor="let subject of _subject3_names">{{subject}}
+                                </option>
+                              </select>
+                              <div class="invalid-text"
+                                *ngIf="_streamAndSubjectFormControls?.controls.subjectThree.touched && _streamAndSubjectFormControls?.controls.subjectThree.status.toLowerCase() === 'invalid'">
+                                <div *ngIf=" _streamAndSubjectFormControls?.controls.subjectThree.errors['required']">
+                                  Subject 3 is
+                                  required
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <label> Subject 4 <span class="req">*</span></label>
+                              <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="">  -->
+                              <select class="form-control" formControlName="subjectFour" #sub4
+                                (change)="selectSubject(sub4.value)">
+                                <option value="">Select...</option>
+                                <option value={{subject}} *ngFor="let subject of _subject4_names">{{subject}}
+                                </option>
+                              </select>
+                              <div class="invalid-text"
+                                *ngIf="_streamAndSubjectFormControls?.controls.subjectFour.touched && _streamAndSubjectFormControls?.controls.subjectFour.status.toLowerCase() === 'invalid'">
+                                <div *ngIf=" _streamAndSubjectFormControls?.controls.subjectFour.errors['required']">
+                                  Subject 4 is
+                                  required
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <label> Subject 5 <span class="req">*</span></label>
+                              <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="">  -->
+                              <select class="form-control" formControlName="subjectFive" #sub5
+                                (change)="selectSubject(sub5.value)">
+                                <option value="">Select...</option>
+                                <option value={{subject}} *ngFor="let subject of _subject5_names">{{subject}}
+                                </option>
+                              </select>
+                              <div class="invalid-text"
+                                *ngIf="_streamAndSubjectFormControls?.controls.subjectFive.touched && _streamAndSubjectFormControls?.controls.subjectFive.status.toLowerCase() === 'invalid'">
+                                <div *ngIf=" _streamAndSubjectFormControls?.controls.subjectFive.errors['required']">
+                                  Subject 5 is
+                                  required
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <label> Subject 6 </label>
+                              <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="">  -->
+                              <select class="form-control" formControlName="subjectSix" #sub6
+                                (change)="selectSubject(sub6.value)">
+                                <option value="">Select...</option>
+                                <option value={{subject}} *ngFor="let subject of _subject6_names">{{subject}}
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div *ngIf="_wizardForm === 6">
+                    <div>
+
+                      <div class="">
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <label>Student's Photograph</label>
+                              <input class="Uploadbox" type="file" id="myFile" name="'file[]'"
+                                (change)="uploadSingleFile($event,'student_photo',_studentPhotoUrl.fileId)">
+                              <div class="School_logo_box" *ngIf="_studentPhotoUrl.fileId != 0">
+                                <button *ngIf="_studentPhotoUrl.filePath" type="button"
+                                  (click)="deleteImageFile(_studentPhotoUrl.fileId, 'student_photo')" class="btn "><i
+                                    class="fa fa-times" aria-hidden="true"></i></button>
+                                <img [src]="_studentPhotoUrl.filePath" alt="">
+                              </div>
+                              <p class="help-block">Max Limit 1MB</p>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <label>Guardian's Photograph</label>
+                              <input class="Uploadbox" type="file" id="myFile" name="'file[]'"
+                                (change)="uploadSingleFile($event,'guardian_photo',_guardianPhotoUrl.fileId)">
+                              <div class="School_logo_box" *ngIf="_guardianPhotoUrl.fileId != 0">
+                                <button *ngIf="_guardianPhotoUrl.filePath" type="button"
+                                  (click)="deleteImageFile(_guardianPhotoUrl.fileId, 'guardian_photo')" class="btn "><i
+                                    class="fa fa-times" aria-hidden="true"></i></button>
+                                <img [src]="_guardianPhotoUrl.filePath" alt="">
+                              </div>
+                              <p class="help-block">Max Limit 1MB</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <label>Proof of Birth</label>
+                              <input class="Uploadbox" type="file" id="myFile" name="'file[]'"
+                                (change)="uploadSingleFile($event,'birth_certificate',_birthCertificateUrl.fileId)">
+                              <div class="School_logo_box" *ngIf="_birthCertificateUrl.fileId != 0">
+                                <button *ngIf="_birthCertificateUrl.filePath" type="button"
+                                  (click)="deleteImageFile(_birthCertificateUrl.fileId, 'birth_certificate')"
+                                  class="btn "><i class="fa fa-times" aria-hidden="true"></i></button>
+                                <img [src]="_birthCertificateUrl.filePath" alt="">
+                              </div>
+                              <p class="help-block">Max Limit 1MB</p>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <label>Last Class Marksheet</label>
+                              <input class="Uploadbox" type="file" id="myFile" name="'file[]'"
+                                (change)="uploadSingleFile($event,'last_marksheet',_lastCertificateUrl.fileId)">
+                              <div class="School_logo_box" *ngIf="_lastCertificateUrl.fileId != 0">
+                                <button *ngIf="_lastCertificateUrl.filePath" type="button"
+                                  (click)="deleteImageFile(_lastCertificateUrl.fileId, 'last_marksheet')"
+                                  class="btn "><i class="fa fa-times" aria-hidden="true"></i></button>
+                                <img [src]="_lastCertificateUrl.filePath" alt="">
+                              </div>
+                              <p class="help-block">Max Limit 1MB</p>
+                            </div>
+                          </div>
+
+                          <!-- <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"
+                            *ngIf="_schoolsDetails?.customAdmissionForm === 'Y'">
+                            <div class="form-group">
+                              <label>Custom Admission Form </label>
+                              <input type="file" id="myFile" name="file[]" class="Uploadbox"
+                                (change)="uploadSingleFileWithSclId($event,'Custom_Form',_schoolAdmissionFormUrl.fileId)">
+                              <div class="School_logo_box" *ngIf="_schoolAdmissionFormUrl.fileId != 0">
+                                <button *ngIf="_schoolAdmissionFormUrl.filePath" type="button"
+                                  (click)="deleteImageFile(_schoolAdmissionFormUrl.fileId, 'Custom_Form')"
+                                  class="btn "><i class="fa fa-times" aria-hidden="true"></i></button>
+                                <img [src]="_schoolAdmissionFormUrl.filePath" alt="">
+                              </div>
+                            </div>
+                          </div> -->
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div *ngIf="_wizardForm === 7">
+                    <div>
+
+                      <div class="Paymentbox">
+                        <!-- <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                          <div class="form-group">
+                            <label>Payment Method </label>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="optionsRadios" value="option1">
+                                <img src="assets/images/paypal.png" alt=""> </label>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label>Net Banking </label>
+                            <div class="radio">
+                              <label style="width:100%;">
+                                <input type="radio" name="optionsRadios" value="option2">
+                                <select class="form-control">
+                                  <option>Select</option>
+                                  <option>SBI</option>
+                                  <option>HSBC Bank</option>
+                                  <option>HDFC Bank</option>
+                                  <option>Bank of India</option>
+                                  <option>ICICI Bank</option>
+                                </select>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                        <!-- <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                          <div class="box-footer align-center">
+                            <button type="submit" class="btn link1 button_effects mx-1 button-size" style="width: auto">Make Payment</button>
+                          </div>
+                        </div>
+                      </div> -->
+
+                        <div class="tablesection">
+                          <h4>Bill Details</h4>
+                          <div class="table-responsive">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>Fees Name</th>
+                                  <th width="300">Payment Amount(Rs.) </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <!-- <td>{{ _clsFees }} </td> -->
+                                  <!-- <td>{{ _dueDate }}</td> -->
+                                  <td>Application Fees for: {{ _clsFees }} <br> Due Date: {{ _dueDate }}</td>
+                                  <td>
+                                    {{ _feesAmt.toFixed(2) }}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    Convenience fees(*including GST):
+                                  </td>
+                                  <td>
+                                    {{convenienceFees}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    Other Charges:
+                                  </td>
+                                  <td>
+                                    {{ _otherChargesAmount.toFixed(2) }}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    Discount:
+                                  </td>
+                                  <td>
+                                    0.00
+                                  </td>
+                                </tr>
+                              </tbody>
+                              <tfoot>
+                                <tr>
+                                  <th colspan='1' style="text-align: right;">Total Pay Amount(Rs.):
+
+                                  </th>
+                                  <th>
+                                    <div class="form-control">{{ (_feesAmt + _otherChargesAmount +
+                                      convenienceFees).toFixed(2) }}
+                                    </div>
+                                  </th>
+                                </tr>
+                              </tfoot>
+                            </table>
+                          </div>
+                        </div>
+                        <br>
+                        <!-- <div class="tablesection">
+                          <h4>Select Payment Gateway </h4>
+
+                          <div class="form-top">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="radiobtn" (click)="displayBtnRadio($event)">
+                                Billdesk ( Net Banking/ Debit Card / Wallet / UPI / BHIM / Bharat QR ) </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="radiobtn" (click)="displayBtnRadio($event)">
+                                PayTM ( Net Banking / Debit Credit / Credit Card / Wallet / UPI / BHIM ) </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="radiobtn" (click)="displayBtnRadio($event)">
+                                SADAD ( Net Banking/ Debit Card / Wallet / UPI / BHIM / Bharat QR ) </label>
+                            </div>
+                          </div>
+
+
+
+
+
+                        </div> -->
+                        <br>
+                        <div class="tablesection">
+                          <h4> Transaction Charge </h4>
+                          <div class="form-top">
+                            <p>Please select a payment gateway to view Payment mode and its transaction charges </p>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" class="ng-untouched ng-pristine ng-valid"
+                                  (click)="displayBtn($event)">
+                                I agree with <a href="" target="_blank">Terms and Conditions</a></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                    </div>
+                  </div>
+
+
+
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="box-footer align-center">
+                        <button type="submit" class="btn link4 mx-2" *ngIf="_wizardForm > 1 && _wizardForm < 8"
+                          (click)="previousData()"> Previous </button>
+                        <button type="submit" *ngIf="_wizardForm < 7" class="btn link3 mx-2"
+                          (click)="saveAndNextHandler(_wizardForm)">Save & Next </button>
+                        <button type="submit" class="btn link3 mx-2" (click)="closeHandler()">Close </button>
+                        <button type="submit" *ngIf="_wizardForm == 7" class="btn link3 mx-2" (click)="makePayment()"
+                          [disabled]="checkBtnDis ">Make Payment </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

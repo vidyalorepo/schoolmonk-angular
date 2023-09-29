@@ -1,0 +1,461 @@
+<section class="inner-banner-section inner-banner-search">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>
+          <font>{{_boardName !== "" ? _boardName: ""}}</font> Schools in <font>West Bengal</font>
+          <font>{{_cityName !== ""?
+            helperService.toCamelCase(', '+ _cityName): "" }}</font>
+        </h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="breadcrumbs_section">
+          <ul>
+            <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+            <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+            <li><button type="submit">Common Search</button></li>
+          </ul>
+          <!-- {{str.split(',').includes('22')}} -->
+        </div>
+      </div>
+    </div>
+    <div class="shopsearch">
+      <div class="row">
+
+        <div class="col-xs-6 col-sm-2 col-md-1 col-lg-1">
+          <div class="form-group">
+            <select (change)="changeSize(size.value)" #size class="form-control">
+              <option value="">Select Size</option>
+              <option value="10" [defaultSelected]="true">10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
+          <div class="form-group">
+            <select (change)="changeOrder(oder.value)" #oder class="form-control">
+              <option value="">Sort By</option>
+              <option value="ASC">School Name, A to Z</option>
+              <option value="desc">School Name, Z to A</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-7 col-md-9 col-lg-9">
+          <!-- <div class="list_grid_view">
+            <button class="list_vw" (click)="viewListOrGrid('List')"><i class="fa fa-list-ul" aria-hidden="true"></i>
+            </button>
+            <img src="assets/images/img_10.png" alt="" style="width: 1px;">
+            <button class="grid_vw" (click)="viewListOrGrid('Grid')"><i class="fa fa-th" aria-hidden="true"></i>
+            </button>
+          </div> -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="innersearchsection common-search">
+  <div class="container-fluid">
+    <section class="SchoolSearchSection">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+          <div class="FiltersSection">
+            <div class="pull-left"><h2>Select Filters</h2></div>
+            <div class="pull-right"><button type="button" class="btn collapsible-btn" (click)="(_showFilter == true)? _showFilter=false: _showFilter=true">
+              <img src="assets/images/filters-icon.png" alt=""> &nbsp;Filters</button></div>
+            <div class="clearfix"></div>
+          </div>
+
+
+          <div  class="collapse show" *ngIf="_showFilter">
+          <div class="leftSearchbox panel-group" >
+
+            <!-- School Type -->
+            <div class="CustomizeSearchbox">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                      href="#collapseTwo">
+                      <span><i class="fa fa-clock-o" aria-hidden="true"></i></span> School Type </a> </h3>
+                </div>
+                <div id="collapseTwo" class="">
+                  <div [ngClass]="{'linear-gradient': showMoreTypes && _schoolTypeList.length > 3}"
+                    *ngIf="_schoolTypeList.length > 3 && showMoreTypes">&nbsp;</div>
+                  <ul class="" [ngClass]="{'limit-options': showMoreTypes && _schoolTypeList.length > 3}">
+                    <li *ngFor="let list of _schoolTypeList"> <input type="checkbox"
+                        (change)="selectFilterCheck($event,list,'school_Type')"> {{helperService.toCamelCase( list) }}
+                    </li>
+                  </ul>
+                  <h6 (click)="showText('type')" *ngIf="_schoolTypeList.length > 3">{{showMoreTypes? "Show More...":
+                    "Show Less..."}}</h6>
+                </div>
+              </div>
+            </div>
+            <!-- Medium -->
+            <div class="CustomizeSearchbox">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                      href="#collapseThree">
+                      <span><i class="fa fa-flag" aria-hidden="true"></i></span> Medium </a> </h3>
+                </div>
+                <div id="collapseThree" class="">
+                  <div class="searchsection3" hidden>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="search medium">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div [ngClass]="{'linear-gradient': showMoreMediums && _mediumList.length > 3}"
+                    *ngIf="_mediumList.length > 3 && showMoreMediums">&nbsp;</div>
+                  <ul class="" [ngClass]="{'limit-options': showMoreMediums && _mediumList.length > 3}">
+                    <li *ngFor="let list of _mediumList"> <input (change)="selectFilterCheck($event,list,'medium')"
+                        type="checkbox" [checked]="list.toLowerCase() === _mediumName.toLowerCase()">
+                      {{helperService.toCamelCase( list) }}</li>
+
+                  </ul>
+                  <h6 (click)="showText('medium')" *ngIf="_mediumList.length > 3">{{showMoreMediums? "Show More...":
+                    "Show Less..."}}</h6>
+                </div>
+              </div>
+            </div>
+            <!-- Board -->
+            <div class="CustomizeSearchbox">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                      href="#collapseFour">
+                      <span><i class="fa fa-university" aria-hidden="true"></i></span> Board </a> </h3>
+                </div>
+                <div id="collapseFour" class="">
+                  <div class="searchsection3" hidden>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="search board">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div [ngClass]="{'linear-gradient': showMoreBoards && _boardList.length > 3}"
+                    *ngIf="_boardList.length > 3 && showMoreBoards">&nbsp;</div>
+                  <ul class="search-height1" [ngClass]="{'limit-options': showMoreBoards && _boardList.length > 3}">
+                    <li *ngFor="let list of _boardList"> <input (change)="selectFilterCheck($event,list,'board')"
+                        type="checkbox" [checked]="list.toLowerCase() === _boardName.toLowerCase()">
+                      {{
+                      list.toUpperCase()
+                      }}</li>
+                  </ul>
+                  <h6 (click)="showText('board')" *ngIf="_boardList.length > 3">{{showMoreBoards? "Show More...": "Show
+                    Less..."}}</h6>
+                </div>
+              </div>
+            </div>
+            <!-- Fees (Annual) -->
+            <div class="CustomizeSearchbox" hidden>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                      href="#collapseFive">
+                      <span><i class="fa fa-money" aria-hidden="true"></i></span> Fees (Annual)</a> </h3>
+                </div>
+                <div id="collapseFive" class="">
+                  <div class="searchsection3">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="search fees">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="linear-gradient">&nbsp;</div>
+                  <ul>
+                    <li> <input type="checkbox">
+                      < 30 K </li>
+                    <li> <input type="checkbox"> 30K to 50K </li>
+                    <li> <input type="checkbox"> 50K to 70K </li>
+                    <li> <input type="checkbox"> 70K to 1 Lac </li>
+                    <li> <input type="checkbox"> > 2 Lacc </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- State -->
+            <!-- <div class="CustomizeSearchbox">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                      href="#collapseSix">
+                      <span><i class="fa fa-fire" aria-hidden="true"></i></span> State</a> </h3>
+                </div>
+                <div id="collapseSix" class="">
+                  <div class="searchsection3" hidden>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="search state">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div [ngClass]="{'linear-gradient': showMoreStates && _stateList.length > 3}"
+                    *ngIf="_stateList.length > 3 && showMoreStates">&nbsp;</div>
+                  <ul class="search-height1" [ngClass]="{'limit-options': showMoreStates && _stateList.length > 3}">
+                    <li *ngFor="let list of _stateList"> <input type="checkbox"
+                        (change)="selectFilterCheck($event,list,'state')"> {{ list }}</li>
+                  </ul>
+                  <h6 (click)="showText('state')" *ngIf="_stateList.length > 3">{{showMoreStates? "Show More...": "Show
+                    Less..."}}</h6>
+                </div>
+              </div>
+            </div> -->
+            <!-- City -->
+            <div class="CustomizeSearchbox">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                      href="#collapseSeven">
+                      <span><i class="fa fa-map-signs" aria-hidden="true"></i></span> City</a> </h3>
+                </div>
+                <div id="collapseSeven" class="">
+                  <div class="searchsection3" hidden>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="search city">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div [ngClass]="{'linear-gradient': showMoreCities && _cityList.length > 3}"
+                    *ngIf="_cityList.length > 3 && showMoreCities">&nbsp;</div>
+                  <ul class="search-height1" [ngClass]="{'limit-options': showMoreCities && _cityList.length > 3}">
+                    <li *ngFor="let list of _cityList"> <input type="checkbox"
+                        (change)="selectFilterCheck($event,list,'city')"> {{helperService.toCamelCase( list) }}</li>
+                  </ul>
+                  <h6 (click)="showText('city')" *ngIf="_cityList.length > 3">{{showMoreCities? "Show More...": "Show
+                    Less..."}}</h6>
+                </div>
+              </div>
+            </div>
+            <!-- Distance(km) -->
+            <div class="CustomizeSearchbox" [hidden]="!_shouldSliderBeVisible">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                      href="#collapseEight">
+                      <span><i class="fa fa-map-signs" aria-hidden="true"></i></span> Distance(km) </a> </h3>
+                </div>
+                <div id="collapseEight" class="">
+                  <div class="searchsection3">
+                    <div class="Distancebox">
+
+
+                      <ngx-slider [(value)]="_searchBody.distance" [options]="locationSliderOptions"
+                        (userChangeEnd)="applyLocationSliderChange($event)"></ngx-slider>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="CustomizeSearchbox">
+              <div class="panel panel-default">
+                <!-- <div class="panel-heading">
+                  <h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                      href="#collapseNine">
+                      <span><i class="fa fa-map-signs" aria-hidden="true"></i></span> Fees(INR) </a> </h3>
+                </div> -->
+                <!-- <div id="collapseNine" class="">
+                  <div class="searchsection3">
+                    <div class="Distancebox">
+                      <ngx-slider [(value)]="_minFees.length != 0? _minFees[0]:minValue"
+                        [(highValue)]="_maxFees.length != 0 ? _maxFees[_maxFees.length - 1]:maxValue" [options]="feesSliderOptions"
+                        (userChangeEnd)="applyFeesSliderChange($event)"></ngx-slider>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+
+          </div>
+          </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+          <div class="rightSearchbox">
+
+            <h2> <font *ngIf="_schoolName || _boardName || school_type"> Showing result for: <span style="color: #4c98d1; text-transform: uppercase;">{{_schoolName | replaceSpace}} {{_boardName | replaceSpace}} {{school_type | replaceSpace}} school</span> </font> &nbsp; </h2>
+
+            <div [class]="tempClass">
+
+
+              <div class="schoolinfobox " *ngFor="let school of _schoolsList  | paginate:{
+              id:'_schoolsList',
+              itemsPerPage:itemsPerPage,
+              currentPage:currentPage,
+              totalItems:_schoolsListSize
+            }; let i =index">
+
+                <div>
+                  <!-- <div class="wishlist" *ngIf="userDetails !== ''"> 
+                    <button type="button" *ngIf="school?.favUsers !== null && school?.favUsers.split(',').includes(userDetails?.userId.toString())"  class="btn" (click)="makeWishlist(school.id, school.favUsers, 1)">
+                      <i class="fa fa-heart" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" *ngIf="school?.favUsers === null || !(school?.favUsers.split(',').includes(userDetails?.userId.toString()))" class="btn" (click)="makeWishlist(school.id, school.favUsers, 0)">
+                      <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    </button>
+                  </div> -->
+                  <!-- <div class="wishlist" *ngIf="userDetails === ''">  <button type="button" class="btn" (click)="makeWishlist(school.id, school.favUsers, 0)"><i class="fa fa-heart-o" aria-hidden="true"></i></button></div> -->
+
+                  <div class="schoolinfobox_img">
+                    <!-- <div class="schooladmissionimg" *ngIf="school.admissionOpen"> <img
+                        src="assets/images/admission-goingon.png" alt=""></div>
+                    <div class="schooladmissionimg" *ngIf="!school.admissionOpen"> <img
+                       src="assets/images/admission-closed.png" alt=""></div>  -->
+
+                    <div>
+                      <img style="cursor: pointer;"
+                        [routerLink]="['/auth/search-details/search-school-details', school.schoolNameSlug]"
+                        *ngIf="school?.schoolLogoPath != null || school?.schoolLogoPath !=''" [src]="school?.schoolLogoPath" alt="">
+                      <img class="gray" style="cursor: pointer;"
+                        [routerLink]="['/auth/search-details/search-school-details', school.schoolNameSlug]"
+                        *ngIf="school?.schoolLogoPath == null || school?.schoolLogoPath ==''" src="assets/images/school-logo.jpg" alt="">
+                    </div>
+                  </div>
+                  <div class="schoolinfobox_tex">
+                    <h2 [routerLink]="['/auth/search-details/search-school-details', school.schoolNameSlug]">
+                      {{school.schoolName | titlecase}}</h2>
+
+                    <h3 *ngIf="school?.city.toUpperCase() != 'KOLKATA'"><span><i class="fa fa-map-marker" aria-hidden="true"></i> </span>
+                      {{helperService.toCamelCase( school.schoolAddress)&nbsp;}}{{(school.addressLineTwo ==null || school.addressLineTwo =='')?'':', '+school.addressLineTwo}}{{(school?.city == null || school?.city == '')?'':', '+school?.city}}{{(school.districtName == null || school.districtName =='' )?'':', '+school.districtName}}{{(school.stateName== null || school.stateName =='')?'':', '+school.stateName}}{{(school.postalCode == null ||school.postalCode=='')?'':' - '+school.postalCode}}
+                    </h3>
+                    <h3 *ngIf="school?.city.toUpperCase() == 'KOLKATA'"><span><i class="fa fa-map-marker" aria-hidden="true"></i> </span>
+                      {{helperService.toCamelCase( school.schoolAddress)&nbsp;}}{{(school.addressLineTwo ==null || school.addressLineTwo =='')?'':', '+school.addressLineTwo}}{{(school?.city == null || school?.city == '')?'':', '+school?.city}}{{(school.stateName== null || school.stateName =='')?'':', '+school.stateName}}{{(school.postalCode == null ||school.postalCode=='')?'':' - '+school.postalCode}}
+                    </h3>
+
+                    <h3>
+                      <font><i class="fa fa-circle" aria-hidden="true"></i> </font> {{school.schoolType }} School
+                      <font><i class="fa fa-circle" aria-hidden="true"></i> </font> {{school.schoolMedium != '' && school.schoolMedium != null ? school.schoolMedium.replace(',', ', ') : 'NA'}}
+                      <font *ngIf="!(school.schoolBoard.toUpperCase() =='KINDERGARTEN' || school.schoolBoard.toUpperCase() =='SPECIAL')"><i class="fa fa-circle" aria-hidden="true"></i> </font>
+                      <strong style="font-weight: 400;"  *ngIf="!(school.schoolBoard.toUpperCase() =='KINDERGARTEN' || school.schoolBoard.toUpperCase() =='SPECIAL')"> {{ school.schoolBoard != '' &&
+                      school.schoolBoard != null ? school.schoolBoard.replace(',', ', '): 'NA'}} </strong>
+                    </h3>
+
+                    <h3 *ngIf="school?.contactPhone"><span><i class="fa fa-phone" aria-hidden="true"></i></span>{{school?.contactPhone | phonePipe}}</h3>
+
+                  </div>
+                  <div class="clearfix"> </div>
+                  <!-- <hr> -->
+                  <div class="annualbox1">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <p class="reviewsbox">
+                          <!-- <i class="fa fa-star" aria-hidden="true"
+                            *ngFor="let dataStar of [].constructor(+school.schoolRating)"> </i>
+                          <i class="fa fa-star-o" aria-hidden="true"
+                            *ngFor="let dataStar of [].constructor(5 - +school.schoolRating)"></i> -->
+                          <!-- (225 reviews) -->
+                        </p>
+                        <!-- <div class="stars">
+                          <ngx-star-rating  [disabled]="true" ></ngx-star-rating >
+                        </div> -->
+                      </div>
+                      <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" *ngIf="school.minFees"> -->
+                        <!-- <p class="annualbox"> {{school.minFees | currency:
+                          'INR'}}
+                          /- annual</p> -->
+                      <!-- </div> -->
+
+
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <span *ngIf=" _schoolsList.length== 0">No records found</span>
+            <div class="paginationsectionbox" *ngIf=" _schoolsList.length!= 0">
+              <span class="Showingboxto">Showing {{currentPageStartingIndex}} to {{currentPageEndingIndex}} of
+                {{_schoolsListSize}} results</span>
+              <pagination-controls class="pagination" id="_schoolsList" (pageChange)="handlePageChange($event)">
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+<section class="similarsection" *ngIf="_similarResultsList">
+  <div class="container-fluid"  >
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Similar Schools </h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <owl-carousel-o [options]="customOptions"> 
+
+          <ng-template carouselSlide *ngFor="let school of _similarResultsList">
+            <div class="similarbox">
+              <div  class="similar-logo">
+                <img *ngIf="school?.schoolLogoPath == null" class="gray" src="assets/images/school-logo.jpg" alt=""> 
+                <img *ngIf="school?.schoolLogoPath != null" class="gray" [src]="school?.schoolLogoPath" alt=""> 
+              </div>
+              <!-- <div *ngIf="school?.schoolLogoPath != null || school?.schoolLogoPath !=''" class="similar-logo">
+                <img class="gray" [src]="school?.schoolLogoPath" alt=""> 
+              </div> -->
+              <h2 [routerLink]="['/auth/search-details/search-school-details', school.schoolNameSlug]"> {{school.schoolName}}</h2>
+              
+              <div class="clearfix"></div>
+              <hr>
+              <h4><span><i class="fa fa-map-marker" aria-hidden="true"></i> </span> {{helperService.toCamelCase( school.schoolAddress)}} {{school.addressLineTwo}}
+                {{
+                school.landMark}}
+                {{school.districtName}}
+                {{school.stateName}}, {{school.postalCode}} </h4>
+              <h4> <font><i class="fa fa-circle" aria-hidden="true"></i> </font> {{school.schoolType }} School <font><i class="fa fa-circle" aria-hidden="true"></i> </font> {{school.schoolMedium != '' &&
+                school.schoolMedium != null ? school.schoolMedium.replace(',', ', ') : 'NA'}} <font><i class="fa fa-circle" aria-hidden="true"></i> </font> {{ school.schoolBoard != '' &&
+                school.schoolBoard != null ? school.schoolBoard.replace(',', ', '): 'NA'}} </h4>
+              <h3 *ngIf="school?.contactPhone"><span><i class="fa fa-phone" aria-hidden="true"></i></span> {{school?.contactPhone | phonePipe}}</h3>
+
+
+
+            </div>
+          </ng-template>
+
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="Related-searches" *ngIf="_relatedResults">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Related Searches</h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <ul>
+          <li *ngFor="let relatedResult of _relatedResults"><button type="button" class="btn-5"
+              (click)="initiateSearch(relatedResult.school_name + ',' + relatedResult.city)">
+              {{relatedResult.school_name + ", " + relatedResult.city}}</button></li>
+
+
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+</section>

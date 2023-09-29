@@ -1,0 +1,295 @@
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1> School Profile </h1>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <form [formGroup]="addSchoolForm">
+          <div class="box box-success2">
+            <div class="box-header with-border bor">
+              <div class="pull-right">
+                <button type="button" (click)="editButton()" title="Add Schools" class="btn link1 button_effects"> <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                &nbsp;&nbsp; </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>School Name <span class="req">*</span>  </label>
+                    <input  type="text" placeholder="schools name" formControlName="schoolName" class="form-control">
+                    <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolName.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolName.errors.required">School Name is required
+                      </div>
+                      
+                  </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>School ID <span class="req">*</span> </label>
+                    <input  type="text" placeholder="schools name" formControlName="schoolId" class="form-control">
+                    <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolId.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolId.errors.required">School ID is required
+                      </div>
+                      
+                  </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Contact Person First Name <span class="req">*</span> </label>
+                    <input type="text" placeholder="contact person" formControlName="contactPersonFirstName" class="form-control">
+                    <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.contactPersonFirstName.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.contactPersonFirstName.errors.required">Contact Person First Name is required
+                      </div>
+                      
+                  </div>
+                  </div>
+                </div>   
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Contact Person Last Name <span class="req">*</span> </label>
+                    <input type="text" placeholder="contact person" formControlName="contactPersonLastName" class="form-control">
+                    <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.contactPersonLastName.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.contactPersonLastName.errors.required">Contact Person Last Name is required
+                      </div>
+                      
+                  </div>
+                  </div>
+                </div>             
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                      <label>Phone No. <span class="req">*</span> </label>
+                      <div class="form-control-width-box">
+                      <select name="country" formControlName='phoneCountryCode' class="form-control form-control-width1">
+                          <option value="+91">+91</option>
+                          <option value="+1">+1</option>
+                          <option value="+44">+44</option>
+                          <option value="+1-340">+1-340</option>
+                      </select>
+                      <input type="tel" (keypress)="keyPress($event)" maxlength="10" formControlName='contactPhone' class="form-control form-control-width2" placeholder="Enter Mobile No.">
+                     </div>
+                      <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.contactPhone.errors">
+                          <div *ngIf="submitted && addSchoolForm.controls.contactPhone.errors.required">Mobile No. is required
+                          </div>
+                          <div *ngIf="addSchoolForm.controls.contactPhone.errors.pattern || addSchoolForm.controls.contactPhone.errors.maxlength || addSchoolForm.controls.contactPhone.errors.minlength">
+                              Invalid Mobile No.</div>
+                                 
+                      </div>  
+                  </div>
+              </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Email. <span class="req">*</span> </label>
+                    <input type="email" placeholder="email" formControlName="contactEmail" class="form-control">
+                    <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.contactEmail.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.contactEmail.errors.required">Email is required
+                      </div>
+                      <div *ngIf="submitted && addSchoolForm.controls.contactEmail.errors.email">Invalid
+                          Email Format
+                      </div>
+                  </div>
+                  </div>
+                </div> 
+                
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>School Address <span class="req">*</span> </label>
+                    <input type="text" placeholder="flat, house no., building, apartment" formControlName="schoolAddress" class="form-control">
+                    <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div>
+                  </div>
+                </div>  
+                <!-- new Field                -->
+  
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>School Address  </label>
+                    <input type="text" placeholder="Area, Colony, Street, Sector" formControlName="addressLineTwo" class="form-control">
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Landmark </label>
+                    <input type="text" placeholder="Area, Colony, Street, Sector" formControlName="landMark" class="form-control">
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Town/City </label>
+                    <input type="text" placeholder="Area, Colony, Street, Sector" formControlName="city" class="form-control">
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>State </label>
+                    <input type="text" placeholder="State" formControlName="state" class="form-control">
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>District </label>
+                    <input type="text" placeholder="District" formControlName="district" class="form-control">
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Postal Code </label>
+                    <input type="text" placeholder="Postal Code" formControlName="postalCode" class="form-control">
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Board </label>
+                    <input type="text" placeholder="Board" formControlName="board" class="form-control">
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Medium </label>
+                    <input type="text" placeholder="Medium" formControlName="medium" class="form-control">
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Accreditation by </label>
+                    <input type="text" placeholder="Accreditation by" formControlName="accreditationBy" class="form-control">
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Class </label>
+                    <input type="text" placeholder="Class (Infant to XII) etc" formControlName="schoolClass" class="form-control">
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+               
+                
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Rule </label>
+                    <input type="text" placeholder="Rule" formControlName="rule" class="form-control">
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Facilities </label>
+                    <input type="text" placeholder="Facilities" formControlName="facilities" class="form-control">
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Message from Principal </label>
+                    <textarea type="text" placeholder="Message from Principal" formControlName="messageFromPrincipal" class="form-control"></textarea>
+                    <!-- <input type="text" placeholder="Message from Principal" formControlName="messageFromPrincipal" class="form-control"> -->
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>About the school </label>
+                    <textarea type="text" placeholder="About the school" formControlName="aboutSchool" class="form-control"></textarea>
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label>Notices </label>
+                    <textarea type="text" placeholder="Notices" formControlName="notices" class="form-control"></textarea>
+                    <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                  </div>
+                </div>
+                
+  
+              </div>
+            </div>
+            <div *ngIf="isEditBtn == true" class="box-footer align-center">
+              <button type="submit" (click)="submitUpdateSchoolRecord()" class="btn link1 button_effects mx-1 button-size">Edit </button>
+            </div>
+
+
+          </div>
+        </form>
+        </div>
+      </div>
+    </section>
+</div>
+
+
+

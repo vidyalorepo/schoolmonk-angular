@@ -1,0 +1,235 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1> Admission Form </h1>
+  </section>
+  <section class="content">
+
+    <form [formGroup]="addAdmissionForm">
+      <div class="box box-success2">
+
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+              <div class="form-group">
+                <label>Board<span class="req">*</span> </label>
+                <select class="form-control" formControlName="board">
+                  <option value="">Select</option>
+                  <option *ngFor="let data of _boardList">{{data}}</option>
+                </select>
+                <div class="invalid-text" *ngIf="submitted && addAdmissionForm.controls.board.errors">
+                  <div *ngIf="submitted && addAdmissionForm.controls.board.errors.required">Board is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+              <div class="form-group">
+                <label>Class<span class="req">*</span> </label>
+                <select class="form-control" #classVal formControlName="classRange">
+                  <option value="">Select</option>
+                  <option *ngFor="let data of _schoolLevelInfoList">{{data.value}}</option>
+                </select>
+                <div class="invalid-text" *ngIf="submitted && addAdmissionForm.controls.classRange.errors">
+                  <div *ngIf="submitted && addAdmissionForm.controls.classRange.errors.required">Class Range is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+              <div class="form-group calendar-icon">
+                <label>Admission Start Date <span class="req">*</span> </label>
+                <input type="date" formControlName="admissionStartDate" class="form-control">
+                <div class="invalid-text" *ngIf="submitted && addAdmissionForm.controls.admissionStartDate.errors">
+                  <div *ngIf="submitted && addAdmissionForm.controls.admissionStartDate.errors.required">Admission Start
+                    Date is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+              <div class="form-group calendar-icon">
+                <label>Admission End Date <span class="req">*</span> </label>
+                <input type="date" formControlName="admissionEndDate" class="form-control">
+                <div class="invalid-text" *ngIf="submitted && addAdmissionForm.controls.admissionEndDate.errors">
+                  <div *ngIf="submitted && addAdmissionForm.controls.admissionEndDate.errors.required">Admission End
+                    Date is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+              <div class="form-group">
+                <label>Fees (&#8377;)<span class="req">*</span> </label>
+                <input type="number" #fee formControlName="feesAmount" placeholder="0.00" class="form-control"
+                (keyup)="getConvenienceFee(fee.value)">
+                <div class="invalid-text" *ngIf="submitted && addAdmissionForm.controls.feesAmount.errors">
+                  <div *ngIf="submitted && addAdmissionForm.controls.feesAmount.errors.required">Fees is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+              <div class="form-group">
+                <label>Convenience Fee (including GST &#8377;)<span class="req">*</span> </label>
+                <input type="number" formControlName="convenieceFee" placeholder="0.00" class="form-control" readonly>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+              <div class="form-group">
+                <label>Other Charges (Tax etc) (&#8377;)</label>
+                <input type="number" step="0.01" formControlName="otherChargesAmount" placeholder="0.00" class="form-control">
+                <!-- <div class="invalid-text" *ngIf="submitted && addAdmissionForm.controls.feesAmount.errors">
+                  <div *ngIf="submitted && addAdmissionForm.controls.feesAmount.errors.required">Fees is required
+                  </div>
+                </div> -->
+              </div>
+            </div>
+            
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+              <div class="form-group calendar-icon">
+                <label>Min Date of Birth <span class="req">*</span> </label>
+                <input type="date" formControlName="minDOB" class="form-control">
+                <div class="invalid-text" *ngIf="submitted && addAdmissionForm.controls.minDOB.errors">
+                  <div *ngIf="submitted && addAdmissionForm.controls.minDOB.errors.required">Min DOB is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+              <div class="form-group calendar-icon">
+                <label>Max Date of Birth <span class="req">*</span> </label>
+                <input type="date" formControlName="maxDOB" class="form-control">
+                <div class="invalid-text" *ngIf="submitted && addAdmissionForm.controls.maxDOB.errors">
+                  <div *ngIf="submitted && addAdmissionForm.controls.maxDOB.errors.required">Max DOB is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" *ngIf="classVal.value === 'XI'">
+              <div class="form-group">
+                <label> &nbsp; </label> <br>
+                <button type="submit" (click)="addBlankParameterListStream()" class="btn link3 mx-2">Add Stream
+                </button>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Upload Document (Max. 10 MB)</label>
+                <input type="file" id="myFile" name="filename" (change)="onFileChanged($event)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+        <!--  [formGroup]="addAdmissionForm" -->
+        <ng-container formArrayName="schoolStreamDtlVo">
+
+          <div class="" *ngFor="let result of parameterListArrayStream.controls;let i=index" [formGroupName]="i">
+             <div class="box box-success2">
+            <div class="box-header with-border">
+              <div class="pull-right">
+                <button type="button" (click)="removeStreamForm(i)" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                  <div class="form-group">
+                    <label>Stream Name <span class="req">*</span> </label>
+                    <input type="text" formControlName="streamName" placeholder="" class="form-control">
+                    <div class="invalid-text" *ngIf="result.get('streamName').errors?.required">
+                      <div>Stream is required</div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                  <label> &nbsp; </label> <br>
+                  <button type="submit" class="btn link4 mx-2" (click)="addBlankParameterListSubject(i)">Add Subject
+                  </button>
+                </div> -->
+
+              </div>
+
+              <div class="row">
+
+                <ng-container formArrayName="schoolStreamSubjectDtlVo">
+
+                  <div class="" *ngFor="let resultSubject of parameterListArrayStreamSubject(i).controls; let j=index"
+                    [formGroupName]="j">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <hr style="margin: 10px 0 0; border-top: 1px solid #999;">
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="pull-left">
+                        <div class="form-group">
+                          <label>Subject {{j+1}} <span class="req" *ngIf="j+1 != 6">*</span> </label>
+                        </div>
+                      </div>
+                      <div class="pull-right" style="margin-top: 5px;">
+                        <button type="button" (click)="addArrayOptionSubject(i,j)" class="btn btn-info"><i
+                            class="fa fa-plus" aria-hidden="true"></i>
+                        </button> &nbsp;
+
+                        <!-- <button type="button" (click)="removeStreamFormSubject(i,j)" class="btn btn-danger"><i
+                            class="fa fa-times" aria-hidden="true"></i>
+                        </button> -->
+                      </div>
+                      <div class="clearfix"></div>
+
+                    </div>
+
+                    <ng-container formArrayName="subjectOptionsVo">
+                      <diV *ngFor="let resultSubjectOption of arrayOptionSubject(i,j).controls; let k=index"
+                        [formGroupName]="k">
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                          <div class="form-group AdmissionSubject">
+                            <input type="text" placeholder="" formControlName="subjectNameOption" class="form-control">
+                           <button type="button" *ngIf="k !== 0" (click)="removeArrayOptionSubject(i,j,k)"
+                              class="btn btn-warning"><i class="fa fa-minus" aria-hidden="true"></i>
+                            </button>
+                            <div class="invalid-text" *ngIf="resultSubjectOption.get('subjectNameOption').errors?.required">
+                              <div>Subject name is required</div>
+                            </div>
+                          </div>
+                        </div>
+                      </diV>
+                    </ng-container>
+
+
+                  </div>
+                </ng-container>
+              </div>
+
+            </div>
+
+          </div>
+      </div>
+        </ng-container>
+
+
+
+      <div class="box box-success2">
+        <!-- (click)="submitUpdateSchoolRecord()" -->
+        <div class="box-footer align-center">
+          <button type="submit" [routerLink]="['/admission/admission-lists']"  class="btn link4 mx-2 ">Close</button>
+          <button type="submit" (click)="submitAdmissionEligibleForm()" class="btn link3 mx-2 ">Save as Draft </button>
+          <button type="submit" (click)="publishAdmissionEligibleForm()" class="btn link4 mx-2">Publish </button>
+       
+      </div>
+      </div>
+    </form>
+  </section>
+</div>

@@ -1,0 +1,184 @@
+<div class="content-wrapper">
+  <p-messages></p-messages>
+  <section class="content-header">
+    <h1> Add Admin User</h1>
+  </section>
+  <section class="content">
+    <form [formGroup]="addUserForm">
+      <div class="box box-success2">
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>First Name <span class="req">*</span> </label>
+                <input type="text" pInputText placeholder="First name" formControlName="firstName" class="form-control">
+                <div class="invalid-text"
+                  *ngIf="addUserForm.controls.firstName?.touched && addUserForm.controls.firstName?.errors">
+                  <div *ngIf="addUserForm.controls?.firstName.errors.required">
+                    First Name is
+                    required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Last Name <span class="req">*</span> </label>
+                <input type="text" pInputText placeholder="Last Name" formControlName="lastName" class="form-control">
+                <div class="invalid-text"
+                  *ngIf="addUserForm.controls.lastName?.touched && addUserForm.controls.lastName?.errors">
+                  <div *ngIf="addUserForm.controls?.lastName.errors.required">
+                    Last Name is
+                    required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Password <span class="req">*</span> </label>
+                <input type="password" placeholder="Password" formControlName="password" class="form-control">
+                <div class="invalid-text"
+                  *ngIf="addUserForm.controls.password?.touched && addUserForm.controls.password?.errors">
+                  <div *ngIf="addUserForm.controls?.password.errors.required">School
+                    Password is
+                    required
+                  </div>
+
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Phone No. <span class="req">*</span> </label>
+                <div class="form-control-width-box">
+                  <select name="country" formControlName='phoneCountryCode' class="form-control form-control-width1">
+                    <option value="+91">+91</option>
+                    <option value="+1">+1</option>
+                    <option value="+44">+44</option>
+                    <option value="+1-340">+1-340</option>
+                  </select>
+
+                  <input type="tel" pInputText (keypress)="keyPress($event)" maxlength="10" formControlName='phone'
+                    class="form-control form-control-width2" placeholder="Enter Mobile No." >
+                </div>
+                <div class="invalid-text"
+                  *ngIf="addUserForm.controls.phone?.touched && addUserForm.controls.phone?.errors">
+                  <div *ngIf="addUserForm.controls?.phone.errors.required">Phone Number is
+                    required
+                  </div>
+
+                </div>
+                <div class="invalid-text"
+                  *ngIf="addUserForm.controls.phoneCountryCode?.touched && addUserForm.controls.phoneCountryCode?.errors">
+                  <div *ngIf="addUserForm.controls?.phoneCountryCode.errors.required">
+                    Country Code is
+                    required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Email. <span class="req">*</span> </label>
+                <input type="email" pInputText placeholder="email" formControlName="email" class="form-control">
+                <div class="invalid-text"
+                  *ngIf="addUserForm.controls.email?.touched && addUserForm.controls.email?.errors">
+                  <div *ngIf="addUserForm.controls?.email.errors.required">Email is
+                    required
+                  </div>
+                  <div
+                    *ngIf="!addUserForm.controls?.email.errors.required && addUserForm.controls?.email.errors.invalidEmail">
+                    Email is
+                    invalid
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+      <div class="box box-success2">
+        <div class="box-body">
+          <!-- <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label> Address Line 1 <span class="req">*</span> </label>
+                <input type="text" placeholder="flat, house no., building, apartment" formControlName="schoolAddress"
+                  class="form-control">
+                <div class="invalid-text" *ngIf="submitted && addUserForm.controls.schoolAddress.errors">
+                  <div *ngIf="submitted && addUserForm.controls.schoolAddress.errors.required">School Address is
+                    required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label> Address Line 2 </label>
+                <input type="text" placeholder="Area, Colony, Street, Sector" formControlName="addressLineTwo"
+                  class="form-control">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Landmark </label>
+                <input type="text" placeholder="Area, Colony, Street, Sector" formControlName="landMark"
+                  class="form-control">
+
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Town/City </label>
+                <input type="text" placeholder="Area, Colony, Street, Sector" formControlName="city"
+                  class="form-control">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group FeaturedboxSchool">
+                <label>State</label>
+                <select class="form-control" formControlName="state" (change)="onState()">
+                  <option value="">Select</option>
+                  <option *ngFor="let data of stateList" value="{{ data.id }}">{{ data.stateName }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group FeaturedboxSchool">
+                <label>District</label>
+                <select class="form-control" formControlName="district">
+                  <option *ngFor="let data of _districtList" value="{{ data.id }}">{{ data.districtName }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Postal Code </label>
+                <input type="text" placeholder="Postal Code" formControlName="postalCode" class="form-control">
+
+              </div>
+            </div>
+
+
+
+          </div> -->
+        </div>
+        <div class="box-footer align-center">
+          <button type="submit" class="btn link4 mx-2" [routerLink]="['/manage-student/student-list']"> Back
+          </button>
+          <button type="submit" class="btn link3 mx-2" [disabled]="!addUserForm.valid" (click)="submitUserData()">Submit </button>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>

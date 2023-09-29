@@ -1,0 +1,138 @@
+<div class="content-wrapper Subscriptionsection">
+  <section class="content-header">
+    <h1>School Subscription</h1>
+  </section>
+  <section class="content ">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="box box-success2">
+          <div class="box-body Subscription_icon_box">
+            <div class="updgrade_box">
+              <a [routerLink]="['/manage-subscription/upgrade-subscription']">(Upgrade Now) Coming Soon...</a>
+            </div>
+            
+            <div class="Subscription_icon"><img src="assets/images/school-icon.png" alt=""></div>
+            <h2>{{subscriptionDtl[0]?.subcriptionMstVo?.subscriptionName}}</h2>
+              <!-- <div class="btn free-success"><i class="fa fa-inr" aria-hidden="true"></i> 0/Month</div> -->
+              <div *ngIf="subscriptionDtl[0]?.subcriptionMstVo?.subscriptionType === 'SILVER'"  class="btn silver-success"><i class="fa fa-inr" aria-hidden="true"></i> {{subscriptionDtl[0].subscriptionPrice}}/{{subscriptionDtl[0].subscriptionValidityType}}</div>
+              <!-- <div class="btn gold-success"><i class="fa fa-inr" aria-hidden="true"></i> 100/Month</div> -->
+              <!-- <div class="btn platinum-success"><i class="fa fa-inr" aria-hidden="true"></i> 500/Month</div> -->
+            <ul class="Subscription_ul">
+              <li *ngFor="let data of subscriptionDtl[0]?.subscriptionFeaturesDtlVo; let i = index;">
+                <span *ngIf=" i < 4"><i class="fa fa-check-square-o" aria-hidden="true"></i> 
+                {{data.featureName}}</span>
+              </li>
+              <!-- <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> Lorem Ipsum is simply dummy text
+                </li>
+              <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> Lorem Ipsum is simply dummy text
+              </li>
+              <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> Lorem Ipsum is simply dummy text
+                </li> -->
+              <li *ngIf="subscriptionDtl[0]?.subscriptionFeaturesDtlVo.length > 4"><a [routerLink]="['/manage-subscription/view-subscription']">More...</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div class="box box-success2">
+          <div class="box-header with-border">
+            <h4 class="box-title card-text"> Subscription Details</h4>
+          </div>
+          <div class="box-body">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <label> <b>Plan Name:</b> {{subscriptionDtl[0]?.subcriptionMstVo?.subscriptionName}}</label>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <label><b>Renew Date:</b> {{subscriptionDtl[0]?.subscriptionStartDate}}</label>
+                </div><br><br>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <label><b>Expiry Date:</b> {{subscriptionDtl[0]?.subscriptionExpiryDate}}</label>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <label><b>Plan Status:</b> {{subscriptionDtl[0]?.subscriptionStatus}}</label>
+                </div><br><br>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <label><b>Subscriber ID:</b> {{subscriptionDtl[0]?.subscriberId}}</label>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <label><b>Contact Mail:</b> {{subscriptionDtl[0]?.userVo.email}}</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="box box-success2">
+          <div class="box-header with-border">
+            <h4 class="box-title card-text">Last Payment</h4>
+          </div>
+          <div class="box-body">
+            <div class="form-group">
+              <label>Date: {{subscriptionDtl[0]?.paymentOn}}</label>
+              <div class="form-control">
+                <div class="pull-left">{{subscriptionDtl[0]?.subcriptionMstVo?.subscriptionName}}</div>
+                <div class="pull-right">{{subscriptionDtl[0]?.subscriptionPrice}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="box box-success2">
+          <div class="box-header with-border">
+            <h4 class="box-title card-text">My Subscriptions</h4>
+          </div>
+          <div class="box-body">
+
+            <div class="panel-group" id="accordion">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                      href="#collapseOne"> Subscription History</a> </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <div class="tablesection">
+                        <div class="table-responsive">
+                          <table class="table table-striped" >
+                            <thead>
+                                <tr>
+                                  <th>Sl No.</th>
+                                  <th>Plan name</th>
+                                  <th>Transaction Date</th>
+                                  <th>Ref. No</th>
+                                  <th>Amount</th>
+                                  <!-- <th>Payment Type</th> -->
+                                  <th>Receipt No</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of subscriptionDtl; let i = index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{data.subcriptionMstVo?.subscriptionName}}</td>
+                                    <td>{{data.paymentOn}}</td>
+                                    <td>{{data.subscriptionRefNo}}</td>
+                                    <td>{{data.subscriptionPrice}}</td>
+                                    <!-- <td>{{data.paymentOn}}</td> -->
+                                    <td>{{data.subscriptionReceiptNo}}</td>
+                                </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

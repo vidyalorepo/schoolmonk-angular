@@ -1,0 +1,177 @@
+<div class="content-wrapper">
+  <p-messages></p-messages>
+  <section class="content-header">
+    <h1>Feedback List</h1>
+  </section>
+  <section class="content">
+    <div class="box box-success2">
+      <div class="box-header with-border bor">
+        <div class="pull-left">
+          <div class="Showingbox"><span class="pull-left"></span>
+              <div class="pull-left drop">
+                  <select class="form-control" #limit (change)="fetchListApi(limit.value)">
+                      <option value="25" ng-reflect-value="25">25</option>
+                      <option value="50" ng-reflect-value="50">50</option>
+                      <option value="100" ng-reflect-value="100">100</option>
+                  </select>
+              </div>
+          </div>
+        </div>
+        <div class="pull-right dropdown">
+          <nav class="setting-nav">
+            <label
+              for="btn"
+              class="button btn btn-success"
+              [ngClass]="checkReadonlyClass"
+              ><i class="fa fa-cog" aria-hidden="true"></i>
+            </label>
+            <input
+              *ngIf="arraySend.length === 0"
+              class="Rolebox"
+              type="checkbox"
+              id="btn"
+              [disabled]="true"
+            />
+            <input
+              *ngIf="arraySend.length > 0"
+              class="Rolebox"
+              type="checkbox"
+              id="btn"
+            />
+            <ul class="menu">
+              <li>
+                <a (click)="changeSelectedStatus('Pending')">
+                  <font><i class="fa fa-spinner" aria-hidden="true"></i></font
+                  >Pending
+                </a>
+              </li>
+              <li>
+                <a (click)="changeSelectedStatus('Action Taken')">
+                  <font><i class="fa fa-check" aria-hidden="true"></i></font
+                  >Action Taken
+                </a>
+              </li>
+              <li>
+                <a (click)="changeSelectedStatus('No Action')">
+                  <font><i class="fa fa-times" aria-hidden="true"></i></font>No
+                  Action
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="box-body">
+        <div class="tablesection">
+          <div class="table-responsive">
+            <table class="table table-striped" matSort matSortDirection="asc" (matSortChange)="sortData($event)" matSortDisableClear>
+              <thead>
+                <tr>
+                  <th width="40" align="center" style="text-align: center">
+                    <input
+                      style="margin: 8px 0 0 0"
+                      (click)="toggleShow()"
+                      type="checkbox"
+                      [(ngModel)]="selectedAll"
+                      (change)="selectAllFeedback($event)"
+                    />
+                  </th>
+                  <th mat-sort-header="User_Name">Name</th>
+                  <th mat-sort-header="User_Email">Email</th>
+                  <th mat-sort-header="User_Phone">Phone No.</th>
+                  <th mat-sort-header="User_Feedback">Feedback</th>
+                  <th mat-sort-header="Feedback_Status">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let data of _schoolsList
+                      | paginate
+                        : {
+                            id: '_schoolsList',
+                            itemsPerPage: itemsPerPage,
+                            currentPage: currentPage,
+                            totalItems: _feedbacksListSize
+                          };
+                    let i = index
+                  "
+                >
+                  <td align="center" style="text-align: center">
+                    <input
+                      type="checkbox"
+                      [(ngModel)]="data.selected"
+                      (change)="selectCheck($event,data.id)"
+                      style="margin-top: 10px"
+                    />
+                  </td>
+                  <td>{{ data.userName }}</td>
+                  <td>{{ data.userEmail }}</td>
+                  <td>{{ data.userPhone | phonePipe }}</td>
+                  <td>
+                    <!-- {{data.userFeedback}} -->
+                    <div
+                      data-toggle="modal"
+                      data-target="#myModal"
+                      (click)="modalOpen(data.userFeedback)"
+                    >
+                      {{
+                        data.userFeedback.length > 50
+                          ? (data.userFeedback | slice : 0 : 50) + "..."
+                          : data.userFeedback
+                      }}
+                    </div>
+                  </td>
+                  <td>
+                    <p-tag *ngIf="data.feedbackStatus == 'Action Taken'" severity="success">{{ data.feedbackStatus }}</p-tag>
+                    <p-tag *ngIf="data.feedbackStatus == 'No Action'" styleClass="p-mr-2" severity="warning">{{ data.feedbackStatus }}</p-tag>
+                    <p-tag *ngIf="data.feedbackStatus == 'Pending'" severity="danger">{{ data.feedbackStatus }}</p-tag>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="paginationsectionbox">
+          <span *ngIf="!isEmpty" class="Showingboxto"
+            >Showing {{ currentPageStartingIndex }} to
+            {{ currentPageEndingIndex }} of
+            {{ _feedbacksListSize }} results</span
+          >
+          <span *ngIf="isEmpty">No records found.</span>
+          <pagination-controls
+            *ngIf="!isEmpty"
+            class="pagination"
+            id="_schoolsList"
+            (pageChange)="handlePageChange($event)"
+          ></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Description of Goods</h4>
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+      </div>
+      <div class="modal-body">
+        <p>
+          {{ _modalData }}
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+
+
+div.stars {
+    width: 270px;
+    display: inline-block;
+  }
+  .result-for  {
+    display: block;
+  }
+.search-details-p{
+  display: inline-block;
+}  

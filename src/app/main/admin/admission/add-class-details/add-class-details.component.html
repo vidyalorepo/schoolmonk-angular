@@ -1,0 +1,204 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>Add Class</h1>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+        <form [formGroup]="_schoolForm">
+          <div class="box box-success2">
+            <div class="box-body">
+              <div class="tablesection">
+                <div class="table-responsive">
+                  <table class="table table-striped Timingbox">
+                    <thead>
+                      <tr>
+                        <th width="60" style="text-align: center;">Sl No.</th>
+                        <th>Academic Year</th>
+                        <th>Board</th>
+                        <th>Class</th>
+                        <th>Course</th>
+                        <th>Admission Open</th>
+                        <th>Admission End </th>
+                        <th>Fees</th>
+                        <th style="text-align: center;">Publish</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <ng-container formArrayName="schoolAdmissionDtlVo"
+                        *ngFor="let result of parameterListArray.controls;let i=index">
+                        <tr [formGroupName]="i">
+                          <td align="center">{{ i+1}}</td>
+                          <td>{{result.value.academicYear}}</td>
+                          <td>{{result.value.boardName}}</td>
+                          <td>{{result.value.classRange}}</td>
+                          <td>{{result.value.classStream}}</td>
+
+
+                          <td>
+                            <div class="form-group calendar-icon">
+                              <input formControlName="admissionStartDate" type="date" class="form-control">
+                            </div>
+                            <div *ngIf="isSubmit == true && result.value.admissionStartDate == ''" class="invalid-text">
+                              Admission Open is required</div>
+                          </td>
+                          <td>
+                            <div class="form-group calendar-icon">
+                              <input formControlName="admissionEndDate" type="date" class="form-control">
+                            </div>
+                            <div *ngIf="isSubmit == true && result.value.admissionEndDate == ''" class="invalid-text">
+                              Admission End is required</div>
+                          </td>
+                          <td>
+                            <div class="form-group">
+                              <input formControlName="feesAmount" min="0" type="number" class="form-control">
+                            </div>
+                            <div
+                              *ngIf="isSubmit == true && (result.value.feesAmount == '' || result.value.feesAmount == null )"
+                              class="invalid-text">Fees is required</div>
+
+                          </td>
+                          <td style="text-align: center;">
+                            <div class="form-group">
+                              <label class="el-switch">
+                                <input formControlName="publishStatus" type="checkbox" name="switch">
+                                <span class="el-switch-style"></span>
+                              </label>
+                            </div>
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="box-footer">
+              <div class="text-center">
+                <button type="submit" [routerLink]="['/admission/admission-requirements']"
+                  class="btn link2 mx-1">Cancel</button>
+                <button type="submit" (click)="admissionDetailsSave()" class="btn link1 mx-1">Submit</button>
+              </div>
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Eligibility Details</h4>
+      </div>
+      <form [formGroup]="_eligibilityForm">
+
+        <div class="modal-body">
+          
+          <div class="box box-success2">
+            <div class="box-header with-border">
+              <h3 class="box-title card-text">Academic</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <label>Academic Year</label> <br>
+                    <div class="form-control"> {{_eligibilityForm.value.academicYear}} </div>
+    
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <label>Board</label> <br>
+                    <div class="form-control"> {{_eligibilityForm.value.boardName}} </div>
+    
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <label>Class</label>
+                    <div class="form-control"> {{_eligibilityForm.value.classRange}} </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box box-success2">
+            <div class="box-header with-border">
+              <h3 class="box-title card-text">Marks Cutover</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <label>Course</label>
+                    <input type="text" readonly formControlName='classStream' class="form-control" placeholder="Course">
+                    <div *ngIf="isSubmit && _eligibilityForm.controls.classStream.errors"
+                      class="invalid-text ng-star-inserted">Course is required</div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <label>Marks</label>
+                    <input type="text" formControlName='eligibilityMarks' class="form-control" placeholder="Marks">
+                    <div *ngIf="isSubmit && _eligibilityForm.controls.eligibilityMarks.errors"
+                      class="invalid-text ng-star-inserted">Marks is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box box-success2">
+            <div class="box-header with-border">
+              <h3 class="box-title card-text">Age Restriction</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group calendar-icon">
+                    <label>DOB From</label>
+                    <input type="date" formControlName='dOBStartDate' class="form-control">
+                    <div *ngIf="isSubmit && _eligibilityForm.controls.dOBStartDate.errors"
+                      class="invalid-text ng-star-inserted">DOB From is required</div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group calendar-icon">
+                    <label>DOB UpTo</label>
+                    <input type="date" formControlName='dOBEndDate' class="form-control">
+                    <div *ngIf="isSubmit && _eligibilityForm.controls.dOBEndDate.errors"
+                      class="invalid-text ng-star-inserted">DOB UpTo is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <div class="text-center">
+            <button type="submit" class="btn link2 mx-1" data-dismiss="modal">Cancel</button>
+            <button type="submit" (click)="submitEligibility()" class="btn link1 mx-1"
+              style="margin-bottom: 5px;">Submit</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>

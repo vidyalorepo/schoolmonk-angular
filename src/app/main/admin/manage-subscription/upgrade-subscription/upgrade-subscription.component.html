@@ -1,0 +1,112 @@
+<div class="content-wrapper Subscriptionsection">
+    <div class="content School_Subscription_box">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>Indian Schools are going <span>Digital</span> </h1>
+                <h2>Now its Your turn! Try <span>Vidyalo</span> for <font>free!</font>
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" *ngFor="let data of subscriptionDtl;">
+                <div class="Subscription_box">
+                    <div *ngIf="data.subscriptionType === 'DEFAULT'" class="packages_box free-success">Free</div>
+                    <div *ngIf="data.subscriptionType === 'SILVER'" class="packages_box silver-success">Silver</div>
+                    <div *ngIf="data.subscriptionType === 'GOLD'" class="packages_box gold-success">Gold</div>
+                    <div *ngIf="data.subscriptionType === 'PLATINUM'" class="packages_box platinum-success">Platinum</div>
+                    <h3>0.00 / Month</h3>
+                    <div class="packages_list">
+                        <ul class="Subscription_ul">
+                            <!-- <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> All Free </li> -->
+                            <li *ngFor="let dataFeature of data.subscriptionFeaturesDtlVo; let i = index;">
+                                <span *ngIf=" i < 6"><i class="fa fa-check-square-o" aria-hidden="true"></i> 
+                                {{dataFeature.featureName}}</span>
+                              </li>
+                              <li *ngIf="data?.subscriptionFeaturesDtlVo.length > 6"><a [routerLink]="['/manage-subscription/view-subscription']">More...</a></li>
+                        </ul>
+                    </div>
+                      <!-- <div *ngIf="data.subscriptionType === 'DEFAULT'"  class="packages-Start1 text-center">
+                        <button type="submit" class="btn link5 widthbox3">Start Now</button>
+                      </div>
+                      <div *ngIf="data.subscriptionType === 'SILVER'"  class="packages-Start2 text-center">
+                        <button type="submit" class="btn link5 widthbox3">Start Now</button>
+                      </div>
+                      <div *ngIf="data.subscriptionType === 'GOLD'" class="packages-Start3 text-center">
+                        <button type="submit" class="btn link5 widthbox3">Start Now</button>
+                      </div>
+                      <div *ngIf="data.subscriptionType === 'PLATINUM'" class="packages-Start4 text-center">
+                        <button type="submit" class="btn link5 widthbox3">Start Now</button>
+                      </div> -->
+                </div>
+            </div>
+            <!-- <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="Subscription_box">
+                    <div class="packages_box silver-success">Silver</div>
+                    <h3><i class="fa fa-inr" aria-hidden="true"></i> 75/Month</h3>
+                    <div class="packages_list">
+                        <ul class="Subscription_ul">
+                            <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> Lorem Ipsum is simply
+                                dummy text
+                            </li>
+                            <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> It is a long
+                                established fact
+                                that a reader</li>
+                        </ul>
+                    </div>
+                    <div  class="packages-Start2 text-center">
+                        <button type="submit" class="btn link5 widthbox3">Start Now</button>
+                      </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="Subscription_box">
+                    <div class="packages_box gold-success">Gold</div>
+                    <h3><i class="fa fa-inr" aria-hidden="true"></i> 100/Month</h3>
+                    <div class="packages_list">
+                        <ul class="Subscription_ul">
+                            <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> Lorem Ipsum is simply
+                                dummy text
+                            </li>
+                            <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> It is a long
+                                established fact
+                                that a reader</li>
+                            <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> Many desktop publishing
+                                packages
+                            </li>
+                        </ul>
+                    </div>
+                    <div  class="packages-Start3 text-center">
+                        <button type="submit" class="btn link5 widthbox3">Start Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="Subscription_box">
+                    <div class="packages_box platinum-success">Platinum</div>
+                    <h3><i class="fa fa-inr" aria-hidden="true"></i> 500/Month</h3>
+                    <div class="packages_list">
+                        <ul class="Subscription_ul">
+                            <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> Lorem Ipsum is simply
+                                dummy text </li>
+                            <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> It is a long
+                                established fact that a reader</li>
+                            <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> Many desktop publishing
+                                packages </li>
+                            <li><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> Various versions have
+                                evolved over the years</li>
+
+                        </ul>
+                    </div>
+                    <div  class="packages-Start4 text-center">
+                        <button type="submit" class="btn link5 widthbox3">Start Now</button>
+                      </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="box box-success2">
+            <div class="box-footer align-center">
+                <a [routerLink]="['/manage-subscription/view-subscription']"><button type="submit" class="btn link4 mx-2">View in Details...</button></a>
+            </div>
+          </div>
+    </div>
+</div>  

@@ -1,0 +1,144 @@
+<div class="content-wrapper">
+    <p-messages></p-messages>
+  <section class="content-header">
+    <h1>News Article List</h1> 
+  </section>
+  <section class="content">
+    <div class="box box-success2">
+      <div class="box-header with-border bor">
+        <!-- <div class="pull-left"> -->
+          <!-- <div class="Showingbox"> -->
+            <!-- <span class="pull-left">Showing </span> -->
+            <!-- <div class="pull-left drop">
+              <p-dropdown (onChange)="getallNewslist()" [(ngModel)]="selectedsize" [options]="sizeArr" class="w-full"></p-dropdown>
+            </div> -->
+          <!-- </div> -->
+          <div class="pull-left">
+            <div class="Showingbox"><span class="pull-left"></span>
+                <div class="pull-left drop">
+                    <select class="form-control" #limit  (change)="getallNewslist(limit.value)">
+                        <option value="25" ng-reflect-value="25">25</option>
+                        <option value="50" ng-reflect-value="50">50</option>
+                        <option value="100" ng-reflect-value="100">100</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="pull-right">
+          <nav class="setting-nav dropdown" style="margin-top: 1rem; margin-bottom: 1rem;">
+            <button pButton pRipple routerLink="/news-artical/add-news-artical" type="button" label="Add News" icon="pi pi-plus"  class="p-button-info p-button-outlined btn-success"></button>
+          </nav>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="box-body">
+        <div class="tablesection">
+          <div class="table-responsive">
+            <table class="table table-striped" matSort (matSortChange)="sortData($event)" matSortDirection="asc">
+              <thead>
+                <tr>
+                  <th mat-sort-header="subject">Subject</th>
+                  <th mat-sort-header="news_date">News Date</th>
+                  <th mat-sort-header="created_ts">Created Date</th>
+                  <th mat-sort-header="status">Status</th>
+                  <th style=" text-align: center;">Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let data of _newsList
+                      | paginate
+                        : {
+                            id: '_schoolsList',
+                            itemsPerPage: itemsPerPage,
+                            currentPage: currentPage,
+                            totalItems: _feedbacksListSize
+                          };
+                    let i = index
+                  "
+                >
+                  <td> <button [routerLink]="['/news-artical/edit-news-artical/',data?.id]" type="button" title="View Schools" class="btn btn-link text-light-blue"> <span style="font-weight: bold;">{{ (data?.subject.length > 70)?(data?.subject | slice : 0 : 70) + "...":data?.subject  }} </span></button></td>
+                  <td style="color: var(--surface-700);">{{ data?.newsDate | date:"d MMM y" : "UTC"}}</td>
+                  <td style="color: var(--surface-700);">{{ data?.createdTs | date:"d MMM y" : "UTC" }}</td>
+                  <td>
+                    <p-inputSwitch  [(ngModel)]="data.status" (onChange)="updateStatus(data?.id,data?.status)"></p-inputSwitch>
+                  </td>
+                  <td style="text-align: center;"><button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-lg p-button-outlined" [routerLink]="['/news-artical/edit-news-artical/',data?.id]"></button>    
+                  </td>
+                  <td>
+                    <p-confirmPopup [style]="{width: '25vw'}"></p-confirmPopup>
+                    <span><button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-lg p-button-outlined"  (click)="confirm($event,data?.id)"></button></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="paginationsectionbox">
+          <span *ngIf="!isEmpty" class="Showingboxto"
+            >Showing {{ currentPageStartingIndex }} to
+            {{ currentPageEndingIndex }} of
+            {{ _feedbacksListSize }} results</span
+          >
+          <span *ngIf="isEmpty">No records found.</span>
+          <pagination-controls
+            *ngIf="!isEmpty"
+            class="pagination"
+            id="_schoolsList"
+            (pageChange)="handlePageChange($event)"
+          ></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<p-dialog header="Add News" [(visible)]="displayResponsive" [breakpoints]="{'960px': '75vw'}" [style]="{width: '70vw'}" [baseZIndex]="10000"
+    [draggable]="true" [resizable]="false">
+    <div class="p-grid" [formGroup]="addNewsForm">
+      <div class="p-col-12">
+        <label style="color: var(--gray-600);">Subject <span style="color: var(--pink-500);">*</span></label>
+        <input type="text" pInputText [style]="{width: '100%'}" placeholder="Enter Subject" formControlName="subject" maxlength="200" />
+      </div>
+      <label style="color: var(--gray-600);">News Details<span style="color: var(--pink-500);">*</span></label>
+      <div class="p-col-6">
+        <textarea rows="7" [style]="{width: '100%'}"  pInputTextarea formControlName="noticeBody" maxlength="2000"></textarea>
+      </div>
+      <div class="p-col-12">
+        <label style="color: var(--gray-600);">Status<span style="color: var(--pink-500);">*</span></label>
+        <div>
+          <p-inputSwitch formControlName="status"></p-inputSwitch>
+        </div>
+      </div>
+    </div>
+        <ng-template pTemplate="footer">
+        <p-button (click)="displayResponsive=false"  icon="pi pi-times" label="close" styleClass="p-button-raised p-button-danger"></p-button>
+        <p-button (click)="addnews()"  icon="pi pi-save" label="Save" styleClass="p-button-raised p-button-info" [disabled]="!addNewsForm.valid"></p-button>
+        </ng-template>
+</p-dialog>
+<p-dialog header="Edit News" [(visible)]="displayResponsive1" [breakpoints]="{'960px': '75vw'}" [style]="{width: '70vw'}" [baseZIndex]="10000"
+    [draggable]="true" [resizable]="false">
+    <div class="p-grid" [formGroup]="editNewsForm">
+      <div class="p-col-12">
+        <label style="color: var(--gray-600);">Subject <span style="color: var(--pink-500);">*</span></label>
+        <input type="text" pInputText [style]="{width: '100%'}" placeholder="Enter Subject" formControlName="subject" maxlength="200"/>
+      </div>
+      <label style="color: var(--gray-600);">News Details<span style="color: var(--pink-500);">*</span></label>
+      <div class="p-col-6">
+        <textarea rows="7" [style]="{width: '100%'}" pInputTextarea formControlName="noticeBody" maxlength="2000"></textarea>
+      </div>
+      <div class="p-col-12">
+        <label style="color: var(--gray-600);">Status<span style="color: var(--pink-500);">*</span></label>
+        <div>
+          <p-inputSwitch formControlName="status"></p-inputSwitch>
+        </div>
+      </div>
+    </div>
+        <ng-template pTemplate="footer">
+        <p-button (click)="displayResponsive1=false"  icon="pi pi-times" label="close" styleClass="p-button-raised p-button-danger"></p-button>
+        <p-button (click)="updateNewsArtical()"  icon="pi pi-save" label="Update" styleClass="p-button-raised p-button-info" [disabled]="!editNewsForm.valid"></p-button>
+        </ng-template>
+</p-dialog>

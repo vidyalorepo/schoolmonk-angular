@@ -1,0 +1,991 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1> Preview Student Records </h1>
+  </section>
+  <section class="content PreviewStudentbox">
+
+    
+    <div class="box box-success2">
+
+      <!-- <div class="box-body">
+        <div class="box-body2">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <h3>{{schoolDtl?.schoolName}}</h3>
+              <p>{{schoolDtl?.schoolAddress}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+              <div class="Preview_logo">
+                <img src="assets/images/profile_picture.jpg" alt="">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h4>ACADEMIC SESSION : {{studentApplication?.academicYear}}</h4>
+              <h5>REGISTRATION FORM</h5>
+              <p>Form No.: {{studentApplication?.admissionId}}<br>
+                APPLICATION FOR ADMISSION TO CLASS - {{studentApplication?.admissionForClass}} </p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="APPLICANTtitle3">APPLICANT INFORMATION</div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Applicant Name: </label>
+                <div class="col-sm-8">
+                  <div class="form-control"> {{studentApplicationVo?.studentName}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Date of Birth: </label>
+                <div class="col-sm-8">
+                  <div class="form-control"> {{studentApplicationVo?.dateOfBirth}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Gender: </label>
+                <div class="col-sm-8">
+                  <div class="form-control"> {{studentApplicationVo?.gender}} </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Blood Group: </label>
+                <div class="col-sm-8">
+                  <div class="form-control"> {{studentApplicationVo?.bloodGroup}} </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Nationality: </label>
+                <div class="col-sm-8">
+                  <div class="form-control"> {{studentApplicationVo?.nationallity}} </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Religion:</label>
+                <div class="col-sm-8">
+                  <div class="form-control"> {{studentApplicationVo?.religion}} </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">First Language: </label>
+                <div class="col-sm-8">
+                  <div class="form-control"> {{studentApplicationVo?.firstLanguage}} </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Class applying for: </label>
+                <div class="col-sm-8">
+                  <div class="form-control"> {{studentApplication?.admissionForClass}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Email Id: </label>
+                <div class="col-sm-8">
+                  <div class="form-control"> {{studentApplicationVo?.studentUser.email}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Phone Number: </label>
+                <div class="col-sm-8">
+                  <div class="form-control"> {{studentApplicationVo?.studentUser.phone}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-4 control-label"
+                  *ngIf="studentApplicationVo?.studentGuardianVo[0]?.iDProofType === 'Aadhar'">Aadhar Number: </label>
+                <label class="col-sm-4 control-label"
+                  *ngIf="studentApplicationVo?.studentGuardianVo[0]?.iDProofType === 'Voter'">Voter Id Number: </label>
+                <div class="col-sm-8">
+                  <div class="form-control"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianIDProof}} </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div *ngIf="studentApplication?.admissionForClass === 'XI'">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="APPLICANTtitle3">STREAM & SUBJECTS
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label class="col-sm-12 control-label">Stream: &nbsp;&nbsp;&nbsp;&nbsp;
+                    <u>{{studentApplication?.admissionForStream}} </u> </label>
+
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label"> </label>
+                  <div class="col-sm-8">
+                    <div class="form-control"> </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Subject 1: </label>
+                  <div class="col-sm-8">
+                    <div class="form-control"> {{studentApplication?.subjectOne}} </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Subject 2: </label>
+                  <div class="col-sm-8">
+                    <div class="form-control"> {{studentApplication?.subjectTwo}} </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Subject 3: </label>
+                  <div class="col-sm-8">
+                    <div class="form-control"> {{studentApplication?.subjectThree}} </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Subject 4: </label>
+                  <div class="col-sm-8">
+                    <div class="form-control"> {{studentApplication?.subjectFour}} </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Subject 5: </label>
+                  <div class="col-sm-8">
+                    <div class="form-control"> {{studentApplication?.subjectFive}} </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Subject 6: </label>
+                  <div class="col-sm-8">
+                    <div class="form-control"> {{studentApplication?.subjectSix}} </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="APPLICANTtitle3">RESIDENTIAL ADDRESS</div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Address:</label>
+                <div class="col-sm-9">
+                  <div class="form-control">{{studentApplicationVo?.addressVo[0]?.addrLineOne}}
+                    {{studentApplicationVo?.addressVo[0]?.addrLineTwo}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">District: </label>
+                <div class="col-sm-6">
+                  <div class="form-control"> {{studentApplicationVo?.addressVo[0]?.districtName}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">State: </label>
+                <div class="col-sm-6">
+                  <div class="form-control"> {{studentApplicationVo?.addressVo[0]?.stateName}} </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">Pin Code: </label>
+                <div class="col-sm-6">
+                  <div class="form-control"> {{studentApplicationVo?.addressVo[0]?.pin}} </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">Phone Number: </label>
+                <div class="col-sm-6">
+                  <div class="form-control"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">Primary Email ID: </label>
+                <div class="col-sm-6">
+                  <div class="form-control"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}} </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="APPLICANTtitle3">GUARDIAN DETAILS</div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">Guardian's Name: </label>
+                <div class="col-sm-6">
+                  <div class="form-control">{{studentApplicationVo?.studentGuardianVo[0]?.guardianName}} </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">Guardian's Email ID: </label>
+                <div class="col-sm-6">
+                  <div class="form-control">{{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}} </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">Guardian's Mobile Number: </label>
+                <div class="col-sm-6">
+                  <div class="form-control">{{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">Occupation: </label>
+                <div class="col-sm-6">
+                  <div class="form-control">{{studentApplicationVo?.studentGuardianVo[0]?.guardianOccupation}} </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">Guardian's Business Name: </label>
+                <div class="col-sm-6">
+                  <div class="form-control">{{studentApplicationVo?.studentGuardianVo[0]?.guardianBusinessName}} </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">Guardian's Annual Income:</label>
+                <div class="col-sm-6">
+                  <div class="form-control">{{studentApplicationVo?.studentGuardianVo[0]?.guardianAnnualIncome |
+                    currency: 'INR'}} </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">Relationship with Applicant: </label>
+                <div class="col-sm-6">
+                  <div class="form-control">{{studentApplicationVo?.studentGuardianVo[0]?.guardianRelationWithStudent}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+              *ngIf="studentApplicationVo?.studentSiblingVo.length != 0">
+              <div class="APPLICANTtitle3">SIBLING DETAILS (Own Sibling/s)</div>
+              <div *ngFor="let item of studentApplicationVo?.studentSiblingVo">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 control-label">Sibling's Name: </label>
+                    <div class="col-sm-6">
+                      <div class="form-control">{{item.siblingName}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 control-label">Sibling's Class: </label>
+                    <div class="col-sm-6">
+                      <div class="form-control">{{item.siblingClass}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 control-label">Sibling's Section: </label>
+                    <div class="col-sm-6">
+                      <div class="form-control">{{item.siblingSection}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 control-label">Sibling's School Name: </label>
+                    <div class="col-sm-6">
+                      <div class="form-control">{{item.siblingSchoolName}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="APPLICANTtitle3">DECLARATION/DISCLAIMER</div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <p><strong>Declaration: </strong> Need to carry hard copy of Proof of Birth, Immunisation Card,Parents'
+                Qualification Certificate at the time of interview</p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Date: </label>
+                <div class="col-sm-8">
+                  <div class="form-control">08/09/2021</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Signature of Father/Guardian: </label>
+                <div class="col-sm-8">
+                  <div class="form-control">---------------------------</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Signature of Mother: </label>
+                <div class="col-sm-8">
+                  <div class="form-control">---------------------------</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- New Code -->
+      <div class="box-body">
+        <div class="">
+          <div style="margin: 10px auto; border: 1px solid #999; padding: 10px;">
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+              style="margin: auto;">
+              <tr>
+                <td width="25%">
+                  <div style="width:160px;height: auto;padding: 0;margin: 0;"><img
+                      style="width:100%;height: 160px;padding: 0;margin: 0;" src="assets/images/profile_picture.jpg"
+                      alt=""></div>
+                </td>
+                <td width="50%" valign="top" align="center" style="padding:0 0 0; margin: 0 auto;">
+                  <h3 style="padding: 0 0 10px 0; margin: 0;">{{schoolDtl?.schoolName}}</h3>
+                  <p style="padding: 0 0 10px 0; margin: 0;">{{schoolDtl?.schoolAddress}}</p>
+                  <h3 style="padding: 0 0 10px 0; margin: 0;">ACADEMIC SESSION : {{studentApplication?.academicYear}}
+                  </h3>
+                  <h4 style="padding: 0 0 10px 0; margin: 0;">REGISTRATION FORM</h4>
+                  <p style="padding: 0 0 10px 0; margin: 0;">Form No.: {{studentApplication?.admissionId}}</p>
+                  <p style="padding: 0 0 10px 0; margin: 0;"> APPLICATION FOR ADMISSION TO CLASS -
+                    {{studentApplication?.admissionForClass}} </p>
+                </td>
+                <td width="25%"></td>
+              </tr>
+              <tr>
+                <td colspan="3" valign="top">
+                  <hr>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" valign="top">
+                  <h2
+                    style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 5px 0; margin: 5px auto;">
+                    APPLICANT INFORMATION</h2>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" valign="top">
+                  <table width="100%" style="padding:20px 0;margin: 0 auto; text-align: left;">
+                    <tr>
+                      <td width="25%" style="padding:10px;"><strong>Applicant Name: </strong></td>
+                      <td width="25%" style="padding:10px;"> {{studentApplicationVo?.studentName}}</td>
+                      <td width="25%" style="padding:10px;"><strong>DOB: </strong></td>
+                      <td width="25%" style="padding:10px;"> {{studentApplicationVo?.dateOfBirth}}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>Gender: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.gender}} </td>
+                      <td style="padding:10px;"><strong>Blood Group: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.bloodGroup}} </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>Nationality: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.nationallity}} </td>
+                      <td style="padding:10px;"><strong>Religion: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.religion}} </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>First Language: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.firstLanguage}} </td>
+                      <td style="padding:10px;"><strong>Class applying for: </strong></td>
+                      <td style="padding:10px;"> {{studentApplication?.admissionForClass}} </td>
+                    </tr>
+                    <!-- <tr>
+                      <td style="padding:10px;"><strong>Email Id: </strong></td>
+                      <td style="padding:10px;">{{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}}</td>
+                      <td style="padding:10px;"><strong>Phone Number: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
+                    </tr> -->
+                    <tr *ngIf="studentApplicationVo?.studentGuardianVo[0]?.iDProofType === 'Aadhar'">
+                      <td style="padding:10px;"><strong>Aadhar Number: </strong></td>
+                      <td style="padding:10px;">{{ studentApplicationVo?.studentGuardianVo[0]?.guardianIDProof }} </td>
+                      <td style="padding:10px;"><strong> </strong></td>
+                      <td style="padding:10px;"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <tr *ngIf="studentApplication?.admissionForClass === 'XI'">
+                <td colspan="3" valign="top">
+                  <h2
+                    style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 5px 0; margin: 5px auto;">
+                    STREAM & SUBJECTS </h2>
+                </td>
+              </tr>
+              <tr *ngIf="studentApplication?.admissionForClass === 'XI'">
+                <td colspan="3" valign="top">
+                  <table width="100%" style="padding:20px 0;margin: 0 auto; text-align: left;">
+                    <tr>
+                      <td width="16.6%" style="padding:10px;"><strong>Stream: </strong></td>
+                      <td width="83.4%" style="padding:10px;" colspan="5"> <u>{{studentApplication?.admissionForStream}}
+                        </u></td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>Subject 1: </strong></td>
+                      <td style="padding:10px;"> {{studentApplication?.subjectOne}}</td>
+                      <td style="padding:10px;"><strong>Subject 2: </strong></td>
+                      <td style="padding:10px;"> {{studentApplication?.subjectTwo}} </td>
+                      <td style="padding:10px;"><strong>Subject 3: </strong></td>
+                      <td style="padding:10px;"> {{studentApplication?.subjectThree}} </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>Subject 4: </strong></td>
+                      <td style="padding:10px;"> {{studentApplication?.subjectFour}}</td>
+                      <td style="padding:10px;"><strong>Subject 5: </strong></td>
+                      <td style="padding:10px;"> {{studentApplication?.subjectFive}} </td>
+                      <td style="padding:10px;"><strong>Subject 6: </strong></td>
+                      <td style="padding:10px;"> {{studentApplication?.subjectSix}} </td>
+                    </tr>
+
+
+
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td colspan="3" valign="top">
+                  <h2
+                    style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 5px 0; margin: 5px auto;">
+                    RESIDENTIAL ADDRESS</h2>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" valign="top">
+                  <table width="100%" style="padding:20px 0;margin: 0 auto; text-align: left;">
+                    <tr>
+                      <td width="25%" style="padding:10px;"><strong>Address: </strong></td>
+                      <td width="75%" style="padding:10px;" colspan="3">
+                        {{studentApplicationVo?.addressVo[0]?.addrLineOne}}
+                        {{studentApplicationVo?.addressVo[0]?.addrLineTwo}} </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>District: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.addressVo[0]?.districtName}} </td>
+                      <td style="padding:10px;"><strong>State: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.addressVo[0]?.stateName}} </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>Pin Code: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.addressVo[0]?.pin}} </td>
+                      <td style="padding:10px;"><strong>Phone Number: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>Primary Email ID: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}} </td>
+                      <td style="padding:10px;"><strong> </strong></td>
+                      <td style="padding:10px;"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td colspan="3" valign="top">
+                  <h2
+                    style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 5px 0; margin: 5px auto;">
+                    GUARDIAN DETAILS</h2>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" valign="top">
+                  <table width="100%" style="padding:20px 0;margin: 0 auto; text-align: left;">
+                    <tr>
+                      <td width="25%" style="padding:10px;"><strong>Guardian's Name: </strong></td>
+                      <td width="25%" style="padding:10px;">
+                        {{studentApplicationVo?.studentGuardianVo[0]?.guardianName}}
+                      </td>
+                      <td width="25%" style="padding:10px;"><strong>Guardian's Email ID: </strong></td>
+                      <td width="25%" style="padding:10px;">
+                        {{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>Guardian's Mobile Number: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
+                      <td style="padding:10px;"><strong>Occupation: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianOccupation}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>Guardian's Business Name: </strong></td>
+                      <td style="padding:10px;"></td>
+                      <td style="padding:10px;"><strong>Guardian's Annual Income: </strong></td>
+                      <td style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianAnnualIncome}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>Relationship with Applicant: </strong></td>
+                      <td style="padding:10px;">
+                        {{studentApplicationVo?.studentGuardianVo[0]?.guardianRelationWithStudent}}
+                      </td>
+                      <td style="padding:10px;"><strong> </strong></td>
+                      <td style="padding:10px;"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <table *ngIf="studentApplicationVo?.studentSiblingVo.length != 0" align="center" role="presentation"
+              cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+
+              <tr>
+                <td colspan="3" valign="top">
+                  <h2
+                    style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 5px 0; margin: 5px auto;">
+                    SIBLING DETAILS (Own Sibling/s)</h2>
+                </td>
+              </tr>
+              <tr *ngFor="let item of studentApplicationVo?.studentSiblingVo">
+                <td colspan="3" valign="top">
+                  <table width="100%" style="padding:20px 0;margin: 0 auto; text-align: left;">
+                    <tr>
+                      <td width="25%" style="padding:10px;"><strong>Sibling's Name: </strong></td>
+                      <td width="25%" style="padding:10px;">{{item.siblingName}}</td>
+                      <td width="25%" style="padding:10px;"><strong>Sibling's Class: </strong></td>
+                      <td width="25%" style="padding:10px;">{{item.siblingClass}}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>Sibling's Section: </strong></td>
+                      <td style="padding:10px;">{{item.siblingSection}} </td>
+                      <td style="padding:10px;"><strong>Sibling's School Name: </strong></td>
+                      <td style="padding:10px;">{{item.siblingSchoolName}} </td>
+                    </tr>
+
+                  </table>
+                </td>
+              </tr>
+
+            </table>
+
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+              style="margin: auto;">
+              <tr>
+                <td colspan="3" valign="top">
+                  <h2
+                    style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 5px 0; margin: 5px auto;">
+                    DECLARATION/DISCLAIMER</h2>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" valign="top" align="center" style="padding:20px 0;margin: 0 auto;"><strong>Declaration:
+                  </strong> Need to carry hard copy of Birth CertificateImmunisation card,Parenrs quallification
+                  certificate
+                  at the time of interview</td>
+              </tr>
+              <tr>
+                <td colspan="3" valign="top">
+                  <table width="100%" style="padding:20px 0;margin: 0 auto; text-align: left;">
+                    <tr>
+                      <td width="25%" style="padding:10px;"><strong>Date: </strong></td>
+                      <td width="25%" style="padding:10px;"> 08/09/2021 </td>
+                      <td width="25%" style="padding:10px;"><strong></strong></td>
+                      <td width="25%" style="padding:10px;"></td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>Signature of Father/Guardian: </strong></td>
+                      <td style="padding:10px;" colspan="2" width="50%">
+                        ------------------------------------------------------ </td>
+                      <td style="padding:10px;"></td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px;"><strong>Signature of Mother: </strong></td>
+                      <td style="padding:10px;" colspan="2">------------------------------------------------------</td>
+                      <td style="padding:10px;"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="box-footer">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="pull-left">
+              <button class="btn link3" (click)="backRoute()">Back</button>
+            </div>
+
+            <div class="pull-right">
+              <button  class="btn link4" printTitle="Application_Form" printSectionId="print-section" ngxPrint><i class="fa fa-print" aria-hidden="true"></i></button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+</div>
+
+
+
+
+
+
+
+
+<!-- print-section -->
+<section class="secHide" >
+
+  <div id="print-section">
+
+    <div class="box-body">
+      <div class="">
+        <div style="margin: 0 auto; border: 1px solid #999; padding: 10px;">
+          <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+            style="margin: auto;">
+            <tr>
+              <td width="25%">
+                <div style="width:100px;height: auto;padding: 0;margin: 0;"><img
+                    style="width:100%;height: 100px;padding: 0;margin: 0;" src="assets/images/profile_picture.jpg"
+                    alt=""></div>
+              </td>
+              <td width="50%" valign="top" align="center" style="padding:0 0 0; margin: 0 auto;">
+                <h3 style="padding: 0 0 0 0; margin: 0;">{{schoolDtl?.schoolName}} </h3>
+                <p style="padding: 0 0 0 0; margin: 0; font-size: 15px;">{{schoolDtl?.schoolAddress}}</p>
+                <h3 style="padding: 0 0 0 0; margin: 0;">ACADEMIC SESSION : {{studentApplication?.academicYear}}</h3>
+                <h4 style="padding: 0 0 0 0; margin: 0; font-size: 17px;">REGISTRATION FORM</h4>
+                <p style="padding: 0 0 0 0; margin: 0; font-size: 15px;">Form No.: {{studentApplication?.admissionId}}</p>
+                <p style="padding: 0 0 5px 0; margin: 0; font-size: 15px;"> APPLICATION FOR ADMISSION TO CLASS - {{studentApplication?.admissionForClass}} </p>
+              </td>
+              <td width="25%"></td>
+            </tr>
+            <tr>
+              <td colspan="3" valign="top">
+                <h2
+                  style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 0 0; margin: 0 auto;">
+                  APPLICANT INFORMATION</h2>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" valign="top">
+                <table width="100%" style="padding:0 0;margin: 0 auto; text-align: left;">
+                  <tr>
+                    <td width="25%" style="padding:5px;"><strong>Applicant Name: </strong></td>
+                    <td width="25%" style="padding:5px;"> {{studentApplicationVo?.studentName}}</td>
+                    <td width="25%" style="padding:5px;"><strong>DOB: </strong></td>
+                    <td width="25%" style="padding:5px;"> {{studentApplicationVo?.dateOfBirth}}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Gender: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.gender}} </td>
+                    <td style="padding:5px;"><strong>Blood Group: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.bloodGroup}} </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Nationality: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.nationallity}} </td>
+                    <td style="padding:5px;"><strong>Religion: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.religion}} </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>First Language: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.firstLanguage}} </td>
+                    <td style="padding:5px;"><strong>Class applying for: </strong></td>
+                    <td style="padding:5px;"> {{studentApplication?.admissionForClass}} </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Email Id: </strong></td>
+                    <td style="padding:5px;">{{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}}</td>
+                    <td style="padding:5px;"><strong>Phone Number: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
+                  </tr>
+                  <tr *ngIf="studentApplicationVo?.studentGuardianVo[0]?.iDProofType === 'Aadhar'">
+                    <td style="padding:5px;"><strong>Aadhar Number: </strong></td>
+                    <td style="padding:5px;">{{ studentApplicationVo?.studentGuardianVo[0]?.guardianIDProof }} </td>
+                    <td style="padding:5px;"><strong> </strong></td>
+                    <td style="padding:5px;"></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr *ngIf="studentApplication?.admissionForClass === 'XI'">
+              <td colspan="3" valign="top">
+                <h2
+                  style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 0 0; margin: 0 auto;">
+                  STREAM & SUBJECTS </h2>
+              </td>
+            </tr>
+            <tr *ngIf="studentApplication?.admissionForClass === 'XI'">
+              <td colspan="3" valign="top">
+                <table width="100%" style="padding:0 0;margin: 0 auto; text-align: left;">
+                  <tr>
+                    <td width="16.6%" style="padding:5px;"><strong>Stream: </strong></td>
+                    <td width="83.4%" style="padding:5px;" colspan="5"> <u>{{studentApplication?.admissionForStream}}
+                      </u></td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Subject 1: </strong></td>
+                    <td style="padding:5px;"> {{studentApplication?.subjectOne}}</td>
+                    <td style="padding:5px;"><strong>Subject 2: </strong></td>
+                    <td style="padding:5px;"> {{studentApplication?.subjectTwo}} </td>
+                    <td style="padding:5px;"><strong>Subject 3: </strong></td>
+                    <td style="padding:5px;"> {{studentApplication?.subjectThree}} </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Subject 4: </strong></td>
+                    <td style="padding:5px;"> {{studentApplication?.subjectFour}}</td>
+                    <td style="padding:5px;"><strong>Subject 5: </strong></td>
+                    <td style="padding:5px;"> {{studentApplication?.subjectFive}} </td>
+                    <td style="padding:5px;"><strong>Subject 6: </strong></td>
+                    <td style="padding:5px;"> {{studentApplication?.subjectSix}} </td>
+                  </tr>
+
+
+
+                </table>
+              </td>
+            </tr> 
+
+            <tr>
+              <td colspan="3" valign="top">
+                <h2
+                  style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 0 0; margin: 0 auto;">
+                  RESIDENTIAL ADDRESS</h2>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" valign="top">
+                <table width="100%" style="padding:0 0;margin: 0 auto; text-align: left;">
+                  <tr>
+                    <td width="25%" style="padding:5px;"><strong>Address: </strong></td>
+                    <td width="75%" style="padding:5px;" colspan="3">
+                      {{studentApplicationVo?.addressVo[0]?.addrLineOne}}
+                      {{studentApplicationVo?.addressVo[0]?.addrLineTwo}} </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>District: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.addressVo[0]?.districtName}} </td>
+                    <td style="padding:5px;"><strong>State: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.addressVo[0]?.stateName}} </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Pin Code: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.addressVo[0]?.pin}} </td>
+                    <td style="padding:5px;"><strong>Phone Number: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Primary Email ID: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}} </td>
+                    <td style="padding:5px;"><strong> </strong></td>
+                    <td style="padding:5px;"></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+
+            <tr>
+              <td colspan="3" valign="top">
+                <h2
+                  style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 0 0; margin: 0 auto;">
+                  GUARDIAN DETAILS</h2>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" valign="top">
+                <table width="100%" style="padding:0 0;margin: 0 auto; text-align: left;">
+                  <tr>
+                    <td width="25%" style="padding:5px;"><strong>Guardian's Name: </strong></td>
+                    <td width="25%" style="padding:5px;">
+                      {{studentApplicationVo?.studentGuardianVo[0]?.guardianName}}
+                    </td>
+                    <td width="25%" style="padding:5px;"><strong>Guardian's Email ID: </strong></td>
+                    <td width="25%" style="padding:5px;">
+                      {{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Guardian's Mobile Number: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
+                    <td style="padding:5px;"><strong>Occupation: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianOccupation}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Guardian's Business Name: </strong></td>
+                    <td style="padding:5px;"></td>
+                    <td style="padding:5px;"><strong>Guardian's Annual Income: </strong></td>
+                    <td style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianAnnualIncome}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Relationship with Applicant: </strong></td>
+                    <td style="padding:5px;">
+                      {{studentApplicationVo?.studentGuardianVo[0]?.guardianRelationWithStudent}}
+                    </td>
+                    <td style="padding:5px;"><strong> </strong></td>
+                    <td style="padding:5px;"></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+
+          <table *ngIf="studentApplicationVo?.studentSiblingVo.length != 0" align="center" role="presentation"
+            cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+
+            <tr>
+              <td colspan="3" valign="top">
+                <h2
+                  style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 0 0; margin: 0 auto;">
+                  SIBLING DETAILS (Own Sibling/s)</h2>
+              </td>
+            </tr>
+            <tr *ngFor="let item of studentApplicationVo?.studentSiblingVo">
+              <td colspan="3" valign="top">
+                <table width="100%" style="padding:0 0;margin: 0 auto; text-align: left;">
+                  <tr>
+                    <td width="30%" style="padding:5px;"><strong>Sibling's Name: </strong></td>
+                    <td width="20%" style="padding:5px;">{{item.siblingName}}</td>
+                    <td width="30%" style="padding:5px;"><strong>Sibling's Class: </strong></td>
+                    <td width="20%" style="padding:5px;">{{item.siblingClass}}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Sibling's Section: </strong></td>
+                    <td style="padding:5px;">{{item.siblingSection}} </td>
+                    <td style="padding:5px;"><strong>Sibling's School Name: </strong></td>
+                    <td style="padding:5px;">{{item.siblingSchoolName}} </td>
+                  </tr>
+
+                </table>
+              </td>
+            </tr>
+            <tr *ngIf="studentApplication?.admissionForClass == 'XI' && studentApplicationVo?.studentSiblingVo.length != 0">
+              <td colspan="3" valign="top"> <br> <br> <br> <br> <br>  <br> <br> </td>
+            </tr>
+          </table>
+
+          <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+            style="margin: auto;">
+            <tr>
+              <td colspan="3" valign="top">
+                <h2
+                  style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 0 0; margin: 0 auto;">
+                  DECLARATION/DISCLAIMER</h2>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" valign="top" align="center" style="padding:20px 0;margin: 0 auto;"><strong>Declaration:
+                </strong> Need to carry hard copy of Birth CertificateImmunisation card,Parenrs quallification
+                certificate
+                at the time of interview</td>
+            </tr>
+            <tr>
+              <td colspan="3" valign="top">
+                <table width="100%" style="padding:0 0;margin: 0 auto; text-align: left;">
+                  <tr>
+                    <td width="25%" style="padding:5px;"><strong>Date: </strong></td>
+                    <td width="25%" style="padding:5px;"> 08/09/2021 </td>
+                    <td width="25%" style="padding:5px;"><strong></strong></td>
+                    <td width="25%" style="padding:5px;"></td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Signature of Father/Guardian: </strong></td>
+                    <td style="padding:5px;" colspan="2" width="50%">
+                      ------------------------------------------------------ </td>
+                    <td style="padding:5px;"></td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px;"><strong>Signature of Mother: </strong></td>
+                    <td style="padding:5px;" colspan="2">------------------------------------------------------</td>
+                    <td style="padding:5px;"></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+

@@ -1,0 +1,87 @@
+<!-- <div class="loadersection">
+    <div class="loader" id="loader-2"> <span></span> <span></span> <span></span> </div>
+  </div> -->
+
+<section class="body-inner">
+    <p-messages></p-messages>
+    <div class="container-fluid">
+        <div class="wrap-body" style="padding: 0;">
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <br>
+                    <form [formGroup]="loginForm">
+                        <br>
+
+                        <div class="login-box Login6">
+
+                            <h6>Sign in to vidyalo</h6>
+                        </div>
+                        <div class="login-box">
+                            <!-- <div *ngIf="_responseMsg != '' " class="login-box login-box-header" style="color: red;">
+                                <p> {{ _responseMsg }} </p>
+                              
+                            </div> -->
+                            <div class="form-group">
+                                <label>Email Address<span class="req">*</span></label>
+                                <input type="text" pInputText formControlName='username' class="form-control"
+                                    placeholder="Enter Email Address">
+                                <div class="invalid-text"
+                                    *ngIf="loginForm.controls?.username.touched && loginForm.controls?.username.errors">
+                                    <div
+                                        *ngIf=" loginForm.controls?.username.touched &&loginForm.controls?.username.errors.required">
+                                        Email Address
+                                        / Mobile Number is required
+                                    </div>
+                                    <div
+                                        *ngIf="!loginForm.controls?.username.errors.required && loginForm.controls?.username.errors.invalidUsername">
+                                        Email
+                                        Address
+                                        / Mobile Number is invalid
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Password <span class="req">*</span></label>
+                                <div class="eyebox">
+                                    <button type="button" class="btn btn-default"><i aria-hidden="true"
+                                            (click)="passwordHide('temp-password')" class="fa fa-eye"></i></button>
+                                </div>
+                                <input type="password" pPassword [feedback]="false" formControlName='password' oncopy="return false"
+                                    onpaste="return false" maxlength="25" id="temp-password" class="form-control"
+                                    placeholder="Enter password">
+                                <div class="invalid-text" *ngIf="loginForm.controls?.password.errors">
+                                    <div
+                                        *ngIf="loginForm.controls?.password.touched &&  loginForm.controls?.password.errors.required ">
+                                        Password is
+                                        required
+                                    </div>
+
+                                </div>
+                                <label style="text-align: right; display:inherit; padding-top: 10px;"><a
+                                        routerLink="/auth/forgot-password">Forgot Password? </a> </label>
+
+                            </div>
+                            <div class="form-group">
+                                <button pButton pRipple type="button" [disabled]="!loginForm.valid"  (keyup.enter)="submitLoginForm()" (click)="submitLoginForm()"
+                                    class="btn link3 hundredbox p-button-raised p-button-info"> Login </button>
+                            </div>
+
+                        </div>
+                        <!-- <div class="login-box" style="background: #ffffff; margin-top: 15px; margin-bottom:30px;">
+                            <p style="margin: 0;"> Don't have an account? <a routerLink="/auth/registration"> Sign Up
+                                </a> </p>
+                        </div> -->
+                        <!-- disable for now, It will be created by sysAdmin -->
+                        <!-- <div class="login-box" style="background: #ffffff; margin-top:5px; margin-bottom:30px; padding:5px;">
+                    <p style="margin: 0;"> <a routerLink="/auth/admin-registration/new/no-token"> Create School </a> </p>
+                </div> -->
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

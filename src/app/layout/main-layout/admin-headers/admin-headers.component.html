@@ -1,0 +1,33 @@
+<div style="z-index: 10000000000;" *ngIf="isLoader" class="loadersection">
+    <div class="loader" id="loader-2"> <span></span> <span></span> <span></span> </div>
+  </div>
+   <header class="main-header"> 
+          <nav class="navbar navbar-static-top"> 
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button"> <span class="sr-only">Toggle navigation</span> </a>
+            <!-- <div class="navbar-custom-menu">
+              <ul class="nav navbar-nav">
+                <li> <a  data-toggle="tooltip" data-placement="bottom" title="sign out" (click)="logout()"> <i class="fa fa-power-off" aria-hidden="true"></i> </a></li>
+              </ul>
+            </div> -->
+            <div class="signbox2">
+              <ul>
+                <li class="dropdown">
+                  <div class="">
+                    <button type="button" data-toggle="dropdown" class="btn dropdown-toggle" aria-expanded="false"><span><i aria-hidden="true" class="fa fa-user-circle-o"></i></span>
+                      &nbsp;<span *ngIf="userDetails.userType == 'ADMIN_USER'">Admin User</span>
+                      <span *ngIf="userDetails.userType == 'SCHOOL_USER'">{{userDetails.firstName + ' '+ userDetails.lastName}}</span>
+                      &nbsp;<span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <!-- <li><a routerlink="" href=""><span><i aria-hidden="true" class="fa fa-user"></i></span>Profile</a></li>
+                      <li><a routerlink="" href=""><span><i aria-hidden="true" class="fa fa-key"></i></span>Reset Password</a></li> -->
+                      <li><a data-toggle="tooltip" data-placement="bottom" title="sign out" (click)="logout()"> <span><i class="fa fa-power-off" aria-hidden="true"></i></span> Logout </a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+  </header>
+  
+  
+  

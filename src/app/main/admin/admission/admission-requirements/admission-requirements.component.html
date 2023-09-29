@@ -1,0 +1,269 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1> Admissions</h1>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="box box-success2">
+          <div class="tabssection">
+            <ul class="nav nav-tabs">
+              <li (click)="tabChange(1)" class="active"><a data-toggle="tab" href="#menu1">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i> Admission
+                </a></li>
+              <li (click)="tabChange(2)"><a data-toggle="tab" href="#menu2">
+                  <i class="fa fa-check-square-o" aria-hidden="true"></i> Eligibility
+                </a></li>
+            </ul>
+            <div class="tab-content">
+              <!-- tab1 -->
+              <div id="menu1" class="tab-pane fade in active">
+                <!-- <div class="box-header with-border bor">
+                  <div class="pull-right">
+                    <button type="button" title="Add Schools"
+                      [routerLink]="['/admission/admission-requirements/add-class-info']"
+                      class="btn link1 button_effects">Add Admission Details </button>
+                    &nbsp;&nbsp;
+                  </div>
+                  <div class="clearfix"></div>
+                </div> -->
+                <div class="box-body">
+                  <div class="tablesection">
+                    <div class="table-responsive">
+                      <form [formGroup]="_schoolForm">
+                        <table class="table table-striped table-striped">
+                          <thead>
+                            <tr>
+                              <th width="100">Publish</th>
+                              <th width="150">Academic Year</th>
+                              <th width="100">Board</th>
+                              <th width="70" style="text-align: center;">Class</th>
+                              <th width="100">Steam</th>
+                              <th width="210">Fees</th>
+                              <th width="160">Admission Open </th>
+                              <th width="160">Admission End </th>
+                              <th width="180" style="text-align: center;">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                            <ng-container formArrayName="schoolAdmissionDtlVo"
+                              *ngFor="let result of parameterListArray.controls;let i=index">
+                              <tr [formGroupName]="i">
+                                <td>
+                                  <div class="form-group">
+                                    <label class="el-switch">
+                                      <input formControlName="publishStatus" type="checkbox" name="switch">
+                                      <span class="el-switch-style"></span> </label>
+                                  </div>
+                                </td>
+                                <td>{{result.value.academicYear}}</td>
+                                <td>{{result.value.boardName}}</td>
+                                <td style="text-align: center;">{{result.value.classRange}}</td>
+                                <td>{{result.value.classStream || '' }}</td>
+                                <td>
+                                  <div class="form-group"> <input formControlName="feesAmount" min="0" type="number"
+                                      class="form-control"></div>
+                                </td>
+                                <td>
+                                  <div class="form-group calendar-icon">
+                                    <input formControlName="admissionStartDate" type="date" class="form-control">
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="form-group calendar-icon">
+                                    <input formControlName="admissionEndDate" type="date" class="form-control">
+                                  </div>
+                                </td>
+                                <td style="text-align: center;">
+                                  <button type="button" (click)="addEligibility(result.value)" class="btn btn-warning"
+                                    data-toggle="modal" data-target="#myModal">Eligibility</button>
+                                  <button type="button" (click)="deleteAdmissionDetails(result.value.id)"
+                                    class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                </td>
+                              </tr>
+                            </ng-container>
+                          </tbody>
+                        </table>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="box-footer">
+                  <div class="text-center">
+                    <button type="submit" (click)="admissionDetailsSave()" class="btn link1 mx-1">Submit</button>
+                  </div>
+                </div>
+
+              </div>
+              <div id="menu2" class="tab-pane fade">
+                <div class="box-body" *ngIf="_eligibilityList.length == 0">
+                  <p>Eligibility not saved yet</p>
+                </div>
+                <div class="box-body" *ngIf="_eligibilityList.length > 0">
+                  <div class="tablesection">
+                    <div class="table-responsive">
+                      <table class="table table-striped table-striped">
+                        <thead>
+                          <tr>
+                            <th width="200">Academic Year</th>
+                            <th width="100" style="text-align: center;">Board</th>
+                            <th width="100" style="text-align: center;">Class</th>
+                            <th width="100" style="text-align: center;">Steam</th>
+                            <th width="100" style="text-align: center;">Marks</th>
+                            <th>DOB From</th>
+                            <th>DOB UpTo</th>
+                            <th>Action </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                          <tr *ngFor='let data of _eligibilityList; let i = index'>
+                            <td>{{ data.academicYear }} </td>
+                            <td style="text-align: center;">{{ data.boardName }}</td>
+                            <td style="text-align: center;">{{ data.classRange }}</td>
+                            <td style="text-align: center;">{{ data.classStream }}</td>
+                            <td style="text-align: center;">{{ data.eligibilityMarks || '' }}</td>
+                            <td>{{ data.dOBStartDate.split('T')[0] | date: 'dd-MM-yyyy' }}</td>
+                            <td>{{ data.dOBEndDate.split('T')[0] | date: 'dd-MM-yyyy' }}</td>
+                            <td><button type="button" class="btn btn-warning" (click)="openEligibilityModal(data)"
+                                data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"
+                                  aria-hidden="true"></i></button>
+                              <button type="button" (click)="deleteEligibility(data.id)" class="btn btn-danger"><i
+                                  class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- <div class="box-footer">
+            <div class="text-center">
+              <button type="button" routerLink="/manage-school/school-profile-edit/{{_userDetails.schoolId}}" class="btn link2 mx-1">Cancel</button>
+            </div>
+          </div> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Eligibility</h4>
+      </div>
+      <form [formGroup]="_eligibilityForm">
+
+        <div class="modal-body">
+
+          <div class="box box-success2">
+            <div class="box-header with-border">
+              <h3 class="box-title card-text">Academic</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <label>Academic Year</label> <br>
+                    <div class="form-control"> {{_eligibilityForm.value.academicYear}} </div>
+
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <label>Board</label> <br>
+                    <div class="form-control"> {{_eligibilityForm.value.boardName}} </div>
+
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <label>Class</label>
+                    <div class="form-control">{{_eligibilityForm.value.classRange}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box box-success2">
+            <div class="box-header with-border">
+              <h3 class="box-title card-text">Marks Cutover</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <label>Course</label>
+
+                    <input type="text" readonly formControlName='classStream' class="form-control" placeholder="Course">
+                    <!-- <div *ngIf="isSubmit && _eligibilityForm.controls.classStream.errors"
+                        class="invalid-text ng-star-inserted">Course is required</div> -->
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <label>Marks</label>
+                    <input type="text" formControlName='eligibilityMarks' class="form-control" placeholder="Marks">
+                    <!-- <div *ngIf="isSubmit && _eligibilityForm.controls.eligibilityMarks.errors"
+                        class="invalid-text ng-star-inserted">Marks is required</div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box box-success2">
+            <div class="box-header with-border">
+              <h3 class="box-title card-text">Age Restriction</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group calendar-icon">
+                    <label>DOB From</label>
+                    <input type="date" formControlName='dOBStartDate' class="form-control">
+                    <div *ngIf="isSubmit && _eligibilityForm.controls.dOBStartDate.errors"
+                      class="invalid-text ng-star-inserted">DOB From is required</div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group calendar-icon">
+                    <label>DOB UpTo</label>
+                    <input type="date" formControlName='dOBEndDate' class="form-control">
+                    <div *ngIf="isSubmit && _eligibilityForm.controls.dOBEndDate.errors"
+                      class="invalid-text ng-star-inserted">DOB UpTo is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <div class="text-center">
+            <button type="submit" class="btn link2 mx-1" data-dismiss="modal">Cancel</button>
+            <button type="submit" (click)="updateEligibilityEdit()" class="btn link1 mx-1"
+              style="margin-bottom: 5px;">Update</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>

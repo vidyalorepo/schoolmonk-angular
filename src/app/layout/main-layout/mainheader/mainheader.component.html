@@ -1,0 +1,161 @@
+<!-- <div *ngIf="isLoader" class="loadersection">
+  <div class="loader" id="loader-2"> <span></span> <span></span> <span></span> </div>
+</div> -->
+<div  *ngIf="isLoader" class="loadersection">
+  <div class="loader">
+<div class="book">
+  <div class="inner">
+      <div class="left"></div>
+      <div class="middle"></div>
+      <div class="right"></div>
+  </div>
+  <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+  </ul>
+</div>
+</div>
+</div>
+<!-- <section class="headersection-top1">
+
+</section> -->
+<section class="headersection">
+    <div class="alert" *ngIf="_headerScrool">
+    <span class="closebtn" (click)="_headerScrool=false">&times;</span> 
+    
+    <marquee  direction="left" scrollamount="6" onMouseOver="this.stop()" onMouseOut="this.start()" width="98%" >
+      Your trusted source for accurate and up-to-date school information. Covering the Entire  West Bengal Schools. Pan-India Launch is Coming Soon
+   </marquee>
+  </div>
+  <div class="headersection-bottom">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">
+          <div class="logobox">
+            <a routerlinkactive="router-link-active" routerLink="/auth/home" class="router-link-active">
+              <img src="assets/images/logo.png" alt="vidyalo logo">
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+
+          <div class="topsearchsection" *ngIf="_displaySearchBar">
+            <form class="row" [formGroup]="_searchForm">
+              <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10">
+
+                <input type="text" placeholder="Enter school name and city town village" class="form-control" #schoolName
+                  (keyup)="autocompleteSearch($event)"
+                  (keyup.enter)="searchSchool(schoolName.value, '', '','')" matInput
+                  [matAutocomplete]="auto" formControlName="searchText">
+                <mat-autocomplete #auto="matAutocomplete" panelWidth="auto">
+                  <mat-option *ngFor="let option of _schoolList" [value]="option.school_name"
+                    (onSelectionChange)="redirectToSchool(option.school_name_slug)">
+                    {{option.school_name}}
+                  </mat-option>
+                </mat-autocomplete>
+
+
+              </div>
+              <!-- <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+
+
+                <input type="text" placeholder="Type  location" class="form-control" formControlName="location"
+                  (keyup)="autocompleteSearchCity($event)" matInput [matAutocomplete]="cityauto" #cityName>
+                <mat-autocomplete #cityauto="matAutocomplete" id="mat-autocompplete-location" panelWidth="auto">
+                  <mat-option *ngFor="let option of _cityList" [value]="option.city" #location
+                    (onSelectionChange)="getCoordinates(option)">
+                    {{option.city}}
+                  </mat-option>
+                </mat-autocomplete>
+
+
+              </div> -->
+              <!-- <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <select class="form-control" #board formControlName="board">
+                  <option value="">Select Board</option>
+                  <option *ngFor="let data of _boardList" [value]="data.value">{{data.value}}</option>
+                </select>
+              </div> -->
+              <!-- <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <select class="form-control" #medium formControlName="medium">
+                  <option value="">Select Medium</option>
+                  <option *ngFor="let data of _mediumList" value="{{data}}">{{data}}</option>
+                </select>
+              </div> -->
+              <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
+                <button (click)="searchSchool(schoolName.value, '', '','','')"
+                  type="button" class="btn pull-right"><i class="fa fa-search" aria-hidden="true"></i> &nbsp; <font>Search</font> 
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+
+
+          <!-- <div class="socialbox">
+            Follow Us
+            <a href="https://www.facebook.com/vidyalo.dcc.india" target="_blank">  <img src="assets/images/facebook.svg" alt=""> </a>
+            <a href="https://www.youtube.com/@vidyalo" target="_blank"> <img src="assets/images/youtube.svg" alt=""> </a>
+            <a href="https://www.linkedin.com/company/vidyalo/" target="_blank"> <img src="assets/images/linkedin.svg" alt=""> </a>
+            <a href="https://www.instagram.com/vidyalo.dcc.india/" target="_blank"> <img src="assets/images/instagram.svg" alt=""></a>
+          </div> -->
+          <!-- <div class="headersection-phone">
+            <a href="tel:+913340061204"> <span> <i aria-hidden="true" class="fa fa-phone"></i> </span> +91-33-4006-1204 </a> 
+          </div> -->
+      
+         
+
+          <!-- <ul class="questionbox">
+            <li *ngIf="!displayStudentProfile"> <a data-toggle="modal" data-target="#addschool"> <span><i class="fa fa-university" aria-hidden="true"></i></span> Add School</a></li>
+            
+            <li><button type="button" data-toggle="modal" data-target="#addschool"> <span><i class="fa fa-university" aria-hidden="true"></i></span>Add School</button></li>
+            <li *ngIf="displayLogInStatus"> <a routerLink="/auth/login/0"> <span><i class="fa fa-key"
+                    aria-hidden="true"></i></span> Login</a></li>
+            <li (click)="logout()" style="cursor: pointer;"> <a> <span><i class="fa fa-sign-out" aria-hidden="true"></i></span> Logout</a></li>
+            <li class="dropdown signbox" *ngIf="displayStudentProfile"> <a style="cursor:pointer"
+                class="dropdown-toggle" type="button" data-toggle="dropdown"><span><i class="fa fa-user-circle-o"
+                    aria-hidden="true"></i></span> Hi {{userDetails?.firstName}} <span class="caret"></span> </a>
+              <ul class="dropdown-menu">
+                <li><a routerLink="/auth/student/student-profile"> <span> <i class="fa fa-user"
+                        aria-hidden="true"></i></span> My Profile</a></li>
+                <li><a routerLink="/auth/student/student-list"> <span> <i class="fa fa-user" aria-hidden="true"></i></span> My Profile</a></li>
+                <li><a routerLink="/auth/student/wish-list"> <span><i class="fa fa-heart" aria-hidden="true"></i></span> My School</a></li>
+                <li><a routerLink="/auth/student/short-list"><span> <i class="fa fa-check-square-o"
+                        aria-hidden="true"></i></span> My Applications</a></li>
+                <li><a (click)="logout()"> <span> <i class="fa fa-power-off" aria-hidden="true"></i> </span> Sign
+                    Out</a></li>
+              </ul>
+            </li>
+            <li *ngIf="displayLogInStatus"> <a routerLink="/auth/registration"> <span><i class="fa fa-lock"
+                    aria-hidden="true"></i></span> Sign Up</a></li>
+
+          </ul> -->
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </div>
+</section>

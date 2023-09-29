@@ -1,0 +1,209 @@
+<div class="content-wrapper">
+  <p-messages></p-messages>
+  <section class="content">
+    <div class="School-List-box">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="small-box">
+            <h3 class="box-title card-text"> Active Users </h3>
+            <div>
+              <div *ngFor='let user of _activeUsersCount' class="inner pull-left">
+                <h3><button type="button"> <strong> {{ user.typeCount }}</strong> </button></h3>
+                <p>{{helperService.toCamelCase( user.userType.split("_")[0]) }}</p>
+              </div>
+
+              <div class="clearfix"></div>
+            </div>
+            <div class="icon"> <i class="fa fa-university" aria-hidden="true"></i> </div>
+          </div>
+        </div>
+
+        <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+          <div class="small-box">
+            <h3 class="box-title card-text"> School Types </h3>
+            <div>
+              <div class="inner pull-left">
+                <h3><button type="button"> <strong>200</strong> </button></h3>
+                <p>Primary School</p>
+              </div>
+              <div class="inner pull-left">
+                <h3><button type="button"> <strong>100</strong> </button></h3>
+                <p>Secondary School</p>
+              </div>
+              <div class="inner pull-left">
+                <h3><button type="button"> <strong>50</strong> </button></h3>
+                <p>Higher Secondary School</p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="icon"> <i class="fa fa-graduation-cap" aria-hidden="true"></i> </div>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+    <form [formGroup]="userSearchForm">
+      <div class="box box-success2">
+        <div class="box-body">
+          <div class="searchsection3">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                  <input type="text" formControlName="userName" placeholder="User's Name" class="form-control">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                  <input type="email" formControlName="userEmail" placeholder="User's Email" class="form-control">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="form-group">
+                  <input type="tel" formControlName="userPhone" placeholder="User's Phone No." class="form-control">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="form-group">
+                  <select class="form-control border-right" formControlName="userType">
+                    <option value="" disabled default hidden>User type</option>
+                    <option value="SCHOOL">School</option>
+                    <option value="ADMIN">Admin</option>
+                    <option value="STUDENT">Student</option>
+
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"><button (click)="searchUserList()" type="button"
+                  class="btn btn-success"> Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="box box-success2">
+      <div class="box-header with-border bor">
+        <div class="pull-left">
+          <div class="Showingbox">
+            <!-- <span class="pull-left">Showing </span> -->
+            <div class="pull-left drop">
+              <select class="form-control" #limit (change)="fetchListApi(limit.value)">
+                <option value='25'>25</option>
+                <option value='50'>50</option>
+                <option value='100'>100</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="pull-right dropdown">
+          <!-- <button type="button" *ngIf="arraySend.length > 0" class="btn link1 button_effects pull-right"
+            (click)="changeSelectedStatus(0)"> <i class="fa fa-paper-plane" aria-hidden="true"></i> Activate Selected
+          </button> -->
+          &nbsp;
+          <button type="button" label="Add Admin User" icon="pi pi-plus" pButton pRipple [routerLink]="['/manage-student/student-list/add-student/']"
+            class="btn p-button-info p-button-outlined link3"></button>
+          &nbsp;
+          <!-- <button type="button" title="Add Schools" [routerLink]="['/manage-school/school-list/bulk-upload']"
+            class="button btn btn-success"> <i class="fa fa-upload" aria-hidden="true"></i> Bulk Upload</button>
+          &nbsp; -->
+
+          <!-- <nav class="setting-nav ">
+            <label for="btn" class="button btn btn-success" [ngClass]="checkReadonlyClass"><i class="fa fa-cog"
+                aria-hidden="true"></i> </label>
+            <input *ngIf="arraySend.length === 0" class="Rolebox" type="checkbox" id="btn" [disabled]="true">
+            <input *ngIf="arraySend.length > 0" class="Rolebox" type="checkbox" id="btn">
+            <ul class="menu">
+              <li><a (click)="changeSelectedStatus('Active')">
+                  <font><i class="fa fa-check" aria-hidden="true"></i></font>Active
+                </a></li>
+              <li><a (click)="changeSelectedStatus('In-Active')">
+                  <font><i class="fa fa-times" aria-hidden="true"></i></font>In-Active
+                </a></li>
+            </ul>
+          </nav> -->
+
+
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+
+      <div class="box-body">
+        <div class="tablesection">
+          <div class="table-responsive">
+            <table class="table table-striped" matSort (matSortChange)="sortData($event)" matSortDirection="asc"
+              matSortDisableClear>
+              <thead>
+                <tr>
+                  <!-- <th> -->
+                  <!-- <input type="checkbox" (change)="selectAll($event,user.id)"> -->
+                  <!-- <input style="margin:8px 0 0 0;" (click)="toggleShow()" type="checkbox" [(ngModel)]="selectedAll"
+                      (change)="selectAll($event);">
+                  </th> -->
+                  <th width="" mat-sort-header="first_name">User Name </th>
+                  <th mat-sort-header="email">Email Address</th>
+                  <th width="" mat-sort-header="phone">Contact Number</th>
+                  <th width="" mat-sort-header="user_type">User Type</th>
+                  <th width="" mat-sort-header="isactive">Status</th>
+                  <!-- <th style="text-align: center;">Action </th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of _userList | paginate:{
+                        id:'_userList',
+                      itemsPerPage:itemsPerPage,
+                      currentPage:currentPage,
+                      totalItems:_userListSize
+                    }; let i =index">
+                  <!-- <td><input type="checkbox" [(ngModel)]="user.selected" (change)="selectCheck($event,user.userId)">
+                  </td> -->
+                  <td><button type="button" title="View Schools" (click)="viewUserDetails(user.userId)"
+                      [routerLink]="['/manage-student/view-student', user.userId]" class="btn btn-link text-light-blue">
+                      <strong>{{helperService.toCamelCase( user.firstName + " " + user.lastName)}}</strong></button>
+                  </td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.phone | phonePipe}} </td>
+                  <td>
+                    <p-tag *ngIf="user.userType == 'ADMIN_USER'" styleClass="p-mr-2" severity="success">{{helperService.toCamelCase( user.userType?.split("_")[0])}} </p-tag>
+                    <p-tag *ngIf="user.userType == 'SCHOOL_USER'" styleClass="p-mr-2" severity="warning">{{helperService.toCamelCase( user.userType?.split("_")[0])}} </p-tag>
+                 </td>
+                  <!-- <td>
+                    <strong *ngIf="user.isactive === 'Active'" class="text-green">{{school.schoolStatus}} </strong>
+                    <strong *ngIf="school.schoolStatus === 'In-Active'" class="text-red">{{school.schoolStatus}} </strong> 
+                    <strong class="text-red">Non Active </strong> 
+                  </td> -->
+                  <!-- <td style="text-align: center;">
+                    <button type="button" class="btn btn-warning" (click)="editSchool(user.userId)"><i
+                        class="fa fa-pencil" aria-hidden="true"></i></button> -->
+                  <!-- <button *ngIf="school.schoolStatus === 'Active'" type="button" class="btn btn-error" (click)="changeSelectedStatus(school.id)"><i
+                      class="fa fa-ban" aria-hidden="true"></i></button> -->
+
+                  <!-- <input *ngIf="school.schoolStatus === 'In-Active'" type="checkbox" [(ngModel)]="school.selected"
+                      (change)="selectCheck($event,school.id)"> -->
+                  <!-- </td> -->
+                  <td>
+                    <p-confirmPopup></p-confirmPopup>
+                    <p-inputSwitch [(ngModel)]="user.isActive" (click)="confirm($event,user.isActive,user.userId)"></p-inputSwitch>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf="_userList == 0"  style="width: 100%; margin: 0rem auto; text-align: center;" class="no-record-found">
+              <div class="alert alert-warning" role="alert">
+                No records found!
+              </div>
+            </div>
+            <div class="paginationsectionbox" *ngIf="_userList !=0">
+              <span  class="Showingboxto">Showing {{currentPageStartingIndex}} to {{currentPageEndingIndex}} of
+                {{_userListSize}} results</span>
+              <pagination-controls class="pagination" id="_userList"
+                (pageChange)="handlePageChange($event)"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</div>

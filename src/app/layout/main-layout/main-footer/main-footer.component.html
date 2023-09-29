@@ -1,0 +1,459 @@
+<section class="footersection">
+    <div class="footertop">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <div class="footer-bg">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li> <a [routerLink]="['/auth/about-us']">About Us</a></li>
+                            <li> <a [routerLink]="['/auth/faq-details']">FAQs </a></li>
+                            <li> <a href="#" data-toggle="modal" data-target="#addFeedBack">Feedback </a></li>
+                            <li> <a [routerLink]="['/auth/testimonials/testimonials-list']">Testimonials </a></li>
+                            <li> <a [routerLink]="['/auth/news-articles']">News</a></li>
+                            <li> <a [routerLink]="['/auth/privacy-policy']">Privacy Policy</a></li>
+                            <li> <a [routerLink]="['/auth/terms-and-conditions']">Terms & Conditions</a></li>
+                            <li> <a [routerLink]="['/auth/cookie-policy']">Cookie Policy</a></li>
+                            <li><a [routerLink]="['/auth/add-school']">Add School</a></li>
+                            <li><a [routerLink]="['/auth/advertisements/advertisement-details']">Advertisements</a></li>
+                            <!-- <li> <a [routerLink]="['/auth/cancellation-refund-policy']">Refund Policy</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <div class="footer-bg">
+                        <h4>Address</h4>
+                        <p>Unit No. 705, 7th Floor, ERGO Tower, <br> Plot No. A1-4, Block EP & GP,<br> Sector-V,
+                            Kolkata-700091.</p>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <div class="footer-bg">
+                        <h4>Contact</h4>
+                        <p><a href="mailto:support@vidyalo.com"><span><i aria-hidden="true"
+                                        class="fa fa-envelope"></i></span>
+                                support@vidyalo.com </a></p>
+                        <!-- <p><a href="tel:+913340061204"> <span> <i aria-hidden="true" class="fa fa-phone"></i> </span>
+                                +91 33400 61204</a></p> -->
+                        <div class="socialbox">
+                            <a href="https://www.facebook.com/vidyalo.official/" target="_blank"> <img
+                                    src="assets/images/facebook.svg" alt=""> </a>
+                            <a href="https://www.youtube.com/@vidyaloofficial/" target="_blank"> <img
+                                    src="assets/images/youtube.svg" alt=""> </a>
+                            <a href="https://www.linkedin.com/company/vidyalo/" target="_blank"> <img
+                                    src="assets/images/linkedin.svg" alt=""> </a>
+                            <a href="https://www.instagram.com/vidyalo.official/" target="_blank"> <img
+                                    src="assets/images/instagram.svg" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <div class="footer-bg">
+                        <h4>About Us</h4>
+                        <p>If you're looking for the most up-to-date and reliable school information in West Bengal
+                            India, then you've come to the right place. Vidyalo is an innovative platform created with
+                            the mission of ...
+                            <a [routerLink]="['/auth/about-us']" class="more-b">more</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footerbottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p>&copy; Copyright 2023 <a href="https://www.dccil.com/#/home" target="_blank">DCC Services Pvt
+                            Ltd.</a> All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="modal fade" id="HelpDesk" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form [formGroup]="_helpDeskForm">
+                <div class="modal-header">
+                    <button type="button" class="close" #closeBtn data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Help Desk</h4>
+                </div>
+                <div class="modal-body">
+                    <p-messages></p-messages>
+                    <div style="padding: 0px 5px; margin: 0;" class="alert alert-danger" *ngIf='_successMessage'> {{
+                        _successMessage }}
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Full Name <span class="req" *ngIf="!_isReadOnly">*</span></label>
+                                <input required type="text" pInputText class="form-control" placeholder="Enter Name ..."
+                                    formControlName="issuerName" [readonly]="_isReadOnly">
+                                <div class="invalid-text"
+                                    *ngIf="_helpDeskForm.controls?.issuerName.touched && _helpDeskForm.controls?.issuerName?.errors">
+                                    <div *ngIf=" _helpDeskForm.controls?.issuerName?.errors.required ">
+                                        First Name is
+                                        required
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Last Name <span class="req" *ngIf="!_isReadOnly">*</span></label>
+                                <input type="text" pInputText class="form-control" placeholder="Enter Last Name ..."
+                                    formControlName="issuerLastName" [readonly]="_isReadOnly">
+                                <div class="invalid-text"
+                                    *ngIf="_helpDeskForm.controls?.issuerLastName.touched && _helpDeskForm.controls?.issuerLastName.errors">
+                                    <div *ngIf=" _helpDeskForm.controls?.issuerLastName.errors.required ">
+                                        Last Name is
+                                        required
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Email <span class="req" *ngIf="!_isReadOnly">*</span></label>
+                                <input type="email" pInputText class="form-control"
+                                    placeholder="Enter Email Address ..." formControlName="issuerEmail"
+                                    [readonly]="_isReadOnly">
+                                <div class="invalid-text"
+                                    *ngIf="_helpDeskForm.controls?.issuerEmail.touched && _helpDeskForm.controls?.issuerEmail.errors">
+                                    <div *ngIf=" _helpDeskForm.controls?.issuerEmail.errors.required ">
+                                        Email Address is
+                                        required
+                                    </div>
+                                    <div
+                                        *ngIf="!_helpDeskForm.controls?.issuerEmail.errors.required && _helpDeskForm.controls?.issuerEmail.errors.invalidEmail ">
+                                        Email Address is
+                                        invalid
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Issue Subject<span class="req" *ngIf="!_isReadOnly">*</span></label>
+                                <select class="form-control" formControlName="issueSubject">
+                                    <option value="">Select</option>
+                                    <!-- <option>Login issue</option> -->
+                                    <option>Showing Error page</option>
+                                    <option>Website loading issue</option>
+                                    <option>Not able to view schools near me</option>
+                                    <option>Others</option>
+                                    <!-- <option>Refund issue</option> -->
+                                    <!-- <option>Payment failed</option> -->
+                                    <!-- <option>Charged twice</option> -->
+                                </select>
+                                <div class="invalid-text"
+                                    *ngIf="_helpDeskForm.controls?.issueSubject.touched && _helpDeskForm.controls?.issueSubject.errors">
+                                    <div *ngIf=" _helpDeskForm.controls?.issueSubject.errors.required ">
+                                        Subject is
+                                        required
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label>Issue Description <span class="req">*</span></label>
+                                <textarea pInputTextarea class="form-control" rows="" placeholder="Enter ..."
+                                    formControlName="issueDesc" maxlength="500" #issueDescription></textarea>
+                                <small class="form-text text-muted"><code>{{issueDescription.value.length}}</code> of
+                                    <code>{{maximumIncidentDescription}}</code> characters</small>
+                                <div class="invalid-text"
+                                    *ngIf="_helpDeskForm.controls?.issueDesc.touched && _helpDeskForm.controls?.issueDesc.errors">
+                                    <small *ngIf=" _helpDeskForm.controls?.issueDesc.errors.required">
+                                        Issue Description is
+                                        required
+                                    </small>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <!-- <label for="exampleInputFile">File input</label> -->
+                                <input type="file" multiple id="exampleInputFile" class="UploadBox" name="'file[]'"
+                                    #inputFile (change)="changeUploadEvent($event)">
+                                    <br>
+                                <input type="checkbox" #Isagree (change)="isAgree($event)" formControlName="isAgree">
+                                <label>&nbsp;I agree to the <a routerLink="/auth/privacy-policy" target="_blank"> privacy policy</a> and <a
+                                        routerLink="/auth/terms-and-conditions" target="_blank">term & condition.</a></label>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+
+                    <button pButton pRipple type="button" class="btn pull-left p-button-outlined p-button-info"
+                        (click)="closeModalHelpDesk()">Close</button>
+                    <button pButton pRipple type="submit" class="btn pull-right p-button-info"
+                        (click)="submitData()" [disabled]="!(_helpDeskForm.valid && isAgreeChecked)">Submit</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- Add School -->
+
+<div class="modal fade" id="addschool" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form [formGroup]="_addSchoolForm">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Join Us - Add your school</h4>
+                </div>
+                <div class="modal-body">
+                    <div style="padding: 0px 5px; margin: 0;" class="alert alert-success" *ngIf='_successMessageScl'> {{
+                        _successMessageScl }}
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Name <span class="req">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter Name ..."
+                                    formControlName="schoolUserName">
+                                <div class="invalid-text"
+                                    *ngIf="_addSchoolForm.controls?.schoolUserName.touched && _addSchoolForm.controls?.schoolUserName.errors">
+                                    <div *ngIf=" _addSchoolForm.controls?.schoolUserName.errors.required ">
+                                        Name is
+                                        required
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Designation <span class="req">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter Designation ..."
+                                    formControlName="designation">
+                                <div class="invalid-text"
+                                    *ngIf="_addSchoolForm.controls?.designation.touched && _addSchoolForm.controls?.designation.errors">
+                                    <div *ngIf=" _addSchoolForm.controls?.designation.errors.required ">
+                                        Designation is
+                                        required
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Phone <span class="req">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter Phone number ..."
+                                    formControlName="phone">
+                                <div class="invalid-text"
+                                    *ngIf="_addSchoolForm.controls?.phone.touched && _addSchoolForm.controls?.phone.errors">
+                                    <div *ngIf=" _addSchoolForm.controls?.phone.errors.required ">
+                                        Phone is
+                                        required
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Email <span class="req">*</span></label>
+                                <input type="email" class="form-control" placeholder="Enter Email Address ..."
+                                    formControlName="email">
+                                <div class="invalid-text"
+                                    *ngIf="_addSchoolForm.controls?.email.touched && _addSchoolForm.controls?.email.errors">
+                                    <div *ngIf=" _addSchoolForm.controls?.email.errors.required ">
+                                        Email Address is
+                                        required
+                                    </div>
+                                    <div
+                                        *ngIf="!_addSchoolForm.controls?.email.errors.required && _addSchoolForm.controls?.email.errors.invalidEmail ">
+                                        Email Address is
+                                        invalid
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>School <span class="req">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter School Name ..."
+                                    formControlName="schoolName">
+                                <div class="invalid-text"
+                                    *ngIf="_addSchoolForm.controls?.schoolName.touched && _addSchoolForm.controls?.schoolName.errors">
+                                    <div *ngIf=" _addSchoolForm.controls?.schoolName.errors.required ">
+                                        School is
+                                        required
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Location <span class="req">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter School Location ..."
+                                    formControlName="location">
+                                <div class="invalid-text"
+                                    *ngIf="_addSchoolForm.controls?.location.touched && _addSchoolForm.controls?.location.errors">
+                                    <div *ngIf=" _addSchoolForm.controls?.location.errors.required ">
+                                        Location is
+                                        required
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn link3 pull-left" (click)="submitAddSchoolData()">Submit</button>
+                    <button type="button" class="btn link4 pull-right" (click)="closeSchoolModal()"
+                        data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- Add FeedBack Form  -->
+<div class="modal fade" id="addFeedBack" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form [formGroup]="_feedBackForm">
+                <div class="modal-header">
+                    <button type="button" class="close" #closeBtnFeedBack data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Feedback</h4>
+                </div>
+                <div class="modal-body">
+                    <p-messages></p-messages>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Name <span class="req">*</span></label>
+                                <input type="text" pInputText class="form-control" placeholder="Enter Name ..."
+                                    formControlName="userName">
+                                <div class="invalid-text"
+                                    *ngIf="_feedBackForm.controls?.userName.touched && _feedBackForm.controls?.userName.errors">
+                                    <div *ngIf=" _feedBackForm.controls?.userName.errors.required ">
+                                        Name is
+                                        required
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Email <span class="req">*</span></label>
+                                <input type="email" pInputText class="form-control"
+                                    placeholder="Enter Email Address ..." formControlName="userEmail">
+                                <div class="invalid-text"
+                                    *ngIf="_feedBackForm.controls?.userEmail.touched && _feedBackForm.controls?.userEmail.errors">
+                                    <div *ngIf=" _feedBackForm.controls?.userEmail.errors.required ">
+                                        Email Address is
+                                        required
+                                    </div>
+                                    <div
+                                        *ngIf="!_feedBackForm.controls?.userEmail.errors.required && _feedBackForm.controls?.userEmail.errors.invalidEmail ">
+                                        Email Address is
+                                        invalid
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Phone <span class="req">*</span></label>
+                                <input type="text" pInputText class="form-control" placeholder="Enter Phone No ..."
+                                    formControlName="userPhone">
+                                <div class="invalid-text"
+                                    *ngIf="_feedBackForm.controls?.userPhone.touched && _feedBackForm.controls?.userPhone.errors">
+                                    <div *ngIf=" _feedBackForm.controls?.userPhone.errors.required ">
+                                        Phone is
+                                        required
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label>Feedback <span class="req">*</span></label>
+                                <textarea pInputTextarea class="form-control" rows=""
+                                    placeholder="Type your feedback here" formControlName="userFeedback" maxlength="500"
+                                    #FeedbackDescription></textarea>
+                                <small class="form-text text-muted"><code>{{FeedbackDescription.value.length}}</code> of
+                                    <code>{{maximumIncidentDescription}}</code> characters</small>
+                                <div class="invalid-text"
+                                    *ngIf="_feedBackForm.controls?.userFeedback.touched && _feedBackForm.controls?.userFeedback.errors">
+                                    <small *ngIf=" _feedBackForm.controls?.userFeedback.errors.required">
+                                        FeedBack is
+                                        required
+                                    </small>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                            <div style="height: 10px;"></div>
+                            <!-- <div class="form-group"> -->
+                            <p-captcha siteKey="6Lck7gQoAAAAAMdMVVKVQ9o_UYcSH7aw1zevt1Is"
+                                (onResponse)="showResponse($event)" initCallback="loadCaptcha"></p-captcha>
+                            <!-- </div> -->
+                            <br>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <input type="checkbox" #Isagree (change)="isAgree($event)" formControlName="isAgree" />
+                                    <label>&nbsp;I agree to the
+                                        <a routerLink="/auth/privacy-policy" target="_blank">
+                                        Privacy Policy</a>
+                                        and
+                                        <a routerLink="/auth/terms-and-conditions" target="_blank">Term & Condition.</a>
+                                    </label>
+                            </div>        
+                         </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    
+                    <button type="submit" [disabled]="!(_feedBackForm.valid && isAgreeChecked &&isHuman)" pButton pRipple class="btn  pull-left p-button-info"
+                        (click)="submitFeedBackData()">Submit</button>
+                    <button type="button" pButton pRipple class="btn  pull-right p-button-outlined p-button-info"
+                        (click)="closeModalFeedBack()">Close</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

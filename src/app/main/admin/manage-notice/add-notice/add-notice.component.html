@@ -1,0 +1,98 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>Add Notice</h1>
+  </section>
+  <section class="content">
+    <form [formGroup]="noticeForm">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="box box-success2">
+          <!-- <div class="box-header with-border">
+              <h3 class="box-title card-text">Search</h3>
+            </div> -->
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="form-group">
+                  <label>Content<span class="req">*</span></label>
+                  <!-- <input type="text" placeholder="Enter content" class="form-control"> -->
+                  <textarea class="form-control" formControlName="noticeContent"></textarea>
+                  <div class="invalid-text" *ngIf="noticeForm.controls?.noticeContent.touched && noticeForm.controls?.noticeContent.errors">
+                      <div *ngIf="noticeForm.controls?.noticeContent.errors.required">
+                        Content is required.
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <input #logoInput type="file" id="myFile" name="'file[]'"
+                      (change)="onFileChanged($event)">
+                    <div class="School_logo_box" *ngIf="url">
+                      <button type="button" class="btn "></button>
+                       <img src="{{url}}" alt="">
+                    </div>
+              </div> -->
+            </div>
+            
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                  <label>Notice Type<span class="req">*</span></label>
+                  <select class="form-control" formControlName="noticeType">
+                    <option value="">Select notice type</option>
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                  </select>
+                  <div class="invalid-text" *ngIf="noticeForm.controls?.noticeType.touched && noticeForm.controls?.noticeType.errors">
+                    <div *ngIf="noticeForm.controls?.noticeType.errors.required">
+                      Notice Type is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="form-group calendar-icon">
+                  <label>Start on<span class="req">*</span></label>
+                  <input type="date" formControlName="startsOn" placeholder="Enter start on" class="form-control">
+                  <div class="invalid-text" *ngIf="noticeForm.controls?.startsOn.touched && noticeForm.controls?.startsOn.errors">
+                    <div *ngIf="noticeForm.controls?.startsOn.errors.required">
+                      Start on is required.
+                    </div>
+                    <div class="invalid-text" *ngIf="noticeForm.controls?.startsOn.touched && noticeForm.controls.startsOn.errors?.ValidateDate">
+                      <div>Invalid Date</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="form-group calendar-icon">
+                  <label>Expire on</label>
+                  <input type="date" formControlName="expiresOn" placeholder="Enter expire on" class="form-control">
+                  <div class="invalid-text" *ngIf="noticeForm.controls?.expiresOn.touched && noticeForm.controls.expiresOn.errors?.ValidateDate">
+                    <div>Invalid Date</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                  <label for="">File input</label>
+                  <input type="file" id="">
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="box box-success2">
+          <div class="box-footer align-center">
+            <button type="submit" class="btn link4 mx-2 " routerLink="/manage-notice">Close</button>
+            <button type="submit" class="btn link3 mx-2 " (click)="saveNotice()" [disabled]="!noticeForm.valid">Save </button>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+  </section>
+</div>

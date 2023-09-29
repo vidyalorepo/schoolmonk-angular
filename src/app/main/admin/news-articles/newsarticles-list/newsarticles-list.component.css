@@ -1,0 +1,24 @@
+.p-button {
+    font-size: 1.5rem !important;
+}
+.p-button.p-button-icon-only.p-button-rounded {
+    height: 3.35rem !important;
+    width: 3.3rem !important;
+}
+label{
+    font-size: 1.5rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.p-inputtext {
+    padding: 1rem !important;
+    font-size: medium !important;
+  
+}
+.p-inputtext::placeholder{
+    font-size: medium;
+}
+.p-inputtext[type="text"]{
+    font-size: medium;
+}
+
+

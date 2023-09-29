@@ -1,0 +1,118 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1> Admission Lists</h1>
+  </section>
+  <section class="content">
+    <div class="box box-success2">
+      <div class="box-header with-border bor">
+        <!-- <div class="pull-left">
+                <div class="Showingbox">
+                  <span class="pull-left">Showing </span>
+                  <div class="pull-left drop">
+                    <select class="form-control" #limit (change)="fetchListApi(limit.value)">
+                      <option value='25'>25</option>
+                      <option value='50'>50</option>
+                      <option value='100'>100</option>
+                    </select>
+                  </div>
+                </div>
+              </div> -->
+        <div class="pull-right dropdown">
+          <!-- <button type="button" *ngIf="arraySend.length > 0" class="btn link1 button_effects pull-right"
+                  (click)="changeSelectedStatus(0)"> <i class="fa fa-paper-plane" aria-hidden="true"></i> Activate Selected
+                </button> -->
+          &nbsp;
+          <button type="button" title="Add Admission" [routerLink]="['/admission/admission-lists/add-admission-form']"
+            class="btn link4"> <i class="fa fa-pencil" aria-hidden="true"></i> Add Admission</button>
+          &nbsp;
+
+          <nav class="setting-nav ">
+            <label for="btn" class="button btn btn-success" [ngClass]="checkReadonlyClass"><i class="fa fa-cog"
+                aria-hidden="true"></i> </label>
+            <input *ngIf="arraySend.length === 0" class="Rolebox" type="checkbox" id="btn" [disabled]="true">
+            <input *ngIf="arraySend.length > 0" class="Rolebox" type="checkbox" id="btn">
+            <ul class="menu">
+              <li><a (click)="changePublish('Y')">
+                  <font><i class="fa fa-check" aria-hidden="true"></i></font>Publish
+                </a></li>
+              <li><a (click)="changePublish('N')">
+                  <font><i class="fa fa-times" aria-hidden="true"></i></font>Unpublish
+                </a></li>
+            </ul>
+          </nav>
+
+
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="box-body">
+        <div class="tablesection">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th width="55" class="align-center">
+                    <input style="margin:8px 0 0 0;" (click)="toggleShow()" type="checkbox" [(ngModel)]="selectedAll"
+                      (change)="selectAll($event);">
+                  </th>
+                  <th width="100">Board</th>
+                  <th width="100">Class</th>
+                  <th width="150">Admission start Date</th>
+                  <th width="150">Admission end Date</th>
+                  <th width="100">Fees</th>
+                  <th width="100">Status</th>
+                  <th width="55" class="align-center">Action </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of _schooladmissionRecords | paginate:{
+                        id:'_schoolsList',
+                      itemsPerPage:itemsPerPage,
+                      currentPage:currentPage,
+                      totalItems:_schooladmissionRecordssize
+                       }; let i =index">
+                  <td class="align-center">
+                    <input type="checkbox" [(ngModel)]="data.selected" (change)="selectCheck($event,data.id)">
+                  </td>
+                  <td>{{data.board}}</td>
+                  <td>{{data.classRange}}</td>
+                  <td>{{data.admissionStartDate | date: 'yyyy-MM-dd'}}</td>
+                  <td>{{data.admissionEndDate | date: 'yyyy-MM-dd'}}</td>
+                  <td>{{data.feesAmount}}</td>
+                  <td>
+                    <span *ngIf="data.publishStatus==='Y'">Published</span>
+                    <span *ngIf="data.publishStatus==='N'">Unpublished</span>
+                  </td>
+                  <td style="text-align: center;">
+                    <button type="button" class="btn btn-warning"
+                      [routerLink]="['/admission/admission-lists/admission-edit', data.id]"><i class="fa fa-pencil"
+                        aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+                <span *ngIf="_schooladmissionRecords?.length === 0">No records found.</span>
+              </tbody>
+            </table>
+            <!-- <div class="paginationsectionbox">
+                    <span *ngIf="!isEmpty" class="Showingboxto">Showing {{currentPageStartingIndex}} to {{currentPageEndingIndex}} of
+                      {{_schoolsListSize}} results</span>
+                    <span *ngIf="isEmpty">No records found!!!</span>
+                    <pagination-controls *ngIf="!isEmpty" class="pagination" id="_schoolsList"
+                      (pageChange)="handlePageChange($event)"></pagination-controls>
+                  </div> -->
+          </div>
+
+          <div class="paginationsectionbox">
+            <span *ngIf="!isEmpty" class="Showingboxto">Showing {{currentPageStartingIndex}} to
+              {{currentPageEndingIndex}} of
+              {{_schooladmissionRecordssize}} results</span>
+            <span *ngIf="isEmpty">No records found.</span>
+            <pagination-controls *ngIf="!isEmpty" class="pagination" id="_schoolsList"
+              (pageChange)="handlePageChange($event)"></pagination-controls>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+</div>

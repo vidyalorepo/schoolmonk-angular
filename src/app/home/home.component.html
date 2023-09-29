@@ -1,0 +1,614 @@
+<section class="bannersection">
+  <owl-carousel-o [options]="bannerOptions">
+    <ng-template carouselSlide>
+      <img src="assets/images/banner1.webp" alt="">
+    </ng-template>
+    <ng-template carouselSlide>
+      <img src="assets/images/banner2.webp" alt="">
+    </ng-template>
+    <ng-template carouselSlide>
+      <img src="assets/images/banner3.webp" alt="">
+    </ng-template>
+  </owl-carousel-o>
+</section>
+
+<!-- <section class="our-services-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pointer">
+        <h1>Our Services </h1>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <div class="eltdf-iwt">
+          <div class="eltdf-iwt-icon">
+            <img src="assets/images/services1.png" alt="">
+          </div>
+          <div class="eltdf-iwt-content">
+            <h2>Notification & Emails</h2>
+            <p>Lorem ipsum dolor sit ametcon, sectetur adipiscing elit. Phasellus vehic sagittis euismod. </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <div class="eltdf-iwt">
+          <div class="eltdf-iwt-icon">
+            <img src="assets/images/services2.png" alt="">
+          </div>
+          <div class="eltdf-iwt-content">
+            <h2>Ask a Question</h2>
+            <p>Lorem ipsum dolor sit ametcon, sectetur adipiscing elit. Phasellus vehic sagittis euismod. </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <div class="eltdf-iwt">
+          <div class="eltdf-iwt-icon">
+            <img src="assets/images/services3.png" alt="">
+          </div>
+          <div class="eltdf-iwt-content">
+            <h2>Join Today</h2>
+            <p>Lorem ipsum dolor sit ametcon, sectetur adipiscing elit. Phasellus vehic sagittis euismod. </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+
+
+<section class="CitiesSection">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Browse Schools by Cities</h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <owl-carousel-o [options]="CitiesOptions">
+
+          <ng-template carouselSlide *ngFor="let city of Cities">
+            <div class="Citiesbox" style="cursor: pointer;" [routerLink]="city.url">
+              <div *ngIf="city.img == null || city.img == ''" class="Citiesboximg"><img src="assets/images/cities0.png"
+                  alt="Schools in {{city.name}}"> </div>
+              <div *ngIf="city.img" class="Citiesboximg"><img src="{{city.img}}" alt="Schools in {{city.name}}"> </div>
+              <div class="Citiesboxtex">
+                <h2>Schools in<br><span>{{city.name}}</span></h2>
+              </div>
+            </div>
+          </ng-template>
+
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="boardssection">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Browse by School Boards </h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="boardssectionbox">
+        <ul>
+          <li>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&WBBSE&&&">
+              <div class="goingboximg"><img src="assets/images/boards1.webp" alt="WBBSE Schools"> </div>
+              <div class="goingboxtex">
+                <h2>Board<br><span>WBBSE</span></h2>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&CBSE&&&">
+              <div class="goingboximg"><img src="assets/images/boards2.webp" alt="CBSE Schools"> </div>
+              <div class="goingboxtex">
+                <h2>Board<br><span>CBSE</span></h2>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&ICSE&&&">
+              <div class="goingboximg"><img src="assets/images/boards3.webp" alt="ICSE Schools"> </div>
+              <div class="goingboxtex">
+                <h2>Board<br><span>ICSE/ISC</span></h2>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&WBCHSE&&&">
+              <div class="goingboximg"><img src="assets/images/boards4.webp" alt="WBCHSE Schools"> </div>
+              <div class="goingboxtex">
+                <h2>Board<br><span>WBCHSE</span></h2>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&IB&&&">
+              <div class="goingboximg"><img src="assets/images/boards6.webp" alt="IB Schools"> </div>
+              <div class="goingboxtex">
+                <h2>Board<br><span>IB</span></h2>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="School-Type-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Browse by School Type </h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <owl-carousel-o [options]="SchoolType">
+
+          <ng-template carouselSlide>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&&&&&Kindergarten&">
+              <div class="goingboximg"><img src="assets/images/SchoolType1.webp" alt="Kindergarten Schools"> </div>
+              <div class="goingboxtex">
+                <h2>School Type<br><span>Kindergarten</span></h2>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&&&&&Primary&">
+              <div class="goingboximg"><img src="assets/images/SchoolType2.webp" alt="Primary Schools"> </div>
+              <div class="goingboxtex">
+                <h2>School Type<br><span>Primary</span></h2>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&&&&&Secondary&">
+              <div class="goingboximg"><img src="assets/images/SchoolType3.webp" alt="Secondary Schools"> </div>
+              <div class="goingboxtex">
+                <h2>School Type<br><span>Secondary</span></h2>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&&&&&Higher Secondary&">
+              <div class="goingboximg"><img src="assets/images/SchoolType4.webp" alt="High Secondary Schools"> </div>
+              <div class="goingboxtex">
+                <h2>School Type<br><span>Higher Secondary</span></h2>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&&&&&International&">
+              <div class="goingboximg"><img src="assets/images/SchoolType5.webp" alt="International"> </div>
+              <div class="goingboxtex">
+                <h2>School Type<br><span>International School</span></h2>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&&&&&special">
+              <div class="goingboximg"><img src="assets/images/SchoolType6.webp" alt="Special Schools"> </div>
+              <div class="goingboxtex">
+                <h2>School Type<br><span>Special School</span></h2>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&&&&&Kindergarten&">
+              <div class="goingboximg"><img src="assets/images/SchoolType1.webp" alt="Kindergarten Schools"> </div>
+              <div class="goingboxtex">
+                <h2>School Type<br><span>Kindergarten</span></h2>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&&&&&Primary&">
+              <div class="goingboximg"><img src="assets/images/SchoolType2.webp" alt="Primary Schools"> </div>
+              <div class="goingboxtex">
+                <h2>School Type<br><span>Primary</span></h2>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&&&&&Secondary&">
+              <div class="goingboximg"><img src="assets/images/SchoolType3.webp" alt="Secondary Schools"> </div>
+              <div class="goingboxtex">
+                <h2>School Type<br><span>Secondary</span></h2>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&&&&&High Secondary&">
+              <div class="goingboximg"><img src="assets/images/SchoolType4.webp" alt="Higher Secondary "> </div>
+              <div class="goingboxtex">
+                <h2>School Type<br><span>Higher Secondary</span></h2>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&&&&&International School&">
+              <div class="goingboximg"><img src="assets/images/SchoolType5.webp" alt="International Schools"> </div>
+              <div class="goingboxtex">
+                <h2>School Type<br><span>International School</span></h2>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="goingbox" style="cursor: pointer;" routerLink="/auth/common-search/&&&&&special">
+              <div class="goingboximg"><img src="assets/images/SchoolType6.webp" alt="Special Schools"> </div>
+              <div class="goingboxtex">
+                <h2>School Type<br><span>Special School</span></h2>
+              </div>
+            </div>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- <section class="newssection">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="newssection_box">
+          <div class="pull-left">Latest News & Article</div>
+          <div class="pull-right">
+            <marquee onmouseout="this.start();" onmouseover="this.stop();">
+              <span *ngFor="let data of noticeList;"><a _ngcontent-auy-c4=""
+                  [routerLink]="['/auth/notice-details/', data.id]">
+                  Admission notice for class {{data.classRange}}, {{data.schoolName}} </a>
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+              </span>
+            </marquee>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+<!-- <section class="admissionsection">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Admission Going On </h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <owl-carousel-o [options]="customOptions">
+
+          <ng-template carouselSlide *ngFor="let data of admissionGoingOnList">
+            <div class="goingbox grayscale" style="cursor: pointer;"
+              [routerLink]="['/auth/search-details/search-school-details', data.schoolNameSlug]">
+              <div class="goingboximg">
+                <img src="{{ data.schoolLogoPath }}" alt=""
+                  *ngIf="data.schoolLogoPath != null && data.schoolLogoPath != ''">
+                <img src="assets/images/school-logo.png" alt="" *ngIf="data?.schoolLogoPath == null">
+              </div>
+              <div class="goingboxtex"> {{ data.schoolName }} </div>
+            </div>
+          </ng-template>
+
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="four-boxes-section">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <a routerLink="/auth/unconventional-courses">
+          <div class="boxes-section">
+            <div class="img-boxes-section">
+              <img src="assets/images/box1.webp" alt="">
+            </div>
+            <div class="text-boxes-section" style="background:#0254e4;">
+              <div class="icon_box"> <img src="assets/images/img_5.png" alt=""> </div>
+              <div class="icon_box_text">
+                <h4>Unconventional Courses</h4>
+                <p>The transition from traditional to off beat specializations is noticeable due to their global
+                  requirements. Know more here</p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <a routerLink="/auth/scholarships-programs">
+          <div class="boxes-section">
+            <div class="img-boxes-section">
+              <img src="assets/images/box2.webp" alt="">
+            </div>
+            <div class="text-boxes-section" style="background:#70abef;">
+              <div class="icon_box"> <img src="assets/images/img_6.png" alt="Scholarships Programs"> </div>
+              <div class="icon_box_text">
+                <h4>Scholarships Programs</h4>
+                <p>Find all about national and international scholarships and how to apply.</p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <a routerLink="/auth/study-abroad">
+          <div class="boxes-section">
+            <div class="img-boxes-section">
+              <img src="assets/images/box-3.webp" alt="">
+            </div>
+            <div class="text-boxes-section" style="background:#d190e2;">
+              <div class="icon_box"> <img src="assets/images/img_7.png" alt="Study Abroad"> </div>
+              <div class="icon_box_text">
+                <h4>Study Abroad</h4>
+                <p>Studying abroad after can help you in being a global citizen by getting you access to many
+                  opportunities in life</p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <a routerLink="/auth/exam-tips">
+          <div class="boxes-section">
+            <div class="img-boxes-section">
+              <img src="assets/images/box-4.webp" alt="">
+            </div>
+            <div class="text-boxes-section" style="background:#ba56d4;">
+              <div class="icon_box"> <img src="assets/images/img_8.png" alt="Exam Tips"> </div>
+              <div class="icon_box_text">
+                <h4>Exam Tips</h4>
+                <p>Exam Tips is a powerful tool to help students improve their academic achievement</p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+
+<section class="news-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Latest News & Articles</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" *ngFor="let news of NewsList">
+        <a [routerLink]="['/auth/news-articles/news-details',news?.newsSlug]">
+          <div class="news_box">
+            <div class="news_box_img">
+              <img src="assets/images/Latest_News_icon.webp" alt="School news">
+            </div>
+            <h3>{{news.createdTs | date}}</h3>
+            <h2>{{(news.subject.length > 70)?(news.subject | slice : 0 : 70) + "...":news.subject }}</h2>
+            <div class="clearfix"></div>
+          </div>
+        </a>
+      </div>
+
+
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="text-center">
+          <button type="button" class="link5 widthbox3" data-toggle="modal"
+            [routerLink]="['/auth/news-articles']">More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="needsection">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <h1>Help Desk</h1>
+        <p>Facing issues with the website? Connect us for support!</p>
+        <button type="button" class="link5 widthbox3" routerLink="/auth/help-desk">Help Desk</button>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="help-dask-img">
+          <img src="assets/images/customar-support1.webp" alt="Vidyalo help desk">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="featured-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pointer">
+        <h1>Featured Schools </h1>
+      </div>
+      <div *ngFor="let data of _featuredList | slice:0:3; let i=index" class="col-xs-12 col-sm-4 col-md-4 col-lg-4"
+        (click)="schoolBoxClickHandler(data.schoolNameSlug)">
+        <div class="Featuredbox" style="cursor: pointer;">
+          <h2>{{helperService.toCamelCase(
+            data.schoolName) }}</h2>
+          <div class="featuredimgbox">
+            <img *ngIf="data?.schoolBannerPath != null" [src]="data?.schoolBannerPath" alt="">
+            <img *ngIf="data?.schoolBannerPath == null" src="assets/images/DefaultBanner.jpg" alt="">
+          </div>
+          <div class="featuredtextbox">
+            <p>{{helperService.toCamelCase(
+              data.schoolAddress) }} {{helperService.toCamelCase(data.city)
+              }} {{ data.state }} {{ data.postalCode }}</p>
+          </div>
+          <p><strong>Board :</strong> {{ data.schoolBoard }}</p>
+          <a href="{{ data.schoolBrochurePath }}" *ngIf="data.schoolBrochurePath" download="" target="_blank"
+            title="download Brochure pdf"><label class="btn link4"> BROCHURE <i class="fa fa-download"
+                aria-hidden="true"></i> </label></a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="form-group">
+          <div class="text-center">
+            <a routerLink="/auth/home-details/school-feature"><button type="submit" class="btn link5 widthbox3">More...
+              </button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section> -->
+
+
+<!-- <section class="advantagessection">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Our Advantages</h1>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="Addsection">
+          <div class="advantagesbox" style="background:#eb7b77;">1</div>
+          <div class="Addsection_text">
+            <h2>Search Guide</h2>
+            <p>We give you collect information about all the schools near you from kg to Class 12. We are your Personal
+              School Search Engine.
+              School Research, School interviews School admission, we are here for all.</p>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="Addsection">
+          <div class="advantagesbox" style="background:#f5cf2a;">2</div>
+          <div class="Addsection_text">
+            <h2>Insight</h2>
+            <p>We are here to give you all the undiscovered insights about schools. This will work as counseling which
+              will enable you to
+              take the right decision for your Childes future. </p>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="Addsection">
+          <div class="advantagesbox" style="background:#9cc441;">3</div>
+          <div class="Addsection_text">
+            <h2>Notice Board</h2>
+            <p>Our unique Notice board will keep you updated. You will not miss any important Tasks. Find a school
+              according to your needs.
+              We help you with online School admission/ School admission.</p>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="Addsection">
+          <div class="advantagesbox" style="background:#69d1da;">4</div>
+          <div class="Addsection_text">
+            <h2>Impartial</h2>
+            <p>We are committed to bringing honest reviews and information. You can find schools' Curricular,
+              co-curricular activities,
+              Teacher-Student Ratios, etc. We are completely unbiased and user-friendly. </p>
+          </div>
+          <div class="clearfix"></div>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section> -->
+
+<section class="Testimonialssection">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Testimonials</h1>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="Testimonials-slider">
+          <owl-carousel-o [options]="TestimonialsOptions">
+
+            <ng-template carouselSlide *ngFor="let data of testimonialsList">
+              <a [routerLink]="['/auth/testimonials/testimonials-details', data.id]">
+                <div class="Testimonials-box">
+                  <span> “ </span>
+                  <p>{{ (data.message.length>50)? (data.message | slice:0:50)+'...':(data.message) }}</p>
+
+                  <button [routerLink]="['/auth/testimonials/testimonials-details', data.id]" type="submit"
+                    class="btn ">More...</button>
+                  <div class="Testimonials_bg">
+                    <div class="Testimonials_icon" *ngIf="data.docList.length === 0"><img src="assets/images/img_9.png"
+                        alt=""></div>
+                    <div class="Testimonials_icon" *ngIf="data.docList.length > 0"><img
+                        src="{{data.docList[0].filePath}}" alt=""></div>
+                  </div>
+                  <div class="Testimonials_text">
+                    <h2>{{data.name}}</h2>
+                    <h3>{{data.institution}}</h3>
+                    <h4>{{data.designation}}</h4>
+                  </div>
+
+
+                </div>
+              </a>
+            </ng-template>
+
+
+
+          </owl-carousel-o>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="text-center">
+          <button type="button" class="link5 widthbox3" data-toggle="modal"
+            [routerLink]="['/auth/testimonials/testimonials-list']">More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

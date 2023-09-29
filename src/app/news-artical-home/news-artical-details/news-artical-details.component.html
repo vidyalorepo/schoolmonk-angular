@@ -1,0 +1,77 @@
+<section class="inner-banner-section inner-banner-search">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>News Details</h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="breadcrumbs_section">
+          <ul>
+            <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+            <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+            <li><button type="submit">News Details</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="innersearchsection">
+  <div class="container">
+    <div class="Student-List-section footer_link">
+
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+          <div class="News_Details_box">
+            <div class="News_Details_box_img">
+              <img src="assets/images/Latest_News_icon.webp" alt="">
+            </div>
+            <h4>{{ newsDetails?.newsDate | date}}</h4>
+            <h2>{{ newsDetails?.subject}}</h2>
+
+            <p [innerHTML]="newsDetails?.noticeBody | sanitizeHtml"></p>
+
+
+            <div class="clearfix"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+<section class="Latest-New-sssection">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Latest News</h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <owl-carousel-o [options]="NewsOptions">
+          <ng-template *ngFor="let news of NewsList" carouselSlide>
+            <a [routerLink]="['/auth/news-articles/news-details',news?.newsSlug]">
+              <div class="LatestNews_box">
+                <div class="LatestNews_box_img">
+                  <img src="assets/images/Latest_News_icon.webp" alt="">
+                </div>
+                <div class="LatestNews_box_text">
+                <h3>{{ news?.newsDate | date}}</h3>
+                <h2>{{news?.subject}}</h2>
+              
+                </div>
+                
+              </div>
+            </a>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</section>

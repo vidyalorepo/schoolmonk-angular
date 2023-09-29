@@ -1,0 +1,19 @@
+.p-button {
+    font-size: 1.5rem !important;
+}
+.p-inputtext .p-calendar{
+
+    padding: 1rem !important;
+    font-size: medium !important;
+  
+}
+.p-inputtext::placeholder{
+    font-size: medium;
+}
+.p-inputtext[type="text"]{
+    font-size: medium;
+
+}
+.link3 {
+    padding: 0px 15px !important;
+}  

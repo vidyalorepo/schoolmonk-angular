@@ -1,0 +1,156 @@
+<section class="inner-banner-section inner-banner-search">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>Help Desk</h1>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="breadcrumbs_section">
+                    <ul>
+                        <li>
+                            <a routerLink="/auth/home"><button type="submit">Home</button></a>
+                        </li>
+                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                        <li><button type="submit">Help Desk</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="innersearchsection">
+    <div class="container">
+        <div class="Student-List-section footer_link">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>Help Desk</h1>
+                </div>
+            </div>
+
+            <form [formGroup]="_helpDeskForm">
+                <div class="row">
+                    <p-messages></p-messages>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Full Name <span class="req">*</span></label>
+                            <input required type="text" pInputText class="form-control" placeholder="Enter Name ..."
+                                formControlName="issuerName" />
+                            <div class="invalid-text" *ngIf="
+                  _helpDeskForm.controls?.issuerName.touched &&
+                  _helpDeskForm.controls?.issuerName?.errors
+                ">
+                                <div *ngIf="_helpDeskForm.controls?.issuerName?.errors.required">
+                                    First Name is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Email <span class="req">*</span></label>
+                            <input type="email" pInputText class="form-control" placeholder="Enter Email Address ..."
+                                formControlName="issuerEmail" />
+                            <div class="invalid-text" *ngIf="
+                  _helpDeskForm.controls?.issuerEmail.touched &&
+                  _helpDeskForm.controls?.issuerEmail.errors
+                ">
+                                <div *ngIf="_helpDeskForm.controls?.issuerEmail.errors.required">
+                                    Email Address is required
+                                </div>
+                                <div *ngIf="
+                    !_helpDeskForm.controls?.issuerEmail.errors.required &&
+                    _helpDeskForm.controls?.issuerEmail.errors.invalidEmail
+                  ">
+                                    Email Address is invalid
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Issue Subject<span class="req">*</span></label>
+                            <select class="form-control" formControlName="issueSubject">
+                                <option value="">Select</option>
+                                <!-- <option>Login issue</option> -->
+                                <option>Showing Error page</option>
+                                <option>Website loading issue</option>
+                                <option>Not able to view schools near me</option>
+                                <option>Others</option>
+                                <!-- <option>Refund issue</option> -->
+                                <!-- <option>Payment failed</option> -->
+                                <!-- <option>Charged twice</option> -->
+                            </select>
+                            <div class="invalid-text" *ngIf="
+                  _helpDeskForm.controls?.issueSubject.touched &&
+                  _helpDeskForm.controls?.issueSubject.errors
+                ">
+                                <div *ngIf="_helpDeskForm.controls?.issueSubject.errors.required">
+                                    Subject is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="_helpDeskForm.value.issueSubject == 'Not able to view schools near me'" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label></label><br>
+                              <span style="color: rgb(107, 104, 104); font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;">Click Here to add your nearby school.<span><a style="text-decoration:underline;" routerLink="/auth/add-school"> Click here</a></span></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label>Issue Description <span class="req">*</span></label>
+                            <textarea pInputTextarea class="form-control" rows="" placeholder="Enter ..."
+                                formControlName="issueDesc" maxlength="500" #issueDescription></textarea>
+                            <small class="form-text text-muted"><code>{{ issueDescription.value.length }}</code>
+                                of
+                                <code>{{ maximumIncidentDescription }}</code>
+                                characters</small>
+                            <div class="invalid-text" *ngIf="
+                  _helpDeskForm.controls?.issueDesc.touched &&
+                  _helpDeskForm.controls?.issueDesc.errors
+                ">
+                                <small *ngIf="_helpDeskForm.controls?.issueDesc.errors.required">
+                                 Issue Description is required                              
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                        <div style="height: 10px;"></div>
+                        <!-- <div class="form-group"> -->
+                        <p-captcha siteKey="6Lck7gQoAAAAAMdMVVKVQ9o_UYcSH7aw1zevt1Is"
+                            (onResponse)="showResponse($event)" initCallback="loadCaptcha"></p-captcha>
+                        <!-- </div> -->
+                        <br>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <!-- <label for="exampleInputFile">File input</label> -->
+                            <input type="file" multiple id="exampleInputFile" class="UploadBox" name="'file[]'"
+                                #inputFile (change)="changeUploadEvent($event)" />
+                            <br />
+                            <input type="checkbox" #Isagree (change)="isAgree($event)" formControlName="isAgree" />
+                            <label>&nbsp;I agree to the
+                                <a routerLink="/auth/privacy-policy" target="_blank">
+                                    Privacy Policy</a>
+                                and
+                                <a routerLink="/auth/terms-and-conditions" target="_blank">Term & Condition.</a></label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="form-group">
+                        <button type="button" class="btn link4 mx-2" [routerLink]="['/auth/home']">Back</button>
+                        <button pButton pRipple type="button" class="btn link3 mx-2"
+                            (click)="submitData()" [disabled]="!(_helpDeskForm.valid && isAgreeChecked && isHuman)"> Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,1162 @@
+<div class="content-wrapper">
+  <p-messages></p-messages>
+  <!-- <section class="content-header">
+    <h1 *ngIf="routerState == 'edit-school'"> Edit School</h1>
+    <h1 *ngIf="routerState == 'school-profile-edit'">School Profile</h1>
+  </section> -->
+  <section class="content">
+
+    <div class="box box-success2">
+      <!-- <mat-horizontal-stepper>
+        <mat-step label="Basic profile" state="done">
+          <div class="alert alert-success">
+            <strong>Basic profile added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Address">
+          <div class="alert alert-success">
+            <strong>School address added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Level" state="chat">
+          <div class="alert alert-success">
+            <strong>School level added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Timing">
+          <div class="alert alert-success">
+            <strong>Class timing added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Documents">
+          <div class="alert alert-success">
+            <strong>Documents added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Academic performance">
+          <div class="alert alert-success">
+            <strong>Academic performance added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Infrastructure">
+          <div class="alert alert-success">
+            <strong>School Infrastructure added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Completed" completed="true" state="done">
+          <div class="alert alert-success">
+            <strong>All done.</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+      
+        <ng-template matStepperIcon="phone">
+          <mat-icon>call_end</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="chat">
+          <mat-icon>forum</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="done">
+          <mat-icon>done</mat-icon>
+        </ng-template>
+      </mat-horizontal-stepper> -->
+      <mat-horizontal-stepper [selectedIndex]="maxIndex">
+        <!-- [state]=myState[i] -->
+        <div *ngFor="let step of steps; let i=index;">
+          <mat-step [label]="step.title" [completed]="step.completed">
+            <div class="alert alert-success" *ngIf="existingSteps.length > 0">
+              <strong>{{step.msg }}</strong><i class="fa fa-check" aria-hidden="true"></i>
+            </div>
+            <div class="alert alert-warning" *ngIf="existingSteps.length === 0">
+              <strong>Please add profile info !</strong>
+            </div>
+          </mat-step>
+        </div>
+      </mat-horizontal-stepper>
+    </div>
+
+    <div class="box box-success2">
+      <div class="box-footer align-center" *ngIf="routerState == 'school-profile-edit'">
+        <!-- <button type="submit" class="btn link3 mx-2">Publish </button> -->
+        <button type="button" (click)="editButton()" title="Edit Profile" class="btn link3 mx-2"> <i
+            class="fa fa-pencil" aria-hidden="true"></i> Edit School Profile</button>
+      </div>
+    </div>
+
+
+    <!-- Basic Profile -->
+    <form [formGroup]="addSchoolForm">
+      <div class="box box-success2">
+        <div class="box-header with-border">
+          <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseOne">Basic Profile</a></h3>
+          <!-- <div *ngIf="routerState == 'school-profile-edit'">
+                <button type="button" (click)="editButton()" title="Edit Profile" class="btn btn-Request"> <i class="fa fa-pencil" aria-hidden="true"></i></button>
+              </div> -->
+        </div>
+
+        <div id="collapseOne" class="box-body panel-collapse collapse in">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School Name <span class="req">*</span> </label>
+                <input pInputText type="text" placeholder="schools name" formControlName="schoolName" class="form-control"
+                  [readonly]="!isEditBtn">
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolName.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.schoolName.errors.required">School Name is required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School ID <span class="req"></span> </label>
+                <input pInputText type="text" placeholder="schools name" formControlName="schoolId" class="form-control" readonly>
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolId.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.schoolId.errors.required">School ID is required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School Principal Name <span class="req"></span> </label>
+                <input pInputText type="text" placeholder="School Principal Name" formControlName="schoolPrincipalName"
+                  class="form-control" [readonly]="!isEditBtn">
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolPrincipalName.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.schoolPrincipalName.errors.required">School Principal
+                    Name is required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School Principal Highest Qualification <span class="req"></span> </label>
+                <input pInputText type="text" placeholder="School Principal Highest Qualification"
+                  formControlName="schoolPrincipalQualification" class="form-control" [readonly]="!isEditBtn">
+                <div class="invalid-text"
+                  *ngIf="submitted && addSchoolForm.controls.schoolPrincipalQualification.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.schoolPrincipalQualification.errors.required">School
+                    Principal Qualification is required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Contact Person First Name <span class="req">*</span> </label>
+                <input type="text" placeholder="contact person" formControlName="contactPersonFirstName"
+                  class="form-control" [readonly]="!isEditBtn">
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.contactPersonFirstName.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.contactPersonFirstName.errors.required">Contact Person
+                    First Name is required
+                  </div>
+
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Contact Person Last Name <span class="req">*</span> </label>
+                <input type="text" placeholder="contact person" formControlName="contactPersonLastName"
+                  class="form-control" [readonly]="!isEditBtn">
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.contactPersonLastName.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.contactPersonLastName.errors.required">Contact Person
+                    Last Name is required
+                  </div>
+
+                </div>
+              </div>
+            </div> -->
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School Phone No.</label>
+                <!-- <div class="form-control-width-box"> -->
+              <input pInputText  type="tel" (keypress)="keyPress($event)" maxlength="10" formControlName='contactPhone'
+                    class="form-control" placeholder="Enter Mobile No." [readonly]="!isEditBtn">
+                <!-- </div> -->
+                <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.contactPhone.errors"> -->
+                  <!-- <div *ngIf="submitted && addSchoolForm.controls.contactPhone.errors.required">Mobile No. is required -->
+              </div>
+                  <!-- <div
+                    *ngIf="addSchoolForm.controls.contactPhone.errors.pattern || addSchoolForm.controls.contactPhone.errors.maxlength || addSchoolForm.controls.contactPhone.errors.minlength">
+                    Invalid Mobile No.</div> -->
+
+                <!-- </div> -->
+              <!-- </div> -->
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School Email.</label>
+                <input pInputText type="email" placeholder="email" formControlName="contactEmail" class="form-control"
+                  [readonly]="!isEditBtn">
+                <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.contactEmail.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.contactEmail.errors.required">Email is required
+                  </div> -->
+                  <!-- <div *ngIf="submitted && addSchoolForm.controls.contactEmail.errors.email">Invalid
+                    Email Format
+                  </div> -->
+                </div>
+             </div>
+            <!-- </div> -->
+
+            <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <label>Board </label>
+              <ejs-multiselect id='multiselectelement' [dataSource]='_boardList' placeholder='--Select Board--'
+                formControlName="board"></ejs-multiselect>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <label>Medium </label>
+              <ejs-multiselect id='multiselectelement' [dataSource]='_mediumList' placeholder='--Select Medium--'
+                formControlName="medium"></ejs-multiselect>
+            </div> -->
+
+            <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Accreditation by </label>
+                <input type="text" placeholder="Accreditation by" formControlName="accreditationBy"
+                  class="form-control" [readonly]="!isEditBtn">
+
+              </div>
+            </div> -->
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label for="dateformat">Establishment Year </label>
+                <input type="date" placeholder="establishmentYear" formControlName="establishmentYear"
+                class="form-control" [max]="getToday()">
+              </div>
+                <!-- <p-calendar dateFormat="dd-mm-yy" inputId="dateformat" [style]="{'width':'100%','margin-top': '0px'}" [inputStyle]="{'width':'100%','margin-top': '0px'}" ormControlName="establishmentYear" placeholder="dd-mm-yy" [maxDate]="maxDate"></p-calendar> -->
+                <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                    <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                    </div>
+                    
+                </div> -->
+            </div>
+
+            <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group calendar-icon xx">
+                <label>Overall Admission Start Date</label>
+                <input type="date" class="form-control" formControlName="admissionStartDate" [readonly]="!isEditBtn">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group calendar-icon xx">
+                <label> Overall Admission End Date </label>
+                <input type="date" class="form-control" formControlName="admissionEndDate" [readonly]="!isEditBtn">
+              </div>
+            </div> -->
+
+
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group FeaturedboxSchool">
+                <label>School Type</label>
+                <!-- <select class="form-control" formControlName="schoolType" [attr.disabled]="!isEditBtn ? '' : null">
+                  <option value="null">select</option>
+                  <option *ngFor="let data of _schoolTypeList" value="{{data}}">{{ data }}</option>
+                </select> -->
+                <ejs-multiselect id='multiselectelement23' [dataSource]='_schoolTypeList' placeholder='--Select SchoolType--'
+                formControlName="schoolType"></ejs-multiselect>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School Board </label>
+                <ejs-multiselect id='multiselectelement' [dataSource]='_boardList' placeholder='--Select Board--'
+                  formControlName="schoolBoard" [readonly]="!isEditBtn"></ejs-multiselect>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School Medium </label>
+                <ejs-multiselect id='multiselectelement' [dataSource]='_mediumList' placeholder='--Select Medium--'
+                  formControlName="schoolMedium" [readonly]="!isEditBtn"></ejs-multiselect>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Message from Principal </label>
+                <textarea pInputTextarea type="text" placeholder="Message from Principal" formControlName="messageFromPrincipal"
+                  class="form-control" [readonly]="!isEditBtn"></textarea>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group FeaturedboxSchool">
+                <label>Max Fees </label>
+                <input pInputText type="text" placeholder="School Max Fees" formControlName="maxFees" class="form-control"
+                  [readonly]="!isEditBtn">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group FeaturedboxSchool">
+                <label>Min Fees </label>
+                <input pInputText type="text" placeholder="School Min Fees" formControlName="minFees" class="form-control"
+                  [readonly]="!isEditBtn">
+              </div>
+            </div> 
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label>About the school </label>
+                <!-- <textarea type="text" pInputTextarea placeholder="About the school" formControlName="aboutSchool" class="form-control"
+                  [readonly]="!isEditBtn"></textarea> -->
+                  <ejs-richtexteditor   formControlName="aboutSchool" [toolbarSettings]="tools"
+                  [quickToolbarSettings]="quickTools"
+                  style="z-index: 1000; width: 100%"></ejs-richtexteditor>  
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group FeaturedboxSchool">
+                <label>School Rating </label>
+                <select class="form-control" formControlName="schoolRating" [attr.disabled]="!isEditBtn ? '' : null">
+                  <option value="0">select</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group FeaturedboxSchool">
+                <label>Featured School </label> <br>
+                <label class="el-switch">
+                  <input formControlName="featuredSchool" type="checkbox" name="switch" [readonly]="!isEditBtn">
+                  <span class="el-switch-style"></span>
+                </label>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group FeaturedboxSchool">
+                <label>Custom Admission Form </label> <br>
+                <label class="el-switch">
+                  <input formControlName="customAdmissionForm" type="checkbox" name="switch" [readonly]="!isEditBtn">
+                  <span class="el-switch-style"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Initiators Name <span class="req">*</span> </label>
+                <input pInputText type="text" placeholder="Initiators Name" formControlName="initiatorsName"
+                  class="form-control" [readonly]="!isEditBtn">
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.initiatorsName.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.initiatorsName.errors.required">Initiators
+                    Name is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Initiators Email.<span class="req">*</span></label>
+                <input pInputText type="email" placeholder="email" formControlName="initiatorsEmail" class="form-control"
+                  [readonly]="!isEditBtn">
+                  <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.initiatorsEmail.errors">
+                    <div *ngIf="submitted && addSchoolForm.controls.initiatorsEmail.errors.required">Initiators
+                      Email is required
+                    </div>
+                  </div>   
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Initiators Phone No.</label>
+              <input pInputText  type="tel" (keypress)="keyPress($event)" maxlength="10" formControlName='initiatorsPhoneNo'
+                    class="form-control" placeholder="Enter Mobile No." [readonly]="!isEditBtn">
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="routerState == 'edit-school' && _userDetails?.userType === 'ADMIN_USER'"
+            class="box-footer align-center">
+            <button pButton pRipple type="submit" class="p-button-info mx-1 btn link3" (click)="submitUpdateSchoolRecord('1')">Update </button>
+          </div>
+
+          <div *ngIf="isEditBtn == true && _userDetails?.userType !== 'ADMIN_USER'" class="box-footer align-center">
+            <button pButton pRipple type="submit" class="mx-1 btn link3 p-button-info" (click)="submitUpdateSchoolRecord('1')">Update </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="panel-group" id="accordion">
+
+      <!-- Contact Person -->
+      <form [formGroup]="contactForm">
+        <div class="box box-success2">
+          <div class="box-header with-border">
+            <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+                data-parent="#accordion" href="#collapseContact">Contact Person</a></h3>
+          </div>
+
+          <div id="collapseContact" class="box-body panel-collapse collapse">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>First Name<span class="req">*</span> </label>
+                  <input pInputText type="text" placeholder="Enter First Name" formControlName="contactPersonFirstName"
+                    class="form-control" [readonly]="!isEditBtn">
+                  <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is
+                        required
+                      </div>
+                    </div> -->
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>Last Name<span class="req">*</span> </label>
+                  <input pInputText type="text" placeholder="Enter Last Name" formControlName="contactPersonLastName"
+                    class="form-control" [readonly]="!isEditBtn">
+                  <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is
+                        required
+                      </div>
+                    </div> -->
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>E-mail<span class="req">*</span> </label>
+                  <input pInputText type="text" placeholder="Enter email" formControlName="contactEmail" class="form-control"
+                    [readonly]="!isEditBtn">
+                  <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is
+                        required
+                      </div>
+                    </div> -->
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>Phone<span class="req">*</span> </label>
+                  <div class="form-control-width-box">
+                    <select name="country" formControlName='phoneCountryCode' class="form-control form-control-width1"
+                      [attr.disabled]="!isEditBtn ? '' : null">
+                      <option value="+91">+91</option>
+                      <!-- <option value="+1">+1</option>
+                          <option value="+44">+44</option>
+                          <option value="+1-340">+1-340</option> -->
+                    </select>
+                    <input pInputText type="tel" (keypress)="keyPress($event)" maxlength="10" formControlName='contactPhone'
+                      class="form-control form-control-width2" placeholder="Enter Mobile No." [readonly]="!isEditBtn">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="routerState == 'edit-school' && _userDetails?.userType === 'ADMIN_USER'"
+              class="box-footer align-center">
+              <button pButton pRipple type="submit" *ngIf="_schoolsDetails?.contactUser !== null" class="btn link3 mx-1 p-button-info"
+                (click)="updateContactInfo()" [disabled]="!contactForm.valid">Update User</button>
+              <button pButton pRipple type="submit" *ngIf="_schoolsDetails?.contactUser === null" class="btn link3 mx-1 p-button-info"
+                (click)="updateContactInfo()" [disabled]="!contactForm.valid">Activate User </button>
+            </div>
+
+            <div *ngIf="isEditBtn == true && _userDetails?.userType !== 'ADMIN_USER'" class="box-footer align-center">
+              <button pButton pRipple type="submit" *ngIf="_schoolsDetails?.contactUser !== null" class="btn link3 mx-1 p-button-info"
+                (click)="updateContactInfo()" [disabled]="!contactForm.valid">Update User</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- Address -->
+      <form [formGroup]="addSchoolForm">
+        <div class="box box-success2">
+          <div class="box-header with-border">
+            <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+                data-parent="#accordion" href="#collapseTwo">School Address</a></h3>
+          </div>
+          <div id="collapseTwo" class="box-body panel-collapse collapse">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label> Address Line 1 <span class="req">*</span> </label>
+                  <input pInputText type="text" placeholder="flat, house no., building, apartment" formControlName="schoolAddress"
+                    class="form-control" [readonly]="!isEditBtn">
+                  <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                    <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is
+                      required
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label> Address Line 2 </label>
+                  <input pInputText type="text" placeholder="Area, Colony, Street, Sector" formControlName="addressLineTwo"
+                    class="form-control" [readonly]="!isEditBtn">
+                  <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>Landmark </label>
+                  <input pInputText type="text" placeholder="Area, Colony, Street, Sector" formControlName="landMark"
+                    class="form-control" [readonly]="!isEditBtn">
+                  <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>Town/City <span class="req">*</span></label>
+                  <input pInputText type="text" placeholder="Area, Colony, Street, Sector" formControlName="city"
+                    class="form-control" [readonly]="!isEditBtn">
+                  <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.city.errors">
+                    <div *ngIf="submitted && addSchoolForm.controls.city.errors.required">School City is required
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group FeaturedboxSchool">
+                  <label>State <span class="req">*</span></label>
+                  <select class="form-control" formControlName="state" (change)="onState()"
+                    [attr.disabled]="!isEditBtn ? '' : null">
+                    <option value="null">Select</option>
+                    <option *ngFor="let data of stateList" value="{{ data.id }}">{{ data.stateName }}</option>
+                  </select>
+                  <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.state.errors">
+                    <div *ngIf="submitted && addSchoolForm.controls.state.errors.required">School State is required
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group FeaturedboxSchool">
+                  <label>District <span class="req">*</span></label>
+                  <select class="form-control" formControlName="district" [attr.disabled]="!isEditBtn ? '' : null">
+                    <option *ngFor="let data of _districtList" value="{{ data.id }}">{{ data.districtName }}</option>
+                  </select>
+                  <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.district.errors">
+                    <div *ngIf="submitted && addSchoolForm.controls.district.errors.required">School State is required
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>Postal Code <span class="req">*</span></label>
+                  <input pInputText type="text" placeholder="Postal Code" formControlName="postalCode" class="form-control"
+                    [readonly]="!isEditBtn">
+                  <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.postalCode.errors">
+                    <div *ngIf="submitted && addSchoolForm.controls.postalCode.errors.required">School Postal Code is
+                      required
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div *ngIf="routerState == 'edit-school' && _userDetails?.userType === 'ADMIN_USER'"
+              class="box-footer align-center">
+              <!-- <button type="submit" class="btn link2 button_effects mx-1 button-size"
+                  [routerLink]="['/manage-school/school-list']"> Back </button> -->
+              <button pButton pRipple type="submit" class="btn link3 p-button-info" (click)="submitUpdateSchoolRecord('2')">Update </button>
+            </div>
+
+            <div *ngIf="isEditBtn == true && _userDetails?.userType !== 'ADMIN_USER'" class="box-footer align-center">
+              <button pButton pRipple type="submit" class="btn link3 mx-1 p-button-info" (click)="submitUpdateSchoolRecord('2')">Update </button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- School Level-->
+      <form [formGroup]="addSchoolForm">
+        <div class="box box-success2">
+          <div class="box-header with-border">
+            <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+                data-parent="#accordion" href="#collapseThree">Class Level Details</a></h3>
+            <!-- <div class="box-tools pull-right">
+                <div *ngIf="isEditBtn">
+                  <a *ngIf="_boardDtl > 0"><button type="button" (click)="addSchoolTime()" title="Add School Time"
+                      class="btn link3 mx-1">Add School Time</button></a>
+                </div>
+                &nbsp;&nbsp;
+              </div> -->
+            <div class="clearfix"></div>
+          </div>
+
+          <div id="collapseThree" class="box-body panel-collapse collapse">
+            <div class="tablesection">
+              <div class="table-responsive">
+                <table class="table table-striped table-striped Timingbox">
+                  <thead>
+                    <tr>
+                      <!-- <th width="120">Academic Year </th> -->
+                      <th width="">School Level Name</th>
+                      <!-- <th width="">Medium</th> -->
+                      <th width="">Classes From</th>
+                      <th width="">Classes Up To</th>
+                      <!-- <th width="">Stream</th> -->
+                      <th width="">Additional Info</th>
+                      <th width="60" style="text-align: center;" *ngIf="isEditBtn">Action</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <ng-container formArrayName="schoolLevelDtlVo"
+                      *ngFor="let result of parameterListArray.controls;let i=index">
+                      <tr [formGroupName]="i">
+                        <!-- <td>{{ result.value.academicYear }}</td> -->
+                        <td>
+                          <select class="form-control" formControlName="schoolLevelName" #sclLevelValue
+                            (change)="selectSclLevel(sclLevelValue.value, i)" [attr.disabled]="!isEditBtn ? '' : null">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of _schoolLevelInfoList" [value]="data.schoolLevelName">
+                              {{data.schoolLevelName}}</option>
+                          </select>
+                          <!-- <div *ngIf="submitted == true && result.value.boardName == ''" class="invalid-text">Board is required</div> -->
+                        </td>
+
+                        <td>
+                          <!-- <select class="form-control" formControlName="medium" [attr.disabled]="!isEditBtn ? '' : null">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of _mediumList" value="{{data}}">{{data}}</option>
+                          </select>
+                          <div *ngIf="submitted == true && result.value.medium == ''" class="invalid-text">Medium is required</div> -->
+                          <input pInputText type="text" placeholder="" class="form-control" formControlName="fromClass" readonly>
+                        </td>
+
+                        <td>
+                          <!-- <select class="form-control" (change)="classFromChange(i,result.value.tempStartCls)" formControlName="tempStartCls" [attr.disabled]="!isEditBtn ? '' : null">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of _classFromList" value="{{data.slNo}}/{{data.classDisplay}}">{{data.classDisplay}}</option>
+                          </select>
+                          <div *ngIf="submitted == true && result.value.tempStartCls == ''" class="invalid-text">Classes From is required</div> -->
+                          <input pInputText type="text" placeholder="" formControlName="toClass" class="form-control" readonly>
+                        </td>
+
+                        <!-- <td>
+
+                          <ejs-multiselect id='multiselectelement' [dataSource]='result.value.tempStream'
+                            placeholder='--Select Stream--' formControlName="stream">
+                          </ejs-multiselect>
+
+                        </td> -->
+                        <td>
+                          <!-- <select class="form-control" (change)="classUpToChange(i,result.value.tempEndClass)" formControlName="tempEndClass" [attr.disabled]="!isEditBtn ? '' : null">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of _uptoClassList" value="{{data.slNo}}/{{data.classDisplay}}">{{data.classDisplay}}</option>
+                          </select>
+                          <div *ngIf="submitted == true && result.value.tempEndClass == ''" class="invalid-text">Classes Upto is required</div> -->
+                          <input pInputText type="text" placeholder="" formControlName="additionalInfo" class="form-control"
+                            [readonly]="!isEditBtn">
+                        </td>
+
+
+
+                        <td style="text-align: center;" *ngIf="isEditBtn">
+                          <button pButton pRipple icon="pi pi-plus" *ngIf="i == 0" type="button" (click)="addBlankParameterList(1)"
+                            class="p-button-text p-button-outlined"></button>
+                          <button pButton pRipple *ngIf="i != 0" icon="pi pi-trash" type="button" (click)="removeRow(i)" class="p-button-text p-button-danger p-button-outlined"></button>
+                        </td>
+                      </tr>
+                    </ng-container>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div *ngIf="routerState == 'edit-school' && _userDetails?.userType === 'ADMIN_USER'"
+              class="box-footer align-center">
+              <button pButton pRipple type="submit" class="btn link3 mx-1 p-button-info" (click)="submitUpdateSchoolRecord('3')">Update </button>
+            </div>
+
+            <div *ngIf="isEditBtn == true && _userDetails?.userType !== 'ADMIN_USER'" class="box-footer align-center">
+              <button pButton pRipple type="submit" class="btn link3 mx-1 p-button-info" (click)="submitUpdateSchoolRecord('3')">Update </button>
+            </div>
+          </div>
+
+
+        </div>
+      </form>
+
+      <!-- School Timing -->
+      <div class="box box-success2">
+        <div class="box-header with-border">
+          <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseFour">School Timing</a></h3>
+        </div>
+        <div id="collapseFour" class="box-body panel-collapse collapse">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <!-- <div class="">
+                  <p>{{ errMsg }}</p>
+                </div> -->
+              <div *ngIf="errMsg !== ''" class="alert alert-danger" style="margin-bottom: 0;">
+                <strong>{{ errMsg }}</strong>
+              </div>
+              <form [formGroup]="_schoolForm">
+
+                <div>
+                  <div>
+                    <div style="text-align: right; margin: 5px 0;">
+                      <!-- <button  type="button" (click)="addBlankParameterListTime()" class="btn btn-warning"><i class="fa fa-plus" aria-hidden="true"></i></button> -->
+                    </div>
+                    <div class="tablesection">
+                      <div class="table-responsive">
+                        <table class="table table-striped table-striped Timingbox">
+                          <thead>
+                            <tr>
+                              <th width="">School Level Name</th>
+                              <th width="">Start Time</th>
+                              <th width="">End Time</th>
+                              <th width="">Additional Info</th>
+                              <th width="100" *ngIf="isEditBtn == true" style="text-align: center;">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                            <ng-container formArrayName="schoolTimingDtlVo"
+                              *ngFor="let result of parameterListArrayTime.controls;let i=index">
+                              <tr [formGroupName]="i">
+                                <td>
+                                  <select class="form-control" formControlName="schoolLevelName"
+                                    [attr.disabled]="!isEditBtn ? '' : null">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let data of _schoolLevelInfoListTime"
+                                      value="{{data.schoolLevelName}}">{{data.schoolLevelName}}</option>
+                                  </select>
+                                  <div *ngIf="isSubmit == true && result.value.schoolLevelName == ''"
+                                    class="invalid-text">School Level is required</div>
+                                </td>
+
+                                <td>
+                                  <div class="form-group">
+                                    <!-- <input pInputText formControlName="startTime" class="form-control" type="time"
+                                      [readonly]="!isEditBtn" min="06:00" max="12:00" (change)="Validate(i,result.value.startTime,result.value.endTime)"> -->
+                                      <ejs-timepicker formControlName="startTime"  [format]='customFormat' type="time" [readonly]="!isEditBtn"></ejs-timepicker>
+                                  </div>
+                                  <div *ngIf="isSubmit == true && result.value.startTime == ''" class="invalid-text">
+                                    Start Time is required</div>
+                                </td>
+                                <td>
+                                  <div class="form-group time-icon">
+                                    <!-- <input pInputText formControlName="endTime" class="form-control" type="time"
+                                      [readonly]="!isEditBtn" (change)="Validate(i,result.value.startTime,result.value.endTime)"> -->
+                                      <ejs-timepicker formControlName="endTime"  [format]='customFormat' type="time" [readonly]="!isEditBtn"></ejs-timepicker>
+                                  </div>
+                                  <div *ngIf="isSubmit == true && result.value.endTime == ''" class="invalid-text">End
+                                    Time is required</div>
+                                    <!-- <div *ngIf="!result.get('endTime').valid">End time should be maintain 30 min gap</div>
+   -->
+                                </td>
+                                <td>
+                                  <div class="form-group">
+                                    <textarea pInputTextarea class="form-control" formControlName="additionalInfo"
+                                      [readonly]="!isEditBtn"></textarea>
+                                  </div>
+
+                                </td>
+                                <td width="100" style="text-align: center;" *ngIf="isEditBtn == true">
+                                  <button pButton pRipple type="button" icon="pi pi-plus" *ngIf="i == 0" (click)="addBlankParameterListTime()"
+                                    class="p-button-text p-button-outlined"></button>
+                                  <!-- *ngIf="i != 0" -->
+                                  <button pButton pRipple icon="pi mx pi-trash" (click)="removeRowTime(result.value.id, i)" type="button"
+                                    class="btn p-button-text p-button-outlined p-button-danger"></button>
+
+
+                                </td>
+                              </tr>
+                            </ng-container>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- <div class="box-footer">
+                      <div class="pull-left">
+        
+                      </div>
+                      <div class="pull-right">
+                        <button type="button" (click)="addBlankParameterList()" class="btn btn-warning">Add Row</button>
+                        &nbsp;&nbsp;
+                      </div>
+                      <div class="clearfix"></div>
+                    </div> -->
+
+                  <div class="box-footer">
+                    <div class="text-center">
+                      <!-- <button type="button" routerLink="/manage-school/timing-list" class="btn link2 mx-1">Cancel</button> -->
+                      <button pButton pRipple type="button" *ngIf="isEditBtn == true" (click)="submitTiming('4')"
+                        class="btn link3 mx-1 p-button-info">Update</button>
+
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Media Upload -->
+      <div class="box box-success2">
+        <div class="box-header with-border">
+          <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseFive">School Media</a></h3>
+        </div>
+        <div id="collapseFive" class="box-body panel-collapse collapse">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>School Logo </label><br>
+                <span style="font-size: 13px; color:#2098d1;"><i> Acceptable file type .jpg, .jpeg, .png / Size : Max
+                    100kb / Dimension
+                    is 100px X 100px </i></span>
+                <input #logoInput type="file" id="myFile" name="'file[]'"
+                  (change)="uploadSchoolLogo($event,'school_logo',_schoolLogoUrl.fileId,100000,logoInput)"
+                  [attr.disabled]="!isEditBtn ? '' : null">
+                <div class="School_logo_box" *ngIf="_schoolLogoUrl.fileId != 0">
+                  <button type="button" class="btn "></button>
+                  <!-- <button type="button" (click)="deleteImageFile(_schoolLogoUrl.fileId)" class="btn "><i class="fa fa-times"aria-hidden="true"></i></button> -->
+                  <img src="{{_schoolLogoUrl.filePath}}" alt="">
+                </div>
+                <span *ngIf="_logoInvalidMsg != ''" class="invalid-text">{{ _logoInvalidMsg }}</span>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>School Banner </label> <br>
+                <span style="font-size: 13px; color:#2098d1;"><i>Acceptable file type .jpg, .jpeg, .png / Size : Max
+                    400kb / Dimension
+                    is 1000px X 500px</i></span>
+                <input type="file" #bannerInput id="myFile" name="file[]"
+                  (change)="uploadSchoolBanner($event,'school_banner',_schoolBannerUrl.fileId,400000,bannerInput)"
+                  [attr.disabled]="!isEditBtn ? '' : null">
+                <div class="School_Banner_box" *ngIf="_schoolBannerUrl.fileId != 0">
+                  <button type="button" class="btn "></button>
+
+                  <img src="{{_schoolBannerUrl.filePath}}" alt="">
+                </div>
+                <span *ngIf="_bannerInvalidMsg != ''" class="invalid-text">{{ _bannerInvalidMsg }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label>School Gallery </label>
+                <input type="file" id="file" multiple (change)="uploadMultipleFile($event,'school_gallery')"
+                  [attr.disabled]="!isEditBtn ? '' : null">
+                <br>
+                <div class="SchoolGallerybox">
+                  <ul>
+                    <li *ngFor="let data of _schoolGalleryUrl">
+                      <button type="button" (click)="deleteImageFile(data.fileId)" class="btn "><i class="fa fa-times"
+                          aria-hidden="true"></i></button>
+                      <img src="{{ data.filePath }}" alt="">
+                    </li>
+                    <div class="clearfix"></div>
+                  </ul>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Docs Upload -->
+      <div class="box box-success2">
+        <div class="box-header with-border">
+          <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseSix">School Documents</a></h3>
+        </div>
+        <div id="collapseSix" class="box-body panel-collapse collapse">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>NOC of Department of Education / Local Bodies (Panchayat, Corporation)</label>
+                <input type="file" id="myFile" name="file[]"
+                  (change)="uploadSingleFile($event,'registration_Certification',_schoolRegCertificateUrl.fileId)"
+                  [attr.disabled]="!isEditBtn ? '' : null">
+                <div class="School_Banner_box" *ngIf="_schoolRegCertificateUrl.fileId != 0">
+                  <button type="button" class="btn "></button>
+                  <img src="{{_schoolRegCertificateUrl.filePath}}" alt="">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Certificate of Affiliation Board</label>
+                <input type="file" id="myFile" name="file[]"
+                  (change)="uploadSingleFile($event,'license_Certificate',_bussinessLicenseUrl.fileId)"
+                  [attr.disabled]="!isEditBtn ? '' : null">
+                <div class="School_Banner_box" *ngIf="_bussinessLicenseUrl.fileId != 0">
+                  <button type="button" class="btn "></button>
+                  <img src="{{_bussinessLicenseUrl.filePath}}" alt="">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label> Downloadable School Brochure </label>
+                <input type="file" id="myFile" name="file[]"
+                  (change)="uploadSingleFile($event,'school_Brochure',_schoolBrochureUrl.fileId)"
+                  [attr.disabled]="!isEditBtn ? '' : null">
+                <h2 *ngIf="_schoolBrochureUrl" class="download"> <a href="{{_schoolBrochureUrl.filePath}}" download>{{
+                    (_schoolBrochureUrl.fileName ? (_schoolBrochureUrl.fileName.split('-ZQZGTHYRDRT-')[1]) : '')
+                    }}</a>
+                </h2>
+
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" *ngIf="_schoolsDetails?.customAdmissionForm === 'Y'">
+              <div class="form-group">
+                <label>Custom Admission Form </label>
+                <input type="file" id="myFile" name="file[]"
+                  (change)="uploadSingleFile($event,'Custom_Form',_schoolAdmissionFormUrl.fileId)"
+                  [attr.disabled]="!isEditBtn ? '' : null">
+                <div class="School_Banner_box" *ngIf="_schoolAdmissionFormUrl.fileId != 0">
+                  <button type="button" class="btn "></button>
+                  <img src="{{_schoolAdmissionFormUrl.filePath}}" alt="">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Academic Performance -->
+      <div class="box box-success2">
+        <div class="box-header with-border">
+          <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseSeven">Academic Achievement</a></h3>
+        </div>
+        <div id="collapseSeven" class="box-body panel-collapse collapse">
+          <div class="box-header with-border bor">
+            <!-- <div class="pull-left">
+                <h3 class="box-title card-text">Academic Performances</h3>
+              </div> -->
+            <div class="pull-right">
+              <a [routerLink]="['/manage-school/academic-save', _schoolID]">
+                <button pButton pRipple type="button" *ngIf="isEditBtn == true" title="Add Academic" class="btn link3 mx-1 p-button-info">Add
+                  Achievement</button> </a>
+              &nbsp;&nbsp;
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="box-body">
+            <div class="tablesection">
+              <div class="table-responsive">
+                <table class="table table-striped table-striped">
+                  <thead>
+                    <tr>
+                      <!-- <th width="70" style="text-align: center;">Sl No.</th> -->
+                      <th width="200">Academic Year </th>
+                      <!-- <th width="300">Performance Title</th> -->
+                      <th >Academic Performance</th>
+                      <th width="100" *ngIf="isEditBtn == true">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor='let data of _schoolAcademicList; let i = index'>
+                      <!-- <td align="center">{{ i+1 }}</td> -->
+                      <td width="200">{{ data.academicYear }}</td>
+                      <!-- <td width="300">{{ data.performanceTitle }} </td> -->
+                      <td >
+                        <!-- <ejs-richtexteditor id="defaultRTE1" [value]="data?.academicInformation"  [toolbarSettings]="tools1"
+                        [quickToolbarSettings]="quickTools1"
+                        style="z-index: 100; width: 100%;"></ejs-richtexteditor> -->
+                        <div [innerHTML]="data?.academicInformation"></div>
+                      </td>
+                      <td *ngIf="isEditBtn == true"><button   pButton pRipple  type="button"
+                          class="btn p-button-text p-button-outlined mx-1" icon="pi pi-pencil" [routerLink]="['/manage-school/academic-edit/',data?.id,_schoolID]"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" (click)="deleteAcademic(data.id, i)" class="btn p-button-text p-button-outlined p-button-danger"></button>
+                      </td> 
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infrastructures -->
+      <div class="box box-success2">
+        <div class="box-header with-border">
+          <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseEight">Infrastructure</a></h3>
+        </div>
+        <div id="collapseEight" class="box-body panel-collapse collapse">
+          <div class="box-header with-border">
+            <div class="pull-left">
+            </div>
+            <div class="pull-right">
+              <a [routerLink]="['/manage-infrastructure/manage-school/add-infrastructure', _schoolID]">
+                <button pButton pRipple type="button" *ngIf="isEditBtn == true" title="Add Infrastructure" class="btn link3 mx-1 p-button-info">Add
+                  Infrastructure</button>
+              </a>
+              &nbsp;&nbsp;
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="box-body">
+            <div class="tablesection">
+              <div class="table-responsive">
+                <table class="table table-striped table-striped">
+                  <thead>
+                    <tr>
+                      <!-- <th width="80" style="text-align: center;">Sl No.</th> -->
+                      <th width="200">Infrastructure Name </th>
+                      <th>Infrastructure Description </th>
+                      <th *ngIf="isEditBtn == true">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of _schoolsInfraStList; let i = index">
+                      <!-- <td align="center">{{ i+1 }}</td> -->
+                      <td>{{ data.infraName }}</td>
+                      <td>{{ data.infraDesc }}</td>
+                      <td style="text-align: center;" *ngIf="isEditBtn == true">
+                        <button pButton pRipple icon="pi pi-trash" type="button" (click)="deleteInfraSt(data.id, i)" class="btn p-button-text p-button-outlined p-button-danger">
+                        </button>
+                      </td>
+                    </tr>
+
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div  class="box box-default">
+          <div class="box-footer align-center">
+            <button type="submit" class="btn link2 button_effects mx-1 button-size" [routerLink]="['/manage-school/school-list']" > Back  </button>            
+            <button type="submit" class="btn link1 button_effects mx-1 button-size" (click)="submitUpdateSchoolRecord()">Update </button>
+          </div>
+        </div> -->
+    <!-- </form> -->
+    <div class="box-footer" *ngIf="_userDetails?.userType === 'ADMIN_USER'">
+      <div class="text-center">
+        <button pButton pRipple type="button" [routerLink]="['/manage-school/school-list/active&in-active']" class="btn p-button-rounded btn-Request p-button-info p-button-outlined">Close</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Academic</h4>
+      </div>
+      <form [formGroup]="_academicForm">
+
+        <div class="modal-body">
+          <div class="row">
+
+
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+              <div class="form-group">
+                <label>Academic Year </label>
+                <input pInputText formControlName='academicYear' type="text" class="form-control" placeholder="Academic Year">
+                <div *ngIf="isSubmit && _academicForm.controls.academicYear.errors"
+                  class="invalid-text ng-star-inserted">Academic Year is required</div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+              <div class="form-group">
+                <label>Performance Title</label>
+                <input pInputText formControlName='performanceTitle' type="text" class="form-control"
+                  placeholder="Performance Title">
+                <div *ngIf="isSubmit && _academicForm.controls.performanceTitle.errors"
+                  class="invalid-text ng-star-inserted">Performance Title is required</div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Academic Performance</label>
+                <!-- <input pInputText formControlName='academicInformation' type="text" class="form-control" placeholder="No Of Student"> -->
+                <ejs-richtexteditor id="defaultRTE"  formControlName="academicInformation" [toolbarSettings]="tools"
+                                    [quickToolbarSettings]="quickTools" required
+                                    style="z-index: 1000; width: 100%"></ejs-richtexteditor>
+                <div *ngIf="isSubmit && _academicForm.controls.academicInformation.errors"
+                  class="invalid-text ng-star-inserted">Academic Information is required</div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="text-center">
+            <button pButton pRipple type="submit" class="btn link2 mx-1 p-button-info p-button-outlined" data-dismiss="modal">Close</button>
+            <button pButton pRipple type="submit" (click)="updateAcademic()" class="mx-1 btn link3 p-button-info"
+              style="margin-bottom: 5px;">Update</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>

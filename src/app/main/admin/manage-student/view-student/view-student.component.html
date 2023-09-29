@@ -1,0 +1,65 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1> User Details</h1>
+  </section>
+  <section class="content">
+    <form [formGroup]="addUserForm">
+      <div class="box box-success2">
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>First Name Name </label>
+                <input type="text" placeholder="First name" formControlName="firstName" class="form-control" readonly>
+
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Last Name </label>
+                <input type="text" placeholder="Last Name" formControlName="lastName" class="form-control" readonly>
+
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Phone No. </label>
+                <div class="form-control-width-box">
+                  <select name="country" formControlName='phoneCountryCode' class="form-control form-control-width1"
+                    [attr.disabled]=true>
+                    <option value="+91">+91</option>
+                    <option value="+1">+1</option>
+                    <option value="+44">+44</option>
+                    <option value="+1-340">+1-340</option>
+                  </select>
+                  <input type="tel" maxlength="10" formControlName='phone' class="form-control form-control-width2"
+                    placeholder="Enter Mobile No." readonly>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Email. </label>
+                <input type="email" placeholder="email" formControlName="email" class="form-control" readonly>
+
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>User Type. </label>
+                <input type="text" placeholder="User Type" formControlName="userType" class="form-control" readonly>
+
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+
+    </form>
+  </section>
+</div>

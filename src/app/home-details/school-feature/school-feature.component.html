@@ -1,0 +1,51 @@
+<section class="inner-banner-section inner-banner-search">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Featured Schools</h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="breadcrumbs_section">
+          <ul>
+            <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+            <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+            <li><button type="submit">Featured Schools</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div *ngIf="featuredSchoolLength==0" style="width: 50%; margin: 5rem auto;" class="no-record-found">
+  <div class="alert alert-warning" role="alert">
+    No records found!
+  </div>
+</div>
+<section class="featured-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div *ngFor="let data of _featuredList; let i=index" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <div class="Featuredbox" [routerLink]="['/auth/search-details/search-school-details', data.schoolNameSlug]">
+          <h2>{{ data.schoolName }}</h2>
+          <div class="featuredimgbox">
+            <!-- <img src="{{ data.schoolBannerPath }}" alt=""> -->
+            <img *ngIf="data?.schoolBannerPath != null" [src]="data?.schoolBannerPath" alt="">
+            <img *ngIf="data?.schoolBannerPath == null" src="assets/images/DefaultBanner.jpg" alt="">
+          </div>
+          <div class="featuredtextbox">
+            <p> {{ data.schoolAddress }} {{ data.city}} {{ data.state }} {{ data.postalCode }}</p>
+          </div>
+          <p style="margin: 0;"><strong>Board : {{data?.schoolBoard}}</strong> </p>
+          <p hidden><strong>Total Fees : </strong> </p>
+          <a href="{{ data.schoolBrochurePath }}" *ngIf=" data.schoolBrochurePath " download="" target="_blank"
+            title="download Brochure pdf"><label class="btn link4"> BROCHURE <i class="fa fa-download"
+                aria-hidden="true"></i> </label></a>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</section>

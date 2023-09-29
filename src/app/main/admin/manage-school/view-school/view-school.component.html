@@ -1,0 +1,947 @@
+<div class="content-wrapper">
+  <!-- <section class="content-header">
+    <h1 *ngIf="routerState == 'edit-school'"> Edit School</h1>
+    <h1 *ngIf="routerState == 'school-profile-edit'">School Profile</h1>
+  </section> -->
+  <section class="content">
+
+     <!-- <div class="box box-success2">
+     <mat-horizontal-stepper>
+        <mat-step label="Basic profile" state="done">
+          <div class="alert alert-success">
+            <strong>Basic profile added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Address">
+          <div class="alert alert-success">
+            <strong>School address added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Level" state="chat">
+          <div class="alert alert-success">
+            <strong>School level added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Timing">
+          <div class="alert alert-success">
+            <strong>Class timing added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Documents">
+          <div class="alert alert-success">
+            <strong>Documents added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Academic performance">
+          <div class="alert alert-success">
+            <strong>Academic performance added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Infrastructure">
+          <div class="alert alert-success">
+            <strong>School Infrastructure added</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+
+        <mat-step label="Completed" completed="true" state="done">
+          <div class="alert alert-success">
+            <strong>All done.</strong><i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+        </mat-step>
+      
+        <ng-template matStepperIcon="phone">
+          <mat-icon>call_end</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="chat">
+          <mat-icon>forum</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="done">
+          <mat-icon>done</mat-icon>
+        </ng-template>
+      </mat-horizontal-stepper> 
+
+    </div>-->
+
+    <div class="box box-default">
+      <div class="box-footer align-center">
+        <button type="submit" class="btn link3" [routerLink]="['/manage-school/school-list/active&in-active']"> Back </button>
+
+      </div>
+    </div>
+    <!-- Basic Profile -->
+    <form [formGroup]="addSchoolForm">
+      <div class="box box-success2">
+        <div class="box-header with-border">
+          <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseOne">Basic Profile</a></h3>
+          <div *ngIf="routerState == 'school-profile-edit'">
+            <button type="button" (click)="editButton()" title="Edit Profile" class="btn btn-Request"> <i
+                class="fa fa-pencil" aria-hidden="true"></i></button>
+          </div>
+        </div>
+
+        <div id="collapseOne" class="box-body panel-collapse collapse in">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School Name <span class="req">*</span> </label>
+                <input type="text" placeholder="schools name" formControlName="schoolName" class="form-control"
+                  readonly>
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolName.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.schoolName.errors.required">School Name is required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School ID <span class="req">*</span> </label>
+                <input type="text" placeholder="schools name" formControlName="schoolId" class="form-control" readonly>
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolId.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.schoolId.errors.required">School ID is required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School Principal Name <span class="req">*</span> </label>
+                <input type="text" placeholder="School Principal Name" formControlName="schoolPrincipalName"
+                  class="form-control" readonly>
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolPrincipalName.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.schoolPrincipalName.errors.required">School Principal
+                    Name is required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School Principal Highest Qualification <span class="req">*</span> </label>
+                <input type="text" placeholder="School Principal Highest Qualification"
+                  formControlName="schoolPrincipalQualification" class="form-control" readonly>
+                <div class="invalid-text"
+                  *ngIf="submitted && addSchoolForm.controls.schoolPrincipalQualification.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.schoolPrincipalQualification.errors.required">School
+                    Principal Qualification is required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Contact Person First Name <span class="req">*</span> </label>
+                <input type="text" placeholder="contact person" formControlName="contactPersonFirstName"
+                  class="form-control" [readonly]="!isEditBtn">
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.contactPersonFirstName.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.contactPersonFirstName.errors.required">Contact Person
+                    First Name is required
+                  </div>
+
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Contact Person Last Name <span class="req">*</span> </label>
+                <input type="text" placeholder="contact person" formControlName="contactPersonLastName"
+                  class="form-control" [readonly]="!isEditBtn">
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.contactPersonLastName.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.contactPersonLastName.errors.required">Contact Person
+                    Last Name is required
+                  </div>
+
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Phone No. <span class="req">*</span> </label>
+                <div class="form-control-width-box">
+                  <select name="country" formControlName='phoneCountryCode' class="form-control form-control-width1"
+                    [attr.disabled]="!isEditBtn ? '' : null">
+                    <option value="+91">+91</option>
+                    <option value="+1">+1</option>
+                    <option value="+44">+44</option>
+                    <option value="+1-340">+1-340</option>
+                  </select>
+                  <input type="tel" (keypress)="keyPress($event)" maxlength="10" formControlName='contactPhone'
+                    class="form-control form-control-width2" placeholder="Enter Mobile No." [readonly]="!isEditBtn">
+                </div>
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.contactPhone.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.contactPhone.errors.required">Mobile No. is required
+                  </div>
+                  <div
+                    *ngIf="addSchoolForm.controls.contactPhone.errors.pattern || addSchoolForm.controls.contactPhone.errors.maxlength || addSchoolForm.controls.contactPhone.errors.minlength">
+                    Invalid Mobile No.</div>
+
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Email. <span class="req">*</span> </label>
+                <input type="email" placeholder="email" formControlName="contactEmail" class="form-control"
+                  [readonly]="!isEditBtn">
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.contactEmail.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.contactEmail.errors.required">Email is required
+                  </div>
+                  <div *ngIf="submitted && addSchoolForm.controls.contactEmail.errors.email">Invalid
+                    Email Format
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <label>Board </label>
+              <ejs-multiselect id='multiselectelement' [dataSource]='_boardList' placeholder='--Select Board--'
+                formControlName="board"></ejs-multiselect>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <label>Medium </label>
+              <ejs-multiselect id='multiselectelement' [dataSource]='_mediumList' placeholder='--Select Medium--'
+                formControlName="medium"></ejs-multiselect>
+            </div> -->
+
+            <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Accreditation by </label>
+                <input type="text" placeholder="Accreditation by" formControlName="accreditationBy"
+                  class="form-control" [readonly]="!isEditBtn">
+
+              </div>
+            </div> -->
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group calendar-icon">
+                <label>Establishment Year </label>
+                <input type="date" placeholder="establishmentYear" formControlName="establishmentYear"
+                  class="form-control" [max]="getToday()" readonly>
+                <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                    <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                    </div>
+                    
+                </div> -->
+              </div>
+            </div>
+
+            <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group calendar-icon xx">
+                <label>Overall Admission Start Date</label>
+                <input type="date" class="form-control" formControlName="admissionStartDate" [readonly]="!isEditBtn">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group calendar-icon xx">
+                <label> Overall Admission End Date </label>
+                <input type="date" class="form-control" formControlName="admissionEndDate" [readonly]="!isEditBtn">
+              </div>
+            </div> -->
+
+
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group FeaturedboxSchool">
+                <label>School Type </label>
+                <select class="form-control" formControlName="schoolType" [attr.disabled]=true>
+                  <option value="null">select</option>
+                  <option *ngFor="let data of _schoolTypeList" value="{{data}}">{{ data }}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School Board </label>
+                <ejs-multiselect id='multiselectelement' [dataSource]='_boardList' placeholder='--Select Board--'
+                  formControlName="schoolBoard" [attr.disabled]=true></ejs-multiselect>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>School Medium </label>
+                <ejs-multiselect id='multiselectelement' [dataSource]='_mediumList' placeholder='--Select Medium--'
+                  formControlName="schoolMedium" [attr.disabled]=true></ejs-multiselect>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Message from Principal </label>
+                <textarea type="text" placeholder="Message from Principal" formControlName="messageFromPrincipal"
+                  class="form-control" readonly></textarea>
+              </div>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
+              <div class="form-group">
+                <label>About the school </label>
+                <!-- <textarea type="text" placeholder="About the school" formControlName="aboutSchool" class="form-control"
+                  readonly></textarea> -->
+                  <ejs-richtexteditor   formControlName="aboutSchool" [toolbarSettings]="tools"
+                  [quickToolbarSettings]="quickTools"
+                  style="z-index: 1000; width: 100%" readonly="true"></ejs-richtexteditor>    
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group FeaturedboxSchool">
+                <label>Featured School </label> <br>
+                <label class="el-switch">
+                  <input formControlName="featuredSchool" type="checkbox" name="switch" readonly>
+                  <span class="el-switch-style"></span>
+                </label>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group FeaturedboxSchool">
+                <label>Custom Admission Form </label> <br>
+                <label class="el-switch">
+                  <input formControlName="customAdmissionForm" type="checkbox" name="switch" readonly>
+                  <span class="el-switch-style"></span>
+                </label>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class="form-group FeaturedboxSchool">
+                <label>School Rating </label>
+                <select class="form-control" formControlName="schoolRating" [attr.disabled]="true">
+                  <option value="0">select</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+            </div>
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="form-group FeaturedboxSchool">
+                  <label>Max Fees </label>
+                  <input type="text" placeholder="School Max Fees" formControlName="maxFees"
+                    class="form-control" readonly>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="form-group FeaturedboxSchool">
+                  <label>Min Fees </label>
+                  <input type="text" placeholder="School Min Fees" formControlName="minFees"
+                    class="form-control" readonly>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="panel-group" id="accordion">
+
+      <!-- Contact User -->
+      <form [formGroup]="contactForm">
+        <div class="box box-success2">
+          <div class="box-header with-border">
+            <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+                data-parent="#accordion" href="#collapseContact">Contact User</a></h3>
+          </div>
+
+          <div id="collapseContact" class="box-body panel-collapse collapse">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>First Name<span class="req">*</span> </label>
+                  <input type="text" placeholder="Enter First Name" formControlName="contactPersonFirstName"
+                    class="form-control" readonly>
+                  <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is
+                        required
+                      </div>
+                    </div> -->
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>Last Name<span class="req">*</span> </label>
+                  <input type="text" placeholder="Enter Last Name" formControlName="contactPersonLastName"
+                    class="form-control" readonly>
+                  <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is
+                        required
+                      </div>
+                    </div> -->
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>E-mail<span class="req">*</span> </label>
+                  <input type="text" placeholder="Enter email" formControlName="contactEmail" class="form-control"
+                    readonly>
+                  <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is
+                        required
+                      </div>
+                    </div> -->
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>Phone<span class="req">*</span> </label>
+                  <input type="text" placeholder="Enter email" formControlName="contactPhone" class="form-control"
+                    readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- Address -->
+      <form [formGroup]="addSchoolForm">
+        <div class="box box-success2">
+          <div class="box-header with-border">
+            <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+                data-parent="#accordion" href="#collapseTwo">School Address</a></h3>
+          </div>
+          <div id="collapseTwo" class="box-body panel-collapse collapse">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label> Address Line 1 <span class="req">*</span> </label>
+                  <input type="text" placeholder="flat, house no., building, apartment" formControlName="schoolAddress"
+                    class="form-control" readonly>
+                  <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                    <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is
+                      required
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label> Address Line 2 </label>
+                  <input type="text" placeholder="Area, Colony, Street, Sector" formControlName="addressLineTwo"
+                    class="form-control" readonly>
+                  <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>Landmark </label>
+                  <input type="text" placeholder="Area, Colony, Street, Sector" formControlName="landMark"
+                    class="form-control" readonly>
+                  <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>Town/City </label>
+                  <input type="text" placeholder="Area, Colony, Street, Sector" formControlName="city"
+                    class="form-control" readonly>
+                  <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                      <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is required
+                      </div>
+                      
+                  </div> -->
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group FeaturedboxSchool">
+                  <label>State</label>
+                  <select class="form-control" formControlName="state" (change)="onState()" [attr.disabled]="true">
+                    <option value="null">Select</option>
+                    <option *ngFor="let data of stateList" value="{{ data.id }}">{{ data.stateName }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group FeaturedboxSchool">
+                  <label>District</label>
+                  <select class="form-control" formControlName="district" [attr.disabled]=true>
+                    <option *ngFor="let data of _districtList" value="{{ data.id }}">{{ data.districtName }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <label>Postal Code </label>
+                  <input type="text" placeholder="Postal Code" formControlName="postalCode" class="form-control"
+                    readonly>
+
+                </div>
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- School Level-->
+      <form [formGroup]="addSchoolForm">
+        <div class="box box-success2">
+          <div class="box-header with-border">
+            <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+                data-parent="#accordion" href="#collapseThree">Class Level Details</a></h3>
+            <!-- <div class="box-tools pull-right">
+                <div *ngIf="isEditBtn">
+                  <a *ngIf="_boardDtl > 0"><button type="button" (click)="addSchoolTime()" title="Add School Time"
+                      class="btn link3 mx-1">Add School Time</button></a>
+                </div>
+                &nbsp;&nbsp;
+              </div> -->
+            <div class="clearfix"></div>
+          </div>
+
+          <div id="collapseThree" class="box-body panel-collapse collapse">
+            <div class="tablesection">
+              <div class="table-responsive">
+                <table class="table table-striped table-striped Timingbox">
+                  <thead>
+                    <tr>
+                      <!-- <th width="120">Academic Year </th> -->
+                      <th width="">School Level Name</th>
+                      <!-- <th width="">Medium</th> -->
+                      <th width="">Classes From</th>
+                      <th width="">Classes Up To</th>
+                      <!-- <th width="">Stream</th> -->
+                      <th width="">Additional Info</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <ng-container formArrayName="schoolLevelDtlVo"
+                      *ngFor="let result of parameterListArray.controls;let i=index">
+                      <tr [formGroupName]="i">
+                        <!-- <td>{{ result.value.academicYear }}</td> -->
+                        <td>
+                          <select class="form-control" formControlName="schoolLevelName" #sclLevelValue
+                            (change)="selectSclLevel(sclLevelValue.value, i)" [attr.disabled]=true>
+                            <option value="">Select</option>
+                            <option *ngFor="let data of _schoolLevelInfoList" [value]="data.schoolLevelName">
+                              {{data.schoolLevelName}}</option>
+                          </select>
+                          <!-- <div *ngIf="submitted == true && result.value.boardName == ''" class="invalid-text">Board is required</div> -->
+                        </td>
+
+                        <td>
+                          <!-- <select class="form-control" formControlName="medium" [attr.disabled]="!isEditBtn ? '' : null">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of _mediumList" value="{{data}}">{{data}}</option>
+                          </select>
+                          <div *ngIf="submitted == true && result.value.medium == ''" class="invalid-text">Medium is required</div> -->
+                          <input type="text" placeholder="" class="form-control" formControlName="fromClass" readonly>
+                        </td>
+
+                        <td>
+                          <!-- <select class="form-control" (change)="classFromChange(i,result.value.tempStartCls)" formControlName="tempStartCls" [attr.disabled]="!isEditBtn ? '' : null">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of _classFromList" value="{{data.slNo}}/{{data.classDisplay}}">{{data.classDisplay}}</option>
+                          </select>
+                          <div *ngIf="submitted == true && result.value.tempStartCls == ''" class="invalid-text">Classes From is required</div> -->
+                          <input type="text" placeholder="" formControlName="toClass" class="form-control" readonly>
+                        </td>
+
+                        <!-- <td>
+
+                          <ejs-multiselect id='multiselectelement' [dataSource]='result.value.tempStream'
+                            placeholder='--Select Stream--' formControlName="stream">
+                          </ejs-multiselect>
+
+                        </td> -->
+                        <td>
+                          <!-- <select class="form-control" (change)="classUpToChange(i,result.value.tempEndClass)" formControlName="tempEndClass" [attr.disabled]="!isEditBtn ? '' : null">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of _uptoClassList" value="{{data.slNo}}/{{data.classDisplay}}">{{data.classDisplay}}</option>
+                          </select>
+                          <div *ngIf="submitted == true && result.value.tempEndClass == ''" class="invalid-text">Classes Upto is required</div> -->
+                          <input type="text" placeholder="" formControlName="additionalInfo" class="form-control"
+                            readonly>
+                        </td>
+
+
+
+
+                      </tr>
+                    </ng-container>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </form>
+
+      <!-- School Timing -->
+      <div class="box box-success2">
+        <div class="box-header with-border">
+          <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseFour">School Timing</a></h3>
+        </div>
+        <div id="collapseFour" class="box-body panel-collapse collapse">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <!-- <div class="">
+                  <p>{{ errMsg }}</p>
+                </div> -->
+              <div *ngIf="errMsg !== ''" class="alert alert-danger" style="margin-bottom: 0;">
+                <strong>{{ errMsg }}</strong>
+              </div>
+              <form [formGroup]="_schoolForm">
+
+                <div>
+                  <div>
+                    <div class="tablesection">
+                      <div class="table-responsive">
+                        <table class="table table-striped table-striped Timingbox">
+                          <thead>
+                            <tr>
+                              <th width="">School Level Name</th>
+                              <th width="">Start Time</th>
+                              <th width="">End Time</th>
+                              <th width="">Additional Info</th>
+
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                            <ng-container formArrayName="schoolTimingDtlVo"
+                              *ngFor="let result of parameterListArrayTime.controls;let i=index">
+                              <tr [formGroupName]="i">
+                                <td>
+                                  <select class="form-control" formControlName="schoolLevelName" [attr.disabled]=true>
+                                    <option value="">Select</option>
+                                    <option *ngFor="let data of _schoolLevelInfoListTime"
+                                      value="{{data.schoolLevelName}}">{{data.schoolLevelName}}</option>
+                                  </select>
+                                  <div *ngIf="isSubmit == true && result.value.schoolLevelName == ''"
+                                    class="invalid-text">School Level is required</div>
+                                </td>
+
+                                <td>
+                                  <div class="form-group time-icon">
+                                    <input formControlName="startTime" class="form-control" type="time" readonly>
+                                  </div>
+                                  <div *ngIf="isSubmit == true && result.value.startTime == ''" class="invalid-text">
+                                    Start Time is required</div>
+                                </td>
+                                <td>
+                                  <div class="form-group time-icon">
+                                    <input formControlName="endTime" class="form-control" type="time" readonly>
+                                  </div>
+                                  <div *ngIf="isSubmit == true && result.value.endTime == ''" class="invalid-text">End
+                                    Time is required</div>
+                                </td>
+                                <td>
+                                  <textarea formControlName="additionalInfo" rows="2" cols="50" readonly></textarea>
+                                </td>
+
+                              </tr>
+                            </ng-container>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Media Upload -->
+      <div class="box box-success2">
+        <div class="box-header with-border">
+          <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseFive">School Media</a></h3>
+        </div>
+        <div id="collapseFive" class="box-body panel-collapse collapse">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>School Logo </label><br>
+                <div class="School_logo_box" *ngIf="_schoolLogoUrl.fileId != 0">
+                  <img src="{{_schoolLogoUrl.filePath}}" alt="">
+                </div>
+                <span *ngIf="_logoInvalidMsg != ''" class="invalid-text">{{ _logoInvalidMsg }}</span>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>School Banner </label> <br>
+
+                <div class="School_Banner_box" *ngIf="_schoolBannerUrl.fileId != 0">
+
+                  <img src="{{_schoolBannerUrl.filePath}}" alt="">
+                </div>
+                <span *ngIf="_bannerInvalidMsg != ''" class="invalid-text">{{ _bannerInvalidMsg }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label>School Gallery </label>
+
+                <div class="SchoolGallerybox">
+                  <ul>
+                    <li *ngFor="let data of _schoolGalleryUrl">
+
+                      <img src="{{ data.filePath }}" alt="">
+                    </li>
+                    <div class="clearfix"></div>
+                  </ul>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Docs Upload -->
+      <div class="box box-success2">
+        <div class="box-header with-border">
+          <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseSix">School Documents</a></h3>
+        </div>
+        <div id="collapseSix" class="box-body panel-collapse collapse">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>NOC of Department of Education / Local Bodies (Panchayat, Corporation)</label>
+
+                <div class="School_Banner_box" *ngIf="_schoolRegCertificateUrl.fileId != 0">
+                  <img src="{{_schoolRegCertificateUrl.filePath}}" alt="">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Certificate of Affiliation Board</label>
+
+                <div class="School_Banner_box" *ngIf="_bussinessLicenseUrl.fileId != 0">
+                  <img src="{{_bussinessLicenseUrl.filePath}}" alt="">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label> Downloadable School Brochure </label>
+
+                <h2 *ngIf="_schoolBrochureUrl" class="download"> <a href="{{_schoolBrochureUrl.filePath}}" download>{{
+                    (_schoolBrochureUrl.fileName ? (_schoolBrochureUrl.fileName.split('-ZQZGTHYRDRT-')[1]) : '')
+                    }}</a>
+                </h2>
+
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" *ngIf="_schoolsDetails?.customAdmissionForm === 'Y'">
+              <div class="form-group">
+                <label>Custom Admission Form </label>
+                <div class="School_Banner_box" *ngIf="_schoolAdmissionFormUrl.fileId != 0">
+                  <img src="{{_schoolAdmissionFormUrl.filePath}}" alt="">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Academic Performance -->
+      <div class="box box-success2">
+        <div class="box-header with-border">
+          <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseSeven">Academic Achievement</a></h3>
+        </div>
+        <div id="collapseSeven" class="box-body panel-collapse collapse">
+          <div class="box-header with-border bor">
+            <div class="pull-left">
+              <!-- <h3 class="box-title card-text">Academic Achievement</h3> -->
+            </div>
+
+            <div class="clearfix"></div>
+          </div>
+          <div class="box-body">
+            <div class="tablesection">
+              <div class="table-responsive">
+                <table class="table table-striped table-striped">
+                  <thead>
+                    <tr>
+                      <!-- <th width="70" style="text-align: center;">Sl No.</th> -->
+                      <th>Academic Year </th>
+                      <!-- <th>Performance Title</th> -->
+                      <th>Academic Performance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor='let data of _schoolAcademicList; let i = index'>
+                      <!-- <td align="center">{{ i+1 }}</td> -->
+                      <td>{{ data.academicYear }}</td>
+                      <!-- <td>{{ data.performanceTitle }} </td> -->
+                      <td><div [innerHTML]="data?.academicInformation"></div></td>
+
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infrastructures -->
+      <div class="box box-success2">
+        <div class="box-header with-border">
+          <h3 class="box-title card-text" style="display: block;"><a class="accordion-toggle" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseEight">Infrastructure</a></h3>
+        </div>
+        <div id="collapseEight" class="box-body panel-collapse collapse">
+          <div class="box-header with-border">
+            <div class="pull-left">
+            </div>
+
+            <div class="clearfix"></div>
+          </div>
+          <div class="box-body">
+            <div class="tablesection">
+              <div class="table-responsive">
+                <table class="table table-striped table-striped">
+                  <thead>
+                    <tr>
+                      <!-- <th width="80" style="text-align: center;">Sl No.</th> -->
+                      <th width="200">Infrastructure Name </th>
+                      <th>Infrastructure Description </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of _schoolsInfraStList; let i = index">
+                      <!-- <td align="center">{{ i+1 }}</td> -->
+                      <td>{{ data.infraName }}</td>
+                      <td>{{ data.infraDesc }}</td>
+
+                    </tr>
+
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- </form> -->
+  </section>
+
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Academic</h4>
+      </div>
+      <form [formGroup]="_academicForm">
+
+        <div class="modal-body">
+          <div class="row">
+
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Academic Year </label>
+                <input formControlName='academicYear' type="text" class="form-control" placeholder="Academic Year"
+                  readonly>
+                <div *ngIf="isSubmit && _academicForm.controls.academicYear.errors"
+                  class="invalid-text ng-star-inserted">Academic Year is required</div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Performance Title</label>
+                <input formControlName='performanceTitle' type="text" class="form-control"
+                  placeholder="Performance Title" readonly>
+                <div *ngIf="isSubmit && _academicForm.controls.performanceTitle.errors"
+                  class="invalid-text ng-star-inserted">Performance Title is required</div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+              <div class="form-group">
+                <label>Academic Information</label>
+                <input formControlName='academicInformation' type="text" class="form-control" placeholder="No Of Student"
+                  readonly>
+                <div *ngIf="isSubmit && _academicForm.controls.academicInformation.errors"
+                  class="invalid-text ng-star-inserted">Academic Information is required</div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <div class="text-center">
+            <button type="submit" class="btn link2 mx-1" data-dismiss="modal">Cancel</button>
+            <button type="submit" (click)="updateAcademic()" class="btn link3 mx-1"
+              style="margin-bottom: 5px;">Update</button>
+
+          </div>
+        </div> -->
+      </form>
+
+    </div>
+
+  </div>
+</div>

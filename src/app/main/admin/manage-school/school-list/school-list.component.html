@@ -1,0 +1,240 @@
+<div class="content-wrapper">
+  <p-messages></p-messages>
+  <section class="content">
+    <div class="School-List-box">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="small-box">
+            <h3 class="box-title card-text"> School Boards </h3>
+            <div>
+              <div *ngFor='let board of _schoolBoardCount' class="inner pull-left">
+                <h3><button type="button"> <strong> {{ board.value }}</strong> </button></h3>
+                <p>{{ board.code }}</p>
+              </div>
+
+              <div class="clearfix"></div>
+            </div>
+            <div class="icon"> <i class="fa fa-university" aria-hidden="true"></i> </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="small-box">
+            <h3 class="box-title card-text"> School Types </h3>
+            <div>
+              <div class="inner pull-left" *ngFor="let data of _schoolLevelCount">
+                <h3><button type="button"> <strong>{{data.value}}</strong> </button></h3>
+                <p>{{data.code}}</p>
+              </div>
+              <!-- <div class="inner pull-left">
+                <h3><button type="button"> <strong>100</strong> </button></h3>
+                <p>Secondary School</p>
+              </div>
+              <div class="inner pull-left">
+                <h3><button type="button"> <strong>50</strong> </button></h3>
+                <p>Higher Secondary School</p>
+              </div> -->
+              <div class="clearfix"></div>
+            </div>
+            <div class="icon"> <i class="fa fa-graduation-cap" aria-hidden="true"></i> </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <form [formGroup]="schoolSearchForm">
+      <div class="box box-success2">
+        <div class="box-body">
+          <div class="searchsection3">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="form-group">
+                  <input type="text" formControlName="schoolName" placeholder="School Name" class="form-control">
+                </div>
+               </div> 
+              <!-- </div> -->
+              <!-- <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="form-group">
+                  <input type="text" formControlName="schoolAddress" placeholder="Address" class="form-control">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="form-group">
+                  <input type="text" formControlName="contactPersonFirstName" placeholder="Contact Person"
+                    class="form-control">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="form-group">
+                  <input type="tel" formControlName="contactPhone" placeholder="Phone No" class="form-control">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="form-group">
+                  <input type="email" formControlName="contactEmail" placeholder="Email"
+                    class="form-control border-right">
+                </div> -->
+                <div  class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <select formControlName="schoolStatus" class="form-control">
+                      <option value="">Select Status</option>
+                      <option *ngFor="let status of schoolStatusList" value="{{status}}" >
+                        {{status}}
+                      </option>
+                    </select>
+                </div>
+                
+            </div>
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"><button (click)="searchSchoolList()" type="button"
+                  class="btn btn-success"> Search</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    
+    <div class="box box-success2">
+      <div class="box-header with-border bor">
+        <div class="pull-left">
+          <div class="Showingbox">
+            <!-- <span class="pull-left">Showing </span> -->
+            <div class="pull-left drop">
+              <select class="form-control" #limit (change)="fetchListApi(limit.value)">
+                <option value='25'>25</option>
+                <option value='50'>50</option>
+                <option value='100'>100</option>
+              </select>
+              <!-- <p-dropdown [options]="sizearr" #limit (change)="fetchListApi(limit.value)" [virtualScroll]="true"></p-dropdown> -->
+            </div>
+          </div>
+        </div>
+        <div class="pull-right dropdown">
+          <!-- <button type="button" *ngIf="arraySend.length > 0" class="btn link1 button_effects pull-right"
+            (click)="changeSelectedStatus(0)"> <i class="fa fa-paper-plane" aria-hidden="true"></i> Activate Selected
+          </button> -->
+          &nbsp;
+          <button type="button" pButton pRipple label="Add School" icon="pi pi-plus" title="Add Schools" [routerLink]="['/manage-school/school-list/add-school/add']"
+            class="btn p-button-info p-button-outlined"></button>
+          &nbsp;
+          <button type="button" title="Add Schools" pButton [routerLink]="['/manage-school/school-list/bulk-upload']"
+            class="button btn btn-success"> <i class="fa fa-upload" aria-hidden="true"></i> Bulk Upload</button>
+          &nbsp;
+
+          <nav class="setting-nav ">
+            <label for="btn" class="button btn btn-success" [ngClass]="checkReadonlyClass"><i class="fa fa-cog"
+                aria-hidden="true"></i> </label>
+            <input *ngIf="arraySend.length === 0" class="Rolebox" type="checkbox" id="btn" [disabled]="true">
+            <input *ngIf="arraySend.length > 0" class="Rolebox" type="checkbox" id="btn">
+            <ul class="menu">
+              <li><a (click)="changeSelectedStatus('Active')">
+                  <font><i class="fa fa-check" aria-hidden="true"></i></font>Active
+                </a></li>
+              <li><a (click)="changeSelectedStatus('In-Active')">
+                  <font><i class="fa fa-times" aria-hidden="true"></i></font>In-Active
+                </a></li>
+            </ul>
+          </nav>
+
+
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="box-body">
+        <div class="tablesection">
+          <div class="table-responsive">
+            <table class="table table-striped" matSort (matSortChange)="sortData($event)" matSortDirection="asc"
+              matSortDisableClear>
+              <thead>
+                <tr>
+                  <th width="40" align="center" style="text-align: center;">
+                    <!-- <input type="checkbox" (change)="selectAll($event,user.id)"> -->
+                    <input style="margin:8px 0 0 0;" (click)="toggleShow()" type="checkbox" [(ngModel)]="selectedAll"
+                      (change)="selectAll($event);">
+                  </th>
+                  <th width="200" mat-sort-header="School_Name">School Name </th>
+                  <!-- <th mat-sort-header="School_Address">Address</th> -->
+                  <!-- <th width="160">Contact Person</th> -->
+                  <th  mat-sort-header="Contact_Phone">Phone No.</th>
+                  <th mat-sort-header="Contact_Email">Email</th>
+                  <th width="80" mat-sort-header="School_Status">Status</th>
+                  <!-- <th>Rating</th> -->
+                  <th style="text-align: center;">Action </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let school of _schoolsList | paginate:{
+                        id:'_schoolsList',
+                      itemsPerPage:itemsPerPage,
+                      currentPage:currentPage,
+                      totalItems:_schoolsListSize
+                    }; let i =index">
+                  <td align="center" style="text-align: center;">
+                    <input type="checkbox" [(ngModel)]="school.selected" (change)="selectCheck($event,school.id)"
+                      style="margin-top: 10px;">
+                  </td>
+                  <td><button type="button" title="View Schools" (click)="viewSchoolDetails(school.id)"
+                      [routerLink]="['/manage-school/view-school']" class="btn btn-link text-light-blue">
+                      <strong>{{helperService.toCamelCase( school.schoolName)}}</strong></button>
+                  <div>
+                    <small>{{school.schoolAddress}}</small>
+                  </div>
+                    </td>
+                  <!-- <td>{{helperService.toCamelCase( school?.schoolAddress)}}</td> -->
+                  <!-- <td>{{school.contactUser?.firstName}} {{school.contactUser?.lastName}}</td> -->
+                  <td>{{school?.contactPhone | phonePipe}}</td>
+                  <td>{{school?.contactEmail}}</td>
+                  <td>
+                    <p-tag *ngIf="school.schoolStatus === 'Active'" styleClass="p-mr-2" severity="success" [value]="school.schoolStatus"></p-tag>
+                    <p-tag *ngIf="school.schoolStatus === 'In-Active'" styleClass="p-mr-2" severity="warning" [value]="school.schoolStatus"></p-tag>
+                  </td>
+                  <!-- <td> <button type="button" class="link5 widthbox2" data-toggle="modal" data-target="#myModal"
+                    (click)="modalOpen(school.schoolRating)" >Rate</button> </td> -->
+                  <td style="text-align: center;">
+                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-lg p-button-outlined" (click)="editSchool(school.id)"></button>
+                  </td>
+
+                  <!-- Rating Modal start -->
+                  <!-- <div class="modal fade" id="myModal" role="dialog">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h4 class="modal-title">Rate School</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="stars">
+                                      <ngx-star-rating [(ngModel)]="_modalData" [id]="'_modalData'" ></ngx-star-rating >
+                                    </div>
+                                    
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="submit" class="btn link3 pull-left">Submit</button>
+                                      <button type="button" class="btn link4 pull-right" data-dismiss="modal">Close</button>
+                                  </div>
+                          </div>
+
+                      </div>
+                  </div> -->
+                  <!-- Rating Modal End -->
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf="_schoolsList.length == 0"  style="width: 100%; margin: 0rem auto; text-align: center;" class="no-record-found">
+              <div class="alert alert-warning" role="alert">
+                No records found!
+              </div>
+            </div>
+            <div class="paginationsectionbox" *ngIf="_schoolsList.length != 0">
+              <span *ngIf="!isEmpty" class="Showingboxto">Showing {{currentPageStartingIndex}} to {{currentPageEndingIndex}} of
+                {{_schoolsListSize}} results</span>
+              <span *ngIf="isEmpty">No records found.</span>
+              <pagination-controls *ngIf="!isEmpty" class="pagination" id="_schoolsList"
+                (pageChange)="handlePageChange($event)"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</div>

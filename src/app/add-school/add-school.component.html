@@ -1,0 +1,240 @@
+<section class="inner-banner-section inner-banner-search">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>Add your school</h1>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="breadcrumbs_section">
+                    <ul>
+                        <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                        <li><button type="submit">Add School</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="innersearchsection">
+    <div class="container">
+        <div class="Student-List-section footer_link">
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>Add your school</h1>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h3 style="color: rgb(61, 49, 112); font-family: cursive; width: 100%; text-align: center;">Feel proud and be a part of vidyalo community.</h3>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h3></h3>
+                </div>
+            </div>
+
+            <form [formGroup]="_addSchoolForm">
+                <div class="row">
+                    <p-messages></p-messages>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Initiator Name <span class="req">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter your initiators name."
+                                formControlName="initiatorsName">
+                            <div class="invalid-text"
+                                *ngIf="_addSchoolForm.controls?.initiatorsName.touched && _addSchoolForm.controls?.initiatorsName.errors">
+                                <div *ngIf=" _addSchoolForm.controls?.initiatorsName.errors.required ">
+                                    initiatorsName is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Initiator Email<span class="req">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter your initiators name."
+                                formControlName="initiatorsEmail">
+                            <div class="invalid-text"
+                                *ngIf="_addSchoolForm.controls?.initiatorsEmail.touched && _addSchoolForm.controls?.initiatorsEmail.errors">
+                                <div *ngIf=" _addSchoolForm.controls?.initiatorsEmail.errors.required ">
+                                    initiatorsEmail is required
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Initiator Phone<span class="req"></span></label>
+                            <input type="tel" class="form-control" placeholder="Enter your Phone number ..."
+                                formControlName="initiatorsPhoneNo" maxlength="10">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>School Name <span class="req">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter your school name."
+                                formControlName="schoolName">
+                            <div class="invalid-text"
+                                *ngIf="_addSchoolForm.controls?.schoolName.touched && _addSchoolForm.controls?.schoolName.errors">
+                                <div *ngIf=" _addSchoolForm.controls?.schoolName.errors.required ">
+                                    School Name is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>School Contact Phone<span class="req"></span></label>
+                            <input type="tel" class="form-control" placeholder="Enter your Phone number ..."
+                                formControlName="contactPhone" maxlength="10">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>School Contact Email<span class="req"></span></label>
+                            <input type="email" class="form-control" placeholder="Enter your email address"
+                                formControlName="contactEmail">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>School Address<span class="req">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter your School address."
+                                formControlName="schoolAddress">
+                            <div class="invalid-text"
+                                *ngIf="_addSchoolForm.controls?.schoolAddress.touched && _addSchoolForm.controls?.schoolAddress.errors">
+                                <div *ngIf=" _addSchoolForm.controls?.schoolAddress.errors.required ">
+                                    School Address is required
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>City<span class="req">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter School Location ..."
+                                formControlName="city">
+                            <div class="invalid-text"
+                                *ngIf="_addSchoolForm.controls?.city.touched && _addSchoolForm.controls?.city.errors">
+                                <div *ngIf=" _addSchoolForm.controls?.city.errors.required ">
+                                    City is required.
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>District<span class="req">*</span></label>
+                            <select name="" id="" class="form-control" formControlName="district">
+                                <option value="">select</option>
+                                <option *ngFor="let data of _districtList" value="{{ data.id }}">{{ data.districtName }}</option>
+                            </select>
+                            <div class="invalid-text"
+                            *ngIf="_addSchoolForm.controls?.district.touched && _addSchoolForm.controls?.district.errors">
+                            <div *ngIf=" _addSchoolForm.controls?.district.errors.required ">
+                                District is required.
+                            </div>
+
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Postal Code<span class="req">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter Postal Code Location."
+                                formControlName="postalCode">
+                            <div class="invalid-text"
+                                *ngIf="_addSchoolForm.controls?.postalCode?.touched && _addSchoolForm.controls?.postalCode?.errors">
+                                <div *ngIf=" _addSchoolForm.controls?.postalCode?.errors.required ">
+                                    Postal Code required.
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group FeaturedboxSchool">
+                            <label>School Type<span class="req">*</span></label>
+                            <ejs-multiselect id='multiselectelement3' [dataSource]='_schoolTypeList'
+                            placeholder='--Select SchoolType--' formControlName="schoolType"></ejs-multiselect>
+                            <div class="invalid-text"
+                                *ngIf="_addSchoolForm.controls?.schoolType.touched && _addSchoolForm.controls?.schoolType.errors">
+                                <div *ngIf=" _addSchoolForm.controls?.schoolType.errors.required ">
+                                    School Type is required.
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>School Board<span class="req">*</span></label>
+                            <ejs-multiselect id='multiselectelement' [dataSource]='_boardList'
+                                placeholder='--Select Board--' formControlName="schoolBoard"></ejs-multiselect>
+                            <div class="invalid-text"
+                                *ngIf="_addSchoolForm.controls?.schoolBoard.touched && _addSchoolForm.controls?.schoolBoard.errors">
+                                <div *ngIf=" _addSchoolForm.controls?.schoolBoard.errors.required ">
+                                    School Board is required.
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>School Medium<span class="req">*</span></label>
+                            <ejs-multiselect id='multiselectelement' [dataSource]='_mediumList'
+                                placeholder='--Select Medium--' formControlName="schoolMedium"></ejs-multiselect>
+                            <div class="invalid-text"
+                                *ngIf="_addSchoolForm.controls?.schoolMedium.touched && _addSchoolForm.controls?.schoolMedium.errors">
+                                <div *ngIf=" _addSchoolForm.controls?.schoolMedium.errors.required ">
+                                    City is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label>About School<span class="req"></span></label>
+                            <textarea type="text" class="form-control" rows="4"  placeholder="Enter About School" maxlength="1000"
+                                formControlName="aboutSchool">
+                                </textarea>
+                                
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <!-- <div class="form-group"> -->
+                        <p-captcha siteKey="6Lck7gQoAAAAAMdMVVKVQ9o_UYcSH7aw1zevt1Is"
+                            (onResponse)="showResponse($event)" initCallback="loadCaptcha"></p-captcha>
+                        <!-- </div> -->
+                        <br>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <input type="checkbox" #Isagree (change)="isAgree($event)" formControlName="isAgree">
+                        <label>&nbsp;I agree to the 
+                            <a routerLink="/auth/privacy-policy" target="_blank"> Privacy Policy</a> and
+                            <a routerLink="/auth/terms-and-conditions" target="_blank">Term & Condition.</a></label>
+                    </div>
+
+                </div>
+
+                <div class="text-center">
+                    <div class="form-group">
+                        <button type="button" class="btn link4 mx-2" [routerLink]="['/auth/home']">Back</button>
+                        <button type="submit" class="btn link3 mx-2" (click)="submitAddSchoolData()"
+                            [disabled]="!(_addSchoolForm.valid && (isAgreeChecked && captche))">Submit</button>
+                    </div>
+                </div>
+
+
+
+
+
+            </form>
+
+
+
+        </div>
+    </div>
+</section>

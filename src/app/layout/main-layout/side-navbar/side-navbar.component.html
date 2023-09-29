@@ -1,0 +1,99 @@
+<!-- admin administrative -->
+<aside class="main-sidebar" *ngIf="userDetails?.userType === 'ADMIN_USER'">
+  <section class="sidebar">
+    <div class="user-panel">
+      <div class="pull-left image"> <img src="assets/images/logo_icon.png" class="img-circle" alt="User Image"> </div>
+      <div class="pull-left info">
+        <p>Vidyalo</p>
+      </div>
+    </div>
+    <ul class="sidebar-menu" data-widget="tree">
+      <!-- <li class="header">MAIN NAVIGATION</li> -->
+      <li [routerLink]="['/dashboard/admin-dashboard']"><a
+          [ngClass]="condition.includes('/dashboard/admin-dashboard') ? 'router-link-active':''"> <i
+            class="pi pi-th-large" aria-hidden="true"></i> <span class="side-nav-header"> Admin Dashboard </span></a></li>
+      <li><a [routerLink]="['/manage-school/school-list/active-in-active']"
+          [ngClass]="condition.includes('/manage-school') ? 'router-link-active':''"> <i class="pi pi-home"
+            aria-hidden="true"></i> <span class="side-nav-header"> Schools </span></a></li>
+      <li><a [routerLink]="['/manage-student/student-list']"
+          [ngClass]="condition.includes('/manage-student') ? 'router-link-active':''"> <i class="pi pi-user"
+            aria-hidden="true"></i> <span class="side-nav-header"> Users </span></a></li>
+      <!-- <li><a [routerLink]="['/report/report']" [ngClass]="condition.includes('/report') ? 'router-link-active':''"> <i
+            class="fa fa-file-word-o" aria-hidden="true"></i> <span> Reports </span></a></li> -->
+      <!-- <li><a [routerLink]="['/payment/school-collection']"
+          [ngClass]="condition.includes('/payment') ? 'router-link-active':''"> <i class="fa fa-money"
+            aria-hidden="true"></i> <span> Payment Collection </span></a></li> -->
+      <li><a [routerLink]="['/manage-testimonials/testimonials-list']"
+          [ngClass]="condition.includes('/manage-testimonials') ? 'router-link-active':''"> <i class="pi pi-comments"
+            aria-hidden="true"></i> <span class="side-nav-header"> Testimonials </span></a></li>
+      <li><a [routerLink]="['/manage-issues/issue-list']"
+          [ngClass]="condition.includes('/manage-issues') ? 'router-link-active':''"> <i class="pi pi-question-circle"
+            aria-hidden="true"></i> <span class="side-nav-header"> Issues </span></a></li>
+      <li><a [routerLink]="['/manage-feedback/feedback-list']"
+          [ngClass]="condition.includes('/manage-feedback') ? 'router-link-active':''"> <i class="pi pi-thumbs-up"
+            aria-hidden="true"></i> <span class="side-nav-header"> Feedback </span></a></li>
+      <li><a routerLink="/news-artical/news-artical-list"
+          [ngClass]="condition.includes('/news-artical') ? 'router-link-active':''"> <i class="pi pi-book"
+          aria-hidden="true"></i><span class="side-nav-header"> News </span></a></li>
+      <li><a routerLink="/blog"
+            [ngClass]="condition.includes('/blog') ? 'router-link-active':''"> <i class="pi pi-youtube"
+            aria-hidden="true"></i><span class="side-nav-header"> Blog </span></a></li>     
+      <li><a routerLink="/review"
+            [ngClass]="condition.includes('/review') ? 'router-link-active':''"> <i class="pi pi-comments"
+              aria-hidden="true"></i><span class="side-nav-header"> Review </span></a></li>          
+    </ul>
+  </section>
+</aside>
+<!-- admin administrative -->
+
+
+
+<!-- school users -->
+<aside class="main-sidebar" *ngIf="userDetails?.userType === 'SCHOOL_USER'">
+  <section class="sidebar">
+    <div class="user-panel">
+      <div class="pull-left image"> <img src="assets/images/logo_icon.png" class="img-circle" alt="User Image"> </div>
+      <div class="pull-left info">
+        <p>Vidyalo</p>
+      </div>
+    </div>
+    <ul class="sidebar-menu" data-widget="tree">
+      <!-- <li class="header">MAIN NAVIGATION</li> -->
+      <!-- manage-school/edit-school/'+id -->
+      <li routerLink="/manage-school/school-list/school-profile-edit/{{userDetails.schoolId}}"><a
+          [ngClass]="condition.includes('/manage-school') ? 'router-link-active':''"> <i class="fa fa-user"
+            aria-hidden="true"></i> <span> School Profile </span></a></li>
+      <!-- <li><a [routerLink]="['/manage-school/add-timing']" routerLinkActive="router-link-active"> <i class="fa fa-clock-o" aria-hidden="true"></i> <span> School Timing</span></a></li>
+      <li><a [routerLink]="['/manage-school/academic-list']" routerLinkActive="router-link-active"> <i class="fa fa-check-square-o" aria-hidden="true"></i> <span> Academic Performance</span></a></li>
+      <li><a [routerLink]="['/manage-infrastructure/infrastructure-list']" routerLinkActive="router-link-active"> <i class="fa fa-building-o" aria-hidden="true"></i> <span> Infrastructure </span></a></li>   -->
+      <li><a [routerLink]="['/admission/admission-lists']"
+          [ngClass]="condition.includes('/admission/admission-lists') ? 'router-link-active':''"> <i
+            class="fa fa-university" aria-hidden="true"></i> <span> Admission Notices</span></a></li>
+      <li><a [routerLink]="['/admission/admission-records']"
+          [ngClass]="condition.includes('/admission/admission-records') ? 'router-link-active':''"> <i
+            class="fa fa-book" aria-hidden="true"></i> <span> Admission Records </span></a></li>
+      <li><a [routerLink]="['/manage-subscription/school-subscription']"
+          [ngClass]="condition.includes('/manage-subscription') ? 'router-link-active':''"> <i class="fa fa-bullhorn"
+            aria-hidden="true"></i> <span> Subscription </span></a></li>
+      <li><a routerLinkActive="router-link-active"> <i class="fa fa-puzzle-piece" aria-hidden="true"></i> <span> Class &
+            Section </span></a></li>
+      <li><a routerLinkActive="router-link-active"> <i class="fa fa-graduation-cap" aria-hidden="true"></i> <span>
+            Students </span></a></li>
+      <li><a routerLinkActive="router-link-active"> <i class="fa fa-users" aria-hidden="true"></i> <span> School Staffs
+          </span></a></li>
+      <li><a [routerLink]="['/manage-notice']"
+          [ngClass]="condition.includes('/manage-notice') ? 'router-link-active':''"> <i class="fa fa-bell-o"
+            aria-hidden="true"></i> <span> Notice </span></a></li>
+      <li><a [routerLink]="['/manage-student-bulk/manage-student-bulk']"
+          [ngClass]="condition.includes('/manage-student-bulk') ? 'router-link-active':''">
+          <i class="fa fa-cloud-upload" aria-hidden="true"></i> <span> Student Bulk Upload </span></a></li>
+      <li><a [routerLink]="['/report/schoolReport']"
+          [ngClass]="condition.includes('/report') ? 'router-link-active':''"> <i class="fa fa-file-word-o"
+            aria-hidden="true"></i> <span> School Report </span></a></li>
+    </ul>
+  </section>
+</aside>
+
+
+
+<!-- school users -->

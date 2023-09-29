@@ -1,0 +1,770 @@
+
+@media only screen and (min-width:200px) and (max-width:767px) {
+    .FiltersSection .pull-right{
+      display: block;
+    }
+  .FiltersSection .pull-left{
+    display: none;
+  }
+    .CitiesSection h1, .boardssection h1, .School-Type-section h1,.news-section h1,.Testimonialssection h1, .needsection h1{
+      font-size: 26px;
+    }
+  
+    .bannersection .owl-carousel {
+      padding: 0;
+      margin: 0 auto 0;
+    }
+    .owl-carousel {
+      padding: 0;
+      margin: 50px auto 0;
+    }
+  
+  
+    .owl-carousel .owl-nav{
+      display: block;
+    }
+    .owl-carousel .owl-dots{
+      display: none;
+    }
+  
+    .tabssection .tabEditProfile {
+      position: relative;
+      right: 0;
+    }
+  
+    .bannersearchsection2 {
+      box-shadow: none;
+      border-radius: 0;
+    }
+  
+    .searchsection2 .input-group2::before {
+      content: "";
+    }
+  
+    .searchsection2 .form-control {
+      border: 1px solid #ccc;
+      padding: 6px 12px;
+      margin: 5px auto;
+    }
+  
+    .searchsection2 .input-group2 {
+      border-radius: 0;
+      border: none;
+    }
+  
+    .searchsection2 .btn {
+      border-radius: 0;
+    }
+  
+    .create-registration_text {
+      top: 15px;
+      max-width: 140px;
+    }
+  
+    .create-registration_text h2 {
+      margin: 0;
+    }
+  
+    .searchsection2 {
+      position: relative;
+      margin: 10px 10px;
+      border-radius: 0;
+      background: none;
+    }
+  
+    .searchsection2 h1 {
+      color: #000;
+      text-shadow: none;
+    }
+  
+    .headersection {
+      position: relative;
+    }
+  
+    .bannersection,
+    .inner-banner-section,
+    .body-inner {
+      margin-top: 0;
+    }
+  
+    .lookingbox {
+      position: relative;
+      bottom: -15px;
+    }
+  
+    .what-are-section-gap {
+      height: 0;
+    }
+  
+    .what-are-section h3 {
+      font-size: 17px;
+    }
+  
+    .what-are-section img {
+      width: 50px;
+      height: 50px;
+    }
+  
+    ul.questionbox {
+      text-align: center;
+    }
+  
+    .recommendedimg {
+      float: none;
+    }
+  
+    .login-box.Credentials-box2 {
+      width: 90%;
+      margin: 0 auto;
+    }
+  
+    .inner-banner-section.school-banner {
+      height: 200px;
+    }
+  
+    .logogap {
+      height: 100px;
+    }
+  
+    .school-Location-box {
+      padding: 15px 0;
+    }
+  
+    .list_grid_view {
+      display: none;
+    }
+  
+    .schoolinfobox_img,
+    .schoolinfobox_tex {
+      /* width: 100%; */
+      float: none;
+      margin: 0 auto;
+    }
+  
+    .schoolinfobox {
+      float: none;
+      margin: 15px auto;
+      width: 100%;
+      border-radius: 10px;
+    }
+  
+    .Infrastructuresection .media-text {
+      padding: 10px 0;
+      width: 100%;
+    }
+  
+    .headersection-bottom .logobox {
+      margin: 0 auto;
+    }
+  
+    /* .topsearchsection {
+      border: none;
+    } */
+  
+    .topsearchsection .form-control {
+      /* border: 1px solid #ccc; */
+      padding: 6px 12px;
+      margin: 0 auto;
+    }
+  
+    .topsearchsection button {
+      /* border-radius: 0; */
+      padding: 6px 12px;
+      margin: 0 auto;
+    }
+
+  .topsearchsection button font {
+     display: none;
+    }
+    
+
+    .paginationsectionbox .Showingboxto {
+      float: left;
+      padding: 5px 5px;
+    }
+
+    .pagination {
+      margin: 5px 0;
+    }
+
+    .breadcrumbs_section {
+      padding: 0 0 20px;
+      margin: 0 0 0 0;
+
+    }
+
+    .mobil-section{
+      display: none;
+    } 
+
+    .school-details-section h1 span {
+      font-size: 14px;
+      display: inline-block;
+    }
+
+    
+  
+    .schoolinfobox_tex h2 {
+      padding: 15px 0 10px 0;
+    }
+  
+    .newssection h1 {
+      margin: 15px auto 5px;
+    }
+  
+    .newssection_box .pull-left,
+    .newssection_box .pull-right {
+      float: none !important;
+      width: 100%;
+    }
+  
+    .text-boxes-section {
+      padding: 20px;
+    }
+  
+    .icon_box {
+      margin: 0 auto;
+      float: none;
+    }
+  
+    .text-boxes-section h4 {
+      font-size: 25px;
+      text-align: center;
+    }
+  
+    .text-boxes-section p {
+      text-align: center;
+    }
+  
+    .advantagesbox {
+      padding: 0;
+      margin: 20px auto;
+      float: none;
+    }
+  
+    .Addsection_text {
+      float: none;
+      width: 100%;
+      text-align: center;
+    }
+  
+    .Student-List-section p.Mobile_box,
+    .Student-List-section p.Email_box {
+      text-align: left;
+    }
+  
+    .Admission-Class-box .form-group {
+      padding: 0;
+      margin: 0 0px 10px 0;
+      display: block;
+    }
+  
+    .school-details-section .School-Logo-box {
+      left: 0;
+      right: 0;
+      width: 200px;
+      bottom: 0;
+      margin: 5px auto;
+    }
+  
+    .annualbox1 p.annualbox {
+      padding: 5px 0;
+      text-align: left;
+    }
+  
+    .wishlist {
+      position: relative;
+      top: 10px;
+      right: 0;
+      left: 0;
+      margin: 0 0 10px 0;
+      text-align: center;
+    }
+  
+    .footersection2 .copy-left,
+    .footersection2 .copy-right {
+      float: none;
+    }
+  
+    .footersection2 .copy-left p,
+    .footersection2 .copy-right p {
+      text-align: center;
+    }
+  
+    .Wish-List-section .similarbox_img {
+      height: auto;
+      /* border-radius: 5px; */
+    }
+  
+    .School-details-box {
+      position: relative;
+    }
+  
+    .School-Info-box {
+      margin: 0 auto 0;
+      top: 0;
+    }
+  
+    .headersection .socialbox,
+    .headersection-phone {
+      text-align: center;
+      padding: 10px 0;
+    }
+  
+    .news_box {
+      max-height: 100%;
+    }
+  
+    .help-dask-img {
+      margin: 15px auto;
+    }
+  
+    .inner-banner-search {
+      background-image: none;
+      background-color: #21442D;
+    }
+  
+    .News_Details_box_img {
+      margin: 0 auto;
+      float: none;
+    }
+  
+  
+  
+    .break-spaces_box.table-responsive>.table>tbody>tr>td,
+    .break-spaces_box.table-responsive>.table>tbody>tr>th,
+    .break-spaces_box.table-responsive>.table>tfoot>tr>td,
+    .break-spaces_box.table-responsive>.table>tfoot>tr>th,
+    .break-spaces_box.table-responsive>.table>thead>tr>td,
+    .break-spaces_box.table-responsive>.table>thead>tr>th {
+      white-space: break-spaces;
+    }
+  
+    .mob{
+      display: block;
+    }
+  
+    .des{
+      display: none;
+    }
+
+    .paginationsectionbox .Showingboxto {
+      float: none;
+      padding: 5px;
+      text-align: center;
+      width: 100%;
+      display: inline-block;
+    }
+
+    .ngx-pagination {
+      padding: 0;
+      text-align: center;
+    }
+    .FiltersSection .pull-right .collapsible-btn {
+      margin: 0 0 5px 0;
+    }
+
+    .boardssectionbox ul li {
+      width:160px;
+    }
+
+
+
+  }
+  
+  @media only screen and (min-width:200px) and (max-width:767px) and (orientation:portrait) {
+    .login-box {
+      margin: 20px 15px;
+    }
+  
+  }
+  
+  
+  @media only screen and (min-width:200px) and (max-width:767px) and (orientation:landscape) {
+    .login-box.Credentials-box {
+      margin: 20px 15px;
+    }
+  }
+  
+  
+  @media only screen and (min-width:810px) and (max-width:1080px) {
+  
+    .headersection {
+      position: relative;
+    }
+  
+    .bannersection,
+    .inner-banner-section,
+    .body-inner {
+      margin-top: 0;
+    }
+  
+    .Student-List-section p.Mobile_box,
+    .Student-List-section p.Email_box {
+      text-align: left;
+    }
+  
+    .school-details-section .School-Logo-box {
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+    }
+  
+    .Admission-Class-box .form-group {
+      margin: 0 3px 5px 0;
+    }
+  
+    ul.questionbox {
+      text-align: center;
+    }
+  
+    .schoolinfobox_img {
+      width: 215px;
+    }
+  
+    .list_grid_view {
+      display: none;
+    }
+  
+    .headersection-bottom .logobox {
+      margin: 0 auto;
+    }
+  
+    .schoolinfobox_tex {
+      width: 57%;
+    }
+  
+    .similarbox {
+      width: 250px;
+    }
+  
+    .Featuredbox h2 {
+      height: 60px;
+    }
+  
+    .featuredimgbox {
+      height: 95px;
+    }
+  
+    .Addsection_text {
+      width: 80%;
+      min-height: 150px;
+    }
+  
+    .text-boxes-section h4 {
+      font-size: 22px;
+    }
+  
+    .Testimonials-box {
+      width: 240px;
+    }
+  
+    .tabssection .tabEditProfile {
+      position: relative;
+      right: 0;
+    }
+  
+    .School-Info-box {
+      margin: 0 auto 210px;
+      top: 190px;
+    }
+  
+    .headersection .socialbox,
+    .headersection-phone {
+      text-align: center;
+      padding: 10px 0;
+    }
+  
+    .news_box {
+      max-height: 100%;
+    }
+  
+    .text-boxes-section {
+      min-height: 325px;
+    }
+  
+    .inner-banner-search {
+      background-image: none;
+      background-color: #21442D;
+    }
+    .news_box h2 {
+      font-size: 15px;
+    }
+  
+    .bannersection .owl-carousel {
+      padding: 0;
+      margin: 0 auto 0;
+    }
+    .owl-carousel {
+      padding: 0;
+      margin: 50px auto 0;
+    }
+  
+  
+    .owl-carousel .owl-nav{
+      display: block;
+    }
+    .owl-carousel .owl-dots{
+      display: none;
+    }
+  
+    .similarbox_img {
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .similarbox_text h2 {
+        font-size: 15px;
+        height: 54px;
+    }
+    .CitiesSection h1, .boardssection h1, .School-Type-section h1,.news-section h1,
+    .Testimonialssection h1, .needsection h1,.similarsection h1{
+        font-size: 30px;
+      }
+      .similarbox_text h4 {
+        height: 73px;
+    }
+
+  }
+  
+  @media only screen and (min-width:810px) and (max-width:1180px) and (orientation:portrait) {
+    .FiltersSection .pull-right{
+      display: block;
+    }
+  .FiltersSection .pull-left{
+    display: none;
+  }
+  }
+  
+  @media only screen and (min-width:810px) and (max-width:1180px) and (orientation:landscape) {}
+  
+  
+  @media only screen and (min-width:820px) and (max-width:1180px) {
+
+    .bannersection .owl-carousel {
+      padding: 0;
+      margin: 0 auto 0;
+    }
+    .owl-carousel {
+      padding: 0;
+      margin: 50px auto 0;
+    }
+    .searchsection2 {
+      position: relative;
+      margin: 10px 10px;
+      border-radius: 0;
+      background: none;
+    }
+  
+    .searchsection2 .input-group2 {
+      border: 1px solid #ccc;
+    }
+  
+    .searchsection2 h1 {
+      color: #000;
+      text-shadow: none;
+    }
+  
+    .headersection {
+      position: relative;
+    }
+  
+    .bannersection,
+    .inner-banner-section,
+    .body-inner {
+      margin-top: 0;
+    }
+  
+    .login-box.Credentials-box2 {
+      width: 90%;
+      margin: 0 auto;
+    }
+  
+    .school-Location-box {
+      padding: 15px 0;
+    }
+  
+    .grid-width .schoolinfobox {
+      width: 47%;
+    }
+  
+    .grid-width .schoolinfobox_img {
+      height: 190px;
+    }
+  
+    .Infrastructuresection .media-text {
+      padding: 10px 0;
+      width: 100%;
+    }
+  
+    .Student-List-section p.Mobile_box,
+    .Student-List-section p.Email_box {
+      text-align: left;
+    }
+  
+    .school-details-section .School-Logo-box {
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+    }
+  
+    .Admission-Class-box .form-group {
+      margin: 0 3px 5px 0;
+    }
+  
+    ul.questionbox {
+      text-align: center;
+    }
+  
+    .headersection-bottom .logobox {
+      margin: 0 auto;
+    }
+  
+    .School-Info-box {
+      margin: 0 auto 210px;
+      top: 190px;
+    }
+  
+    .headersection .socialbox,
+    .headersection-phone {
+      text-align: center;
+      padding: 10px 0;
+    }
+  
+    .news_box {
+      max-height: 100%;
+    }
+  
+  
+  
+    .inner-banner-search {
+      background-image: none;
+      background-color: #21442D;
+    }
+  
+    .News_Details_box_img {
+      margin: 0 auto;
+      float: none;
+    }
+  
+    /* .mob{
+      display: block;
+    }
+  
+    .des{
+      display: none;
+    } */
+  
+    .owl-carousel .owl-nav{
+      display: block;
+    }
+    .owl-carousel .owl-dots{
+      display: none;
+    }
+    .news_box h2 {
+      font-size: 15px; 
+     }
+  
+  
+  }
+  
+  
+  @media only screen and (min-width:820px) and (max-width:1180px) and (orientation:portrait) {
+    .lookingbox {
+      position: relative;
+      bottom: -15px;
+    }
+  
+    .what-are-section-gap {
+      height: 0;
+    }
+  
+    .what-are-section h3 {
+      font-size: 17px;
+    }
+  
+    .what-are-section img {
+      width: 50px;
+      height: 50px;
+    }
+  
+    .featuredimgbox {
+      height: 110px;
+    }
+  
+    .featuredtextbox {
+      height: 150px;
+    }
+  
+    .login-box {
+      margin: 20px auto;
+    }
+  
+    .list_grid_view {
+      display: none;
+    }
+  
+    .schoolinfobox_tex {
+      width: 60%;
+    }
+  
+    .headersection-bottom .logobox {
+      margin: 0 auto;
+    }
+  
+    ul.questionbox {
+      text-align: center;
+    }
+  
+    .schoolinfobox_img {
+      width: 195px;
+    }
+  
+  
+  }
+  
+  
+  @media only screen and (min-width:820px) and (max-width:1180px) and (orientation:landscape) {
+    .schoolinfobox_tex {
+      width: 70%;
+    }
+  
+    .schoolinfobox_img {
+      width: 185px;
+    }
+  
+    .similarbox {
+      width: 250px;
+    }
+  
+    .Wish-List-section .similarbox_img {
+      height: auto;
+    }
+  
+    .text-boxes-section h4 {
+      font-size: 25px;
+    }
+  
+    .Addsection_text {
+      width: 80%;
+    }
+  
+    .packages_list {
+      height: 400px;
+    }
+    .text-boxes-section {
+      min-height: 255px;
+  }
+  
+  
+  }
+  
+  
+  @media only screen and (min-width:992px) and (max-width:1023px) {}
+  
+  
+  @media only screen and (min-width:1024px) and (max-width:1200px) {}
+  
+  @media only screen and (min-width:1201px) {}
+  
+  

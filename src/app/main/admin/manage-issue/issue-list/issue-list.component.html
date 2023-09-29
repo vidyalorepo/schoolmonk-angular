@@ -1,0 +1,182 @@
+<div class="content-wrapper">
+    <p-messages></p-messages>
+    <section class="content">
+        <div class="School-List-box">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="small-box">
+                        <h3 class="box-title card-text"> Issues </h3>
+                        <div>
+                            <div *ngFor='let issue of _issuesCount' class="inner pull-left">
+                                <h3><button type="button"> <strong> {{ issue.typeCount }}</strong> </button></h3>
+                                <p>{{ issue.issueState }}</p>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="icon"> <i class="fa fa-question-circle" aria-hidden="true"></i> </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <form [formGroup]="issueSearchForm">
+            <div class="box box-success2">
+                <div class="box-body">
+                    <div class="searchsection3">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <input type="text" formControlName="issuerName" placeholder="Issuer Name"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <input type="text" formControlName="issuerEmail" placeholder="Issuer Email"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                <div class="form-group">
+                                    <input type="text" formControlName="ticketId" placeholder="Ticket Id"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                <div class="form-group">
+                                    <select class="form-control border-right" formControlName="issueState">
+                                        <option value="" default>Issue State</option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Resolved">Resolved</option>
+                                        <option value="Unresolved">Unresolved</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"><button (click)="searchIssueList()"
+                                    type="button" class="btn btn-success"> Search</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="box box-success2">
+            <div class="box-header with-border bor">
+                <div class="pull-left">
+                    <div class="Showingbox">
+                        <!-- <span class="pull-left">Showing </span> -->
+                        <div class="pull-left drop">
+                            <select class="form-control" #limit (change)="fetchListApi(limit.value)">
+                                <option value='25'>25</option>
+                                <option value='50'>50</option>
+                                <option value='100'>100</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="pull-right dropdown">
+                    <!-- <button type="button" *ngIf="arraySend.length > 0" class="btn link1 button_effects pull-right"
+            (click)="changeSelectedStatus(0)"> <i class="fa fa-paper-plane" aria-hidden="true"></i> Activate Selected
+          </button> -->
+                    &nbsp;
+
+
+                    <nav class="setting-nav ">
+                        <label for="btn" class="button btn btn-success" [ngClass]="checkReadonlyClass"><i
+                                class="fa fa-cog" aria-hidden="true"></i> </label>
+                        <input *ngIf="arraySend.length === 0" class="Rolebox" type="checkbox" id="btn"
+                            [disabled]="true">
+                        <input *ngIf="arraySend.length > 0" class="Rolebox" type="checkbox" id="btn">
+                        <ul class="menu">
+                            <li><a (click)="changeSelectedStatus('Resolved')">
+                                    <font><i class="fa fa-check" aria-hidden="true"></i></font>Resolve
+                                </a></li>
+                            <li><a (click)="changeSelectedStatus('Unresolved')">
+                                    <font><i class="fa fa-times" aria-hidden="true"></i></font>Unresolve
+                                </a></li>
+                            <li><a (click)="changeSelectedStatus('Pending')">
+                                    <font><i class="fa fa-times" aria-hidden="true"></i></font>Pending
+                            </a></li>    
+                        </ul>
+                    </nav>
+
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="box-body">
+                <div class="tablesection">
+                    <div class="table-responsive">
+                        <table class="table table-striped" matSort (matSortChange)="sortData($event)"
+                            matSortDirection="asc" matSortDisableClear>
+                            <thead>
+                                <tr>
+                                    <th width="40" align="center" class="align-center">
+                                        <input style="margin:8px 0 0 0;" (click)="toggleShow()" type="checkbox"
+                                            [(ngModel)]="selectedAll" (change)="selectAll($event);">
+                                    </th>
+                                    <th width="200" mat-sort-header="issue_id">ID</th>
+                                    <th mat-sort-header="issuer_first_name">Issuer Name</th>
+                                    <th mat-sort-header="issuer_email">Issuer Email</th>
+                                    <th mat-sort-header="issue_subject">Issue Subject</th>
+                                    <th width="150" mat-sort-header="created_on">Created On </th>
+                                    <th width="110" mat-sort-header="issue_state">Issue State</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let issue of _issueList | paginate:{
+                        id:'_issueList',
+                      itemsPerPage:itemsPerPage,
+                      currentPage:currentPage,
+                      totalItems:_issueListSize
+                    }; let i =index">
+                                    <td align="center" class="align-center">
+                                        <input type="checkbox" [(ngModel)]="issue.selected"
+                                            (change)="selectCheck($event,issue.issueId)" style="margin-top: 10px;">
+                                    </td>
+                                    <td><button type="button" title="View Schools" class="btn btn-link text-light-blue"
+                                        (click)="viewIssueDetails(issue.issueId)">{{issue.ticketId}}</button></td>
+                                    
+                                    <td>{{issue?.issuerName}}</td>
+                                    <td>{{issue.issuerEmail}}</td>
+                                    <td>{{issue?.issueSubject}}</td>
+                                    <td>
+                                        <strong>{{issue.createdOn | date}}</strong>
+                                    </td>
+                                    <td>
+                                        <p-tag *ngIf="issue.issueState === 'Resolved'" severity="success">{{issue.issueState}}</p-tag>
+                                        <p-tag *ngIf="issue.issueState === 'Unresolved'" severity="danger">{{issue.issueState}}</p-tag>
+                                        <p-tag *ngIf="issue.issueState === 'Pending'" severity="warning">{{issue.issueState}}</p-tag>
+                                       
+                                    </td>
+
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div *ngIf="_issueList !=0">
+                        <div class="paginationsectionbox">
+                            <span *ngIf="!isEmpty" class="Showingboxto">Showing {{currentPageStartingIndex}} to {{currentPageEndingIndex}} of
+                                {{_issueListSize}} results</span>
+                            <span *ngIf="isEmpty">No records found.</span>
+                            <pagination-controls *ngIf="!isEmpty" class="pagination" id="_issueList"
+                                (pageChange)="handlePageChange($event)"></pagination-controls>
+                        </div>
+                    </div>
+                    <div *ngIf="_issueList == 0"  style="width: 100%; margin: 0rem auto; text-align: center;" class="no-record-found">
+                        <div class="alert alert-warning" role="alert">
+                          No records found!
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>

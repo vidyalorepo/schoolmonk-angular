@@ -1,0 +1,85 @@
+<div class="content-wrapper">
+    <p-messages></p-messages>
+    <section class="content-header">
+        <h1> Add Testimonials</h1>
+    </section>
+    <section class="content">
+        <form>
+            <div class="box box-success2">
+                <div class="box-body">
+                    <div class="row" [formGroup]="_testimonialAddForm">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Your Name <span class="req">*</span> </label>
+                                <input type="text" pInputText placeholder="Your Name" class="form-control" formControlName="name">
+                                <div class="invalid-text"
+                                    *ngIf="_testimonialAddForm.controls?.name.touched && _testimonialAddForm.controls?.name.errors">
+                                    <small *ngIf=" _testimonialAddForm.controls?.name.errors.required">
+                                        Name is Required.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Designation <span class="req">*</span> </label>
+                                <input type="text"  pInputText placeholder="Designation" class="form-control"
+                                    formControlName="designation">
+                                <div class="invalid-text"
+                                    *ngIf="_testimonialAddForm.controls?.designation.touched && _testimonialAddForm.controls?.designation.errors">
+                                    <small *ngIf=" _testimonialAddForm.controls?.designation.errors.required">
+                                        Designation is Required.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Institution</label>
+                                <input type="text"  pInputText placeholder="Institution" class="form-control"
+                                    formControlName="institution">  
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="Profile_img2">
+                                <img src={{_uploadedImgUrl}} alt="" *ngIf="_uploadedImgUrl !== null">
+                                <img src="assets/images/img_9.jpg" alt="" *ngIf="_uploadedImgUrl === null">
+                            </div>
+                            <div class="form-group">
+                                <label>Select image:</label>
+                                <input type="file" id="" name="img" (change)="changeUploadEvent($event)">
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label>Message<span class="req">*</span></label>
+                                <textarea class="form-control" pInputTextarea placeholder="Enter Message"
+                                    formControlName="message"></textarea>
+                                <div class="invalid-text"
+                                *ngIf="_testimonialAddForm.controls?.message.touched && _testimonialAddForm.controls?.message.errors">
+                                <small *ngIf=" _testimonialAddForm.controls?.message.errors.required">
+                                    Message is Required.
+                                </small>
+                            </div>    
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="box box-success2">
+                <div class="box-footer align-center">
+                    <button type="submit" class="btn link4 mx-2"
+                        [routerLink]="['/manage-testimonials/testimonials-list']"> Back
+                    </button>
+                    <button type="submit" class="btn link3 mx-2" [disabled]="!_testimonialAddForm.valid"
+                        (click)="submitData()">Add Testimonial</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

@@ -1,0 +1,173 @@
+<section class="inner-banner-section inner-banner-search">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>Admission Notice</h1>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="breadcrumbs_section">
+                    <ul>
+                        <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                        <li><button type="submit">Admission Notice</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="innersearchsection">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="Student-List-section">
+                    <div class="pull-left">
+                        <h2 style="margin:0;padding: 5px 0 20px 0;">{{noticeDtl?.schoolName}}</h2>
+                    </div>
+                    <div class="pull-right" *ngIf="noticeDtl?.document != null"><button type="button" class="link5" (click)="downloadDoc()"><i class="fa fa-download"
+                                aria-hidden="true"></i> Notice</button></div>
+                    <div class="clear"></div>
+                    <hr style="margin:0 0 10px 0; border-top: 1px solid #999;">
+                    <p>This is to inform you that the admission Forms for <span class="text-aqua">class {{noticeDtl?.classRange}}</span> for
+                        the session
+                        <span class="text-aqua">{{noticeDtl?.academicYear}}</span> will be available on online mode from <span
+                            class="text-aqua">{{noticeDtl?.admissionStartDate | date}}</span></p>
+                    <button type="button" [routerLink]="['/auth/search-details/search-school-details', noticeDtl?.schoolSlugName]" class="link5">Click Here to Apply</button>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="Student-List-section">
+                    <h2>Admission Start Date: </h2>
+                    <p>{{noticeDtl?.admissionStartDate | date}}</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="Student-List-section">
+                    <h2>Admission End Date: </h2>
+                    <p>{{noticeDtl?.admissionEndDate | date}}</p>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+
+
+<!-- <section class="innersearchsection" id="two-column-list">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <section aria-label="Announcements" class="Student-List-section announcements">
+                    <h2>Notices</h2>
+                    <hr>
+                    <div class="announcement-slider">
+                        <div>
+                            <ul class="nolist">
+                                <li class="border-bottom">
+                                    <span class="text-uppercase">April 02nd, 2018</span>
+                                    <h3><a href=""> Solodev Ranked as High Performer on G2 Crowd </a></h3>
+                                    <p>Florida's premier web content management software company ranked favorably in
+                                        user-based G2 Crowd ratings.</p>
+                                </li>
+                                <li class="border-bottom">
+                                    <span class="text-uppercase">April 02nd, 2018</span>
+                                    <h3><a href=""> Solodev Ranked as High Performer on G2 Crowd </a></h3>
+                                    <p>Florida's premier web content management software company ranked favorably in
+                                        user-based G2 Crowd ratings.</p>
+                                </li>
+                                <li class="border-bottom">
+                                    <span class="text-uppercase">April 02nd, 2018</span>
+                                    <h3><a href=""> Solodev Ranked as High Performer on G2 Crowd </a></h3>
+                                    <p>Florida's premier web content management software company ranked favorably in
+                                        user-based G2 Crowd ratings.</p>
+                                </li>
+
+                            </ul>
+                            <div class="announcements-slide">
+                                <div class="pull-left">
+                                    <a class="all pos-stat text-uppercase ml-lg-5" href="#">All Notices <i
+                                            class="fa fa-caret-right" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="pull-right">
+                                    <button class="prev-arrow-announcement mx-1" type="button"><i
+                                            class="fa fa-chevron-left"></i></button>
+                                    <button class="next-arrow-announcement mx-1" type="button"><i
+                                            class="fa fa-chevron-right"></i></button>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </section>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <section class="Student-List-section events-section" aria-label="Events">
+                    <h2>Events</h2>
+                    <hr>
+                    <div class="events">
+                        <div class="events-block">
+                            <ul class="nolist list-unstyled position-relative mb-0 px-lg-3">
+
+                                <li class="border-bottom">
+                                    <div class="events-date">
+                                        <a class="text-white" href="#">June<span>15</span></a>
+                                    </div>
+                                    <div class="d-inline-block">
+                                        <h3><a href="#">Cloud City Expo</a></h3>
+                                        <p>12PM</p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </li>
+                                <li class="border-bottom">
+                                    <div class="events-date">
+                                        <a class="text-white" href="#">June<span>15</span></a>
+                                    </div>
+                                    <div class="d-inline-block">
+                                        <h3><a href="#">Cloud City Expo</a></h3>
+                                        <p>12PM</p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </li>
+                                <li class="border-bottom">
+                                    <div class="events-date">
+                                        <a class="text-white" href="#">June<span>15</span></a>
+                                    </div>
+                                    <div class="d-inline-block">
+                                        <h3><a href="#">Cloud City Expo</a></h3>
+                                        <p>12PM</p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </li>
+
+
+
+
+
+                            </ul>
+                            <div class="announcements-slide">
+                                <div class="pull-left">
+                                    <a class="all pos-stat text-uppercase ml-lg-5" href="#">All Events <i
+                                            class="fa fa-caret-right" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="pull-right">
+                                    <button class="prev-arrow-announcement mx-1" type="button"><i
+                                            class="fa fa-chevron-left"></i></button>
+                                    <button class="next-arrow-announcement mx-1" type="button"><i
+                                            class="fa fa-chevron-right"></i></button>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section> -->

@@ -1,0 +1,56 @@
+<section class="inner-banner-section inner-banner-search">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>Testimonials List</h1>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="breadcrumbs_section">
+                    <ul>
+                        <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                        <li><button type="submit">Testimonials List</button></li> 
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="innersearchsection">
+    <div class="container">
+
+        <div class="Student-List-section footer_link">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>Testimonials List</h1>
+                </div>
+            </div>
+            <div class="Testimonials_box" *ngFor="let item of result">
+            <a [routerLink]="['/auth/testimonials/testimonials-details',item?.id]">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="Profile-section">
+                        <div class="Profile_img">
+                            <img src="assets/images/img_9.png" alt="">
+                            <!-- <img src="{{item.docList[0].filePath}}" alt=""> -->
+                        </div>
+                        <p><strong>Name : </strong> {{item.name}}, {{item.designation}}</p>
+                        <hr>
+                        <p><strong>School : </strong> {{item.institution}}</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                    <div class="Testimonials-Details_box">
+                        <p>{{item.message}} </p>
+
+                    </div>
+                </div>
+           
+            </div>
+          </a>
+        </div>
+            
+        </div>
+        
+    </div>
+</section>

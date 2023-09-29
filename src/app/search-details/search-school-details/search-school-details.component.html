@@ -1,0 +1,484 @@
+<p-toast position="top-right"></p-toast>
+<section class="inner-banner-section school-banner mobil-section">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <img *ngIf="_schoolsDetails?.schoolBannerPath != null" [src]="_schoolsDetails?.schoolBannerPath" alt="">
+      <img class="des" *ngIf="_schoolsDetails?.schoolBannerPath == null" src="assets/images/DefaultBanner.jpg" alt=""
+        class="gray">
+      <!-- <img class="mob" *ngIf="_schoolsDetails?.schoolBannerPath == null" src="assets/images/DefaultBanner2.jpg" alt=""> -->
+    </div>
+  </div>
+</section>
+<section class="school-details-section">
+  <!-- <div class="School-Logo">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+          <div class="School-Logo-box">
+            <img *ngIf="_schoolsDetails?.schoolLogoPath != null" [src]="_schoolsDetails?.schoolLogoPath" alt="">
+            <img *ngIf="_schoolsDetails?.schoolLogoPath == null" src="assets/images/school-logo.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="School-details-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+          <!-- <div class="logogap">&nbsp;</div> -->
+          <div class="School-Logo-box">
+            <img *ngIf="_schoolsDetails?.schoolLogoPath != null" [src]="_schoolsDetails?.schoolLogoPath"
+              alt="School Logo">
+            <img class="gray" *ngIf="_schoolsDetails?.schoolLogoPath == null" src="assets/images/school-logo.jpg"
+              alt="Dummy School Logo">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+          <div class="school-Location-box">
+            <h1>{{helperService.toCamelCase( _schoolsDetails?.schoolName) }}
+              <span *ngIf="_schoolsDetails?.schoolType">[ {{ _schoolsDetails?.schoolType }} ]</span>
+              <span *ngIf="_schoolsDetails?.schoolMedium">[ {{_schoolsDetails?.schoolMedium }} Medium ]</span>
+            </h1>
+            <h2
+              *ngIf="!(_schoolsDetails?.schoolBoard?.toUpperCase() =='KINDERGARTEN' || _schoolsDetails?.schoolBoard?.toUpperCase() =='SPECIAL')">
+              <span><i class="fa fa-university" aria-hidden="true"></i></span> Board: <strong>{{
+                _schoolsDetails?.schoolBoard
+                }}</strong>
+            </h2>
+            <h2><span><i aria-hidden="true" class="fa fa-map-marker"></i></span> {{helperService.toCamelCase(
+              _schoolsDetails?.schoolAddress) }} {{
+              _schoolsDetails?.addressLineTwo }} {{ _schoolsDetails?.landMark}} {{_schoolsDetails?.districtName}}
+              {{_schoolsDetails?.stateName}}, {{ _schoolsDetails?.postalCode }}</h2>
+            <!-- <h2><span><i class="fa fa-graduation-cap" aria-hidden="true"></i></span> Admission for Class </h2> -->
+            <h2 *ngIf="_schoolsDetails?.contactPhone"><span><i class="fa fa-phone" aria-hidden="true"></i></span>{{
+              _schoolsDetails?.contactPhone | phonePipe}}</h2>
+            <!-- <div class="Admission-Class-box"> -->
+
+            <!-- <div class="form-group">
+                <label>Board<span class="req">*</span></label>f
+                <select class="form-control" #val (change)="selectBoard(val.value)">
+                  <option value="">Select Board</option>
+                  <option *ngFor="let data of _boardName" value="{{data}}">{{ data }}</option>
+
+                </select>
+              </div> -->
+
+            <!-- <div class="form-group" *ngIf="usrDtl != null">
+                <label>Applicant<span class="req">*</span></label>
+                <select class="form-control" #applicant (change)="selectApplicant(applicant.value)">
+                  <option value="">Select Applicant</option>
+                  <option *ngFor="let data of _applicantsList" [value]="data.code +' '+data.valueTwo">
+                    {{ data.valueOne }}
+                  </option>
+                  <option value="0">New Applicant</option>
+                </select>
+              </div> -->
+
+            <!-- <div class="form-group">
+                <label>Class<span class="req">*</span></label>
+                <select class="form-control" #cls (change)="selectClass(cls.value)">
+                  <option value="">Class</option>
+                  <option *ngFor="let data of _classList">
+                    {{ data }}
+                  </option>
+
+                </select>
+              </div> -->
+
+            <!-- <div class="form-group calendar-icon">
+                <label>DOB<span class="req">*</span></label>
+                <input placeholder="Select DOB" type="date" [(ngModel)]="_dateOfBirthApplicant"
+                  onfocus="(this.type='date')" class="form-control" [readonly]="dobReadOnly">
+              </div> -->
+
+            <!-- <div class="form-group">
+                <button type="button" class="btn btn-success" (click)="checkEligibility()">Check Eligibility </button>
+              </div> -->
+
+            <!-- <div class="form-group" *ngIf="_schoolsDetails?.admissionOpen && _eligibleCheck">
+                <button type="button" class="btn btn-success" (click)="applySchoolRedirect()">Apply Now </button>
+              </div> -->
+
+            <!-- <div class="form-group" *ngIf="!_schoolsDetails?.admissionOpen">
+                <button type="button" class="btn btn-danger"> Admission Closed </button>
+              </div> -->
+
+            <!-- <div class="form-group" *ngIf="_schoolsDetails?.schoolBrochurePath">
+                <a href="{{_schoolsDetails?.schoolBrochurePath}}" download target="_blank" title="download Brochure pdf">
+                  <button type="button" class="btn btn-info">Brochure <i class="fa fa-download"
+                      aria-hidden="true"></i></button> </a>
+              </div> -->
+
+            <!-- </div> -->
+            <div style="padding: 0px 5px; margin: 0; font-size:15px;" class="alert alert-danger" *ngIf='errMsg'>{{
+              textErrMsg }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="School-Info-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="breadcrumbs_section">
+            <ul>
+              <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+              <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+              <li *ngIf="_showBreadcrumbLink"><a routerLink={{_prevUrl}}><button type="submit">Common
+                    Search</button></a></li>
+              <li *ngIf="_showBreadcrumbLink"><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+              <li><button>{{_schoolsDetails.schoolName}} </button></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="tabssection">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#menu1">
+                  <font><i class="fa fa-graduation-cap" aria-hidden="true"></i></font> <span><i
+                      class="fa fa-graduation-cap" aria-hidden="true"></i></span> School Details
+                </a></li>
+              <!-- <li><a data-toggle="tab" href="#menu5">
+                  <font><i class="fa fa-files-o" aria-hidden="true"></i> </font> <span> <i class="fa fa-files-o"
+                      aria-hidden="true"></i></span> Academic Performance
+                </a></li> -->
+              <li *ngIf=" _schoolsDetails.schoolInfraDtlVo?.length != 0"><a data-toggle="tab" href="#menu4">
+                  <font><i class="fa fa-snowflake-o" aria-hidden="true"></i> </font> <span><i class="fa fa-snowflake-o"
+                      aria-hidden="true"></i> </span> Infrastructure
+                </a></li>
+              <!-- <li><a data-toggle="tab" href="#menu3">
+                  <font> <i class="fa fa-university" aria-hidden="true"></i></font> <span><i class="fa fa-university"
+                      aria-hidden="true"></i> </span> Admission Notice
+                </a></li> -->
+              <!-- <li><a data-toggle="tab" href="#menu6"><font><i class="fa fa-check-square-o" aria-hidden="true"></i></font> <span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> Eligibility </a></li> -->
+
+
+            </ul>
+            <div class="tab-content">
+
+              <div id="menu1" class="tab-pane fade in active">
+                <!-- <h6><span><i class="fa fa-graduation-cap" aria-hidden="true"></i></span> School Details </h6> -->
+                <h4><span><i class="fa fa-check" aria-hidden="true"></i></span> About School</h4>
+                <p [innerHTML]="_schoolsDetails?.aboutSchool | sanitizeHtml"></p>
+                <hr *ngIf="_schoolsDetails?.schoolPrincipalName">
+                <h4 *ngIf="_schoolsDetails?.schoolPrincipalName"><span><i class="fa fa-check"
+                      aria-hidden="true"></i></span> Head of the School </h4>
+                <p>{{ _schoolsDetails?.schoolPrincipalName }}<br>
+                  {{ _schoolsDetails?.schoolPrincipalQualification }} </p>
+                <hr *ngIf="_schoolsDetails?.schoolPrincipalName">
+                <!-- <h4><span><i class="fa fa-check" aria-hidden="true"></i></span> From Principal/Headmaster's Desk </h4>
+                <p>{{ _schoolsDetails?.messageFromPrincipal }}</p> -->
+                <hr *ngIf="_schoolsDetails?.schoolPrincipalName">
+                <h4 *ngIf="_schoolsDetails.schoolTimingDtlVo?.length != 0"><span><i class="fa fa-check"
+                      aria-hidden="true"></i></span> School Timings </h4>
+                <div>
+                  <span *ngIf="_schoolsDetails.schoolTimingDtlVo?.length == 0"></span>
+                </div>
+                <div class="tablesection" *ngIf="_schoolsDetails.schoolTimingDtlVo?.length > 0">
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th width="300">Class</th>
+                          <th>Timing</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let time of _schoolsDetails.schoolTimingDtlVo">
+                          <td>{{ time.schoolLevelName }}</td>
+                          <td>{{ time.startTime | convertFrom24To12Format }} - {{ time.endTime | convertFrom24To12Format
+                            }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div id="menu3" class="tab-pane fade">
+                <h6><span><i class="fa fa-university" aria-hidden="true"></i></span> Admission Notice</h6>
+                <div class="tablesection">
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Academic Year</th>
+                          <!-- <th>Board</th> -->
+                          <th>Class</th>
+                          <th>Admission Start Date </th>
+                          <th>Admission Due Date </th>
+                          <th>Date of Birth Between</th>
+                          <th>Admission Fees (Rs.)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let data of _schoolsDetails.schoolAdmissionDtlVo">
+                          <td *ngIf="data.publishStatus == 'Y'">{{ data.academicYear }}</td>
+                          <!-- <td *ngIf="data.publishStatus == 'Y'">{{ data.boardName }}</td> -->
+                          <td *ngIf="data.publishStatus == 'Y'">{{ data.classRange }}</td>
+                          <td *ngIf="data.publishStatus == 'Y'">{{ data.admissionStartDate.split('T')[0] | date:
+                            'dd-MM-yyyy' }} </td>
+                          <td *ngIf="data.publishStatus == 'Y'"> {{ data.admissionEndDate.split('T')[0] | date:
+                            'dd-MM-yyyy' }}</td>
+                          <td *ngIf="data.publishStatus == 'Y'">{{ data.minDOB.split('T')[0] | date: 'dd-MM-yyyy' }} To
+                            {{ data.maxDOB.split('T')[0] | date: 'dd-MM-yyyy' }}</td>
+
+                          <td *ngIf="data.publishStatus == 'Y'">{{ data.feesAmount }} </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <hr>
+              </div>
+
+              <!-- <div id="menu6" class="tab-pane fade">
+                  <h6><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span> Eligibility </h6>
+                  <div  class="tablesection">
+                    <div  class="table-responsive">
+                      <table  class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Academic Year</th>
+                            <th>Board</th>
+                            <th>Class</th>
+                            <th>Marks</th>
+                            <th >Date of Birth between</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let data of _schoolsDetails.schoolStudentEligibilityDtlVo">
+                            <td>{{ data.academicYear }}</td>
+                            <td>{{ data.boardName }}</td>
+                            <td>{{ data.classRange }}</td>
+                            <td>{{ data.eligibilityMarks }} </td>
+                            <td>{{ data.dOBStartDate.split('T')[0] | date: 'dd-MM-yyyy' }} To {{ data.dOBEndDate.split('T')[0] | date: 'dd-MM-yyyy' }}</td>
+                            
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <hr>
+                 
+                </div> -->
+
+              <div *ngIf=" _schoolsDetails.schoolInfraDtlVo != 0" id="menu4" class="tab-pane fade">
+                <h6> <span><i class="fa fa-snowflake-o" aria-hidden="true"></i></span> Infrastructure</h6>
+                <div class="Infrastructuresection ">
+                  <div class="media" *ngFor="let data of _schoolsDetails.schoolInfraDtlVo">
+                    <div class="media-img pull-left">
+                      <!-- <p>{{data.infraIconPath}}</p> -->
+                      <img src='assets/images/{{data.infraIconPath}}' alt="">
+                    </div>
+                    <div class="media-text pull-right">
+                      <h5 class="media-heading">{{ data.infraName }}</h5>
+                      <p>{{ data.infraDesc }}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <!-- <div class="media">
+                      <div class="media-img pull-left">
+                        <img src="assets/images/Cafeteria.png" alt="">
+                      </div>
+                      <div class="media-text pull-right">
+                        <h5 class="media-heading">Cafeteria</h5>                       
+                        <p>Indian Institute of Management, Ahmedabad has different cafes functioning on the campus such as TANSTAAFL CAFE, 
+                          Food King, Coffee Express outlet. Institute also have mess facility for the students getting admission in 
+                          different courses.</p>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div> -->
+
+                  <!-- <div class="media">
+                      <div class="media-img pull-left">
+                        <img src="assets/images/Hostel.png" alt="">
+                      </div>
+                      <div class="media-text pull-right">
+                        <h5 class="media-heading">Hostel</h5>                       
+                        <p>IIM- A has 25 student dormitories with a total capacity to hold about 740 occupants. Apart from the dormitories, 
+                          there are separate housing facilities available for married candidates. The dorms have ten single rooms on each 
+                          floor arranged around a stairway and a tearoom. Both vegetarian and non-vegetarian meals are served. 
+                          The rooms are fully furnished including a telephone connection. The dorms also have a T.V., 
+                          washing machine and refrigerator.
+                          Boys HostelSingle Occupancy|Shared Rooms|In-Campus Hostel, Girls HostelSingle Occupancy|Shared Rooms|In-Campus Hostel</p>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div> -->
+
+                  <!-- <div class="media">
+                      <div class="media-img pull-left">
+                        <img src="assets/images/SportsComplex.png" alt="">
+                      </div>
+                      <div class="media-text pull-right">
+                        <h5 class="media-heading">Sports Complex</h5>                       
+                        <p>Available Facilities: Badminton Court|Basketball Court|Cricket Ground|Football Ground|Squash Court|Tennis Court|Volleyball Court|Table Tennis</p>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div> -->
+
+                  <!-- <div class="media">
+                      <div class="media-img pull-left">
+                        <img src="assets/images/Labs.png" alt="">
+                      </div>
+                      <div class="media-text pull-right">
+                        <h5 class="media-heading">Labs</h5>
+                        <p>Available Facilities: Computer Lab|Clinical Lab|FPM Lab</p>                       
+                      </div>
+                      <div class="clearfix"></div>
+                    </div> -->
+
+
+                  <!-- ******************** -->
+
+                  <!-- <ul>
+                      <li >Spread Over Two Acres Of Land In A Pollution Free Surrounding,</li>
+                      <li >Well Equipped Laboratories,</li>
+                      <li >Dining Hall,</li>
+                      <li >Gymnasium,</li>
+                      <li >Av Room,</li>
+                      <li >Infirmary,</li>
+                      <li >Swimming Pool,&nbsp; &nbsp; &nbsp;&nbsp;</li>
+                      <li >Well equipped Laboratories,</li>
+                      <li >Library,</li>
+                      <li >Gymnasium,</li>
+                      <li >Splashpool,</li>
+                      <li >Auditorium</li>
+                      <li >AV Room,</li>
+                      <li >Dining Hall,</li>
+                      <li >Multipurpose Hall,</li>
+                      <li >Fleet of 80 buses,</li>
+                      <li >Activity Room,</li>
+                    </ul> -->
+                </div>
+              </div>
+
+              <div id="menu5" class="tab-pane fade">
+                <h6><span><i class="fa fa-files-o" aria-hidden="true"></i> </span> Academic Achievement </h6>
+
+                <div class="tablesection">
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th width="300">Academic Year</th>
+                          <th>Performance Title</th>
+                          <th>No. of Students</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let data of _schoolsDetails.schoolAcademicDtlVo">
+                          <td>{{ data.academicYear }}</td>
+                          <td>{{ data.performanceTitle }}</td>
+                          <td>{{ data.academicInformation }}</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="Reviewsection">
+        <div class="row">
+          <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <h2>School Review</h2>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <button type="button" pButton pRipple label="Add Review" icon="pi pi-plus" class="btn link4 AddReviewsection p-button-outlined p-button-info" (click)="addReviwModel = true"></button>
+          </div>
+        </div>
+        <hr>
+
+        <div *ngFor="let item of reviewList | paginate
+        : {
+            id: 'reviewList',
+            itemsPerPage: itemsPerPage,
+            currentPage: currentPage,
+            totalItems: _reviewListSize
+          };
+    let i = index" class="Review_box">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <h3> {{item.reviewerName}} <br> <font> {{item.createdTs | date:"d MMM y" : "UTC"}}</font></h3>
+              <div class="Review_star">
+                <p-rating [ngModel]="item.rating" [cancel]="false" [readonly]="true"></p-rating>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <p>{{item.reviewDetails}}</p>
+            </div>
+
+          </div>
+        </div>
+        <div class="paginationsectionbox">
+          <span *ngIf="!isEmpty" class="Showingboxto"
+            >Showing {{ currentPageStartingIndex }} to
+            {{ currentPageEndingIndex }} of
+            {{ _reviewListSize }} results</span
+          >
+          <pagination-controls
+            *ngIf="!isEmpty"
+            class="pagination"
+            id="reviewList"
+            (pageChange)="handlePageChange($event)"
+          ></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ADD REVIEW SECTION -->
+<p-dialog header="School Review" [(visible)]="addReviwModel" [style]="{width: '30vw'}" [baseZIndex]="10000">
+        <div class="row" [formGroup]="addReviewsForm">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+              <label>Reviewer Name <span class="req">*</span></label>
+              <input pInputText type="text" formControlName="reviewerName" placeholder="Enter Reviewer Name"
+                class="form-control">
+              <small *ngIf="!addReviewsForm.controls['reviewerName'].valid && 
+            addReviewsForm.controls['reviewerName']?.touched" class="p-error">Reviewer Name is required.</small>
+              <div class="invalid-text">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+              <label>Review Details <span class="req">*</span></label>
+              <textarea pInputTextarea type="text" formControlName="reviewDetails"
+                placeholder="Add Review about School" class="form-control" maxlength="1500">
+            </textarea>
+              <small *ngIf="!addReviewsForm.controls['reviewDetails'].valid && 
+            addReviewsForm.controls['reviewDetails']?.touched" class="p-error">Review Detail is required.</small>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+              <label>Ratings <span class="req">*</span></label>
+              <p-rating formControlName="rating" [cancel]="false"></p-rating>
+            </div>
+          </div>
+        </div>
+    <div class="modal-footer">
+      <button pButton pRipple type="button" class="btn btn-default pull-right p-button-info p-button-outlined" (click)=" addReviwModel=false" >Close</button>
+      <button pButton pRipple type="button" label="Save" icon="pi pi-save" class="btn mx-2 p-button-info"
+        (click)="addReviews()" [disabled]="addReviewsForm.invalid"></button>
+    </div>
+</p-dialog>

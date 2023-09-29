@@ -1,0 +1,62 @@
+<!-- <p>short-list works!</p> -->
+
+<section class="inner-banner-section">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <img src="assets/images/inner-banner.jpg" alt="">
+        </div>
+    </div>
+</section>
+
+<section class="innersearchsection">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>My Applications</h1>
+            </div>
+        </div>
+        <br>
+        <div class="row" *ngIf="_shortListDetails.length > 0">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="tablesection">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>School Name </th>
+                                    <th>Class</th>
+                                    <th>Application No</th>
+                                    <th>Application Status</th>
+                                    <!-- <th>Payment Status</th>
+                            <th>Registration Completed</th>
+                            <th>Admissionion Completed</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of _shortListDetails; let i = index">
+                                    <td><button type="button" (click)="schoolNameClickHandler(item)" title="View School"
+                                            class="btn school-btn">{{ item.schoolMstVo['schoolName'] }} </button></td>
+                                    <td>{{item.admissionForClass}}<span
+                                            *ngIf="item.admissionForStream">-{{item.admissionForStream}}</span></td>
+                                    <td><span>
+                                            {{item.admissionId ? item.admissionId: "NA"}}
+                                        </span></td>
+                                    <td><button type="button" (click)="applicationStatusClickHandler(item)"
+                                            title="Application Status" class="btn school-btn">{{
+                                            item.admissionStatus.toLowerCase() === 'applied' ? "Application Draft" :
+                                            item.admissionStatus === 'Payment Completed' ?
+                                            "Applied" : item.admissionStatus }}
+                                        </button></td>
+                                    <!-- <td>{{ item.paymentStatus == 'Y' ? 'Yes' : 'No' }}</td>
+                                <td>{{ item.registrationCompleted == 'Y' ? 'Yes' : 'No' }}</td>
+                                <td>{{ item.admissionCompleted == 'Y' ? 'Yes' : 'No' }}</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

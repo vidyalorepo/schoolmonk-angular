@@ -1,0 +1,15 @@
+@media print {
+    /* invert the display (show/hide) properties of the main */
+    /* aplication component and the printing component       */
+  
+    app-preview-student-records {
+      display: block;
+    }
+  
+    app-preview-student-records {
+      display: none;
+    }
+  }
+  .secHide {
+    display: none;
+}

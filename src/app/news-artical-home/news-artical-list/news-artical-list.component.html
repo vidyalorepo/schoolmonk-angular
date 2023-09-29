@@ -1,0 +1,68 @@
+<section class="inner-banner-section inner-banner-search">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Latest News & Articles</h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="breadcrumbs_section">
+          <ul>
+            <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+            <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+            <li><button type="submit">Latest News & Articles</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="innersearchsection">
+  <div class="container">
+    <div class="Student-List-section footer_link">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <h1>Latest News & Articles</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngFor="
+        let data of _newsList
+          | paginate
+            : {
+                id: '_schoolsList',
+                itemsPerPage: itemsPerPage,
+                currentPage: currentPage,
+                totalItems: _newsListSize
+              };
+        let i = index
+      ">
+          <a [routerLink]="['/auth/news-articles/news-details',data?.newsSlug]">
+            <div class="news_box">
+              <div class="news_box_img">
+                <img src="assets/images/Latest_News_icon.webp" alt="">
+              </div>
+              <h4>{{ data?.newsDate | date}}</h4>
+              <h5>{{data?.subject}}</h5>
+              <div class="clearfix"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="paginationsectionbox">
+      <span *ngIf="!isEmpty" class="Showingboxto"
+        >Showing {{ currentPageStartingIndex }} to
+        {{ currentPageEndingIndex }} of
+        {{ _newsListSize }} results</span
+      >
+      <pagination-controls
+        *ngIf="!isEmpty"
+        class="pagination"
+        id="_schoolsList"
+        (pageChange)="handlePageChange($event)"
+      ></pagination-controls>
+    </div>
+  </div>
+</section>

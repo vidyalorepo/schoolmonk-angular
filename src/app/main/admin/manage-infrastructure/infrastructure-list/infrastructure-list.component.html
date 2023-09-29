@@ -1,0 +1,81 @@
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1> Infrastructure</h1>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <!-- <div class="box box-success2">
+            <div class="box-header with-border">
+              <h3 class="box-title card-text">Search</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                  <div class="form-group">
+                    <label>Infrastructure Name </label>
+                    <input type="text"  placeholder="Enter ..." class="form-control">
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                  <div class="form-group">
+                    <label> &nbsp;&nbsp; </label>
+                    <br>
+                    <button type="button" class="btn searchbox link1 button_effects"><i aria-hidden="true" class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <div class="box box-success2">
+            <div class="box-header with-border">
+              <div class="pull-left">
+              </div>
+              <div class="pull-right">
+                <a routerLink="/manage-infrastructure/add-infrastructure"> 
+                    <button type="button" title="Add Infrastructure" class="btn link1 button_effects" >Add Infrastructure</button>
+                </a>
+                &nbsp;&nbsp; </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="box-body">
+              <div class="tablesection">
+                <div class="table-responsive">
+                  <table class="table table-striped table-striped">
+                    <thead>
+                      <tr>
+                        <!-- <th width="80" style="text-align: center;">Sl No.</th> -->
+                        <th width="200">Infrastructure Name </th>
+                        <th>Infrastructure Description </th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let data of _schoolsInfraStList; let i = index">
+                        <!-- <td align="center">{{ i+1 }}</td> -->
+                        <td>{{ data.infraName }}</td>
+                        <td>{{ data.infraDesc }}</td>
+                        <td style="text-align: center;">
+                          <button type="button" (click)="deleteInfraSt(data.id)" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button> 
+                        </td>
+                      </tr>
+                      
+                      
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="box-footer">
+              <div class="text-center">
+                <button type="button" class="btn link2 mx-1">Cancel</button>
+              </div>
+            </div> -->
+          </div>
+     
+        </div>
+      </div>
+    </section>
+  </div>
+

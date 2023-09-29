@@ -1,0 +1,60 @@
+<div class="content-wrapper">
+    <p-messages></p-messages>
+    <section class="content-header">
+        <h1>Add News</h1>
+    </section>
+    <section class="content">
+        <form>
+            <div class="box box-success2">
+                <div class="box-body" [formGroup]="addNewsForm">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Subject<span class="req">*</span> </label>
+                                <input type="text" formControlName="subject" pInputText [style]="{ width: '100%' }" placeholder="Enter Subject"
+                                    maxlength="200" />
+                                    <small *ngIf="!addNewsForm.controls['subject'].valid && 
+                                    addNewsForm.controls['subject']?.touched" class="p-error">Subject is required.</small>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>News Date<span class="req">*</span> </label>
+
+                            <p-calendar [style]="{ width: '100%','padding': '1rem !important'}" placeholder="dd-mm-yy" formControlName="newsDate" dateFormat="dd-mm-yy" inputId="dateformat"></p-calendar> 
+                            <small *ngIf="!addNewsForm.controls['newsDate'].valid && 
+                            addNewsForm.controls['newsDate']?.touched" class="p-error">News Date required.</small>   
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label>News Details<span class="req">*</span> </label>
+                                <ejs-richtexteditor id="defaultRTE" formControlName="noticeBody" [toolbarSettings]="tools"
+                                    [quickToolbarSettings]="quickTools" required 
+                                    style="z-index: 100; width: 100%"></ejs-richtexteditor>
+
+                                 <small *ngIf="!addNewsForm.controls['noticeBody'].valid && 
+                                    addNewsForm.controls['noticeBody']?.touched" class="p-error">News Details is required and max 5000 characters long.</small>
+                                <!-- <small *ngIf="addNewsForm.controls['noticeBody'].hasError('maxlength')" class="p-error">News Details can be max 2000 characters long..</small>          -->
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Status<span class="req">*</span> </label>
+                                <div>
+                                    <p-inputSwitch formControlName="status"></p-inputSwitch>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer align-center">
+                    <button pButton pRipple  type="button" class="btn link3 mx-2 p-button-outlined p-button-info" [routerLink]="['/news-artical/news-artical-list']"> Back
+                    </button>
+                    <button pButton pRipple  type="button" class="btn link3 mx-2 p-button-info" (click)="addNews()">Submit</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

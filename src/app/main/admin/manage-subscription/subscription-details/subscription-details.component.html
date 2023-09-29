@@ -1,0 +1,109 @@
+<div class="content-wrapper Pricingsection">
+    <section class="content-header">
+        <h1>Subscription Details</h1>
+    </section>
+    <section class="content">
+
+        <div class="box box-success2">
+            <div class="box-header with-border">
+                <h3 class="box-title card-text">Features</h3>
+            </div>
+            <div class="box-body">
+                <div class="tablesection">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-striped">
+                            <thead>
+                                <tr >
+                                    <th width="" valign="middle"> </th>
+                                    <!-- <i class="fa fa-inr" aria-hidden="true"></i> 0  -->
+                                    <!-- <th *ngFor="let data of subscriptionDtl" style="text-align: center;">{{data.subscriptionName}} </th> -->
+                                    <th style="text-align: center;">Basic  <i class="fa fa-inr" aria-hidden="true"></i>  </th>
+                                    <th style="text-align: center;">Silver <i class="fa fa-inr" aria-hidden="true"></i>   </th>
+                                    <!-- <th style="text-align: center;">Gold / Month  <i class="fa fa-inr" aria-hidden="true"></i> 100  </th> -->
+                                    <!-- <th style="text-align: center;">Platinum / Month  <i class="fa fa-inr" aria-hidden="true"></i> 500 </th> --> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of subscriptionDtl">
+                                    <td>{{data.featureName}}</td>
+                                    <td style="text-align: center;">
+                                        <i *ngIf="+data.featureLevel == 1"  class="fa fa-check" aria-hidden="true"></i>
+                                        <i *ngIf="+data.featureLevel == 2" class="fa fa-times" aria-hidden="true"></i>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <i *ngIf="+data.featureLevel <= 2"  class="fa fa-check" aria-hidden="true"></i>
+                                        <i *ngIf="+data.featureLevel > 2" class="fa fa-times" aria-hidden="true"></i>
+                                    </td>
+                                    <!--<td style="text-align: center;"><i class="fa fa-times" aria-hidden="true"></i></td>
+                                    <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td> -->
+                                </tr>
+                                <!-- <tr>
+                                    <td>Mass Email</td>
+                                    <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+                                    <td style="text-align: center;"><i class="fa fa-times" aria-hidden="true"></i></td>
+                                    <td style="text-align: center;"><i class="fa fa-times" aria-hidden="true"></i></td>
+                                    <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Mass text</td>
+                                    <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+                                    <td style="text-align: center;"><i class="fa fa-times" aria-hidden="true"></i></td>
+                                    <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+                                    <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Admission notice</td>
+                                    <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+                                    <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+                                    <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+                                    <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+                                </tr> -->
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-success2">
+            <div class="box-header with-border">
+                <h3 class="box-title card-text">Payment</h3>
+            </div>
+            <div class="box-body">
+                <div class="tablesection">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="200">Billing </th>
+                                    <th width="200">Basic</th>
+                                    <th width="200">Card/UPI (Monthly)</th>
+                                    <th width="200">Semi Yearly- 10% Off</th>
+                                    <th width="200">Yearly- 20% off</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Price</td>
+                                    <td>Free</td>
+                                    <td><i class="fa fa-inr" aria-hidden="true"></i> 75/Month</td>
+                                    <td><i class="fa fa-inr" aria-hidden="true"></i> 100/Month</td>
+                                    <td><i class="fa fa-inr" aria-hidden="true"></i> 500/Month</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+
+
+</div>

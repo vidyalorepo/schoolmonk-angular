@@ -1,0 +1,51 @@
+<section class="inner-banner-section inner-banner-search">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>Wish List</h1>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="breadcrumbs_section">
+                    <ul>
+                        <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                        <li><button type="submit">Wish List</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="innersearchsection">
+    <div class="container-fluid">
+        <div class="Wish-List-section">
+            <div class="row">
+                <div *ngFor="let school of favSchoolList">
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                        <div class="similarbox">
+                            <button type="button"  class="btn removebox btn-danger"><a (click)="removeFavouriteSchool(school.code)"><i class="fa fa-remove" aria-hidden="true"></i></a></button>
+                          
+                            <div class="similarbox_img">
+                                <div>
+                                    <div class="overlay"></div>
+                                    <img style="cursor: pointer;"
+                                      [routerLink]="['/auth/search-details/search-school-details', school.valueOne]"
+                                      *ngIf="school?.valueTwo != null" [src]="school?.valueTwo" alt="">
+                                    <img style="cursor: pointer;"
+                                      [routerLink]="['/auth/search-details/search-school-details', school.valueOne]"
+                                      *ngIf="school?.valueTwo == null" src="assets/images/DefaultBanner.jpg" alt="">
+                                      
+                                  </div>
+                            </div>
+                            <div class="similarbox_text">
+                                <h2 [routerLink]="['/auth/search-details/search-school-details', school.valueOne]">{{school.valueOne}}</h2>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,619 @@
+<section class="inner-banner-section">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <img src="assets/images/inner-banner.jpg" alt=""> </div>
+    </div>
+  </section>
+  <section class="innersearchsection">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <h1>Apply Now </h1>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="ApplicationFormbox">
+      <div class="container">
+        <div class="row">
+          <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <h2>The Kolkata NewTown School</h2>
+              <p><span><i aria-hidden="true" class="fa fa-map-marker"></i></span> Premises 01-0279 Plot No. DD 257 Road, Street Number 279, Action Area I, Newtown, Kolkata, West Bengal 700156 </p>
+            </div> -->
+        </div>
+      </div>
+      <div class="container">
+        <div class="applicant-information-section">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div style="position: absolute;right: 15px; bottom: 0;">
+                <button type="button" (click)="handleEdit()" title="Edit Profile" class="btn link3"> <i
+                    class="fa fa-pencil" aria-hidden="true"></i></button>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="tabssection">
+                <ul class="nav nav-tabs">
+                  <li [ngClass]="activeTab1"><a data-toggle="tab" href="#menu1" (click)="tabChanged(1)">
+                      <font><img src="assets/images/Student-Details.png" alt=""></font> <span><img
+                          src="assets/images/Student-Details_h.png" alt=""></span> Student Details
+                    </a></li>
+                  <li [ngClass]="activeTab2"><a data-toggle="tab" (click)="tabChanged(2)">
+                      <font> <img src="assets/images/Parent-Details.png" alt=""> </font><span> <img
+                          src="assets/images/Parent-Details_h.png" alt=""> </span> Parent's Details
+                    </a></li>
+                  <li [ngClass]="activeTab3"><a data-toggle="tab" (click)="tabChanged(3)">
+                      <font> <img src="assets/images/Address-Details.png" alt=""> </font><span> <img
+                          src="assets/images/Address-Details_h.png" alt=""></span> Address Details
+                    </a></li>
+                  <li [ngClass]="activeTab4"><a data-toggle="tab" (click)="tabChanged(4)">
+                      <font> <img src="assets/images/Document-Uploads.png" alt=""> </font><span> <img
+                          src="assets/images/Document-Uploads_h.png" alt=""></span> Document Uploads
+                    </a></li>
+                </ul>
+  
+                <div class="tab-content">
+                  <form [formGroup]="addStudentForm">
+                    <div *ngIf="_wizardForm === 1">
+                      <div id="menu1" class="tab-pane fade in active">
+  
+  
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                              <label>Student Name</label>
+                              <input type="text" formControlName="studentName" class="form-control"
+                                placeholder="Enter ..." readonly>
+                            </div>
+                          </div>
+  
+                          <!-- <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                          <div class="form-group">
+                            <label>Select Mode of School</label>
+                            <select class="form-control">
+                              <option value="">Select</option>
+                              <option>English</option>
+                              <option>Bengali</option>
+                            </select>
+                          </div>
+                        </div> -->
+  
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                              <label>Gender <span class="req">*</span></label>
+                              <select class="form-control" formControlName="gender"
+                                [attr.disabled]="!editBtn ? '' : null">
+                                <option value="">Select</option>
+                                <option>Boy</option>
+                                <option>Girl</option>
+                                <option>Others</option>
+                              </select>
+                              <div class="invalid-text"
+                                *ngIf="addStudentForm.controls?.gender.touched && addStudentForm.controls?.gender.errors">
+                                <div *ngIf="addStudentForm.controls?.gender.errors.required ">
+                                  Gender is required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                              <label>Religion <span class="req">*</span></label>
+                              <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="">  -->
+                              <select class="form-control" formControlName="religion"
+                                [attr.disabled]="!editBtn ? '' : null">
+                                <option value="">Select..</option>
+                                <option value="Buddhism">Buddhism</option>
+                                <option value="Christianity">Christianity</option>
+                                <option value="Hinduism">Hinduism</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Judaism">Judaism</option>
+                                <option value="Sikhism">Sikhism</option>
+                                <option value="Taoism">Taoism</option>
+                              </select>
+                              <div class="invalid-text"
+                                *ngIf="addStudentForm.controls?.religion.touched  && addStudentForm.controls?.religion.errors">
+                                <div *ngIf=" addStudentForm.controls?.religion.errors.required ">
+                                  Religion is required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                              <label>Blood Group</label>
+                              <select class="form-control" formControlName="bloodGroup"
+                                [attr.disabled]="!editBtn ? '' : null">
+                                <option value="">Select..</option>
+                                <option>A+</option>
+                                <option>A-</option>
+                                <option>B+</option>
+                                <option>B-</option>
+                                <option>O+</option>
+                                <option>O-</option>
+                                <option>AB+</option>
+                                <option>AB-</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                              <label>Nationality <span class="req">*</span></label>
+                              <select class="form-control" formControlName="nationallity"
+                                [attr.disabled]="!editBtn ? '' : null">
+                                <option value="">Select..</option>
+                                <option>Indian</option>
+                                <option>Australian</option>
+                              </select>
+                              <div class="invalid-text"
+                                *ngIf="addStudentForm.controls?.nationallity.touched && addStudentForm.controls?.nationallity.errors">
+                                <div *ngIf="addStudentForm.controls?.nationallity.errors.required ">
+                                  Nationality is required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                              <label>First Language <span class="req">*</span></label>
+                              <select class="form-control" formControlName="firstLanguage"
+                                [attr.disabled]="!editBtn ? '' : null">
+                                <option value="">Select</option>
+                                <option>English</option>
+                                <option>Bengali</option>
+                                <option>Hindi</option>
+                              </select>
+                              <div class="invalid-text"
+                                *ngIf="addStudentForm.controls?.firstLanguage.touched && addStudentForm.controls?.firstLanguage.errors">
+                                <div *ngIf="addStudentForm.controls?.firstLanguage.errors.required ">
+                                  firstLanguage is required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                              <label>Last School Attempt</label>
+                              <input type="text" class="form-control" placeholder="Enter ..."
+                                formControlName="lastSchoolAttempt" [readonly]="!editBtn">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                              <label>Date of Birth</label>
+                              <input type="text" formControlName="dateOfBirth" class="form-control"
+                                placeholder="Enter ..." readonly>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                          <div  class="box-footer align-center">
+                            <button  type="submit" class="btn link2 button_effects mx-1 button-size"> Previous </button>
+                            <button  type="submit" class="btn link1 button_effects mx-1 button-size" (click)="submitData()">Save & Next </button>
+                          </div>
+                        </div>
+                      </div> -->
+                        <!-- </form> -->
+                      </div>
+                    </div>
+  
+  
+                    <div *ngIf="_wizardForm === 2">
+                      <div class="tab-pane">
+  
+                        <!-- <form [formGroup]="addStudentForm">  -->
+                        <ng-container formArrayName="studentGuardianVo"
+                          *ngFor="let item of studentGuardianVoFormArray.controls; let i=index">
+                          <div [formGroupName]="i">
+                            <div class="row">
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>Guardian Name</label>
+                                  <input type="text" class="form-control" formControlName="guardianName"
+                                    [readonly]="!editBtn">
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>Email <span class="req">*</span></label>
+                                  <!--  -->
+                                  <input type="text" class="form-control" placeholder="Enter ..."
+                                    formControlName="guardianEmail" [readonly]="!editBtn">
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('guardianEmail').touched && item.get('guardianEmail').errors">
+                                    <div *ngIf="item.get('guardianEmail').errors?.required">Guardian
+                                      Guardian Email is required</div>
+                                    <div
+                                      *ngIf="!item.get('guardianEmail').errors?.required && item.get('guardianEmail').errors?.invalidEmail">
+                                      Guardian Email is invalid</div>
+                                  </div>
+                                </div>
+                                <!-- <div class="invalid-text" *ngIf="_isSubmitted && addStudentForm.controls?.gender.errors">
+                                  <div *ngIf="_isSubmitted && addStudentForm.controls?.studentGuardianVo.value[i].errors.required ">
+                                    Gender is required
+                                  </div>
+                                </div> -->
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>Phone <span class="req">*</span></label>
+                                  <!--  -->
+                                  <input type="number" (keypress)="checkLen($event, 'PHONE')"
+                                    formControlName="guardianPhone" class="form-control" placeholder="Enter ..."
+                                    [readonly]="!editBtn">
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('guardianPhone').touched && item.get('guardianPhone').errors">
+                                    <div *ngIf="item.get('guardianPhone').errors?.required">Guardian Phone No. is required
+                                    </div>
+                                    <div
+                                      *ngIf="!item.get('guardianPhone').errors?.required && item.get('guardianPhone').errors?.invalidPh">
+                                      Guardian Phone No. is invalid</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>Qualification <span class="req">*</span>
+                                  </label>
+                                  <input type="text" class="form-control" placeholder="Enter ..."
+                                    formControlName="guardianQualification" [readonly]="!editBtn">
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('guardianQualification').touched && item.get('guardianQualification').errors?.required">
+                                    <div>Guardian Qualification is required</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>Occupation <span class="req">*</span> </label>
+                                  <!-- <input type="text" class="form-control" placeholder="Enter ..."
+                                    formControlName="guardianOccupation"> -->
+                                  <select class="form-control" formControlName="guardianOccupation"
+                                    [attr.disabled]="!editBtn ? '' : null">
+                                    <option value="">select</option>
+                                    <option value="Government Job">Government Job Holder </option>
+                                    <option value="Public Sector">Public Sector</option>
+                                    <option value="Private Sector">Private Sector</option>
+                                    <option value="Bussiness">Bussinessman</option>
+                                    <option value="Retired">Retired</option>
+                                  </select>
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('guardianOccupation').touched && item.get('guardianOccupation').errors?.required">
+                                    <div>Guardian Occupation is required</div>
+                                  </div>
+                                </div>
+                              </div>
+  
+  
+                            </div>
+  
+                            <div class="row">
+  
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>Annual Income <span class="req">*</span></label>
+                                  <input type="number" class="form-control" placeholder="Enter ..."
+                                    formControlName="guardianAnnualIncome" [readonly]="!editBtn">
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('guardianAnnualIncome').touched && item.get('guardianAnnualIncome').errors?.required">
+                                    <div>Guardian Annual Income is required</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>ID Proof <span class="req">*</span></label>
+                                  <select class="form-control" #idproof (click)="idProof(idproof.value)"
+                                    formControlName="iDProofType" [attr.disabled]="!editBtn ? '' : null">
+                                    <option value="">Select..</option>
+                                    <option value="Voter">Voter Card</option>
+                                    <option value="Aadhar">Aadhar Card</option>
+                                  </select>
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('iDProofType').touched && item.get('iDProofType').errors?.required">
+                                    <div>ID Proof is required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" *ngIf='displayCardNo'>
+                                <div class="form-group">
+                                  <label>Enter {{iputCardData}} Card Number</label>
+                                  <input type="text" class="form-control" placeholder="Enter ..."
+                                    formControlName="guardianIDProof" [readonly]="!editBtn">
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('guardianIDProof').touched && item.get('guardianIDProof').errors">
+                                    <div *ngIf="item.get('guardianIDProof').errors?.required">Card No. is required</div>
+                                    <div
+                                      *ngIf="!item.get('guardianIDProof').errors?.required && item.get('guardianIDProof').errors?.invalidCardNo">
+                                      Card No. is invalid</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>Relation With Student <span class="req">*</span></label>
+                                  <select class="form-control" formControlName="guardianRelationWithStudent"
+                                    [attr.disabled]="!editBtn ? '': null">
+                                    <option value="">Select</option>
+                                    <option>Father</option>
+                                    <option>Mother</option>
+                                    <option>Others</option>
+                                  </select>
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('guardianRelationWithStudent').touched && item.get('guardianRelationWithStudent').errors?.required">
+                                    <div>Relationship is required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div  class="box-footer align-center">
+                              <button  type="submit" class="btn link2 button_effects mx-1 button-size"> Previous </button>
+                              <button  type="submit" class="btn link1 button_effects mx-1 button-size" (click)="submitData()">Save & Next </button>
+                            </div>
+                          </div>
+                        </div> -->
+                            <!-- </form> -->
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+                    <div *ngIf="_wizardForm === 3">
+                      <div class="tab-pane">
+  
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                              <label>Address Type</label><br>
+                              <label>Permanent Address</label>&nbsp;&nbsp;
+                              <!-- [checked]="item.value.addressType==='Permanent Yes'"
+                            [checked]="item.value.addressType==='Permanent No'" -->
+                              <input type="radio" id="Yes" name="permanentAddress" #val1 value="Permanent Yes"
+                                (click)="radioYes(val1.value)" [attr.disabled]="!editBtn?'':null" [checked]="permanentAddYes">
+                              <label>&nbsp; Yes</label>&nbsp;&nbsp;&nbsp;
+                              <input type="radio" id="No" name="permanentAddress" #val2 value="Permanent No"
+                                (click)="radioNo(val2.value)" [attr.disabled]="!editBtn?'':null" [checked]="permanentAddNo">
+                              <label>&nbsp; No</label>
+                            </div>
+                          </div>
+                        </div>
+  
+                        <ng-container formArrayName="addressVo"
+                          *ngFor="let item of studentAddressVoFormArray.controls; let i=index">
+                          <div [formGroupName]="i">
+                            <div class="row">
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>Address Line 1 <span class="req">*</span></label>
+                                  <input type="text" class="form-control" placeholder="Enter ..."
+                                    formControlName="addrLineOne" [readonly]="!editBtn">
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('addrLineOne').touched && item.get('addrLineOne').errors?.required">
+                                    <div>Address is required</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>Address Line 2</label>
+                                  <input type="text" class="form-control" placeholder="Enter ..."
+                                    formControlName="addrLineTwo" [readonly]="!editBtn">
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>Country <span class="req">*</span></label>
+                                  <select class="form-control"  #countryVal formControlName="country"
+                                    [attr.disabled]="!editBtn?'':null" (change)="selectCountry(i)">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let data of countryList" [value]="data.id">{{data.name}}
+                                    </option>
+                                  </select>
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('country').touched && item.get('country').errors?.required">
+                                    <div>Country is required</div>
+                                  </div>
+                                </div>
+                              </div>
+  
+                            </div>
+  
+  
+                            <div class="row">
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>Postal Code <span class="req">*</span></label>
+                                  <input type="number" (keypress)="checkLen($event, 'POSTAL')"
+                                    class="form-control" placeholder="Enter ..." formControlName="pin"
+                                    [readonly]="!editBtn">
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('pin').touched && item.get('pin').errors?.required">
+                                    <div>Postal Code is required</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label>City <span class="req">*</span></label>
+                                  <input type="text" class="form-control" placeholder="Enter ..." formControlName="city"
+                                    [readonly]="!editBtn">
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('city').touched && item.get('city').errors?.required">
+                                    <div>City is required</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                  <label *ngIf="i===0 && checkIndia">State <span class="req">*</span></label>
+                                  <label *ngIf="i===0 && !checkIndia">State/province/district <span class="req">*</span></label>
+                                  <label *ngIf="i===1 && checkIndiaTwo">State <span class="req">*</span></label>
+                                  <label *ngIf="i===1 && !checkIndiaTwo">State/province/district <span class="req">*</span></label>
+                                  <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="state"> -->
+                                  <select class="form-control" formControlName="state" #stateValOne
+                                    (change)="onState(stateValOne.value, i)" [attr.disabled]="!editBtn ? '':null" *ngIf="i===0">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let data of stateListOne" value="{{ data.stateName }}">{{ data.stateName }}
+                                    </option>
+                                  </select>
+                                  <select class="form-control" formControlName="state" #stateValTwo
+                                    (change)="onState(stateValTwo.value, i)" [attr.disabled]="!editBtn ? '':null" *ngIf="i===1">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let data of stateListTwo" value="{{ data.stateName }}">{{ data.stateName }}
+                                    </option>
+                                  </select>
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('state').touched && item.get('state').errors?.required">
+                                    <div>State is required</div>
+                                  </div>
+                                </div>
+                              </div>
+  
+  
+  
+                              <!-- *ngIf='studentAddressVoFormArray.length <= 1' -->
+                              
+  
+                            </div>
+                            <div class="row">
+                              
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+                                <div class="form-group">
+                                  <label *ngIf="i===0 && checkIndia">District <span class="req">*</span></label>
+                                  <label *ngIf="i===1 && checkIndiaTwo">District <span class="req">*</span></label>
+                                  <!-- <input type="text" class="form-control" placeholder="Enter ..." formControlName="district"> -->
+                                  <select class="form-control" formControlName="district" *ngIf="i===0 && checkIndia"
+                                    [attr.disabled]="!editBtn?'':null">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let data of indexOneDist" value="{{ data.districtName }}">{{ data.districtName
+                                      }}</option>
+                                  </select>
+                                  <select class="form-control" formControlName="district" *ngIf="i===1 && checkIndiaTwo"
+                                    [attr.disabled]="!editBtn?'':null">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let data of indexTwoDist" value="{{ data.districtName }}">{{ data.districtName
+                                      }}</option>
+                                  </select>
+                                  <div class="invalid-text"
+                                    *ngIf="item.get('district').touched && item.get('district').errors?.required && countryVal.value === '101'">
+                                    <div>District is required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div><br>
+                        </ng-container>
+  
+                      </div>
+                    </div>
+                    <div *ngIf="_wizardForm === 4">
+                      <div>
+  
+                        <div class="">
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                              <div class="form-group">
+                                <label>Student's Photograph</label>
+                                <input class="Uploadbox" type="file" id="myFile" name="'file[]'"
+                                  (change)="uploadSingleFile($event,'student_photo',_studentPhotoUrl.fileId)"
+                                  [attr.disabled]="!editBtn ? '':null">
+                                <div class="School_logo_box" *ngIf="_studentPhotoUrl.fileId != 0">
+                                  <button *ngIf="_studentPhotoUrl.filePath" type="button"
+                                    (click)="deleteImageFile(_studentPhotoUrl.fileId, 'student_photo')" class="btn "><i
+                                      class="fa fa-times" aria-hidden="true"
+                                      [attr.disabled]="!editBtn ? '':null"></i></button>
+                                  <img [src]="_studentPhotoUrl.filePath" alt="">
+                                </div>
+                                <p class="help-block">Max Limit 1MB</p>
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                              <div class="form-group">
+                                <label>Guardian's Photograph</label>
+                                <input class="Uploadbox" type="file" id="myFile" name="'file[]'"
+                                  (change)="uploadSingleFile($event,'guardian_photo',_guardianPhotoUrl.fileId)"
+                                  [attr.disabled]="!editBtn ? '':null">
+                                <div class="School_logo_box" *ngIf="_guardianPhotoUrl.fileId != 0">
+                                  <button *ngIf="_guardianPhotoUrl.filePath" type="button"
+                                    (click)="deleteImageFile(_guardianPhotoUrl.fileId, 'guardian_photo')" class="btn "><i
+                                      class="fa fa-times" aria-hidden="true"
+                                      [attr.disabled]="!editBtn ? '':null"></i></button>
+                                  <img [src]="_guardianPhotoUrl.filePath" alt="">
+                                </div>
+                                <p class="help-block">Max Limit 1MB</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                              <div class="form-group">
+                                <label>Proof of Birth</label>
+                                <input class="Uploadbox" type="file" id="myFile" name="'file[]'"
+                                  (change)="uploadSingleFile($event,'birth_certificate',_birthCertificateUrl.fileId)"
+                                  [attr.disabled]="!editBtn ? '':null">
+                                <div class="School_logo_box" *ngIf="_birthCertificateUrl.fileId != 0">
+                                  <button *ngIf="_birthCertificateUrl.filePath" type="button"
+                                    (click)="deleteImageFile(_birthCertificateUrl.fileId, 'birth_certificate')"
+                                    class="btn "><i class="fa fa-times" aria-hidden="true"
+                                      [attr.disabled]="!editBtn ? '':null"></i></button>
+                                  <img [src]="_birthCertificateUrl.filePath" alt="">
+                                </div>
+                                <p class="help-block">Max Limit 1MB</p>
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                              <div class="form-group">
+                                <label>Last Class Marksheet</label>
+                                <input class="Uploadbox" type="file" id="myFile" name="'file[]'"
+                                  (change)="uploadSingleFile($event,'last_marksheet',_lastCertificateUrl.fileId)"
+                                  [attr.disabled]="!editBtn ? '':null">
+                                <div class="School_logo_box" *ngIf="_lastCertificateUrl.fileId != 0">
+                                  <button *ngIf="_lastCertificateUrl.filePath" type="button"
+                                    (click)="deleteImageFile(_lastCertificateUrl.fileId, 'last_marksheet')"
+                                    class="btn "><i class="fa fa-times" aria-hidden="true"
+                                      [attr.disabled]="!editBtn ? '':null"></i></button>
+                                  <img [src]="_lastCertificateUrl.filePath" alt="">
+                                </div>
+                                <p class="help-block">Max Limit 1MB</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+  
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="box-footer align-center">
+                          <button type="submit" class="btn link4 mx-2" *ngIf="_wizardForm > 1 && _wizardForm < 5"
+                            (click)="previousData()"> Previous </button>
+                          <button type="submit" *ngIf="_wizardForm < 4 && editBtn === true" class="btn link3 mx-2 "
+                            (click)="saveAndNextHandler(_wizardForm)">Save & Next </button>
+                          <button type="submit" *ngIf="_wizardForm < 4 && editBtn === false" class="btn link3 mx-2 "
+                            (click)="nextHandler()"> Next </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

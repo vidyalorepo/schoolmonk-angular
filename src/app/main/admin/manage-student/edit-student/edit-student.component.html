@@ -1,0 +1,163 @@
+<div class="content-wrapper">
+  <p-messages></p-messages>
+  <section class="content-header">
+    <h1>Edit User</h1>
+  </section>
+  <section class="content">
+    <form [formGroup]="addUserForm">
+      <div class="box box-success2">
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>First Name Name <span class="req">*</span> </label>
+                <input type="text" placeholder="First name" formControlName="firstName" class="form-control">
+                <!-- <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolName.errors">
+                                    <div *ngIf="submitted && addSchoolForm.controls.schoolName.errors.required">School
+                                        Name is
+                                        required
+                                    </div>
+
+                                </div> -->
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Last Name <span class="req">*</span> </label>
+                <input type="text" placeholder="Last Name" formControlName="lastName" class="form-control">
+                <!-- <div class="invalid-text"
+                                    *ngIf="submitted && addSchoolForm.controls.contactPersonFirstName.errors">
+                                    <div
+                                        *ngIf="submitted && addSchoolForm.controls.contactPersonFirstName.errors.required">
+                                        Contact
+                                        Person First Name is required
+                                    </div>
+
+                                </div> -->
+              </div>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Phone No. <span class="req">*</span> </label>
+                <div class="form-control-width-box">
+                  <select name="country" formControlName='phoneCountryCode' class="form-control form-control-width1">
+                    <option value="+91">+91</option>
+                    <option value="+1">+1</option>
+                    <option value="+44">+44</option>
+                    <option value="+1-340">+1-340</option>
+                  </select>
+                  <input type="tel" (keypress)="keyPress($event)" maxlength="10" formControlName='phone'
+                    class="form-control form-control-width2" placeholder="Enter Mobile No.">
+                </div>
+                <!-- <div class="invalid-text"
+                                    *ngIf="submitted && addSchoolForm.controls.contactPhone.errors">
+                                    <div *ngIf="submitted && addSchoolForm.controls.contactPhone.errors.required">Mobile
+                                        No. is
+                                        required
+                                    </div>
+                                    <div
+                                        *ngIf="addSchoolForm.controls.contactPhone.errors.pattern || addSchoolForm.controls.contactPhone.errors.maxlength || addSchoolForm.controls.contactPhone.errors.minlength">
+                                        Invalid Mobile No.</div>
+
+                                </div> -->
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Email. <span class="req">*</span> </label>
+                <input type="email" placeholder="email" formControlName="email" class="form-control">
+                <!-- <div class="invalid-text"
+                                    *ngIf="submitted && addSchoolForm.controls.contactEmail.errors">
+                                    <div *ngIf="submitted && addSchoolForm.controls.contactEmail.errors.required">Email
+                                        is required
+                                    </div>
+                                    <div *ngIf="submitted && addSchoolForm.controls.contactEmail.errors.email">Invalid
+                                        Email Format
+                                    </div>
+                                </div> -->
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+      <div class="box box-success2">
+        <div class="box-body">
+          <!-- <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label> Address Line 1 <span class="req">*</span> </label>
+                <input type="text" placeholder="flat, house no., building, apartment" formControlName="schoolAddress"
+                  class="form-control">
+                <div class="invalid-text" *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors">
+                  <div *ngIf="submitted && addSchoolForm.controls.schoolAddress.errors.required">School Address is
+                    required
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label> Address Line 2 </label>
+                <input type="text" placeholder="Area, Colony, Street, Sector" formControlName="addressLineTwo"
+                  class="form-control">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Landmark </label>
+                <input type="text" placeholder="Area, Colony, Street, Sector" formControlName="landMark"
+                  class="form-control">
+
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Town/City </label>
+                <input type="text" placeholder="Area, Colony, Street, Sector" formControlName="city"
+                  class="form-control">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group FeaturedboxSchool">
+                <label>State</label>
+                <select class="form-control" formControlName="state" (change)="onState()">
+                  <option value="">Select</option>
+                  <option *ngFor="let data of stateList" value="{{ data.id }}">{{ data.stateName }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group FeaturedboxSchool">
+                <label>District</label>
+                <select class="form-control" formControlName="district">
+                  <option *ngFor="let data of _districtList" value="{{ data.id }}">{{ data.districtName }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Postal Code </label>
+                <input type="text" placeholder="Postal Code" formControlName="postalCode" class="form-control">
+
+              </div>
+            </div>
+
+
+
+          </div> -->
+        </div>
+        <div class="box-footer align-center">
+          <button type="submit" class="btn link4 mx-2" [routerLink]="['/manage-student/student-list']"> Back
+          </button>
+          <button type="submit" class="btn link3 mx-2" (click)="submitUserData()">Submit </button>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>

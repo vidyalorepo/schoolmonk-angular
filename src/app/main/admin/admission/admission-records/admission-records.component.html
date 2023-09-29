@@ -1,0 +1,215 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1> Admission Records </h1>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <!-- <div class="box box-success2">
+            <div class="box-header with-border">
+              <h3 class="box-title card-text">Search</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                  <div class="form-group">
+                    <label>Session </label>
+                    <input type="text"  placeholder="Session" class="form-control">
+                  </div>
+                </div>                
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                  <div class="form-group">
+                    <label>Student Name  </label>
+                    <input type="text"  placeholder="student name " class="form-control">
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                  <div class="form-group">
+                    <label>Phone No</label>
+                    <input type="tel"  placeholder="phone no" class="form-control">
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                  <div class="form-group">
+                    <label>Email </label>
+                    <input type="email"  placeholder="email" class="form-control">
+                  </div>
+                </div>   
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                  <div class="form-group">
+                    <label>Admission Status </label>
+                    <input type="text"  placeholder="admission status " class="form-control">
+                  </div>
+                </div>                  
+                
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                  <div class="form-group">
+                    <label> &nbsp;&nbsp; </label>
+                    <br>
+                    <button type="button" class="btn searchbox link1 button_effects"><i aria-hidden="true" class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+        <div class="box box-success2 ">
+          <div class="box-header with-border">
+            <h3 class="box-title card-text">Admission for class</h3>
+          </div>
+          <div class="box-body">
+            <div class="row">
+              <!-- <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="form-group">
+                  <select class="form-control" #val (change)="selectBoard(val.value)">
+                    <option value="">Select Board</option>
+                    <option *ngFor="let data of _schoolsDetails?.schoolBoardClassDtlVo" value="{{data.boardName}}">{{
+                      data.boardName }}</option>
+                  </select>
+                </div>
+              </div> -->
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="form-group">
+                  <select class="form-control" #cls (change)="selectClass(cls.value)">
+                    <option value="">Class</option>
+                    <option *ngFor="let data of _classList; let i=index;" value="{{ data }}">{{
+                      data }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <select class="form-control" [(ngModel)]="_academicYr" #selectValue
+                  (change)="callAppliedStudentList(selectValue.value, '', cls.value,'')">
+                  <option *ngFor="let data of _academicYrArr" [value]="data">{{data}}</option>
+                </select>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="form-group" *ngIf="cls.value == 'XI' || cls.value == 'XII'"
+                  style="max-width: 300px;display: inline-block; margin:-4px 0px 0 5px;">
+                  <select class="form-control" [(ngModel)]="_selectedStream" #streamval
+                    (change)="callAppliedStudentList(selectValue.value,'', cls.value,streamval.value)">
+                    <option value="">Stream</option>
+                    <option *ngFor="let data of streamList" value="{{data}}">{{data}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4"></div>
+
+              <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2">
+                <div class="dropdown">
+
+
+                  <!-- &nbsp;
+                  <button type="button " *ngIf="arraySend.length > 0" class="btn link4"
+                  style="margin: 0;" (click)="activeAllselected()">
+                  <i class="fa fa-paper-plane" aria-hidden="true"></i> Shortlist Selected </button>
+                  &nbsp; Admitted,	Interview Pending,	Waitlist, Denied-->
+                  <nav class="setting-nav pull-right">
+                    <label for="btn" class="button btn btn-success" [ngClass]="checkReadonlyClass"><i aria-hidden="true"
+                        class="fa fa-cog"></i></label>
+                    <!-- <input  type="checkbox" id="btn" class="Rolebox"> -->
+                    <input *ngIf="arraySend.length === 0" class="Rolebox" type="checkbox" id="btn" [disabled]="true">
+                    <input *ngIf="arraySend.length > 0" class="Rolebox" type="checkbox" id="btn">
+                    <ul class="menu">
+                      <li>
+                        <label for="btn-3" class="second">
+                          <font><i class="fa fa-cubes" aria-hidden="true"></i></font>
+                          Change Status <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                        </label>
+                        <input class="" type="checkbox" id="btn-3">
+                        <ul>
+                          <li *ngFor="let data of statusArrayList" [value]="data.statusName"><a
+                              (click)="activeAllselected(data.statusName)">
+                              {{data.statusName}}
+                            </a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+            <div class="tablesection">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <!-- <th width="70">Sl No.</th> -->
+                      <th width="30" align="center" style="text-align: center;">
+                        <input type="checkbox" (click)="toggleShow()" type="checkbox" [(ngModel)]="selectedAll"
+                          (change)="selectAll($event);">
+                      </th>
+                      <th>Session</th>
+                      <th>Student Name </th>
+                      <th>Phone No.</th>
+                      <th>Email</th>
+                      <th align="center">Admission For</th>
+                      <th>Admission Status</th>
+                      <th>Action </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr *ngFor="let data of appliedStudentList | paginate:{
+                      id:'_schoolsList',
+                    itemsPerPage:itemsPerPage,
+                    currentPage:currentPage,
+                    totalItems:_AppliedStudentSize
+                  }; let i = index;">
+                      <!-- <td align="center">{{i+1}}</td> -->
+                      <td width="30" align="center"> <input *ngIf="data.admissionStatus !== 'Shortlisted'"
+                          type="checkbox" (change)="selectCheck($event,data.id)" [(ngModel)]="data.selected"></td>
+                      <td>{{data.academicYear}}</td>
+                      <td>{{data.studentMstVo.studentName}}</td>
+                      <td>{{data.studentMstVo.studentGuardianVo[0].guardianPhone}}</td>
+                      <td>{{data.studentMstVo.studentGuardianVo[0].guardianEmail}}</td>
+                      <td>{{data.admissionForBoard}}&nbsp;{{data.admissionForClass}}<span
+                          *ngIf="data.admissionForStream">&nbsp;-&nbsp;{{data.admissionForStream}}</span></td>
+                      <td>{{data.admissionStatus}}
+
+                        <!-- <strong class="Acceptedbox">{{data.admissionStatus}} </strong>  
+                          <strong class="Denieddbox"> Denied</strong>
+                          <strong class="Pendingdbox">Pending</strong> -->
+
+                      </td>
+                      <td align="center"><button type="button"
+                          [routerLink]="['/admission/preview-records',data.registrationToken]"
+                          class="btn btn-warning"><i class="fa fa-file-text-o" aria-hidden="true"></i></button>
+                      </td>
+                      <!-- [(ngModel)]="school.selected" *ngIf="school.schoolStatus === 'In-Active'" (change)="selectCheck($event,school.id)" -->
+
+                    </tr>
+
+                  </tbody>
+                  <!-- <tfoot >
+                    <tr>
+                      No records found!!!!!
+                    </tr>
+                  </tfoot> -->
+
+                </table>
+                <div *ngIf="appliedStudentList?.length === 0">
+                  No records found.
+                </div>
+              </div>
+              <div class="paginationsectionbox">
+                <span *ngIf="!isEmpty" class="Showingboxto">Showing {{currentPageStartingIndex}} to
+                  {{currentPageEndingIndex}} of
+                  {{_AppliedStudentSize}} results</span>
+                <span *ngIf="isEmpty">No records found.</span>
+                <pagination-controls *ngIf="!isEmpty" class="pagination" id="_schoolsList"
+                  (pageChange)="handlePageChange($event)"></pagination-controls>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</div>

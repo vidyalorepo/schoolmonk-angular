@@ -1,0 +1,13 @@
+::ng-deep .mat-horizontal-stepper-header {
+    pointer-events: none !important;
+}
+.link3 {
+    padding: 0px 15px !important;
+}  
+.modal.in .modal-dialog {
+    transform: translate(0,0);
+    width: 100% !important;
+}
+#list .e-content{ 
+    width:100% !important; 
+} 
