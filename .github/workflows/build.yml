@@ -16,10 +16,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: 11
 
       - name: SonarQube Scan
         run: |
