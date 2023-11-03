@@ -12,8 +12,9 @@ import {
   LocationStrategy,
   HashLocationStrategy,
   CommonModule,
+  PathLocationStrategy,
 } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AdminSideNavbarComponent } from './components/admin-side-navbar/admin-side-navbar.component';
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
 import { AdminFooterComponent } from './components/admin-footer/admin-footer.component';
@@ -50,6 +51,8 @@ import {InputTextModule} from 'primeng-lts/inputtext';
 import {InputTextareaModule} from 'primeng-lts/inputtextarea';
 import { MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
 import {CaptchaModule} from 'primeng-lts/captcha';
+import { HttpInterceptorInterceptor } from './http-interceptor.interceptor';
+import { SuitableSchoolComponent } from './suitable-school/suitable-school.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +72,7 @@ import {CaptchaModule} from 'primeng-lts/captcha';
     AboutUsComponent,
     AddSchoolComponent,
     HelpDaskComponent,
+    SuitableSchoolComponent,
 
   ],
   imports: [
@@ -76,7 +80,6 @@ import {CaptchaModule} from 'primeng-lts/captcha';
     AppRoutingModule,
     BrowserAnimationsModule,
     CarouselModule,
-    HttpClientModule,
     MatSnackBarModule,
     LayoutModule,
     NgxPrintModule,
@@ -99,17 +102,19 @@ import {CaptchaModule} from 'primeng-lts/captcha';
     InputTextModule,
     InputTextareaModule,
     MultiSelectModule,
-    CaptchaModule
+    CaptchaModule,
+    HttpClientModule,
   ],
   providers: [
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy,
-    },
+    // {
+    //   provide: LocationStrategy,
+    //   useClass: HashLocationStrategy,
+    // },
     AuthGuardService,
     RouteGuardService,
     EncrDecrService,
-    // {provide : LocationStrategy , useClass: PathLocationStrategy}
+    {provide : LocationStrategy , useClass: PathLocationStrategy},
+    {provide:HTTP_INTERCEPTORS,useClass:HttpInterceptorInterceptor,multi:true}
   ],
   bootstrap: [AppComponent],
 })

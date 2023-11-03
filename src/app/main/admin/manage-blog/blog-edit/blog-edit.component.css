@@ -12,7 +12,9 @@
 }
 .p-inputtext[type="text"]{
     font-size: medium;
-
+}
+.p-inputtextarea{
+    font-size: medium;
 }
 .link3 {
     padding: 0px 15px !important;

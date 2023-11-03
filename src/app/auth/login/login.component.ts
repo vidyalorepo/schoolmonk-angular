@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
       localStorage.getItem('token') &&
       this.userDetails.userType == 'STUDENT_USER'
     ) {
-      this.router.navigate(['/auth/home']);
+      this.router.navigate(['']);
     }
     // else if (localStorage.getItem('token') && this.userDetails.userType == 'STUDENT_USER') {
     //   console.log("in back condition");
@@ -168,7 +168,7 @@ export class LoginComponent implements OnInit {
             }
             if (res.result['userType'] == 'STUDENT_USER' && +this.mode === 0) {
               console.log(' in mode 0...');
-              this.router.navigate(['/auth/home']).then(() => {
+              this.router.navigate(['']).then(() => {
                 this.openSnackBar("Login Sucessfully😊");
                 window.location.reload();
               });

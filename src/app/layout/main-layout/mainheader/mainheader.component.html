@@ -36,11 +36,11 @@
 
 </section> -->
 <section class="headersection">
-    <div class="alert" *ngIf="_headerScrool">
+    <div class="alert" *ngIf="_headerScrool == true && headerText?.length !=0">
     <span class="closebtn" (click)="_headerScrool=false">&times;</span> 
     
     <marquee  direction="left" scrollamount="6" onMouseOver="this.stop()" onMouseOut="this.start()" width="98%" >
-      Your trusted source for accurate and up-to-date school information. Covering the Entire  West Bengal Schools. Pan-India Launch is Coming Soon
+     {{headerText}}
    </marquee>
   </div>
   <div class="headersection-bottom">
@@ -48,7 +48,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">
           <div class="logobox">
-            <a routerlinkactive="router-link-active" routerLink="/auth/home" class="router-link-active">
+            <a routerlinkactive="router-link-active" routerLink="" class="router-link-active">
               <img src="assets/images/logo.png" alt="vidyalo logo">
             </a>
           </div>
@@ -60,7 +60,7 @@
             <form class="row" [formGroup]="_searchForm">
               <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10">
 
-                <input type="text" placeholder="Enter school name and city town village" class="form-control" #schoolName
+                <input type="text" placeholder="Enter school name and city town village or pin code" class="form-control" #schoolName
                   (keyup)="autocompleteSearch($event)"
                   (keyup.enter)="searchSchool(schoolName.value, '', '','')" matInput
                   [matAutocomplete]="auto" formControlName="searchText">
@@ -111,7 +111,9 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
 
-
+          <ul class="questionbox">
+            <li> <a routerLink="/auth/add-school" pTooltip="Add Your School" tooltipPosition="left"> <span><img src="/assets/images/add-school-icon.png" alt="" srcset="" width="50px"></span></a></li>
+          </ul>
           <!-- <div class="socialbox">
             Follow Us
             <a href="https://www.facebook.com/vidyalo.dcc.india" target="_blank">  <img src="assets/images/facebook.svg" alt=""> </a>

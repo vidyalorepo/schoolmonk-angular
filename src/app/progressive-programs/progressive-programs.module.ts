@@ -2,22 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListProgressiveProgramsComponent } from './list-progressive-programs/list-progressive-programs.component';
 import { RouterModule, Routes } from '@angular/router';
-import { StudyAbroadComponent } from './study-abroad/study-abroad.component';
-import { TopIndianGovernmentScholarshipComponent } from './top-indian-government-scholarship/top-indian-government-scholarship.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ProgressiveProgramDetailsComponent } from './progressive-program-details/progressive-program-details.component';
 export const route: Routes = [
   {path:'', component : ListProgressiveProgramsComponent},
-  {path:'study-abroad', component :StudyAbroadComponent },
-  {path:'top-Indian-government-Scholarships', component :TopIndianGovernmentScholarshipComponent }
-
+  {path:':slug',component:ProgressiveProgramDetailsComponent}
 
 ]
 
 @NgModule({
-  declarations: [ListProgressiveProgramsComponent, StudyAbroadComponent, TopIndianGovernmentScholarshipComponent],
+  declarations: [ListProgressiveProgramsComponent,ProgressiveProgramDetailsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(route),
+    NgxPaginationModule
   ]
 })
 export class ProgressiveProgramsModule { }

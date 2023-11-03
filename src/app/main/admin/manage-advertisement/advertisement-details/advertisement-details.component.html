@@ -1,0 +1,127 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>Advertisement Details</h1>
+  </section>
+  <section class="content">
+    <form [formGroup]="addAdvertisementDetailsForm">
+      <div class="box box-success2">
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Start Date</label>
+                <input type="text" placeholder="Start Date" formControlName="startDate" class="form-control" readonly>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>End Date</label>
+                <input type="text" placeholder="End Date" formControlName="endDate" class="form-control" readonly>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Price</label>
+                <input type="text" placeholder="Price" formControlName="amount" class="form-control" readonly>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Quantity</label>
+                <input type="number" placeholder="Quantity" formControlName="qty" class="form-control" readonly>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Zone</label>
+                <input type="text" placeholder="Zone" formControlName="zoneName" class="form-control" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <section class="content-header">
+    <h1>Advertisement Banners</h1>
+  </section>
+  <section class="content">
+      <div class="box box-success2">
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="user.result?.attachmentVo.length == 0">
+              <marquee scrollAmount="10"><Strong style="font-family: cursive"><span class="text-danger">**<---------------Image not uploaded yet-------------------->**</span></Strong></marquee>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" *ngFor="let image of user.result?.attachmentVo; let i = index">
+              <div class="form-group">
+                <label>Banner <span>-{{ i + 1 }}</span></label><br />
+                  <div >
+                    <div class="image-container">
+                      <img [src]="image?.filePath" alt="{{ image?.fileName }}" width="100%" height="auto">
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+  <section class="content-header">
+    <h1>Payment Details</h1>
+  </section>
+  <section class="content">
+    <form [formGroup]="paymentDetailsForm">
+      <div class="box box-success2">
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Order Id</label>
+                <input type="text" placeholder="Order Id" formControlName="orderId" class="form-control" readonly>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Bank Ref No</label>
+                <input type="text" placeholder="Bank Ref No" formControlName="bankRefNo" class="form-control" readonly>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Currency</label>
+                <input type="text" placeholder="Currency" formControlName="currency" class="form-control" readonly>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Amount</label>
+                <input type="text" placeholder="Amount" formControlName="amount" class="form-control" readonly>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Payment Mode</label>
+                <input type="text" placeholder="Payment Mode" formControlName="paymentMode" class="form-control" readonly>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>Card Name</label>
+                <input type="text" placeholder="Card Name" formControlName="cardName" class="form-control" readonly>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <br> <br>
+              <div class="box-footer">
+                <div class="text-center">
+                  <button type="button" class="btn link2 mx-1" [routerLink]="'/advertisement'">Back</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>

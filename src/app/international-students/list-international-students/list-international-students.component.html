@@ -7,7 +7,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="breadcrumbs_section">
                     <ul>
-                        <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+                        <li><a routerLink=""><button type="submit">Home</button></a></li>
                         <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
                         <li><button type="submit"></button>Exam Tips</li>
                     </ul>
@@ -26,21 +26,39 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <a routerLink="/auth/exam-tips/exam-tips-vidyalo">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngFor="
+                let data of  _blogList
+                  | paginate
+                    : {
+                        id: '_blogList',
+                        itemsPerPage: itemsPerPage,
+                        currentPage: currentPage,
+                        totalItems: _blogListSize
+                      };
+                let i = index">
+                    <a [routerLink]="['/auth/exam-tips',data?.slug]">
                         <div class="news_box">
                             <div class="news_box_img">
                                 <img src="assets/images/course_image.jpg" alt="">
                             </div>
-                            <h2>How To Overcome Fear Of Examination</h2>
-                            <p>It is, however, difficult to know how best to manage your preparation period until you
-                                have some experience. This page therefore offers some ideas, based on experience and
-                                expert ...</p>
+                            <h2>{{data?.title}}</h2>
+                            <p>{{ (data?.description.length > 255)?(data?.description | slice : 0 : 255) + "...":data?.description  }}</p>
                             <div class="clearfix"></div>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
+        <div class="paginationsectionbox">
+            <span  class="Showingboxto"
+              >Showing {{ currentPageStartingIndex }} to
+              {{ currentPageEndingIndex }} of
+              {{ _blogListSize }} results</span>
+            <pagination-controls
+              class="pagination"
+              id="_blogList"
+              (pageChange)="handlePageChange($event)"
+            ></pagination-controls>
+          </div>
     </div>
 </section>

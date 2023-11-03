@@ -69,6 +69,7 @@
                     <option value="SCHOOL">School</option>
                     <option value="ADMIN">Admin</option>
                     <option value="STUDENT">Student</option>
+                    <option value="CUSTOMER">Customer</option>
 
                   </select>
                 </div>
@@ -167,6 +168,7 @@
                   <td>
                     <p-tag *ngIf="user.userType == 'ADMIN_USER'" styleClass="p-mr-2" severity="success">{{helperService.toCamelCase( user.userType?.split("_")[0])}} </p-tag>
                     <p-tag *ngIf="user.userType == 'SCHOOL_USER'" styleClass="p-mr-2" severity="warning">{{helperService.toCamelCase( user.userType?.split("_")[0])}} </p-tag>
+                    <p-tag *ngIf="user.userType == 'CUSTOMER_USER'" styleClass="p-mr-2" severity="Primary">{{helperService.toCamelCase( user.userType?.split("_")[0])}} </p-tag>
                  </td>
                   <!-- <td>
                     <strong *ngIf="user.isactive === 'Active'" class="text-green">{{school.schoolStatus}} </strong>

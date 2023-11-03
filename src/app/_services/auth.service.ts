@@ -47,20 +47,20 @@ export class AuthService {
 
     // this.baseUrl = 'http://20.1.1.208:9085';
     // this.baseUrl = 'http://vidyalodev.dccil.com/api';
-    
+
     // ********************Vidyalo DEV********************************************
 
       // this.baseUrl = 'http://65.1.125.231:9085/api';
-      this.baseUrl = 'http://52.66.6.218:9085/api'; 
-      
+      this.baseUrl = 'http://52.66.6.218:9085/api';
+
     // *************************VIDYALO PROD****************************************
-  
+
     // this.baseUrl = 'http://43.205.64.116:9085/api';
     // this.baseUrl = 'https://43.204.27.110:9085/api';
     //  this.baseUrl = 'https://vidyalo.com/api';
 
    //********************************************************************************
- 
+
 
     this.MAPS_ENDPOINT =
       'https://maps.googleapis.com/maps/api/geocode/json?address=';
@@ -305,5 +305,12 @@ export class AuthService {
 
   setNewPassword(data: any) {
     return this.http.post<any>(this.baseUrl + '/users/resetPassword', data);
+  }
+
+  logout(){
+    localStorage.clear();
+    this._router.navigate(['']).then(() => {
+      window.location.reload()
+    });
   }
 }

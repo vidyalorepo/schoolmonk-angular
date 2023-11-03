@@ -1,1 +1,185 @@
-<div style="height: 80vh;"></div>
+<section class="inner-banner-section inner-banner-search">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Advertisement Details</h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="breadcrumbs_section">
+          <ul>
+            <li><a routerLink=""><button type="submit">Home</button></a></li>
+            <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+            <li><button type="submit">Advertisement Details</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="innersearchsection Advertisementsection">
+  <div class="container">
+    <div class="Student-List-section footer_link">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <h1>Find Your Banner Advertising on Vidyalo</h1>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <!-- <h2>Find Your Banner Advertising on Vidyalo</h2> -->
+          <p>We have multiple advertising options available.
+            Please look at the 3 screenshots below to see all the Advertising Zones we have available.
+            Zones 1, 2 & 3 are ads shown across the site. The pricing details can be seen below.</p>
+          <h2>Question about advertising ? Contact us</h2>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="add_zone1">
+            <img src="assets/images/add_icon1.png" alt="">
+          </div>
+          <h4>Zone 1 is shown in the HomePage</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <div class="text-center">
+            <button type="button" class="btn link2" data-toggle="modal" data-target="#Zone1">Preview</button>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="add_zone1">
+            <img src="assets/images/add_icon2.png" alt="">
+          </div>
+          <h4>Zone 2 is shown in the Detail Page</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <div class="text-center">
+            <button type="button" class="btn link2" data-toggle="modal" data-target="#Zone2">Preview</button>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="add_zone1">
+            <img src="assets/images/add_icon3.png" alt="">
+          </div>
+          <h4>Zone 3 is shown in the Listing Page</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <div class="text-center">
+            <button type="button" class="btn link2" data-toggle="modal" data-target="#Zone3">Preview</button>
+          </div>
+        </div>
+      </div>
+      <br><br>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="tablesection">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th width="100">Zone</th>
+                    <th width="100">Height</th>
+                    <th width="100">Width</th>
+                    <th width="150">Availability</th>
+                    <th width="130">Page</th>
+                    <!-- <th width="100">Quantity</th> -->
+                    <!-- <th width="120">Duration</th> -->
+                    <th width="150" class="text-center">Monthly Price</th>
+                    <th width="100">Order</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of advertisementlist">
+                    <td>{{ item.zoneName}}</td>
+                    <td>{{ item.heightPx}}</td>
+                    <td>{{ item.widthPx}}</td>
+                    <td>{{ item.isavailable }} of {{ item.noOfAd}} available</td>
+                    <td>{{ item.page }}</td>
+                    <td class="text-center">&#x20B9; {{ item.price.toFixed(2) }}</td>
+                    <td>
+                      <button type="button" class="btn link1" data-toggle="modal" data-target="#addModal"
+                      *ngIf="item.isavailable > 0 && item.isavailable <= item.noOfAd" (click)="orderNow(item)">Order
+                        Now</button>
+                      <button type="button" class="btn link2" *ngIf="item.isavailable == 0" [disabled]="true">
+                          Sold Out
+
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Modal -->
+<div id="Zone1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Zone 1</h4>
+      </div>
+      <div class="modal-body">
+        <div class="add_box">
+          <img src="assets/images/advertisement_img1.jpg" alt="">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="Zone2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Zone 2</h4>
+      </div>
+      <div class="modal-body">
+        <div class="add_box">
+          <img src="assets/images/advertisement_img2.jpg" alt="">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="Zone3" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Zone 3</h4>
+      </div>
+      <div class="modal-body">
+        <div class="add_box">
+          <img src="assets/images/advertisement_img3.jpg" alt="">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

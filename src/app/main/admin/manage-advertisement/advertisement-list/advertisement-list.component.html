@@ -1,0 +1,133 @@
+<div class="content-wrapper">
+    <p-messages></p-messages>
+    <section class="content-header">
+        <h1>Buyers List</h1>
+    </section>
+    <section class="content">
+        <form [formGroup]="advertisementSearchForm">
+            <div class="box box-success2">
+                <div class="box-body">
+                    <div class="searchsection3">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <input
+                                        type="text"
+                                        formControlName="customerFirstName"
+                                        placeholder="Buyers first name"
+                                        class="form-control"
+                                />
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <input
+                                        type="text"
+                                        formControlName="customerLastName"
+                                        placeholder="Buyers last name"
+                                        class="form-control"
+                                />
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                <input
+                                        type="text"
+                                        formControlName="customerEmail"
+                                        placeholder="Buyers email"
+                                        class="form-control"
+                                />
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                <input
+                                        type="text"
+                                        formControlName="zone"
+                                        placeholder="Zone"
+                                        class="form-control"
+                                />
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                <button
+                                      (click)="searchAdvertisementList()"
+                                       type="button"
+                                       class="btn btn-success"
+                                >Search
+                                </button>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="box box-success2">
+            <div class="box-header with-border bor">
+                <div class="pull-left">
+                    <div class="Showingbox">
+                        <div class="pull-left drop">
+                            <select  class="form-control" #limit (change)="getallCustomerslist(limit.value)">
+                                <option value="10" ng-reflect-value="10">10</option>
+                                <option value="20" ng-reflect-value="20">20</option>
+                                <option value="30" ng-reflect-value="30">30</option>
+                            </select>
+                        </div>  
+                    </div> 
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="box-body">
+                <div class="tablesection">
+                    <div class="table-responsive">
+                        <table class="table table-striped" matSort matSortDirection="desc" matSortDisableClear>
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
+                                    <th>Start Date</th>
+                                    <th>Expire Date</th>
+                                    <th>Qty</th>
+                                    <th>Zone</th>
+                                    <th>Payment Status</th>
+                                    <th>Status</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of customersList 
+                                    | paginate: {
+                                    id: 'customersList',
+                                    itemsPerPage: itemsPerPage,
+                                    currentPage: currentPage,
+                                    totalItems: customersListSize}; let i = index">
+                                    <td><button [routerLink]="['/advertisement/advertisement-view', item.id]" class="btn btn-link text-light-blue">{{ item.customerId?.firstName }} </button></td>
+                                    <td>{{ item.customerId?.lastName }}</td>
+                                    <td>{{ item.customerId?.email }}</td>
+                                    <td>{{ item.customerId?.phone | phonePipe }}</td>
+                                    <td>{{ item?.startDate | date:"d MMM y" : "UTC" }}</td>
+                                    <td>{{ item?.endDate | date:"d MMM y" : "UTC" }}</td>
+                                    <td>{{item?.qty}}</td>
+                                    <td>{{ item?.zoneId?.zoneName }}</td>
+                                    <td style="text-align: center;">
+                                        <p-tag styleClass="p-mr-2" icon="pi pi-check" severity="primary" value="{{item?.transactionId?.orderStatus}}"></p-tag>
+                                    </td>
+                                    <td>
+                                        <p-confirmPopup></p-confirmPopup>
+                                        <p-inputSwitch [(ngModel)]="item.status" (click)="confirm($event,item.status,item.id,item?.duration)"></p-inputSwitch>
+                                    </td>
+                                    <td><button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-info p-button-outlined" [routerLink]="['/advertisement/advertisement-view',item?.id]"></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="paginationsectionbox">
+                            <span *ngIf="!isEmpty" class="Showingboxto">
+                                Showing {{ currentPageStartingIndex }} to
+                                {{ currentPageEndingIndex }} of
+                                {{ customersListSize }} results
+                            </span>
+                            <span *ngIf="isEmpty">No records found.</span>
+                            <pagination-controls *ngIf="!isEmpty" class="pagination" id="customersList"(pageChange)="handlePageChange($event)">
+                            </pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

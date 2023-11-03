@@ -1,0 +1,33 @@
+<section class="inner-banner-section inner-banner-search">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>{{blogdata?.title}}</h1>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="breadcrumbs_section">
+                    <ul>
+                        <li><a routerLink=""><button type="submit">Home</button></a></li>
+                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                        <li><a routerLink="/auth/exam-tips"><button type="submit">Exam Tips</button></a></li>
+                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                        <li><button type="submit">{{blogdata?.title}}</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="innersearchsection">
+    <div class="container">
+        <div class="Student-List-section footer_link">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>{{blogdata?.title}}</h1>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" [innerHTML]="blogdata?.blogDetails">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

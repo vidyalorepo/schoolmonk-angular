@@ -13,6 +13,7 @@ import { HtmlToPlaintextPipe } from 'src/app/-shared/pipe/html-to-plaintext.pipe
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoaderService } from 'src/app/_services/loader.service';
 import { MessageService } from 'primeng-lts/api';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-search-school-details',
   templateUrl: './search-school-details.component.html',
@@ -20,6 +21,8 @@ import { MessageService } from 'primeng-lts/api';
   providers: [DatePipe,MessageService]
 })
 export class SearchSchoolDetailsComponent implements OnInit {
+  zones= ["ZONE-3 A"];
+  attachedFile: any;
   _schoolID: any;
   _schoolsDetails: any;
   userDetails: any;
@@ -58,6 +61,36 @@ export class SearchSchoolDetailsComponent implements OnInit {
     page: this.currentPage,
     size: this.itemsPerPage,
   };
+  currentURL: string;
+  bannerOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: false,
+    autoplay: true,
+    autoWidth: true,
+    autoHeight: true,
+    autoplaySpeed: 200,
+    navSpeed: 600,
+    navText: ['', ''],
+ 
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 1
+      },
+      740: {
+        items: 1
+      },
+      1000: {
+        items: 1
+      }
+    },
+    nav: false
+  };
 // END OF REVIEW
   constructor(
     private formBuilder: FormBuilder,
@@ -91,6 +124,8 @@ export class SearchSchoolDetailsComponent implements OnInit {
     if (this.usrDtl != null) {
       this.getApplicantsName(this.usrDtl.userId);
     }
+    this.currentURL = window.location.href; 
+    this.fetchDataAndSetImage();
   }
 
   isPageRefreshed() {
@@ -537,6 +572,35 @@ export class SearchSchoolDetailsComponent implements OnInit {
         );
     }
 
+  Share(appName:String){
+       switch (appName) {
+        case 'facebook':
+          window.open(`https://www.facebook.com/sharer.php?u=${this.currentURL}`,'_blank')
+          break;
+        case 'whatsapp':
+          window.open(`https://wa.me?text=Schools in West Bengal along with address and details of school. Vidyalo gives you the information on top English Medium Schools in Kolkata, Govt English Medium School etc. ${this.currentURL}`,'_blank')
+          break;
+        case 'twitter':
+           window.open(`https://twitter.com/intent/tweet?url=${this.currentURL}&text=Schools in West Bengal along with address and details of school. Vidyalo gives you the information on top English Medium Schools in Kolkata, Govt English Medium School, Private English Medium School etc&hashtags=vidyalo,best_school_in_west_bengal`)
+          break;  
+        default:
+          break;
+     }
+  }
+
+  fetchDataAndSetImage() {
+    this._loader.openLoader();
+    this._authService.loader.next({ load: true });
+    this._authService.request('post', 'adsvertisement/fetchattachmentbyzone', this.zones).subscribe(
+      (response: any) => {
+        this._loader.closeLoader();
+        this.attachedFile= response.result;
+      },
+      (error) => {
+        this._loader.closeLoader();
+      }
+    );
+  }
 
 
 }

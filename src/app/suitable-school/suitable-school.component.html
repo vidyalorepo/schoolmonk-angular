@@ -1,0 +1,196 @@
+<section class="inner-banner-section inner-banner-search">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>Suitable Schools</h1>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="breadcrumbs_section">
+                    <ul>
+                        <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                        <li><button type="submit">Suitable Schools</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="innersearchsection Advertisementsection">
+    <div class="container">
+        <div class="Student-List-section footer_link">
+            <div class="row">
+                <p-message></p-message>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>Find Your Suitable Schools</h1>
+                </div>
+            </div>
+            <form [formGroup]="suitableSchoolSearchForm">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>1. What is your name?<span class="req">*</span> </label>
+                            <input type="text" class="form-control" pInputText placeholder="Enter First Name..."
+                                formControlName="firstName">
+                            <div class="invalid-text"
+                                *ngIf="suitableSchoolSearchForm.controls?.firstName.touched && suitableSchoolSearchForm.controls?.firstName.errors">
+                                <div *ngIf=" suitableSchoolSearchForm.controls?.firstName.errors.required ">First name is
+                                    required</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>2. What is your last name?<span class="req">*</span> </label>
+                            <input type="text" class="form-control" pInputText placeholder="Enter Last Name..."
+                                formControlName="lastName">
+                            <div class="invalid-text"
+                                *ngIf="suitableSchoolSearchForm.controls?.lastName.touched && suitableSchoolSearchForm.controls?.lastName.errors">
+                                <div *ngIf=" suitableSchoolSearchForm.controls?.lastName.errors.required ">Last name is
+                                    required</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>3. What is your email id?<span class="req">*</span> </label>
+                            <input type="email" class="form-control" pInputText placeholder="Enter Email ..."
+                                formControlName="email">
+                            <div class="invalid-text"
+                                *ngIf="suitableSchoolSearchForm.controls?.email.touched && suitableSchoolSearchForm.controls?.email.errors">
+                                <div *ngIf=" suitableSchoolSearchForm.controls?.email.errors.required ">Email is
+                                    required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>4. What is your phone number? <span class="req">*</span> </label>
+                            <input type="tel" class="form-control" pInputText placeholder="Enter Phone Number ..."
+                                formControlName="phone"  maxlength="10">
+                            <div class="invalid-text"
+                                *ngIf="suitableSchoolSearchForm.controls?.phone.touched && suitableSchoolSearchForm.controls?.phone.errors">
+                                <div *ngIf=" suitableSchoolSearchForm.controls?.phone.errors.required ">Phone Number is
+                                    required</div>
+                                    <div *ngIf="suitableSchoolSearchForm.controls?.phone.errors.pattern">Please, Enter 10
+                                        digit Phone Number.</div>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>5. What is your date of birth?</label>
+                            <input type="date" class="form-control" pInputText placeholder="Enter Date of Birth ..."
+                                formControlName="dob">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>6. Which type of school do you want?<span class="req">*</span></label><br/>
+                            <input type="radio" style="margin-left: 10px;" formControlName="schoolType" value="higher secondary">Higher Secondary
+                            <input type="radio" style="margin-left: 10px;" formControlName="schoolType" value="kindergarten">Kindergarten
+                            <input type="radio" style="margin-left: 10px;" formControlName="schoolType" value="special">Special
+                            <input type="radio" style="margin-left: 10px;" formControlName="schoolType" value="international">International
+                            <div class="invalid-text"
+                                *ngIf="suitableSchoolSearchForm.controls?.schoolType.touched && suitableSchoolSearchForm.controls?.schoolType.errors">
+                                <div *ngIf=" suitableSchoolSearchForm.controls?.schoolType.errors.required ">School type is
+                                    required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">    
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-8">
+                        <div class="form-group">
+                            <label>7. Which type of board do you want?</label><br/>
+                            <input type="radio" style="margin-left: 10px;" formControlName="board" value="wBBSE">WBBSE
+                            <input type="radio" style="margin-left: 10px;" formControlName="board" value=" wBCHSE">WBCHSE
+                            <input type="radio" style="margin-left: 10px;" formControlName="board" value=" kINDERGARTEN">KINDERGARTEN
+                            <input type="radio" style="margin-left: 10px;" formControlName="board" value=" iB">IB
+                            <input type="radio" style="margin-left: 10px;" formControlName="board" value="  sPECIAL">SPECIAL
+                            <input type="radio" style="margin-left: 10px;" formControlName="board" value="  iCSE">ICSE
+                            <input type="radio" style="margin-left: 10px;" formControlName="board" value=" cBSE">CBSE
+                        </div>
+                    </div>
+                </div>
+                <div class="row">   
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>8. Which type of medium do you want?</label><br/>
+                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value="bengali">Bengali
+                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value="english" >English
+                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value="santhali">Santhali
+                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value="urdu">Urdu
+                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value="hindi">Hindi
+                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value=" nepali">Nepali
+                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value="marathi">Marathi
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">    
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>9. Which city do you want?</label><br/>
+                            <!-- <select name="city" formControlName="city">
+                                <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                            </select> -->
+                            <input type="text" class="form-control" pInputText placeholder="Enter City..."
+                                formControlName="city">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">    
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>10. What is your Postal Code?</label><br/>
+                            <input type="number" class="form-control" pInputText placeholder="Enter Postal Code ..."
+                            formControlName="postalCode">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                        <div style="height: 10px;"></div>
+                        <!-- <div class="form-group"> -->
+                        <p-captcha siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                            (onResponse)="showResponse($event)" initCallback="loadCaptcha"></p-captcha>
+                        <!-- </div> -->
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <input type="checkbox" #Isagree (change)="isAgree($event)"  />
+                            <label>&nbsp;I agree to the
+                                <a routerLink="/auth/privacy-policy" target="_blank">
+                                    Privacy Policy</a>
+                                and
+                                <a routerLink="/auth/terms-and-conditions" target="_blank">Term & Condition.</a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer" style="text-align: center;">
+                    <button type="button" pButton pRipple class="p-button-outlined" data-dismiss="modal"
+                    [routerLink]="''" style="margin-right: 10px;"><span style="font-size: 15px;">Back</span></button>
+                    <button type="submit" pButton pRipple class="p-button-info" (click)="submitSuitableSchoolSearchData()"
+                       [disabled]="!(suitableSchoolSearchForm.valid && isAgreeChecked &&isHuman)" style="margin-right: 10px;"><span style="font-size: 15px;">Find School</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

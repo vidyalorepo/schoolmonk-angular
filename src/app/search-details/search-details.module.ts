@@ -11,9 +11,10 @@ import {RatingModule} from 'primeng-lts/rating';
 import {ButtonModule} from 'primeng-lts/button';
 import {ToastModule} from 'primeng-lts/toast';
 import {DialogModule} from 'primeng-lts/dialog';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 // import { ApplyNowComponent } from './apply-now/apply-now.component';
 // import { ApplyDetailsComponent } from './apply-details/apply-details.component';
-
+import {OverlayPanelModule} from 'primeng-lts/overlaypanel';
 export const route: Routes = [
   {
     path: 'search-school-details/:id',
@@ -46,6 +47,8 @@ export const route: Routes = [
     ButtonModule,
     ToastModule,
     DialogModule,
+    OverlayPanelModule,
+    CarouselModule
   ],
 })
 export class SearchDetailsModule {}

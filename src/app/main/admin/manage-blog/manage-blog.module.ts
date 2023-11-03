@@ -12,6 +12,9 @@ import {CalendarModule} from 'primeng-lts/calendar';
 import {InputTextareaModule} from 'primeng-lts/inputtextarea';
 import { HtmlEditorService, ImageService, LinkService, RichTextEditorAllModule, TableService } from '@syncfusion/ej2-angular-richtexteditor';
 import {InputSwitchModule} from 'primeng-lts/inputswitch';
+import {ConfirmPopupModule} from 'primeng-lts/confirmpopup';
+import {MessagesModule} from 'primeng-lts/messages';
+import {MessageModule} from 'primeng-lts/message';
 export const route: Routes = [
   { path: '', component: ListBlogComponent },
   {path:'add-blog',component:BlogAddComponent},
@@ -31,7 +34,10 @@ export const route: Routes = [
     CalendarModule,
     InputTextareaModule,
     RichTextEditorAllModule,
-    InputSwitchModule
+    InputSwitchModule,
+    ConfirmPopupModule,
+    MessagesModule,
+    MessageModule
   ],
   providers: [HtmlEditorService, TableService,LinkService, ImageService,]
 })

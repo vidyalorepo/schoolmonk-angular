@@ -43,7 +43,7 @@ export const route: Routes = [
   {path: 'academic-save/:id', component: AcademicSaveComponent},
   {path: 'academic-edit/:id/:schoolid', component: AcademicEditComponent},
   {path: 'academic-list', component: AcademicListComponent},
-  {path: 'school-list/bulk-upload', component: BulkUploadComponent}
+  {path: 'bulk-upload', component: BulkUploadComponent}
 ]
 
 @NgModule({

@@ -16,12 +16,24 @@ import { PageNotFoundComponent } from './auth/page-not-found/page-not-found.comp
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AddSchoolComponent } from './add-school/add-school.component';
 import { HelpDaskComponent } from './help-dask/help-dask.component';
+import { SuitableSchoolComponent } from './suitable-school/suitable-school.component';
 
 const routes: Routes = [
  
-  { path: '', redirectTo: '/auth/home', pathMatch: 'full' },
+  // { path: '', redirectTo: '/auth/home', pathMatch: 'full' },
   { path: 'notice-details/:id', component: NoticeDetailsComponent },
-
+  {
+    path: '',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./home-mod/home-mod.module').then((m) => m.HomeModModule),
+      },
+    ]
+    
+  },
   {
     path: 'auth',
     component: AuthLayoutComponent,
@@ -31,24 +43,25 @@ const routes: Routes = [
         loadChildren: () =>
           import('./auth/auth.module').then((m) => m.AuthModule),
       },
-      {
-        path: 'home', component: HomeComponent,
-        data: {
-          seo: {
-            title: 'Vidyalo',
-            metaTags: [
-              { property: 'og:title', content: 'vidyalo' },
-              { name: 'keywords', content: 'kendriya vidyalaya,private schools near me,play school near me,international school,kindergarten near me,military school,best private schools in WB' },
-              { name: 'description', content: 'Schools in West Bengal along with address and details of school. Vidyalo gives you the information on top English Medium Schools in Kolkata, Govt English Medium School, Private English Medium School etc.' }
-              // { proprety: 'og:description', content: 'Some description goes here!!!!' },
-            ]
-          }
-        }
-      },
+      // {
+      //   path: 'home', component: HomeComponent,
+      //   data: {
+      //     seo: {
+      //       title: 'Vidyalo',
+      //       metaTags: [
+      //         { property: 'og:title', content: 'vidyalo' },
+      //         { name: 'keywords', content: 'kendriya vidyalaya,private schools near me,play school near me,international school,kindergarten near me,military school,best private schools in WB' },
+      //         { name: 'description', content: 'Schools in West Bengal along with address and details of school. Vidyalo gives you the information on top English Medium Schools in Kolkata, Govt English Medium School, Private English Medium School etc.' }
+      //         // { proprety: 'og:description', content: 'Some description goes here!!!!' },
+      //       ]
+      //     }
+      //   }
+      // },
       { path: 'notice-details/:id', component: NoticeDetailsComponent },
       { path: 'common-search/:schoolName', component: CommonSearchComponent, data: { breadcrumb: `Home >> Schools` } },
       { path: 'faq-details', component: FaqListComponent },
       { path: 'privacy-policy', component: PrivacyPolicyComponent },
+      { path: 'suitable-school', component: SuitableSchoolComponent },
       { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
       { path: 'cancellation-refund-policy', component: CancellationRefundPolicyComponent },
       { path: 'cookie-policy', component: CookiePolicyComponent },
@@ -283,6 +296,30 @@ const routes: Routes = [
         import('./main/admin/manage-blog/manage-blog.module').then(
           (m)=>m.ManageBlogModule
         )
+      },
+      {
+        path:'advertisement',
+        canActivate: [AuthGuardService, RouteGuardService],
+        loadChildren:()=>
+        import('./main/admin/manage-advertisement/manage-advertisement.module').then(
+          (m)=>m.ManageAdvertisementModule
+        )
+      },
+      {
+        path:'header-tag',
+        canActivate: [AuthGuardService, RouteGuardService],
+        loadChildren:()=>
+        import('./main/admin/manage-header-tag/manage-header-tag.module').then(
+          (m)=>m.ManageHeaderTagModule
+        )
+      },
+      {
+        path:'guardian-enquiry',
+        canActivate: [AuthGuardService, RouteGuardService],
+        loadChildren:()=>
+        import('./main/admin/manage-guardian-enquiry/manage-guardian-enquiry.module').then(
+          (m)=>m.ManageGuardianEnquiryModule
+        )
       }
     ],
   },
@@ -314,7 +351,6 @@ const routes: Routes = [
       scrollPositionRestoration: 'enabled',
       onSameUrlNavigation: 'reload',
       initialNavigation: 'enabled',
-      useHash: false
     }),
   ],
   providers: [AuthGuardService, RouteGuardService],

@@ -34,6 +34,7 @@ export class MainheaderComponent implements OnInit, OnDestroy {
   _location: string = '';
   _selectedCityName: any = '';
   _headerScrool:boolean;
+  headerText: any;
   constructor(
     private router: Router,
     private _authService: AuthService,
@@ -89,9 +90,9 @@ export class MainheaderComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit(): void {
-    if (this.router.url === '/auth/home') this._displaySearchBar = true;
+    if (this.router.url === '') this._displaySearchBar = true;
     if (this.router.url === '/auth/login/0') this._displaySearchBar = false;
-    if(this.router.url === '/auth/home') this._headerScrool=true;
+    if(this.router.url == '/'){ this._headerScrool = true};
     this._location = window.location.href.split('&')[3];
     this._authService.loader.subscribe((response) => {
       this.isLoader = response.load;
@@ -124,19 +125,18 @@ export class MainheaderComponent implements OnInit, OnDestroy {
     }
     this.getBoards();
     this.getMedium();
-
+    this.gettagsList();
     this._searchForm = this.fb.group({
       searchText: [''],
       board: [''],
       medium: [''],
       location: [''],
     });
-
     this.patchSearchForm();
   }
   checkAreWeOnSearch() {
     let currentPage = this.router.url;
-    let keyword = currentPage.split('auth/')[1].toLowerCase().split('/')[0];
+    let keyword = currentPage.split('auth/')[1]?.toLowerCase().split('/')[0];
     if (keyword === 'common-search') return true;
     else false;
   }
@@ -179,7 +179,7 @@ export class MainheaderComponent implements OnInit, OnDestroy {
     this.displayLogInStatus = true;
     this.logInStatus = false;
     // this.openSnackBar("Logout Sucessfully.");
-    this.router.navigate(['/auth/home']).then(() => {
+    this.router.navigate(['']).then(() => {
       window.location.reload();
     });
   }
@@ -286,5 +286,13 @@ export class MainheaderComponent implements OnInit, OnDestroy {
       duration: 5000,
       panelClass: ['success-snackbar'],
     });
+  }
+
+  gettagsList(){
+
+    this._authService.openRequest('get','headertagcontroller/fetchBytag').subscribe((response)=>{
+      this.headerText= response.result.headerTagBody;
+   })
+
   }
 }

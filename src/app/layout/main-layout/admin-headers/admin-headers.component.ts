@@ -31,7 +31,7 @@ export class AdminHeadersComponent implements OnInit {
     this._authService._adminSideNavBar.next({show: false})
     this._authService._adminHeader.next({show: false})
     this._authService._adminFooter.next({show: false})
-    this.router.navigate(['/auth/home']).then(() => {
+    this.router.navigate(['']).then(() => {
       window.location.reload()
       // this.openSnackBar("Logout Sucessfully.");
   });

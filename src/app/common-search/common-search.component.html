@@ -11,7 +11,7 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="breadcrumbs_section">
           <ul>
-            <li><a routerLink="/auth/home"><button type="submit">Home</button></a></li>
+            <li><a routerLink=""><button type="submit">Home</button></a></li>
             <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
             <li><button type="submit">Common Search</button></li>
           </ul>
@@ -59,11 +59,22 @@
   </div>
 </section>
 
+
+<section class="addsection" style="background: #eaedf4;">
+  <div class="add_zone Leaderboard-box">
+    <owl-carousel-o [options]="bannerOptions">
+      <ng-template *ngFor="let image of attachedFile?.ZONE2A" carouselSlide>
+        <img src="{{image.filePath}}" alt="">
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</section>
+
 <section class="innersearchsection common-search">
   <div class="container-fluid">
     <section class="SchoolSearchSection">
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+
 
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
           <div class="FiltersSection">
@@ -286,6 +297,18 @@
           </div>
           </div>
 
+          <section class="addsection" style="background: #eaedf4;">
+            <div class="add_zone Leaderboard-box">
+              <owl-carousel-o [options]="bannerOptions">
+                <ng-template *ngFor="let image of attachedFile?.ZONE2B" carouselSlide>
+                  <img src="{{image.filePath}}" alt="">
+                </ng-template>
+              </owl-carousel-o>
+            </div>
+          </section>
+
+
+
         </div>
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
           <div class="rightSearchbox">
@@ -303,7 +326,7 @@
             }; let i =index">
 
                 <div>
-                  <!-- <div class="wishlist" *ngIf="userDetails !== ''"> 
+                  <!-- <div class="wishlist" *ngIf="userDetails !== ''">
                     <button type="button" *ngIf="school?.favUsers !== null && school?.favUsers.split(',').includes(userDetails?.userId.toString())"  class="btn" (click)="makeWishlist(school.id, school.favUsers, 1)">
                       <i class="fa fa-heart" aria-hidden="true"></i>
                     </button>
@@ -396,6 +419,17 @@
   </div>
 </section>
 
+
+<section class="addsection" style="background: #eaedf4;">
+  <div class="add_zone Leaderboard-box">
+    <owl-carousel-o [options]="bannerOptions">
+      <ng-template *ngFor="let image of attachedFile?.ZONE2C" carouselSlide>
+        <img src="{{image.filePath}}" alt="">
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</section>
+
 <section class="similarsection" *ngIf="_similarResultsList">
   <div class="container-fluid"  >
     <div class="row">
@@ -403,19 +437,19 @@
         <h1>Similar Schools </h1>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <owl-carousel-o [options]="customOptions"> 
+        <owl-carousel-o [options]="customOptions">
 
           <ng-template carouselSlide *ngFor="let school of _similarResultsList">
             <div class="similarbox">
               <div  class="similar-logo">
-                <img *ngIf="school?.schoolLogoPath == null" class="gray" src="assets/images/school-logo.jpg" alt=""> 
-                <img *ngIf="school?.schoolLogoPath != null" class="gray" [src]="school?.schoolLogoPath" alt=""> 
+                <img *ngIf="school?.schoolLogoPath == null" class="gray" src="assets/images/school-logo.jpg" alt="">
+                <img *ngIf="school?.schoolLogoPath != null" class="gray" [src]="school?.schoolLogoPath" alt="">
               </div>
               <!-- <div *ngIf="school?.schoolLogoPath != null || school?.schoolLogoPath !=''" class="similar-logo">
-                <img class="gray" [src]="school?.schoolLogoPath" alt=""> 
+                <img class="gray" [src]="school?.schoolLogoPath" alt="">
               </div> -->
               <h2 [routerLink]="['/auth/search-details/search-school-details', school.schoolNameSlug]"> {{school.schoolName}}</h2>
-              
+
               <div class="clearfix"></div>
               <hr>
               <h4><span><i class="fa fa-map-marker" aria-hidden="true"></i> </span> {{helperService.toCamelCase( school.schoolAddress)}} {{school.addressLineTwo}}

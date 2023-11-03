@@ -1,0 +1,100 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Guardian Enquiry Details</h1>
+    </section>
+    <section class="content">
+        <form [formGroup]="addGuardianEnquiryDetailsForm">
+            <div class="box box-success2">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input pInputText type="text" placeholder="First Name" formControlName="firstName"
+                                    class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" pInputText placeholder="Last Name" formControlName="lastName"
+                                    class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text"pInputText placeholder="Email" formControlName="email" class="form-control"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="text" pInputText placeholder="Phone Number" formControlName="phone"
+                                    class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <input type="text" pInputText placeholder="Date of Birth" formControlName="dob"
+                                    class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>School Type</label>
+                                <input type="text" pInputText placeholder="School Type" formControlName="schoolType"
+                                    class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Board</label>
+                                <input type="text" pInputText placeholder="Board" formControlName="board" class="form-control"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Medium</label>
+                                <input type="text" pInputText placeholder="Medium" formControlName="medium" class="form-control"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>City</label>
+                                <input type="text" pInputText placeholder="City" formControlName="city" class="form-control"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Postal Code</label>
+                                <input type="text" pInputText placeholder="Postal Code" formControlName="postalCode"
+                                    class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Created date</label>
+                                <input type="text" pInputText placeholder="Created Date" formControlName="createdTs"
+                                    class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <br> <br>
+                            <div class="box-footer">
+                              <div class="text-center">
+                                <button pButton pRipple type="button" class="btn p-button-outlined p-button-info" [routerLink]="'/guardian-enquiry'">Back</button>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

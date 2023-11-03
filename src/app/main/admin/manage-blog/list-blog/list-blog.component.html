@@ -3,28 +3,37 @@
     <h1>Blog List</h1> 
   </section>
     <section class="content">
-        <form>
+        <form [formGroup]="blogsSearchForm">
             <div class="box box-success2">
                 <div class="box-body">
                     <div class="searchsection3">
                         <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Blog Title"
+                                    <input type="text" formControlName="title" placeholder="Blog Title"
                                         class="form-control">
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                                 <div class="form-group">
-                                    <select class="form-control border-right">
-                                        <option value="" default>Active</option>
-                                        <option value="Pending">In-Active</option>
+                                    <select class="form-control border-right" formControlName="status">
+                                        <option value="" default>Select Status</option>
+                                        <option value="true">Active</option>
+                                        <option value="false">In-Active</option>
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                              <div class="form-group">
+                                  <select class="form-control" formControlName="blogCategory">
+                                    <option value="">Select Category</option>
+                                    <option *ngFor="let data of blogCategoryList" value="{{data}}">{{data}}</option>
+                                  </select>
+                              </div>
+                          </div>
 
                             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"><button
-                                    type="button" class="btn btn-success"> Search</button></div>
+                                    type="button" class="btn btn-success" (click)="searchBlogList()"> Search</button></div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +44,7 @@
                 <div class="pull-left">
                     <div class="Showingbox"><span class="pull-left"></span>
                         <div class="pull-left drop">
-                            <select class="form-control" #limit>
+                            <select class="form-control" #limit (change)="getallBlogslist(limit.value)">
                                 <option value="25" ng-reflect-value="25">25</option>
                                 <option value="50" ng-reflect-value="50">50</option>
                                 <option value="100" ng-reflect-value="100">100</option>
@@ -54,14 +63,17 @@
               <div class="box-body">
                 <div class="tablesection">
                   <div class="table-responsive">
-                    <table class="table table-striped" matSort matSortDirection="asc">
+                    <table class="table table-striped" matSort
+                    matSortDirection="asc"
+                    matSortDisableClear>
                       <thead>
                         <tr>
-                          <th width="100" mat-sort-header="subject">Title</th>
-                          <th width="100" mat-sort-header="news_date">Created Date</th>
-                          <th width="100" mat-sort-header="status">Status</th>
-                          <th width="100" style=" text-align: center;">Edit</th>
-                          <th width="100">Delete</th>
+                          <th  mat-sort-header="subject">Title</th>
+                          <th>Blog Desc</th>
+                          <th>Created Date</th>
+                          <th>Status</th>
+                          <th style=" text-align: center;">Edit</th>
+                          <th>Delete</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -70,20 +82,20 @@
                             let data of _blogList
                               | paginate
                                 : {
-                                    id: '_schoolsList',
+                                    id: '_blogList',
                                     itemsPerPage: itemsPerPage,
                                     currentPage: currentPage,
                                     totalItems: _blogListSize
                                   };
-                            let i = index
-                          ">
-                          <td> <button [routerLink]="['/news-artical/edit-news-artical/',data?.id]" type="button" title="View Schools" class="btn btn-link text-light-blue"> <span style="font-weight: bold;">{{ (data?.subject.length > 70)?(data?.subject | slice : 0 : 70) + "...":data?.subject  }} </span></button></td>
-                          <td style="color: var(--surface-700);">{{ data?.newsDate | date:"d MMM y" : "UTC"}}</td>
+                            let i = index">
+                          <td> <button [routerLink]="['/blog/edit-blog',data?.id]" type="button" title="View Schools" class="btn btn-link text-light-blue"> <span style="font-weight: bold;">{{ (data?.title.length > 40)?(data?.title | slice : 0 : 40) + "...":data?.title  }} </span></button></td>
+                          <th style="color: var(--surface-700);">{{ (data?.description.length > 50)?(data?.description | slice : 0 : 50) + "...":data?.description  }}</th>
                           <td style="color: var(--surface-700);">{{ data?.createdTs | date:"d MMM y" : "UTC" }}</td>
                           <td>
-                            <p-inputSwitch  [(ngModel)]="data.status"></p-inputSwitch>
+                            <p-confirmPopup [style]="{width: '25vw'}"></p-confirmPopup>
+                            <p-inputSwitch  [(ngModel)]="data.status" (click)="updateBlogStatus($event,data?.id,data.status)"></p-inputSwitch>
                           </td>
-                          <td style="text-align: center;"><button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-lg p-button-outlined" [routerLink]="['/news-artical/edit-news-artical/',data?.id]"></button>    
+                          <td style="text-align: center;"><button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-lg p-button-outlined" [routerLink]="['/blog/edit-blog/', data?.id]"></button>    
                           </td>
                           <td>
                             <span><button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-lg p-button-outlined"></button></span>
@@ -100,10 +112,10 @@
                     {{ currentPageEndingIndex }} of
                     {{ _blogListSize }} results</span
                   >
-                  <span>No records found.</span>
+                  <!-- <span>No records found.</span> -->
                   <pagination-controls
                     class="pagination"
-                    id="_schoolsList"
+                    id="_blogList"
                   ></pagination-controls>
                 </div>
               </div>

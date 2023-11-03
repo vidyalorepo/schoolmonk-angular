@@ -20,9 +20,8 @@ import {MessagesModule} from 'primeng-lts/messages';
 import {MessageModule} from 'primeng-lts/message';
 import {ButtonModule} from 'primeng-lts/button';
 import {FileUploadModule} from 'primeng-lts/fileupload';
-import {HttpClientModule} from '@angular/common/http';
 import { CaptchaModule } from 'primeng-lts/captcha';
-
+import {TooltipModule} from 'primeng-lts/tooltip';
 @NgModule({
   declarations: [
     AuthLayoutComponent,
@@ -48,8 +47,8 @@ import { CaptchaModule } from 'primeng-lts/captcha';
     MessageModule,
     ButtonModule,
     FileUploadModule,
-    HttpClientModule,
-    CaptchaModule
+    CaptchaModule,
+    TooltipModule
   ],
 })
 export class LayoutModule {}

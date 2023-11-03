@@ -24,7 +24,7 @@
           [ngClass]="condition.includes('/payment') ? 'router-link-active':''"> <i class="fa fa-money"
             aria-hidden="true"></i> <span> Payment Collection </span></a></li> -->
       <li><a [routerLink]="['/manage-testimonials/testimonials-list']"
-          [ngClass]="condition.includes('/manage-testimonials') ? 'router-link-active':''"> <i class="pi pi-comments"
+          [ngClass]="condition.includes('/manage-testimonials') ? 'router-link-active':''"> <i class="pi pi-desktop"
             aria-hidden="true"></i> <span class="side-nav-header"> Testimonials </span></a></li>
       <li><a [routerLink]="['/manage-issues/issue-list']"
           [ngClass]="condition.includes('/manage-issues') ? 'router-link-active':''"> <i class="pi pi-question-circle"
@@ -40,7 +40,17 @@
             aria-hidden="true"></i><span class="side-nav-header"> Blog </span></a></li>     
       <li><a routerLink="/review"
             [ngClass]="condition.includes('/review') ? 'router-link-active':''"> <i class="pi pi-comments"
-              aria-hidden="true"></i><span class="side-nav-header"> Review </span></a></li>          
+              aria-hidden="true"></i><span class="side-nav-header"> Review </span></a></li>
+      <li><a routerLink="/advertisement"
+            [ngClass]="condition.includes('/advertisement') ? 'router-link-active':''"> <i class="pi pi-chart-line"
+            aria-hidden="true"></i><span class="side-nav-header"> Advertisement </span></a></li>
+
+      <li><a routerLink="/header-tag"
+            [ngClass]="condition.includes('/header-tag') ? 'router-link-active':''"> <i class="pi pi-tag"
+            aria-hidden="true"></i><span class="side-nav-header">Header Tag</span></a></li>
+      <li><a routerLink="/guardian-enquiry"
+            [ngClass]="condition.includes('/guardian-enquiry') ? 'router-link-active':''"> <i class="pi pi-question"
+            aria-hidden="true"></i><span class="side-nav-header">Guardian Enquiry</span></a></li>      
     </ul>
   </section>
 </aside>

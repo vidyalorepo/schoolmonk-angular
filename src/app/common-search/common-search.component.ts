@@ -12,12 +12,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SeoService } from '../seoservice.service';
 import { ReplaceSpacePipe } from '../-shared/pipe/replace-space.pipe';
 import { SortByPipe } from '../-shared/pipe/sort-by.pipe';
+import { LoaderService } from '../_services/loader.service';
 @Component({
   selector: 'app-common-search',
   templateUrl: './common-search.component.html',
   styleUrls: ['./common-search.component.css'],
 })
 export class CommonSearchComponent implements OnInit {
+  zones= ["ZONE-2 A","ZONE-2 B","ZONE-2 C"];
+  attachedFile: any;
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -143,6 +146,36 @@ export class CommonSearchComponent implements OnInit {
   screenHeight: any;
   screenWidth: number;
   _showFilter=true;
+  bannerOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: false,
+    autoplay: true,
+    autoWidth: true,
+    autoHeight: true,
+    autoplaySpeed: 200,
+    navSpeed: 600,
+    navText: ['', ''],
+ 
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 1
+      },
+      740: {
+        items: 1
+      },
+      1000: {
+        items: 1
+      }
+    },
+    nav: false
+  };
+ 
   constructor(
     private _authService: AuthService,
     private _headerComponent: MainheaderComponent,
@@ -153,7 +186,8 @@ export class CommonSearchComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private seoService:SeoService,
     private replacepipe:ReplaceSpacePipe,
-    private sort:SortByPipe
+    private sort:SortByPipe,
+    private _loader: LoaderService
   ) {
     this.getScreenSize();
   }
@@ -203,6 +237,7 @@ export class CommonSearchComponent implements OnInit {
         'city',
         'city.metaphone',
         'city.soundex',
+        'postal_code'
       ],
       location: {
         lat: null,
@@ -238,6 +273,7 @@ export class CommonSearchComponent implements OnInit {
 
 
      this.str = '3,4,8,22,45,60';
+     this.fetchDataAndSetImage();
     // console.log(str.split(',').includes('2'));    
   
   }
@@ -713,5 +749,19 @@ export class CommonSearchComponent implements OnInit {
          }else{
           this._showFilter=true;
          }
+    }
+
+    fetchDataAndSetImage() {
+      this._loader.openLoader();
+      this._authService.loader.next({ load: true });
+      this._authService.request('post', 'adsvertisement/fetchattachmentbyzone', this.zones).subscribe(
+        (response: any) => {
+          this._loader.closeLoader();
+          this.attachedFile= response.result;
+        },
+        (error) => {
+          this._loader.closeLoader();
+        }
+      );
     }
 }

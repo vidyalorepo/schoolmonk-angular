@@ -191,31 +191,36 @@ a:focus {
   color: #fff;
   font-weight: 500;
   font-size: 15px;
-  /* border-radius: 0; */
   line-height: 20px;
   padding: 7px 12px;
   transition: all .4s ease;
   margin: 5px auto;
   text-align: center;
-  border: 1px solid #ca233d;
-  background: #ca233d;
-  background: linear-gradient(135deg, #ca233d, #f06941);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ca233d", endColorstr="#f06941", GradientType=1);
+  border: 1px solid #4e0e55;
+  background: #862291;
+}
+
+.link1:hover {
+  color: #fff;
+  background: #4e0e55;
 }
 
 .link2 {
   display: inline-block;
-  color: #ca233d;
+  color: #671570;
   font-weight: 500;
   font-size: 15px;
-  /* border-radius: 0; */
   line-height: 20px;
   padding: 7px 12px;
   transition: all .4s ease;
   margin: 5px auto;
   text-align: center;
-  border: 1px solid #ca233d;
+  border: 1px solid #4e0e55;
   background: transparent;
+}
+.link2:hover {
+  color: #fff;
+  background: #4e0e55;
 }
 
 .mx-1 {
@@ -6339,7 +6344,7 @@ html {
   font-size: 14px;
 }
 
-.Reviewsection h3 font { 
+.Reviewsection h3 font {
 	color: #838383;
 	font-weight: 400;
 	font-size: 14px;
@@ -6375,3 +6380,109 @@ html {
 .review-details-admin{
   font-size: 17px;
 }
+
+.Advertisementsection .table .form-control{
+  width:80%;
+}
+
+.Advertisementsection h2 {
+	padding: 0 0 10px 0;
+	margin: 30px auto 0;
+	text-align: center;
+	color: #862291;
+	font-size: 25px;
+}
+.Advertisementsection h3 {
+	padding: 0 0 10px 0;
+	margin: 30px auto 0;
+	text-align: center;
+	color: #862291;
+	font-size: 23px;
+  font-weight: bold;
+}
+
+.Advertisementsection h4 {
+	padding: 0 0 10px 0;
+	margin: 30px auto 0;
+	text-align: center;
+	color: #000;
+	font-size:18px;
+  font-weight: bold;
+}
+.Advertisementsection p{
+  padding: 0;
+  margin: 0 auto 15px;
+  text-align: center;
+}
+.Advertisementsection img.addimg{
+  width: 100%;
+  height: auto;
+  border: 1px solid #862291;
+}
+.add_box{
+  padding: 0;
+  margin: 15px auto;
+  position: relative;
+}
+
+.add_box img {
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid #862291;
+  width: 100%;
+}
+
+.add_box .btn {
+	padding: 0 4px;
+	margin: 0 auto;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 99;
+}
+
+/* .addsection{
+  display: none;
+} */
+
+
+.add_zone{
+  padding:15px 0;
+  margin: 0 auto;
+  position: relative;
+}
+
+.add_zone img{
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.Leaderboard-box{
+  max-width: 728px;
+  height: auto;
+}
+
+.half-page-ad-box{
+  max-width: 300px;
+  height: auto;
+}
+
+.Full-banner-box{
+  max-width:468px;
+  height: auto;
+}
+
+.add_zone1 {
+	padding: 0;
+	margin: 10px auto 0;
+	width: 100px;
+}
+
+.add_zone1 img{
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+}
+

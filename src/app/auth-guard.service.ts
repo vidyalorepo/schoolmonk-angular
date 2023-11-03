@@ -23,7 +23,7 @@ export class AuthGuardService implements CanActivate {
         }, (err) => {
           if(err.status === 401){
             localStorage.clear();
-            this.router.navigate(['/auth/home']);
+            this.router.navigate(['']);
           }
           // console.log(err);
           
@@ -31,10 +31,10 @@ export class AuthGuardService implements CanActivate {
       return true;
     }
     else {
-      if (this.router.url === '/auth/home') {
+      if (this.router.url === '') {
 
       }
-      this.router.navigate(['/auth/home']);
+      this.router.navigate(['']);
       return false;
     }
 

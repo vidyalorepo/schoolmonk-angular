@@ -1,0 +1,110 @@
+<section class="inner-banner-section inner-banner-search">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Advertisement Upload</h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="breadcrumbs_section">
+          <ul>
+            <li><a routerLink=""><button type="submit">Home</button></a></li>
+            <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+            <li><button type="submit">Advertisement Details</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="innersearchsection">
+  <div class="container">
+    <div class="Student-List-section footer_link">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <h1>Advertisement Details</h1>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="tablesection">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email Id</th>
+                    <th>Purchase Date</th>
+                    <th>Expire Date</th>
+                    <th>Selected Zone</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Total Amount Paid</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{orderDetails?.customerId?.firstName}}</td>
+                    <td>{{orderDetails?.customerId?.lastName}}</td>
+                    <td>{{orderDetails?.customerId?.email}}</td>
+                    <td>{{orderDetails?.startDate | date:"d MMM y" : "UTC"}}</td>
+                    <td>{{orderDetails?.endDate | date:"d MMM y" : "UTC"}}</td>
+                    <td>{{orderDetails?.zoneId?.zoneName}}</td>
+                    <td class="text-center">{{orderDetails?.qty}}</td>
+                    <td class="text-center">{{orderDetails?.transactionId?.amount | currency:"INR"}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" *ngFor="let item of getqty((orderDetails?.qty));let i=index">
+          <div class="form-group">
+            <label for="">Upload Banner - ({{i+1}}) <span class="text-danger">*</span><div style="font-size: small;margin-top: -0.75rem;">Acceptable file type .jpg, .png / Size : Max 5mb</div></label>
+            <input style="margin-top: 1rem;"  #ImageInput type="file" id="myFile" name="'file[]'" accept=".jpg, .jpeg,.png"
+            (change)="uploadAdvertisementImage($event,'advertisement_image',_advertisementImageURL.fileId,100000, ImageInput,i)">
+            <div>
+              <input style="margin-top: 1rem;"  type="url" [name]="'input'+i" class="form-control" placeholder="Enter URL ..."  (input)="OnInputChange($event,i)">
+            </div>
+            <div style="margin-top: 1rem;text-align: left; ">
+              <button [disabled]="orderDetails?.qty == orderDetails?.attachmentVo.length" pButton pRipple type="button" label="Upload" icon="pi pi-cloud-upload" class="p-button-raised" (click)="upload(i)"></button>
+             </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row" *ngIf="orderDetails?.attachmentVo">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" *ngFor="let img of orderDetails?.attachmentVo">
+          <div class="form-group">
+            <div class="add_box">
+              <button type="button" class="btn btn-danger" (click)="deleteImage(img?.fileId)" ><i class="fa fa-times" aria-hidden="true"></i></button>
+              <img src="{{img?.filePath}}" alt="">
+            </div>
+            <div class="add-box-url">
+                  <h6><strong>Url: &nbsp;</strong><span><a [href]="img?.adsUrl" target="_blank">{{img?.adsUrl}}</a></span></h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <br> <br>
+          <div class="box-footer">
+            <div class="text-center">
+              <button type="button" class="btn link2 mx-1" [routerLink]="''">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
