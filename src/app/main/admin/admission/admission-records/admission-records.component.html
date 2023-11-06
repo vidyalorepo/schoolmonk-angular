@@ -139,17 +139,17 @@
                   <thead>
                     <tr>
                       <!-- <th width="70">Sl No.</th> -->
-                      <th width="30" align="center" style="text-align: center;">
+                      <th scope="col" width="30" align="center" style="text-align: center;">
                         <input type="checkbox" (click)="toggleShow()" type="checkbox" [(ngModel)]="selectedAll"
                           (change)="selectAll($event);">
                       </th>
-                      <th>Session</th>
-                      <th>Student Name </th>
-                      <th>Phone No.</th>
-                      <th>Email</th>
-                      <th align="center">Admission For</th>
-                      <th>Admission Status</th>
-                      <th>Action </th>
+                      <th scope="col">Session</th>
+                      <th scope="col">Student Name </th>
+                      <th scope="col">Phone No.</th>
+                      <th scope="col">Email</th>
+                      <th scope="col" align="center">Admission For</th>
+                      <th scope="col">Admission Status</th>
+                      <th scope="col">Action </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -161,22 +161,22 @@
                     totalItems:_AppliedStudentSize
                   }; let i = index;">
                       <!-- <td align="center">{{i+1}}</td> -->
-                      <td width="30" align="center"> <input *ngIf="data.admissionStatus !== 'Shortlisted'"
+                      <td scope="row" width="30" align="center"> <input *ngIf="data.admissionStatus !== 'Shortlisted'"
                           type="checkbox" (change)="selectCheck($event,data.id)" [(ngModel)]="data.selected"></td>
-                      <td>{{data.academicYear}}</td>
-                      <td>{{data.studentMstVo.studentName}}</td>
-                      <td>{{data.studentMstVo.studentGuardianVo[0].guardianPhone}}</td>
-                      <td>{{data.studentMstVo.studentGuardianVo[0].guardianEmail}}</td>
-                      <td>{{data.admissionForBoard}}&nbsp;{{data.admissionForClass}}<span
+                      <td scope="row">{{data.academicYear}}</td>
+                      <td scope="row">{{data.studentMstVo.studentName}}</td>
+                      <td scope="row">{{data.studentMstVo.studentGuardianVo[0].guardianPhone}}</td>
+                      <td scope="row">{{data.studentMstVo.studentGuardianVo[0].guardianEmail}}</td>
+                      <td scope="row">{{data.admissionForBoard}}&nbsp;{{data.admissionForClass}}<span
                           *ngIf="data.admissionForStream">&nbsp;-&nbsp;{{data.admissionForStream}}</span></td>
-                      <td>{{data.admissionStatus}}
+                      <td scope="row">{{data.admissionStatus}}
 
                         <!-- <strong class="Acceptedbox">{{data.admissionStatus}} </strong>  
                           <strong class="Denieddbox"> Denied</strong>
                           <strong class="Pendingdbox">Pending</strong> -->
 
                       </td>
-                      <td align="center"><button type="button"
+                      <td scope="row" align="center"><button type="button"
                           [routerLink]="['/admission/preview-records',data.registrationToken]"
                           class="btn btn-warning"><i class="fa fa-file-text-o" aria-hidden="true"></i></button>
                       </td>

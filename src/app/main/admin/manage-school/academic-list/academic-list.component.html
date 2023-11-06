@@ -58,19 +58,19 @@
                     <thead>
                       <tr>
                         <!-- <th width="70" style="text-align: center;">Sl No.</th> -->
-                        <th>Academic Year </th>
-                        <th>Performance Title</th>
-                        <th>No Of Student</th>
-                        <th>Action</th>
+                        <th scope="col">Academic Year </th>
+                        <th scope="col">Performance Title</th>
+                        <th scope="col">No Of Student</th>
+                        <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor='let data of _schoolAcademicList; let i = index'>
                         <!-- <td align="center">{{ i+1 }}</td> -->
-                        <td>{{ data.academicYear }}</td>
-                        <td>{{ data.performanceTitle }} </td>
-                        <td>{{ data.academicInformation }}</td>
-                        <td><button (click)="openEditModal(data)" type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <td scope="row">{{ data.academicYear }}</td>
+                        <td scope="row">{{ data.performanceTitle }} </td>
+                        <td scope="row">{{ data.academicInformation }}</td>
+                        <td scope="row"><button (click)="openEditModal(data)" type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                           <button type="button" (click)="deleteAcademic(data.id)" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button> 
                         </td>
                       </tr>

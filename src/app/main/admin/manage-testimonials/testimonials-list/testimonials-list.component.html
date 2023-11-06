@@ -75,15 +75,15 @@
                         <table class="table table-striped" matSort matSortDirection="asc" (matSortChange)="sortData($event)" matSortDisableClear>
                             <thead>
                                 <tr>
-                                    <th style="text-align: center;" width="40" align="center"> <input type="checkbox"
+                                    <th scope="col" style="text-align: center;" width="40" align="center"> <input type="checkbox"
                                             style="margin: 8px 0 0 0;" (change)="selectAll($event);" [(ngModel)]="selectedAll" (click)="toggleShow()"></th>
-                                    <th width="100" mat-sort-header="name">Name</th>
-                                    <th width="100" mat-sort-header="designation">Designation</th>
-                                    <th width="100" mat-sort-header="institution">Institution</th>
-                                    <th width="100" style="text-align: center;">Photo </th>
-                                    <th width="250" mat-sort-header="message">Message</th>
-                                    <th width="50" mat-sort-header="active">Publish</th>
-                                    <th width="50"  style="text-align: center;" >Action</th>
+                                    <th scope="col" width="100" mat-sort-header="name">Name</th>
+                                    <th scope="col" width="100" mat-sort-header="designation">Designation</th>
+                                    <th scope="col" width="100" mat-sort-header="institution">Institution</th>
+                                    <th scope="col" width="100" style="text-align: center;">Photo </th>
+                                    <th scope="col" width="250" mat-sort-header="message">Message</th>
+                                    <th scope="col" width="50" mat-sort-header="active">Publish</th>
+                                    <th scope="col" width="50"  style="text-align: center;" >Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,24 +93,24 @@
               currentPage:currentPage,
               totalItems:_testimonialListSize
             }; let i =index">
-                                    <td align="center" style="text-align: center;"><input type="checkbox"
+                                    <td scope="row" align="center" style="text-align: center;"><input type="checkbox"
                                             (click)="selectCheck($event,testimonial.id)" [(ngModel)]="testimonial.selected"></td>
-                                    <td>{{testimonial.name}}</td>
-                                    <td>{{testimonial.designation}}</td>
-                                    <td>{{testimonial.institution}} </td>
-                                    <td>
+                                    <td scope="row">{{testimonial.name}}</td>
+                                    <td scope="row">{{testimonial.designation}}</td>
+                                    <td scope="row">{{testimonial.institution}} </td>
+                                    <td scope="row">
                                         <div class="Profile_img">
                                             <img src="{{testimonial.docList.length !== 0  ? testimonial.docList[0].filePath : 'assets/images/man.png'}}"
                                                 alt="">
                                             <!-- <img src="assets/images/profile_picture.jpg" alt=""> -->
                                         </div>
                                     </td>
-                                    <td> {{testimonial.message}} </td>
-                                    <td>
+                                    <td scope="row"> {{testimonial.message}} </td>
+                                    <td scope="row">
                                         <p-tag styleClass="p-mr-2" *ngIf="testimonial.isActive === 1" severity="success">Published</p-tag>
                                         <p-tag severity="danger" *ngIf="testimonial.isActive === 0" >Unpublished</p-tag>
                                     </td>
-                                    <td style="text-align: center;">
+                                    <td scope="col" style="text-align: center;">
                                         <a [routerLink]="['/manage-testimonials/edit-testimonial/', testimonial.id]">
                                         <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-lg p-button-outlined"></button>
                                         </a>

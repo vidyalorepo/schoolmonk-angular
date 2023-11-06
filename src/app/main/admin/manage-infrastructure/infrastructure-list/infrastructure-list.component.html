@@ -45,17 +45,17 @@
                     <thead>
                       <tr>
                         <!-- <th width="80" style="text-align: center;">Sl No.</th> -->
-                        <th width="200">Infrastructure Name </th>
-                        <th>Infrastructure Description </th>
-                        <th>Action</th>
+                        <th scope="col" width="200">Infrastructure Name </th>
+                        <th scope="col">Infrastructure Description </th>
+                        <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let data of _schoolsInfraStList; let i = index">
                         <!-- <td align="center">{{ i+1 }}</td> -->
-                        <td>{{ data.infraName }}</td>
-                        <td>{{ data.infraDesc }}</td>
-                        <td style="text-align: center;">
+                        <td scope="row">{{ data.infraName }}</td>
+                        <td scope="row">{{ data.infraDesc }}</td>
+                        <td scope="row" style="text-align: center;">
                           <button type="button" (click)="deleteInfraSt(data.id)" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button> 
                         </td>
                       </tr>

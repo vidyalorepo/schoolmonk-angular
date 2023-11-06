@@ -113,16 +113,16 @@
                             matSortDirection="asc" matSortDisableClear>
                             <thead>
                                 <tr>
-                                    <th width="40" align="center" class="align-center">
+                                    <th scope="col" width="40" align="center" class="align-center">
                                         <input style="margin:8px 0 0 0;" (click)="toggleShow()" type="checkbox"
                                             [(ngModel)]="selectedAll" (change)="selectAll($event);">
                                     </th>
-                                    <th width="200" mat-sort-header="issue_id">ID</th>
-                                    <th mat-sort-header="issuer_first_name">Issuer Name</th>
-                                    <th mat-sort-header="issuer_email">Issuer Email</th>
-                                    <th mat-sort-header="issue_subject">Issue Subject</th>
-                                    <th width="150" mat-sort-header="created_on">Created On </th>
-                                    <th width="110" mat-sort-header="issue_state">Issue State</th>
+                                    <th scope="col" width="200" mat-sort-header="issue_id">ID</th>
+                                    <th scope="col" mat-sort-header="issuer_first_name">Issuer Name</th>
+                                    <th scope="col" mat-sort-header="issuer_email">Issuer Email</th>
+                                    <th scope="col" mat-sort-header="issue_subject">Issue Subject</th>
+                                    <th scope="col" width="150" mat-sort-header="created_on">Created On </th>
+                                    <th scope="col" width="110" mat-sort-header="issue_state">Issue State</th>
 
 
                                 </tr>
@@ -134,20 +134,20 @@
                       currentPage:currentPage,
                       totalItems:_issueListSize
                     }; let i =index">
-                                    <td align="center" class="align-center">
+                                    <td scope="row" align="center" class="align-center">
                                         <input type="checkbox" [(ngModel)]="issue.selected"
                                             (change)="selectCheck($event,issue.issueId)" style="margin-top: 10px;">
                                     </td>
-                                    <td><button type="button" title="View Schools" class="btn btn-link text-light-blue"
+                                    <td scope="row"><button type="button" title="View Schools" class="btn btn-link text-light-blue"
                                         (click)="viewIssueDetails(issue.issueId)">{{issue.ticketId}}</button></td>
                                     
-                                    <td>{{issue?.issuerName}}</td>
-                                    <td>{{issue.issuerEmail}}</td>
-                                    <td>{{issue?.issueSubject}}</td>
-                                    <td>
+                                    <td scope="row">{{issue?.issuerName}}</td>
+                                    <td scope="row">{{issue.issuerEmail}}</td>
+                                    <td scope="row">{{issue?.issueSubject}}</td>
+                                    <td scope="row">
                                         <strong>{{issue.createdOn | date}}</strong>
                                     </td>
-                                    <td>
+                                    <td scope="row">
                                         <p-tag *ngIf="issue.issueState === 'Resolved'" severity="success">{{issue.issueState}}</p-tag>
                                         <p-tag *ngIf="issue.issueState === 'Unresolved'" severity="danger">{{issue.issueState}}</p-tag>
                                         <p-tag *ngIf="issue.issueState === 'Pending'" severity="warning">{{issue.issueState}}</p-tag>

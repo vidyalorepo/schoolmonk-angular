@@ -13,14 +13,14 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>School Report Template </th>
-                                    <th width="100">Action</th>
+                                    <th scope="col">School Report Template </th>
+                                    <th scope="col" width="100">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Download School Report Template for Upload Student.... .xlsx > </td>
-                                    <td>
+                                    <td scope="row">Download School Report Template for Upload Student.... .xlsx > </td>
+                                    <td scope="row">
                                         <a href="assets/images/studentBulk.xlsx" download>
                                             <button type="button" class="btn  link3"><i class="fa fa-download"
                                                     aria-hidden="true"></i></button>
@@ -47,14 +47,14 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th width="200">Class </th>
-                                        <th>Upload Report </th>
-                                        <th width="100">Action</th>
+                                        <th scope="col" width="200">Class </th>
+                                        <th scope="col">Upload Report </th>
+                                        <th scope="col" width="100">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><select class="form-control">
+                                        <td scope="row"><select class="form-control">
                                                 <option>select</option>
                                                 <option>Class I</option>
                                                 <option>Class II</option>
@@ -62,9 +62,9 @@
                                                 <option>Class IV</option>
                                                 <option>Class V</option>
                                             </select></td>
-                                        <td><input type="file" accept=".xlsx" enctype="multipart/form-data"
+                                        <td scope="row"><input type="file" accept=".xlsx" enctype="multipart/form-data"
                                                 (change)="selectFile($event)" ></td>
-                                        <td><button type="button" class="btn btn-danger"
+                                        <td scope="row"><button type="button" class="btn btn-danger"
                                             onClick="this.form.reset()"><i class="fa fa-trash-o"
                                                     aria-hidden="true"></i></button>
                                 </tbody>

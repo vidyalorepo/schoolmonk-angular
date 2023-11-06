@@ -68,7 +68,7 @@
             <table class="table table-striped" matSort matSortDirection="asc" (matSortChange)="sortData($event)" matSortDisableClear>
               <thead>
                 <tr>
-                  <th width="40" align="center" style="text-align: center">
+                  <th scope="col" width="40" align="center" style="text-align: center">
                     <input
                       style="margin: 8px 0 0 0"
                       (click)="toggleShow()"
@@ -77,11 +77,11 @@
                       (change)="selectAllFeedback($event)"
                     />
                   </th>
-                  <th mat-sort-header="User_Name">Name</th>
-                  <th mat-sort-header="User_Email">Email</th>
-                  <th mat-sort-header="User_Phone">Phone No.</th>
-                  <th mat-sort-header="User_Feedback">Feedback</th>
-                  <th mat-sort-header="Feedback_Status">Status</th>
+                  <th scope="col" mat-sort-header="User_Name">Name</th>
+                  <th scope="col" mat-sort-header="User_Email">Email</th>
+                  <th scope="col" mat-sort-header="User_Phone">Phone No.</th>
+                  <th scope="col" mat-sort-header="User_Feedback">Feedback</th>
+                  <th scope="col" mat-sort-header="Feedback_Status">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -98,7 +98,7 @@
                     let i = index
                   "
                 >
-                  <td align="center" style="text-align: center">
+                  <td scope="row" align="center" style="text-align: center">
                     <input
                       type="checkbox"
                       [(ngModel)]="data.selected"
@@ -106,10 +106,10 @@
                       style="margin-top: 10px"
                     />
                   </td>
-                  <td>{{ data.userName }}</td>
-                  <td>{{ data.userEmail }}</td>
-                  <td>{{ data.userPhone | phonePipe }}</td>
-                  <td>
+                  <td scope="row">{{ data.userName }}</td>
+                  <td scope="row">{{ data.userEmail }}</td>
+                  <td scope="row">{{ data.userPhone | phonePipe }}</td>
+                  <td scope="row">
                     <!-- {{data.userFeedback}} -->
                     <div
                       data-toggle="modal"
@@ -123,7 +123,7 @@
                       }}
                     </div>
                   </td>
-                  <td>
+                  <td scope="row">
                     <p-tag *ngIf="data.feedbackStatus == 'Action Taken'" severity="success">{{ data.feedbackStatus }}</p-tag>
                     <p-tag *ngIf="data.feedbackStatus == 'No Action'" styleClass="p-mr-2" severity="warning">{{ data.feedbackStatus }}</p-tag>
                     <p-tag *ngIf="data.feedbackStatus == 'Pending'" severity="danger">{{ data.feedbackStatus }}</p-tag>

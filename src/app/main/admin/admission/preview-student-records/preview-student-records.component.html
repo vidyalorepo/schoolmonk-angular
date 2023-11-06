@@ -410,12 +410,12 @@
             <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
               style="margin: auto;">
               <tr>
-                <td width="25%">
+                <td scope="row" width="25%">
                   <div style="width:160px;height: auto;padding: 0;margin: 0;"><img
                       style="width:100%;height: 160px;padding: 0;margin: 0;" src="assets/images/profile_picture.jpg"
                       alt=""></div>
                 </td>
-                <td width="50%" valign="top" align="center" style="padding:0 0 0; margin: 0 auto;">
+                <td scope="row" width="50%" valign="top" align="center" style="padding:0 0 0; margin: 0 auto;">
                   <h3 style="padding: 0 0 10px 0; margin: 0;">{{schoolDtl?.schoolName}}</h3>
                   <p style="padding: 0 0 10px 0; margin: 0;">{{schoolDtl?.schoolAddress}}</p>
                   <h3 style="padding: 0 0 10px 0; margin: 0;">ACADEMIC SESSION : {{studentApplication?.academicYear}}
@@ -425,46 +425,46 @@
                   <p style="padding: 0 0 10px 0; margin: 0;"> APPLICATION FOR ADMISSION TO CLASS -
                     {{studentApplication?.admissionForClass}} </p>
                 </td>
-                <td width="25%"></td>
+                <td scope="row" width="25%"></td>
               </tr>
               <tr>
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <hr>
                 </td>
               </tr>
               <tr>
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <h2
                     style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 5px 0; margin: 5px auto;">
                     APPLICANT INFORMATION</h2>
                 </td>
               </tr>
               <tr>
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <table width="100%" style="padding:20px 0;margin: 0 auto; text-align: left;">
                     <tr>
-                      <td width="25%" style="padding:10px;"><strong>Applicant Name: </strong></td>
-                      <td width="25%" style="padding:10px;"> {{studentApplicationVo?.studentName}}</td>
-                      <td width="25%" style="padding:10px;"><strong>DOB: </strong></td>
-                      <td width="25%" style="padding:10px;"> {{studentApplicationVo?.dateOfBirth}}</td>
+                      <td scope="row" width="25%" style="padding:10px;"><strong>Applicant Name: </strong></td>
+                      <td scope="row" width="25%" style="padding:10px;"> {{studentApplicationVo?.studentName}}</td>
+                      <td scope="row" width="25%" style="padding:10px;"><strong>DOB: </strong></td>
+                      <td scope="row" width="25%" style="padding:10px;"> {{studentApplicationVo?.dateOfBirth}}</td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>Gender: </strong></td>
-                      <td style="padding:10px;"> {{studentApplicationVo?.gender}} </td>
-                      <td style="padding:10px;"><strong>Blood Group: </strong></td>
-                      <td style="padding:10px;"> {{studentApplicationVo?.bloodGroup}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Gender: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplicationVo?.gender}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Blood Group: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplicationVo?.bloodGroup}} </td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>Nationality: </strong></td>
-                      <td style="padding:10px;"> {{studentApplicationVo?.nationallity}} </td>
-                      <td style="padding:10px;"><strong>Religion: </strong></td>
-                      <td style="padding:10px;"> {{studentApplicationVo?.religion}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Nationality: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplicationVo?.nationallity}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Religion: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplicationVo?.religion}} </td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>First Language: </strong></td>
-                      <td style="padding:10px;"> {{studentApplicationVo?.firstLanguage}} </td>
-                      <td style="padding:10px;"><strong>Class applying for: </strong></td>
-                      <td style="padding:10px;"> {{studentApplication?.admissionForClass}} </td>
+                      <td scope="row" style="padding:10px;"><strong>First Language: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplicationVo?.firstLanguage}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Class applying for: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplication?.admissionForClass}} </td>
                     </tr>
                     <!-- <tr>
                       <td style="padding:10px;"><strong>Email Id: </strong></td>
@@ -473,45 +473,45 @@
                       <td style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
                     </tr> -->
                     <tr *ngIf="studentApplicationVo?.studentGuardianVo[0]?.iDProofType === 'Aadhar'">
-                      <td style="padding:10px;"><strong>Aadhar Number: </strong></td>
-                      <td style="padding:10px;">{{ studentApplicationVo?.studentGuardianVo[0]?.guardianIDProof }} </td>
-                      <td style="padding:10px;"><strong> </strong></td>
-                      <td style="padding:10px;"></td>
+                      <td scope="row" style="padding:10px;"><strong>Aadhar Number: </strong></td>
+                      <td scope="row" style="padding:10px;">{{ studentApplicationVo?.studentGuardianVo[0]?.guardianIDProof }} </td>
+                      <td scope="row" style="padding:10px;"><strong> </strong></td>
+                      <td scope="row" style="padding:10px;"></td>
                     </tr>
                   </table>
                 </td>
               </tr>
 
               <tr *ngIf="studentApplication?.admissionForClass === 'XI'">
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <h2
                     style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 5px 0; margin: 5px auto;">
                     STREAM & SUBJECTS </h2>
                 </td>
               </tr>
               <tr *ngIf="studentApplication?.admissionForClass === 'XI'">
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <table width="100%" style="padding:20px 0;margin: 0 auto; text-align: left;">
                     <tr>
-                      <td width="16.6%" style="padding:10px;"><strong>Stream: </strong></td>
-                      <td width="83.4%" style="padding:10px;" colspan="5"> <u>{{studentApplication?.admissionForStream}}
+                      <td scope="row" width="16.6%" style="padding:10px;"><strong>Stream: </strong></td>
+                      <td scope="row" width="83.4%" style="padding:10px;" colspan="5"> <u>{{studentApplication?.admissionForStream}}
                         </u></td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>Subject 1: </strong></td>
-                      <td style="padding:10px;"> {{studentApplication?.subjectOne}}</td>
-                      <td style="padding:10px;"><strong>Subject 2: </strong></td>
-                      <td style="padding:10px;"> {{studentApplication?.subjectTwo}} </td>
-                      <td style="padding:10px;"><strong>Subject 3: </strong></td>
-                      <td style="padding:10px;"> {{studentApplication?.subjectThree}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Subject 1: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplication?.subjectOne}}</td>
+                      <td scope="row" style="padding:10px;"><strong>Subject 2: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplication?.subjectTwo}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Subject 3: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplication?.subjectThree}} </td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>Subject 4: </strong></td>
-                      <td style="padding:10px;"> {{studentApplication?.subjectFour}}</td>
-                      <td style="padding:10px;"><strong>Subject 5: </strong></td>
-                      <td style="padding:10px;"> {{studentApplication?.subjectFive}} </td>
-                      <td style="padding:10px;"><strong>Subject 6: </strong></td>
-                      <td style="padding:10px;"> {{studentApplication?.subjectSix}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Subject 4: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplication?.subjectFour}}</td>
+                      <td scope="row" style="padding:10px;"><strong>Subject 5: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplication?.subjectFive}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Subject 6: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplication?.subjectSix}} </td>
                     </tr>
 
 
@@ -521,38 +521,38 @@
               </tr>
 
               <tr>
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <h2
                     style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 5px 0; margin: 5px auto;">
                     RESIDENTIAL ADDRESS</h2>
                 </td>
               </tr>
               <tr>
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <table width="100%" style="padding:20px 0;margin: 0 auto; text-align: left;">
                     <tr>
-                      <td width="25%" style="padding:10px;"><strong>Address: </strong></td>
-                      <td width="75%" style="padding:10px;" colspan="3">
+                      <td scope="row" width="25%" style="padding:10px;"><strong>Address: </strong></td>
+                      <td scope="row" width="75%" style="padding:10px;" colspan="3">
                         {{studentApplicationVo?.addressVo[0]?.addrLineOne}}
                         {{studentApplicationVo?.addressVo[0]?.addrLineTwo}} </td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>District: </strong></td>
+                      <td scope="row" style="padding:10px;"><strong>District: </strong></td>
                       <td style="padding:10px;"> {{studentApplicationVo?.addressVo[0]?.districtName}} </td>
                       <td style="padding:10px;"><strong>State: </strong></td>
                       <td style="padding:10px;"> {{studentApplicationVo?.addressVo[0]?.stateName}} </td>
                     </tr>
                     <tr>
                       <td style="padding:10px;"><strong>Pin Code: </strong></td>
-                      <td style="padding:10px;"> {{studentApplicationVo?.addressVo[0]?.pin}} </td>
-                      <td style="padding:10px;"><strong>Phone Number: </strong></td>
-                      <td style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
+                      <td scope="row" style="padding:10px;"> {{studentApplicationVo?.addressVo[0]?.pin}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Phone Number: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>Primary Email ID: </strong></td>
-                      <td style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}} </td>
-                      <td style="padding:10px;"><strong> </strong></td>
-                      <td style="padding:10px;"></td>
+                      <td scope="row" style="padding:10px;"><strong>Primary Email ID: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}} </td>
+                      <td scope="row" style="padding:10px;"><strong> </strong></td>
+                      <td scope="row" style="padding:10px;"></td>
                     </tr>
                   </table>
                 </td>
@@ -560,46 +560,46 @@
 
 
               <tr>
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <h2
                     style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 5px 0; margin: 5px auto;">
                     GUARDIAN DETAILS</h2>
                 </td>
               </tr>
               <tr>
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <table width="100%" style="padding:20px 0;margin: 0 auto; text-align: left;">
                     <tr>
-                      <td width="25%" style="padding:10px;"><strong>Guardian's Name: </strong></td>
-                      <td width="25%" style="padding:10px;">
+                      <td scope="row" width="25%" style="padding:10px;"><strong>Guardian's Name: </strong></td>
+                      <td scope="row" width="25%" style="padding:10px;">
                         {{studentApplicationVo?.studentGuardianVo[0]?.guardianName}}
                       </td>
-                      <td width="25%" style="padding:10px;"><strong>Guardian's Email ID: </strong></td>
-                      <td width="25%" style="padding:10px;">
+                      <td scope="row" width="25%" style="padding:10px;"><strong>Guardian's Email ID: </strong></td>
+                      <td scope="row" width="25%" style="padding:10px;">
                         {{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}}
                       </td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>Guardian's Mobile Number: </strong></td>
-                      <td style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
-                      <td style="padding:10px;"><strong>Occupation: </strong></td>
-                      <td style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianOccupation}}
+                      <td scope="row" style="padding:10px;"><strong>Guardian's Mobile Number: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Occupation: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianOccupation}}
                       </td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>Guardian's Business Name: </strong></td>
-                      <td style="padding:10px;"></td>
-                      <td style="padding:10px;"><strong>Guardian's Annual Income: </strong></td>
-                      <td style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianAnnualIncome}}
+                      <td scope="row" style="padding:10px;"><strong>Guardian's Business Name: </strong></td>
+                      <td scope="row" style="padding:10px;"></td>
+                      <td scope="row" style="padding:10px;"><strong>Guardian's Annual Income: </strong></td>
+                      <td scope="row" style="padding:10px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianAnnualIncome}}
                       </td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>Relationship with Applicant: </strong></td>
-                      <td style="padding:10px;">
+                      <td scope="row" style="padding:10px;"><strong>Relationship with Applicant: </strong></td>
+                      <td scope="row" style="padding:10px;">
                         {{studentApplicationVo?.studentGuardianVo[0]?.guardianRelationWithStudent}}
                       </td>
-                      <td style="padding:10px;"><strong> </strong></td>
-                      <td style="padding:10px;"></td>
+                      <td scope="row" style="padding:10px;"><strong> </strong></td>
+                      <td scope="row" style="padding:10px;"></td>
                     </tr>
                   </table>
                 </td>
@@ -610,26 +610,26 @@
               cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
 
               <tr>
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <h2
                     style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 5px 0; margin: 5px auto;">
                     SIBLING DETAILS (Own Sibling/s)</h2>
                 </td>
               </tr>
               <tr *ngFor="let item of studentApplicationVo?.studentSiblingVo">
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <table width="100%" style="padding:20px 0;margin: 0 auto; text-align: left;">
                     <tr>
-                      <td width="25%" style="padding:10px;"><strong>Sibling's Name: </strong></td>
-                      <td width="25%" style="padding:10px;">{{item.siblingName}}</td>
-                      <td width="25%" style="padding:10px;"><strong>Sibling's Class: </strong></td>
-                      <td width="25%" style="padding:10px;">{{item.siblingClass}}</td>
+                      <td scope="row" width="25%" style="padding:10px;"><strong>Sibling's Name: </strong></td>
+                      <td scope="row" width="25%" style="padding:10px;">{{item.siblingName}}</td>
+                      <td scope="row" width="25%" style="padding:10px;"><strong>Sibling's Class: </strong></td>
+                      <td scope="row" width="25%" style="padding:10px;">{{item.siblingClass}}</td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>Sibling's Section: </strong></td>
-                      <td style="padding:10px;">{{item.siblingSection}} </td>
-                      <td style="padding:10px;"><strong>Sibling's School Name: </strong></td>
-                      <td style="padding:10px;">{{item.siblingSchoolName}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Sibling's Section: </strong></td>
+                      <td scope="row" style="padding:10px;">{{item.siblingSection}} </td>
+                      <td scope="row" style="padding:10px;"><strong>Sibling's School Name: </strong></td>
+                      <td scope="row" style="padding:10px;">{{item.siblingSchoolName}} </td>
                     </tr>
 
                   </table>
@@ -641,37 +641,37 @@
             <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
               style="margin: auto;">
               <tr>
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <h2
                     style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 5px 0; margin: 5px auto;">
                     DECLARATION/DISCLAIMER</h2>
                 </td>
               </tr>
               <tr>
-                <td colspan="3" valign="top" align="center" style="padding:20px 0;margin: 0 auto;"><strong>Declaration:
+                <td scope="row" colspan="3" valign="top" align="center" style="padding:20px 0;margin: 0 auto;"><strong>Declaration:
                   </strong> Need to carry hard copy of Birth CertificateImmunisation card,Parenrs quallification
                   certificate
                   at the time of interview</td>
               </tr>
               <tr>
-                <td colspan="3" valign="top">
+                <td scope="row" colspan="3" valign="top">
                   <table width="100%" style="padding:20px 0;margin: 0 auto; text-align: left;">
                     <tr>
-                      <td width="25%" style="padding:10px;"><strong>Date: </strong></td>
-                      <td width="25%" style="padding:10px;"> 08/09/2021 </td>
-                      <td width="25%" style="padding:10px;"><strong></strong></td>
-                      <td width="25%" style="padding:10px;"></td>
+                      <td scope="row" width="25%" style="padding:10px;"><strong>Date: </strong></td>
+                      <td scope="row" width="25%" style="padding:10px;"> 08/09/2021 </td>
+                      <td scope="row" width="25%" style="padding:10px;"><strong></strong></td>
+                      <td scope="row" width="25%" style="padding:10px;"></td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>Signature of Father/Guardian: </strong></td>
-                      <td style="padding:10px;" colspan="2" width="50%">
+                      <td scope="row" style="padding:10px;"><strong>Signature of Father/Guardian: </strong></td>
+                      <td scope="row" style="padding:10px;" colspan="2" width="50%">
                         ------------------------------------------------------ </td>
-                      <td style="padding:10px;"></td>
+                      <td scope="row" style="padding:10px;"></td>
                     </tr>
                     <tr>
-                      <td style="padding:10px;"><strong>Signature of Mother: </strong></td>
-                      <td style="padding:10px;" colspan="2">------------------------------------------------------</td>
-                      <td style="padding:10px;"></td>
+                      <td scope="row" style="padding:10px;"><strong>Signature of Mother: </strong></td>
+                      <td scope="row" style="padding:10px;" colspan="2">------------------------------------------------------</td>
+                      <td scope="row" style="padding:10px;"></td>
                     </tr>
                   </table>
                 </td>
@@ -719,12 +719,12 @@
           <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
             style="margin: auto;">
             <tr>
-              <td width="25%">
+              <td scope="row" width="25%">
                 <div style="width:100px;height: auto;padding: 0;margin: 0;"><img
                     style="width:100%;height: 100px;padding: 0;margin: 0;" src="assets/images/profile_picture.jpg"
                     alt=""></div>
               </td>
-              <td width="50%" valign="top" align="center" style="padding:0 0 0; margin: 0 auto;">
+              <td scope="row" width="50%" valign="top" align="center" style="padding:0 0 0; margin: 0 auto;">
                 <h3 style="padding: 0 0 0 0; margin: 0;">{{schoolDtl?.schoolName}} </h3>
                 <p style="padding: 0 0 0 0; margin: 0; font-size: 15px;">{{schoolDtl?.schoolAddress}}</p>
                 <h3 style="padding: 0 0 0 0; margin: 0;">ACADEMIC SESSION : {{studentApplication?.academicYear}}</h3>
@@ -732,88 +732,88 @@
                 <p style="padding: 0 0 0 0; margin: 0; font-size: 15px;">Form No.: {{studentApplication?.admissionId}}</p>
                 <p style="padding: 0 0 5px 0; margin: 0; font-size: 15px;"> APPLICATION FOR ADMISSION TO CLASS - {{studentApplication?.admissionForClass}} </p>
               </td>
-              <td width="25%"></td>
+              <td scope="row" width="25%"></td>
             </tr>
             <tr>
-              <td colspan="3" valign="top">
+              <td scope="row" colspan="3" valign="top">
                 <h2
                   style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 0 0; margin: 0 auto;">
                   APPLICANT INFORMATION</h2>
               </td>
             </tr>
             <tr>
-              <td colspan="3" valign="top">
+              <td scope="row" colspan="3" valign="top">
                 <table width="100%" style="padding:0 0;margin: 0 auto; text-align: left;">
                   <tr>
-                    <td width="25%" style="padding:5px;"><strong>Applicant Name: </strong></td>
-                    <td width="25%" style="padding:5px;"> {{studentApplicationVo?.studentName}}</td>
-                    <td width="25%" style="padding:5px;"><strong>DOB: </strong></td>
-                    <td width="25%" style="padding:5px;"> {{studentApplicationVo?.dateOfBirth}}</td>
+                    <td scope="row" width="25%" style="padding:5px;"><strong>Applicant Name: </strong></td>
+                    <td scope="row" width="25%" style="padding:5px;"> {{studentApplicationVo?.studentName}}</td>
+                    <td scope="row" width="25%" style="padding:5px;"><strong>DOB: </strong></td>
+                    <td scope="row" width="25%" style="padding:5px;"> {{studentApplicationVo?.dateOfBirth}}</td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Gender: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.gender}} </td>
-                    <td style="padding:5px;"><strong>Blood Group: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.bloodGroup}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Gender: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.gender}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Blood Group: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.bloodGroup}} </td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Nationality: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.nationallity}} </td>
-                    <td style="padding:5px;"><strong>Religion: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.religion}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Nationality: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.nationallity}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Religion: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.religion}} </td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>First Language: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.firstLanguage}} </td>
-                    <td style="padding:5px;"><strong>Class applying for: </strong></td>
-                    <td style="padding:5px;"> {{studentApplication?.admissionForClass}} </td>
+                    <td scope="row" style="padding:5px;"><strong>First Language: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.firstLanguage}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Class applying for: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplication?.admissionForClass}} </td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Email Id: </strong></td>
-                    <td style="padding:5px;">{{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}}</td>
-                    <td style="padding:5px;"><strong>Phone Number: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Email Id: </strong></td>
+                    <td scope="row" style="padding:5px;">{{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}}</td>
+                    <td scope="row" style="padding:5px;"><strong>Phone Number: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
                   </tr>
                   <tr *ngIf="studentApplicationVo?.studentGuardianVo[0]?.iDProofType === 'Aadhar'">
-                    <td style="padding:5px;"><strong>Aadhar Number: </strong></td>
-                    <td style="padding:5px;">{{ studentApplicationVo?.studentGuardianVo[0]?.guardianIDProof }} </td>
-                    <td style="padding:5px;"><strong> </strong></td>
-                    <td style="padding:5px;"></td>
+                    <td scope="row" style="padding:5px;"><strong>Aadhar Number: </strong></td>
+                    <td scope="row" style="padding:5px;">{{ studentApplicationVo?.studentGuardianVo[0]?.guardianIDProof }} </td>
+                    <td scope="row" style="padding:5px;"><strong> </strong></td>
+                    <td scope="row" style="padding:5px;"></td>
                   </tr>
                 </table>
               </td>
             </tr>
 
             <tr *ngIf="studentApplication?.admissionForClass === 'XI'">
-              <td colspan="3" valign="top">
+              <td scope="row" colspan="3" valign="top">
                 <h2
                   style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 0 0; margin: 0 auto;">
                   STREAM & SUBJECTS </h2>
               </td>
             </tr>
             <tr *ngIf="studentApplication?.admissionForClass === 'XI'">
-              <td colspan="3" valign="top">
+              <td scope="row" colspan="3" valign="top">
                 <table width="100%" style="padding:0 0;margin: 0 auto; text-align: left;">
                   <tr>
-                    <td width="16.6%" style="padding:5px;"><strong>Stream: </strong></td>
-                    <td width="83.4%" style="padding:5px;" colspan="5"> <u>{{studentApplication?.admissionForStream}}
+                    <td scope="row" width="16.6%" style="padding:5px;"><strong>Stream: </strong></td>
+                    <td scope="row" width="83.4%" style="padding:5px;" colspan="5"> <u>{{studentApplication?.admissionForStream}}
                       </u></td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Subject 1: </strong></td>
-                    <td style="padding:5px;"> {{studentApplication?.subjectOne}}</td>
-                    <td style="padding:5px;"><strong>Subject 2: </strong></td>
-                    <td style="padding:5px;"> {{studentApplication?.subjectTwo}} </td>
-                    <td style="padding:5px;"><strong>Subject 3: </strong></td>
-                    <td style="padding:5px;"> {{studentApplication?.subjectThree}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Subject 1: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplication?.subjectOne}}</td>
+                    <td scope="row" style="padding:5px;"><strong>Subject 2: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplication?.subjectTwo}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Subject 3: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplication?.subjectThree}} </td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Subject 4: </strong></td>
-                    <td style="padding:5px;"> {{studentApplication?.subjectFour}}</td>
-                    <td style="padding:5px;"><strong>Subject 5: </strong></td>
-                    <td style="padding:5px;"> {{studentApplication?.subjectFive}} </td>
-                    <td style="padding:5px;"><strong>Subject 6: </strong></td>
-                    <td style="padding:5px;"> {{studentApplication?.subjectSix}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Subject 4: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplication?.subjectFour}}</td>
+                    <td scope="row" style="padding:5px;"><strong>Subject 5: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplication?.subjectFive}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Subject 6: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplication?.subjectSix}} </td>
                   </tr>
 
 
@@ -823,38 +823,38 @@
             </tr> 
 
             <tr>
-              <td colspan="3" valign="top">
+              <td scope="row" colspan="3" valign="top">
                 <h2
                   style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 0 0; margin: 0 auto;">
                   RESIDENTIAL ADDRESS</h2>
               </td>
             </tr>
             <tr>
-              <td colspan="3" valign="top">
+              <td scope="row" colspan="3" valign="top">
                 <table width="100%" style="padding:0 0;margin: 0 auto; text-align: left;">
                   <tr>
-                    <td width="25%" style="padding:5px;"><strong>Address: </strong></td>
-                    <td width="75%" style="padding:5px;" colspan="3">
+                    <td scope="row" width="25%" style="padding:5px;"><strong>Address: </strong></td>
+                    <td scope="row" width="75%" style="padding:5px;" colspan="3">
                       {{studentApplicationVo?.addressVo[0]?.addrLineOne}}
                       {{studentApplicationVo?.addressVo[0]?.addrLineTwo}} </td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>District: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.addressVo[0]?.districtName}} </td>
-                    <td style="padding:5px;"><strong>State: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.addressVo[0]?.stateName}} </td>
+                    <td scope="row" style="padding:5px;"><strong>District: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.addressVo[0]?.districtName}} </td>
+                    <td scope="row" style="padding:5px;"><strong>State: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.addressVo[0]?.stateName}} </td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Pin Code: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.addressVo[0]?.pin}} </td>
-                    <td style="padding:5px;"><strong>Phone Number: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Pin Code: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.addressVo[0]?.pin}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Phone Number: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Primary Email ID: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}} </td>
-                    <td style="padding:5px;"><strong> </strong></td>
-                    <td style="padding:5px;"></td>
+                    <td scope="row" style="padding:5px;"><strong>Primary Email ID: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}} </td>
+                    <td scope="row" style="padding:5px;"><strong> </strong></td>
+                    <td scope="row" style="padding:5px;"></td>
                   </tr>
                 </table>
               </td>
@@ -862,46 +862,46 @@
 
 
             <tr>
-              <td colspan="3" valign="top">
+              <td scope="row" colspan="3" valign="top">
                 <h2
                   style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 0 0; margin: 0 auto;">
                   GUARDIAN DETAILS</h2>
               </td>
             </tr>
             <tr>
-              <td colspan="3" valign="top">
+              <td scope="row" colspan="3" valign="top">
                 <table width="100%" style="padding:0 0;margin: 0 auto; text-align: left;">
                   <tr>
-                    <td width="25%" style="padding:5px;"><strong>Guardian's Name: </strong></td>
-                    <td width="25%" style="padding:5px;">
+                    <td scope="row" width="25%" style="padding:5px;"><strong>Guardian's Name: </strong></td>
+                    <td scope="row" width="25%" style="padding:5px;">
                       {{studentApplicationVo?.studentGuardianVo[0]?.guardianName}}
                     </td>
-                    <td width="25%" style="padding:5px;"><strong>Guardian's Email ID: </strong></td>
-                    <td width="25%" style="padding:5px;">
+                    <td scope="row" width="25%" style="padding:5px;"><strong>Guardian's Email ID: </strong></td>
+                    <td scope="row" width="25%" style="padding:5px;">
                       {{studentApplicationVo?.studentGuardianVo[0]?.guardianEmail}}
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Guardian's Mobile Number: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
-                    <td style="padding:5px;"><strong>Occupation: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianOccupation}}
+                    <td scope="row" style="padding:5px;"><strong>Guardian's Mobile Number: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianPhone}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Occupation: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianOccupation}}
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Guardian's Business Name: </strong></td>
-                    <td style="padding:5px;"></td>
-                    <td style="padding:5px;"><strong>Guardian's Annual Income: </strong></td>
-                    <td style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianAnnualIncome}}
+                    <td scope="row" style="padding:5px;"><strong>Guardian's Business Name: </strong></td>
+                    <td scope="row" style="padding:5px;"></td>
+                    <td scope="row" style="padding:5px;"><strong>Guardian's Annual Income: </strong></td>
+                    <td scope="row" style="padding:5px;"> {{studentApplicationVo?.studentGuardianVo[0]?.guardianAnnualIncome}}
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Relationship with Applicant: </strong></td>
-                    <td style="padding:5px;">
+                    <td scope="row" style="padding:5px;"><strong>Relationship with Applicant: </strong></td>
+                    <td scope="row" style="padding:5px;">
                       {{studentApplicationVo?.studentGuardianVo[0]?.guardianRelationWithStudent}}
                     </td>
-                    <td style="padding:5px;"><strong> </strong></td>
-                    <td style="padding:5px;"></td>
+                    <td scope="row" style="padding:5px;"><strong> </strong></td>
+                    <td scope="row" style="padding:5px;"></td>
                   </tr>
                 </table>
               </td>
@@ -912,70 +912,70 @@
             cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
 
             <tr>
-              <td colspan="3" valign="top">
+              <td scope="row" colspan="3" valign="top">
                 <h2
                   style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 0 0; margin: 0 auto;">
                   SIBLING DETAILS (Own Sibling/s)</h2>
               </td>
             </tr>
             <tr *ngFor="let item of studentApplicationVo?.studentSiblingVo">
-              <td colspan="3" valign="top">
+              <td scope="row" colspan="3" valign="top">
                 <table width="100%" style="padding:0 0;margin: 0 auto; text-align: left;">
                   <tr>
-                    <td width="30%" style="padding:5px;"><strong>Sibling's Name: </strong></td>
-                    <td width="20%" style="padding:5px;">{{item.siblingName}}</td>
-                    <td width="30%" style="padding:5px;"><strong>Sibling's Class: </strong></td>
-                    <td width="20%" style="padding:5px;">{{item.siblingClass}}</td>
+                    <td scope="row" width="30%" style="padding:5px;"><strong>Sibling's Name: </strong></td>
+                    <td scope="row" width="20%" style="padding:5px;">{{item.siblingName}}</td>
+                    <td scope="row" width="30%" style="padding:5px;"><strong>Sibling's Class: </strong></td>
+                    <td scope="row" width="20%" style="padding:5px;">{{item.siblingClass}}</td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Sibling's Section: </strong></td>
-                    <td style="padding:5px;">{{item.siblingSection}} </td>
-                    <td style="padding:5px;"><strong>Sibling's School Name: </strong></td>
-                    <td style="padding:5px;">{{item.siblingSchoolName}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Sibling's Section: </strong></td>
+                    <td scope="row" style="padding:5px;">{{item.siblingSection}} </td>
+                    <td scope="row" style="padding:5px;"><strong>Sibling's School Name: </strong></td>
+                    <td scope="row" style="padding:5px;">{{item.siblingSchoolName}} </td>
                   </tr>
 
                 </table>
               </td>
             </tr>
             <tr *ngIf="studentApplication?.admissionForClass == 'XI' && studentApplicationVo?.studentSiblingVo.length != 0">
-              <td colspan="3" valign="top"> <br> <br> <br> <br> <br>  <br> <br> </td>
+              <td scope="row" colspan="3" valign="top"> <br> <br> <br> <br> <br>  <br> <br> </td>
             </tr>
           </table>
 
           <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
             style="margin: auto;">
             <tr>
-              <td colspan="3" valign="top">
+              <td scope="row" colspan="3" valign="top">
                 <h2
                   style="color: #0e4864;font-size:20px; font-weight: 600;position: relative;background: #b9d9e8;text-align: center; padding: 0 0; margin: 0 auto;">
                   DECLARATION/DISCLAIMER</h2>
               </td>
             </tr>
             <tr>
-              <td colspan="3" valign="top" align="center" style="padding:20px 0;margin: 0 auto;"><strong>Declaration:
+              <td scope="row" colspan="3" valign="top" align="center" style="padding:20px 0;margin: 0 auto;"><strong>Declaration:
                 </strong> Need to carry hard copy of Birth CertificateImmunisation card,Parenrs quallification
                 certificate
                 at the time of interview</td>
             </tr>
             <tr>
-              <td colspan="3" valign="top">
+              <td scope="row" colspan="3" valign="top">
                 <table width="100%" style="padding:0 0;margin: 0 auto; text-align: left;">
                   <tr>
-                    <td width="25%" style="padding:5px;"><strong>Date: </strong></td>
-                    <td width="25%" style="padding:5px;"> 08/09/2021 </td>
-                    <td width="25%" style="padding:5px;"><strong></strong></td>
-                    <td width="25%" style="padding:5px;"></td>
+                    <td scope="row" width="25%" style="padding:5px;"><strong>Date: </strong></td>
+                    <td scope="row" width="25%" style="padding:5px;"> 08/09/2021 </td>
+                    <td scope="row" width="25%" style="padding:5px;"><strong></strong></td>
+                    <td scope="row" width="25%" style="padding:5px;"></td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Signature of Father/Guardian: </strong></td>
-                    <td style="padding:5px;" colspan="2" width="50%">
+                    <td scope="row" style="padding:5px;"><strong>Signature of Father/Guardian: </strong></td>
+                    <td scope="row" style="padding:5px;" colspan="2" width="50%">
                       ------------------------------------------------------ </td>
-                    <td style="padding:5px;"></td>
+                    <td scope="row" style="padding:5px;"></td>
                   </tr>
                   <tr>
-                    <td style="padding:5px;"><strong>Signature of Mother: </strong></td>
-                    <td style="padding:5px;" colspan="2">------------------------------------------------------</td>
-                    <td style="padding:5px;"></td>
+                    <td scope="row" style="padding:5px;"><strong>Signature of Mother: </strong></td>
+                    <td scope="row" style="padding:5px;" colspan="2">------------------------------------------------------</td>
+                    <td scope="row" style="padding:5px;"></td>
                   </tr>
                 </table>
               </td>

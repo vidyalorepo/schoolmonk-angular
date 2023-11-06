@@ -75,13 +75,13 @@
                         <table class="table table-striped" matSort matSortDirection="desc" matSortDisableClear>
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone Number</th>
-                                    <th>City</th>
-                                    <th>Postal Code</th>
-                                    <th>Created Date</th>
-                                    <th>Delete</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col">Postal Code</th>
+                                    <th scope="col">Created Date</th>
+                                    <th scope="col">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -91,13 +91,13 @@
                                     itemsPerPage: itemsPerPage,
                                     currentPage: currentPage,
                                     totalItems: guardianEnquiryListSize}; let i = index">
-                                    <td><button [routerLink]="['/guardian-enquiry/guardian-enquiry-view', item.id]" class="btn btn-link text-light-blue">{{item?.firstName}} {{item?.lastName}}</button></td>
-                                    <td>{{item?.email}}</td>
-                                    <td>{{item?.phone | phonePipe}}</td>
-                                    <td>{{item?.city || "-"}}</td>
-                                    <td>{{item?.postalCode || "-"}}</td>
-                                    <td>{{item?.createdTs | date:"d MMM y" : "UTC"}}</td>
-                                    <td>
+                                    <td scope="row"><button [routerLink]="['/guardian-enquiry/guardian-enquiry-view', item.id]" class="btn btn-link text-light-blue">{{item?.firstName}} {{item?.lastName}}</button></td>
+                                    <td scope="row">{{item?.email}}</td>
+                                    <td scope="row">{{item?.phone | phonePipe}}</td>
+                                    <td scope="row">{{item?.city || "-"}}</td>
+                                    <td scope="row">{{item?.postalCode || "-"}}</td>
+                                    <td scope="row">{{item?.createdTs | date:"d MMM y" : "UTC"}}</td>
+                                    <td scope="row">
                                         <p-confirmPopup [style]="{width: '25vw'}"></p-confirmPopup>
                                         <span><button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-lg p-button-outlined" (click)="confirm($event,item?.id)"></button></span>
                                     </td>                

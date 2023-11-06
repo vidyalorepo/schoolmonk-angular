@@ -17,25 +17,25 @@
                   <table class="table table-striped table-striped">
                     <thead>
                       <tr>
-                        <th width="80" style="text-align: center;">Sl No.</th>
-                        <th width="250">Infrastructure Name </th>
-                        <th style="text-align: center;">Infrastructure Description </th>
-                        <th  width="80" style="text-align: center;">Publish</th>
+                        <th scope="col" width="80" style="text-align: center;">Sl No.</th>
+                        <th scope="col" width="250">Infrastructure Name </th>
+                        <th scope="col" style="text-align: center;">Infrastructure Description </th>
+                        <th scope="col"  width="80" style="text-align: center;">Publish</th>
                       </tr>
                     </thead>
                     <tbody>
                       <ng-container formArrayName="schoolInfraDtlVo"
                         *ngFor="let result of parameterListArray.controls;let i=index">
                         <tr [formGroupName]="i">
-                          <td align="center">{{ i+1}}</td>
-                          <td *ngIf="result.value.readonly == false">{{result.value.infraName}}</td>
-                          <td *ngIf="result.value.readonly == true">
+                          <td scope="row" align="center">{{ i+1}}</td>
+                          <td scope="row" *ngIf="result.value.readonly == false">{{result.value.infraName}}</td>
+                          <td scope="row" *ngIf="result.value.readonly == true">
                             <textarea class="form-control" formControlName="infraName"
                               placeholder="Infrastructure Name"></textarea>
                           </td>
-                          <td><textarea  class="form-control" maxlength="600" formControlName="infraDesc"
+                          <td scope="row"><textarea  class="form-control" maxlength="600" formControlName="infraDesc"
                               placeholder="Infrastructure Description..."></textarea></td>
-                          <td  style="text-align: center;"><input formControlName="publishStatus" type="checkbox"></td>
+                          <td scope="row"  style="text-align: center;"><input formControlName="publishStatus" type="checkbox"></td>
                         </tr>
                       </ng-container>
 

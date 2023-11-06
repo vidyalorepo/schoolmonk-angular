@@ -26,23 +26,23 @@
                   <thead>
                     <tr>
                       <!-- <th width="100" style="text-align: center;">Sl No.</th> -->
-                      <th>Academic Year </th>
+                      <th scope="col">Academic Year </th>
                       <!-- <th>Board</th> -->
-                      <th style="text-align: center;">School Level Name</th>
-                      <th>Start Time</th>
-                      <th>End Time</th>
-                      <th>Action</th>
+                      <th scope="col" style="text-align: center;">School Level Name</th>
+                      <th scope="col">Start Time</th>
+                      <th scope="col">End Time</th>
+                      <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let time of _schoolsTimeList; let i = index">
                       <!-- <td align="center">{{ i+1 }}</td> -->
-                      <td>{{ time.academicYear }} </td>
-                      <td align="center">{{ time.schoolLevelName }} </td>
+                      <td scope="row">{{ time.academicYear }} </td>
+                      <td scope="row" align="center">{{ time.schoolLevelName }} </td>
                       <!-- <td align="center">{{ time.classRange }}</td> -->
-                      <td>{{ time.startTime }}</td>
-                      <td>{{ time.endTime }}</td>
-                      <td> <button type="button" (click)="deleteSchoolTime(time.id)" class="btn btn-danger"><i
+                      <td scope="row">{{ time.startTime }}</td>
+                      <td scope="row">{{ time.endTime }}</td>
+                      <td scope="row"> <button type="button" (click)="deleteSchoolTime(time.id)" class="btn btn-danger"><i
                             class="fa fa-trash-o" aria-hidden="true"></i></button> </td>
                     </tr>
                   </tbody>

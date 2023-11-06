@@ -15,17 +15,17 @@
                     <table class="table table-striped table-striped Timingbox">
                       <thead>
                         <tr>
-                          <th width="">Academic Year </th>
+                          <th scope="col" width="">Academic Year </th>
                           <!-- <th width="">Performance Title</th> -->
-                          <th width="">Academic Performance</th> 
-                          <th  width="100" style="text-align: center;">-</th>                          
+                          <th scope="col" width="">Academic Performance</th> 
+                          <th scope="col"  width="100" style="text-align: center;">-</th>                          
                         </tr>
                       </thead>
                       <tbody>
   
                         <ng-container formArrayName="schoolAcademicDtlVo" *ngFor="let result of parameterListArray.controls;let i=index">
                           <tr [formGroupName]="i">
-                            <td>
+                            <td scope="row">
                                 <!-- <input type="text" formControlName="academicYear" readonly class="form-control" placeholder="Enter ..."> -->
                                 <select class="form-control" formControlName="academicYear">
                                   <option *ngFor="let data of _academicYrArr" [value]="data">{{data}}</option>
@@ -36,7 +36,7 @@
                                 <input type="text" formControlName="performanceTitle" pInputText class="form-control" placeholder="Enter ...">
                                 <div *ngIf="isSubmit == true && result.value.performanceTitle == ''" class="invalid-text">Performance Title</div>
                             </td>   -->
-                            <td>
+                            <td scope="row">
                                 <!-- <input type="text" formControlName="academicInformation" class="form-control" placeholder="Enter ..."> -->
                                 <ejs-richtexteditor  formControlName="academicInformation" [toolbarSettings]="tools"
                                     [quickToolbarSettings]="quickTools" required [iframeSettings]='iframe' [maxLength]="5000"
@@ -44,7 +44,7 @@
                                 <div *ngIf="isSubmit == true && result.value.academicInformation == ''" class="invalid-text">Academic Performance</div>
                                 <div *ngIf="result.get('academicInformation').hasError('maxlength')" class="invalid-text">Maximum of 5000 characters</div>
                             </td>  
-                            <td style="text-align: center;">
+                            <td scope="row" style="text-align: center;">
                                 <button *ngIf="i == 0"  type="button" pButton pRipple (click)="addBlankParameterList()" class="btn p-button-info p-button-text" icon="pi pi-plus"></button>
                                 <button *ngIf="i != 0" pButton pRipple (click)="removeRow(i)" type="button" class="btn btn-danger btn p-button-info p-button-text p-button-danger" icon="pi pi-trash"></button>
                             </td>  

@@ -34,15 +34,15 @@
                         <table class="table table-striped table-striped">
                           <thead>
                             <tr>
-                              <th width="100">Publish</th>
-                              <th width="150">Academic Year</th>
-                              <th width="100">Board</th>
-                              <th width="70" style="text-align: center;">Class</th>
-                              <th width="100">Steam</th>
-                              <th width="210">Fees</th>
-                              <th width="160">Admission Open </th>
-                              <th width="160">Admission End </th>
-                              <th width="180" style="text-align: center;">Action</th>
+                              <th scope="col" width="100">Publish</th>
+                              <th scope="col" width="150">Academic Year</th>
+                              <th scope="col" width="100">Board</th>
+                              <th scope="col" width="70" style="text-align: center;">Class</th>
+                              <th scope="col" width="100">Steam</th>
+                              <th scope="col" width="210">Fees</th>
+                              <th scope="col" width="160">Admission Open </th>
+                              <th scope="col" width="160">Admission End </th>
+                              <th scope="col" width="180" style="text-align: center;">Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -50,32 +50,32 @@
                             <ng-container formArrayName="schoolAdmissionDtlVo"
                               *ngFor="let result of parameterListArray.controls;let i=index">
                               <tr [formGroupName]="i">
-                                <td>
+                                <td scope="row">
                                   <div class="form-group">
                                     <label class="el-switch">
                                       <input formControlName="publishStatus" type="checkbox" name="switch">
                                       <span class="el-switch-style"></span> </label>
                                   </div>
                                 </td>
-                                <td>{{result.value.academicYear}}</td>
-                                <td>{{result.value.boardName}}</td>
-                                <td style="text-align: center;">{{result.value.classRange}}</td>
-                                <td>{{result.value.classStream || '' }}</td>
-                                <td>
+                                <td scope="row">{{result.value.academicYear}}</td>
+                                <td scope="row">{{result.value.boardName}}</td>
+                                <td scope="row" style="text-align: center;">{{result.value.classRange}}</td>
+                                <td scope="row">{{result.value.classStream || '' }}</td>
+                                <td scope="row">
                                   <div class="form-group"> <input formControlName="feesAmount" min="0" type="number"
                                       class="form-control"></div>
                                 </td>
-                                <td>
+                                <td scope="row">
                                   <div class="form-group calendar-icon">
                                     <input formControlName="admissionStartDate" type="date" class="form-control">
                                   </div>
                                 </td>
-                                <td>
+                                <td scope="row">
                                   <div class="form-group calendar-icon">
                                     <input formControlName="admissionEndDate" type="date" class="form-control">
                                   </div>
                                 </td>
-                                <td style="text-align: center;">
+                                <td scope="row" style="text-align: center;">
                                   <button type="button" (click)="addEligibility(result.value)" class="btn btn-warning"
                                     data-toggle="modal" data-target="#myModal">Eligibility</button>
                                   <button type="button" (click)="deleteAdmissionDetails(result.value.id)"
@@ -107,27 +107,27 @@
                       <table class="table table-striped table-striped">
                         <thead>
                           <tr>
-                            <th width="200">Academic Year</th>
-                            <th width="100" style="text-align: center;">Board</th>
-                            <th width="100" style="text-align: center;">Class</th>
-                            <th width="100" style="text-align: center;">Steam</th>
-                            <th width="100" style="text-align: center;">Marks</th>
-                            <th>DOB From</th>
-                            <th>DOB UpTo</th>
-                            <th>Action </th>
+                            <th scope="col" width="200">Academic Year</th>
+                            <th scope="col" width="100" style="text-align: center;">Board</th>
+                            <th scope="col" width="100" style="text-align: center;">Class</th>
+                            <th scope="col" width="100" style="text-align: center;">Steam</th>
+                            <th scope="col" width="100" style="text-align: center;">Marks</th>
+                            <th scope="col">DOB From</th>
+                            <th scope="col">DOB UpTo</th>
+                            <th scope="col">Action </th>
                           </tr>
                         </thead>
                         <tbody>
 
                           <tr *ngFor='let data of _eligibilityList; let i = index'>
-                            <td>{{ data.academicYear }} </td>
-                            <td style="text-align: center;">{{ data.boardName }}</td>
-                            <td style="text-align: center;">{{ data.classRange }}</td>
-                            <td style="text-align: center;">{{ data.classStream }}</td>
-                            <td style="text-align: center;">{{ data.eligibilityMarks || '' }}</td>
-                            <td>{{ data.dOBStartDate.split('T')[0] | date: 'dd-MM-yyyy' }}</td>
-                            <td>{{ data.dOBEndDate.split('T')[0] | date: 'dd-MM-yyyy' }}</td>
-                            <td><button type="button" class="btn btn-warning" (click)="openEligibilityModal(data)"
+                            <td scope="row">{{ data.academicYear }} </td>
+                            <td scope="row" style="text-align: center;">{{ data.boardName }}</td>
+                            <td scope="row" style="text-align: center;">{{ data.classRange }}</td>
+                            <td scope="row" style="text-align: center;">{{ data.classStream }}</td>
+                            <td scope="row" style="text-align: center;">{{ data.eligibilityMarks || '' }}</td>
+                            <td scope="row">{{ data.dOBStartDate.split('T')[0] | date: 'dd-MM-yyyy' }}</td>
+                            <td scope="row">{{ data.dOBEndDate.split('T')[0] | date: 'dd-MM-yyyy' }}</td>
+                            <td scope="row"><button type="button" class="btn btn-warning" (click)="openEligibilityModal(data)"
                                 data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"
                                   aria-hidden="true"></i></button>
                               <button type="button" (click)="deleteEligibility(data.id)" class="btn btn-danger"><i

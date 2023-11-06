@@ -101,24 +101,24 @@
                           <table class="table table-striped" >
                             <thead>
                                 <tr>
-                                  <th>Sl No.</th>
-                                  <th>Plan name</th>
-                                  <th>Transaction Date</th>
-                                  <th>Ref. No</th>
-                                  <th>Amount</th>
+                                  <th scope="col">Sl No.</th>
+                                  <th scope="col">Plan name</th>
+                                  <th scope="col">Transaction Date</th>
+                                  <th scope="col">Ref. No</th>
+                                  <th scope="col">Amount</th>
                                   <!-- <th>Payment Type</th> -->
-                                  <th>Receipt No</th>
+                                  <th scope="col">Receipt No</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let data of subscriptionDtl; let i = index;">
-                                    <td>{{i+1}}</td>
-                                    <td>{{data.subcriptionMstVo?.subscriptionName}}</td>
-                                    <td>{{data.paymentOn}}</td>
-                                    <td>{{data.subscriptionRefNo}}</td>
-                                    <td>{{data.subscriptionPrice}}</td>
+                                    <td scope="row">{{i+1}}</td>
+                                    <td scope="row">{{data.subcriptionMstVo?.subscriptionName}}</td>
+                                    <td scope="row">{{data.paymentOn}}</td>
+                                    <td scope="row">{{data.subscriptionRefNo}}</td>
+                                    <td scope="row">{{data.subscriptionPrice}}</td>
                                     <!-- <td>{{data.paymentOn}}</td> -->
-                                    <td>{{data.subscriptionReceiptNo}}</td>
+                                    <td scope="row">{{data.subscriptionReceiptNo}}</td>
                                 </tr>
                             </tbody>
                           </table>

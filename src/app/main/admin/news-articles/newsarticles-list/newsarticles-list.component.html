@@ -38,12 +38,12 @@
             <table class="table table-striped" matSort (matSortChange)="sortData($event)" matSortDirection="asc">
               <thead>
                 <tr>
-                  <th mat-sort-header="subject">Subject</th>
-                  <th mat-sort-header="news_date">News Date</th>
-                  <th mat-sort-header="created_ts">Created Date</th>
-                  <th mat-sort-header="status">Status</th>
-                  <th style=" text-align: center;">Edit</th>
-                  <th>Delete</th>
+                  <th scope="col" mat-sort-header="subject">Subject</th>
+                  <th scope="col" mat-sort-header="news_date">News Date</th>
+                  <th scope="col" mat-sort-header="created_ts">Created Date</th>
+                  <th scope="col" mat-sort-header="status">Status</th>
+                  <th scope="col" style=" text-align: center;">Edit</th>
+                  <th scope="col">Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -60,15 +60,15 @@
                     let i = index
                   "
                 >
-                  <td> <button [routerLink]="['/news-artical/edit-news-artical/',data?.id]" type="button" title="View Schools" class="btn btn-link text-light-blue"> <span style="font-weight: bold;">{{ (data?.subject.length > 70)?(data?.subject | slice : 0 : 70) + "...":data?.subject  }} </span></button></td>
-                  <td style="color: var(--surface-700);">{{ data?.newsDate | date:"d MMM y" : "UTC"}}</td>
-                  <td style="color: var(--surface-700);">{{ data?.createdTs | date:"d MMM y" : "UTC" }}</td>
-                  <td>
+                  <td scope="row"> <button [routerLink]="['/news-artical/edit-news-artical/',data?.id]" type="button" title="View Schools" class="btn btn-link text-light-blue"> <span style="font-weight: bold;">{{ (data?.subject.length > 70)?(data?.subject | slice : 0 : 70) + "...":data?.subject  }} </span></button></td>
+                  <td scope="row" style="color: var(--surface-700);">{{ data?.newsDate | date:"d MMM y" : "UTC"}}</td>
+                  <td scope="row" style="color: var(--surface-700);">{{ data?.createdTs | date:"d MMM y" : "UTC" }}</td>
+                  <td scope="row">
                     <p-inputSwitch  [(ngModel)]="data.status" (onChange)="updateStatus(data?.id,data?.status)"></p-inputSwitch>
                   </td>
-                  <td style="text-align: center;"><button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-lg p-button-outlined" [routerLink]="['/news-artical/edit-news-artical/',data?.id]"></button>    
+                  <td scope="row" style="text-align: center;"><button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-lg p-button-outlined" [routerLink]="['/news-artical/edit-news-artical/',data?.id]"></button>    
                   </td>
-                  <td>
+                  <td scope="row">
                     <p-confirmPopup [style]="{width: '25vw'}"></p-confirmPopup>
                     <span><button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-lg p-button-outlined"  (click)="confirm($event,data?.id)"></button></span>
                   </td>

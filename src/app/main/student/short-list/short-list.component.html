@@ -24,10 +24,10 @@
                             <thead>
                                 <tr>
 
-                                    <th>School Name </th>
-                                    <th>Class</th>
-                                    <th>Application No</th>
-                                    <th>Application Status</th>
+                                    <th scope="col">School Name </th>
+                                    <th scope="col">Class</th>
+                                    <th scope="col">Application No</th>
+                                    <th scope="col">Application Status</th>
                                     <!-- <th>Payment Status</th>
                             <th>Registration Completed</th>
                             <th>Admissionion Completed</th> -->
@@ -35,14 +35,14 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of _shortListDetails; let i = index">
-                                    <td><button type="button" (click)="schoolNameClickHandler(item)" title="View School"
+                                    <td scope="row"><button type="button" (click)="schoolNameClickHandler(item)" title="View School"
                                             class="btn school-btn">{{ item.schoolMstVo['schoolName'] }} </button></td>
-                                    <td>{{item.admissionForClass}}<span
+                                    <td scope="row">{{item.admissionForClass}}<span
                                             *ngIf="item.admissionForStream">-{{item.admissionForStream}}</span></td>
-                                    <td><span>
+                                    <td scope="row"><span>
                                             {{item.admissionId ? item.admissionId: "NA"}}
                                         </span></td>
-                                    <td><button type="button" (click)="applicationStatusClickHandler(item)"
+                                    <td scope="row"><button type="button" (click)="applicationStatusClickHandler(item)"
                                             title="Application Status" class="btn school-btn">{{
                                             item.admissionStatus.toLowerCase() === 'applied' ? "Application Draft" :
                                             item.admissionStatus === 'Payment Completed' ?

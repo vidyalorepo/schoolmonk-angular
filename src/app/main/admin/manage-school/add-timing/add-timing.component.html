@@ -26,11 +26,11 @@
                   <table class="table table-striped table-striped Timingbox">
                     <thead>
                       <tr>
-                        <th width="">School Level Name</th>
-                        <th width="">Start Time</th>
-                        <th width="">End Time</th>
-                        <th width="">Additional Info</th>
-                        <th width="" style="text-align: center;">-</th>
+                        <th scope="col" width="">School Level Name</th>
+                        <th scope="col" width="">Start Time</th>
+                        <th scope="col" width="">End Time</th>
+                        <th scope="col" width="">Additional Info</th>
+                        <th scope="col" width="" style="text-align: center;">-</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -38,7 +38,7 @@
                       <ng-container formArrayName="schoolTimingDtlVo"
                         *ngFor="let result of parameterListArray.controls;let i=index">
                         <tr [formGroupName]="i">
-                          <td>
+                          <td scope="row">
                             <select class="form-control" formControlName="schoolLevelName" >
                               <option value="">Select</option>
                               <option *ngFor="let data of _schoolLevelInfoList" value="{{data.schoolLevelName}}">{{data.schoolLevelName}}</option>
@@ -46,22 +46,22 @@
                             <div *ngIf="isSubmit == true && result.value.schoolLevelName == ''" class="invalid-text">School Level is required</div>
                           </td>
                           
-                          <td>
+                          <td scope="row">
                             <div class="form-group time-icon">
                               <input formControlName="startTime" class="form-control" type="time">
                             </div>
                             <div *ngIf="isSubmit == true && result.value.startTime == ''" class="invalid-text">Start Time is required</div>
                           </td>
-                          <td>
+                          <td scope="row">
                             <div class="form-group time-icon">
                               <input formControlName="endTime" class="form-control" type="time">
                             </div>
                             <div *ngIf="isSubmit == true && result.value.endTime == ''" class="invalid-text">End Time is required</div>
                           </td>
-                          <td>
+                          <td scope="row">
                             <textarea formControlName="additionalInfo" rows="2" cols="50"></textarea>
                           </td>
-                          <td style="text-align: center;">
+                          <td scope="row" style="text-align: center;">
                                 <!-- *ngIf="i != 0" -->
                                 <button  (click)="removeRow(i)" type="button" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button> 
                           </td>

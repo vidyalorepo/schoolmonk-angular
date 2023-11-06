@@ -79,26 +79,26 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th width="100">Zone</th>
-                    <th width="100">Height</th>
-                    <th width="100">Width</th>
-                    <th width="150">Availability</th>
-                    <th width="130">Page</th>
+                    <th scope="col" width="100">Zone</th>
+                    <th scope="col" width="100">Height</th>
+                    <th scope="col" width="100">Width</th>
+                    <th scope="col" width="150">Availability</th>
+                    <th scope="col" width="130">Page</th>
                     <!-- <th width="100">Quantity</th> -->
                     <!-- <th width="120">Duration</th> -->
-                    <th width="150" class="text-center">Monthly Price</th>
-                    <th width="100">Order</th>
+                    <th scope="col" width="150" class="text-center">Monthly Price</th>
+                    <th scope="col" width="100">Order</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of advertisementlist">
-                    <td>{{ item.zoneName}}</td>
-                    <td>{{ item.heightPx}}</td>
-                    <td>{{ item.widthPx}}</td>
-                    <td>{{ item.isavailable }} of {{ item.noOfAd}} available</td>
-                    <td>{{ item.page }}</td>
-                    <td class="text-center">&#x20B9; {{ item.price.toFixed(2) }}</td>
-                    <td>
+                    <td scope="row">{{ item.zoneName}}</td>
+                    <td scope="row">{{ item.heightPx}}</td>
+                    <td scope="row">{{ item.widthPx}}</td>
+                    <td scope="row">{{ item.isavailable }} of {{ item.noOfAd}} available</td>
+                    <td scope="row">{{ item.page }}</td>
+                    <td scope="row" class="text-center">&#x20B9; {{ item.price.toFixed(2) }}</td>
+                    <td scope="row">
                       <button type="button" class="btn link1" data-toggle="modal" data-target="#addModal"
                       *ngIf="item.isavailable > 0 && item.isavailable <= item.noOfAd" (click)="orderNow(item)">Order
                         Now</button>

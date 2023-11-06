@@ -31,9 +31,9 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th width="800">Subject</th>
-                                    <th>Created Date</th>
-                                    <th>Status</th>
+                                    <th scope="col" width="800">Subject</th>
+                                    <th scope="col">Created Date</th>
+                                    <th scope="col">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,12 +43,12 @@
                                   currentPage: currentPage,
                                   totalItems: _feedbacksListSize
                                 };let i = index">
-                                    <td> <button (click)="openDialog(data?.headerTagBody)" type="button"
+                                    <td scope="row"> <button (click)="openDialog(data?.headerTagBody)" type="button"
                                             title="View Tags" class="btn btn-link text-light-blue"> <span
                                                 style="font-weight: bold;">{{(data?.headerTagBody.length > 90)?(data?.headerTagBody | slice : 0 : 90)+"...":data?.headerTagBody }}</span></button></td>
-                                    <td style="color: var(--surface-700);">{{ data?.createdTs | date:"d MMM y" : "UTC"
+                                    <td scope="row" style="color: var(--surface-700);">{{ data?.createdTs | date:"d MMM y" : "UTC"
                                         }}</td>
-                                    <td>
+                                    <td scope="row">
                                         <p-inputSwitch [(ngModel)]="data.isPublish"
                                             (onChange)="updateStatus(data?.id,data?.isPublish)"></p-inputSwitch>
                                     </td>

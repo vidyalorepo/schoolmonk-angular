@@ -51,17 +51,17 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th width="55" class="align-center">
+                  <th width="55" class="align-center" scope="col">
                     <input style="margin:8px 0 0 0;" (click)="toggleShow()" type="checkbox" [(ngModel)]="selectedAll"
                       (change)="selectAll($event);">
                   </th>
-                  <th width="100">Board</th>
-                  <th width="100">Class</th>
-                  <th width="150">Admission start Date</th>
-                  <th width="150">Admission end Date</th>
-                  <th width="100">Fees</th>
-                  <th width="100">Status</th>
-                  <th width="55" class="align-center">Action </th>
+                  <th scope="col" width="100">Board</th>
+                  <th scope="col" width="100">Class</th>
+                  <th scope="col" width="150">Admission start Date</th>
+                  <th scope="col" width="150">Admission end Date</th>
+                  <th scope="col" width="100">Fees</th>
+                  <th scope="col" width="100">Status</th>
+                  <th scope="col" width="55" class="align-center">Action </th>
                 </tr>
               </thead>
               <tbody>
@@ -71,19 +71,19 @@
                       currentPage:currentPage,
                       totalItems:_schooladmissionRecordssize
                        }; let i =index">
-                  <td class="align-center">
+                  <td scope="row" class="align-center">
                     <input type="checkbox" [(ngModel)]="data.selected" (change)="selectCheck($event,data.id)">
                   </td>
-                  <td>{{data.board}}</td>
-                  <td>{{data.classRange}}</td>
-                  <td>{{data.admissionStartDate | date: 'yyyy-MM-dd'}}</td>
-                  <td>{{data.admissionEndDate | date: 'yyyy-MM-dd'}}</td>
-                  <td>{{data.feesAmount}}</td>
-                  <td>
+                  <td scope="row">{{data.board}}</td>
+                  <td scope="row">{{data.classRange}}</td>
+                  <td scope="row">{{data.admissionStartDate | date: 'yyyy-MM-dd'}}</td>
+                  <td scope="row">{{data.admissionEndDate | date: 'yyyy-MM-dd'}}</td>
+                  <td scope="row">{{data.feesAmount}}</td>
+                  <td scope="row">
                     <span *ngIf="data.publishStatus==='Y'">Published</span>
                     <span *ngIf="data.publishStatus==='N'">Unpublished</span>
                   </td>
-                  <td style="text-align: center;">
+                  <td scope="row" style="text-align: center;">
                     <button type="button" class="btn btn-warning"
                       [routerLink]="['/admission/admission-lists/admission-edit', data.id]"><i class="fa fa-pencil"
                         aria-hidden="true"></i></button>

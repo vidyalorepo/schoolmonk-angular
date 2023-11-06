@@ -146,19 +146,19 @@
               matSortDisableClear>
               <thead>
                 <tr>
-                  <th width="40" align="center" style="text-align: center;">
+                  <th scope="col" width="40" align="center" style="text-align: center;">
                     <!-- <input type="checkbox" (change)="selectAll($event,user.id)"> -->
                     <input style="margin:8px 0 0 0;" (click)="toggleShow()" type="checkbox" [(ngModel)]="selectedAll"
                       (change)="selectAll($event);">
                   </th>
-                  <th width="200" mat-sort-header="School_Name">School Name </th>
+                  <th scope="col" width="200" mat-sort-header="School_Name">School Name </th>
                   <!-- <th mat-sort-header="School_Address">Address</th> -->
                   <!-- <th width="160">Contact Person</th> -->
-                  <th  mat-sort-header="Contact_Phone">Phone No.</th>
-                  <th mat-sort-header="Contact_Email">Email</th>
-                  <th width="80" mat-sort-header="School_Status">Status</th>
+                  <th scope="col"  mat-sort-header="Contact_Phone">Phone No.</th>
+                  <th scope="col" mat-sort-header="Contact_Email">Email</th>
+                  <th scope="col" width="80" mat-sort-header="School_Status">Status</th>
                   <!-- <th>Rating</th> -->
-                  <th style="text-align: center;">Action </th>
+                  <th scope="col" style="text-align: center;">Action </th>
                 </tr>
               </thead>
               <tbody>
@@ -168,11 +168,11 @@
                       currentPage:currentPage,
                       totalItems:_schoolsListSize
                     }; let i =index">
-                  <td align="center" style="text-align: center;">
+                  <td scope="row" align="center" style="text-align: center;">
                     <input type="checkbox" [(ngModel)]="school.selected" (change)="selectCheck($event,school.id)"
                       style="margin-top: 10px;">
                   </td>
-                  <td><button type="button" title="View Schools" (click)="viewSchoolDetails(school.id)"
+                  <td scope="row"><button type="button" title="View Schools" (click)="viewSchoolDetails(school.id)"
                       [routerLink]="['/manage-school/view-school']" class="btn btn-link text-light-blue">
                       <strong>{{helperService.toCamelCase( school.schoolName)}}</strong></button>
                   <div>
@@ -181,15 +181,15 @@
                     </td>
                   <!-- <td>{{helperService.toCamelCase( school?.schoolAddress)}}</td> -->
                   <!-- <td>{{school.contactUser?.firstName}} {{school.contactUser?.lastName}}</td> -->
-                  <td>{{school?.contactPhone | phonePipe}}</td>
-                  <td>{{school?.contactEmail}}</td>
-                  <td>
+                  <td scope="row">{{school?.contactPhone | phonePipe}}</td>
+                  <td scope="row">{{school?.contactEmail}}</td>
+                  <td scope="row">
                     <p-tag *ngIf="school.schoolStatus === 'Active'" styleClass="p-mr-2" severity="success" [value]="school.schoolStatus"></p-tag>
                     <p-tag *ngIf="school.schoolStatus === 'In-Active'" styleClass="p-mr-2" severity="warning" [value]="school.schoolStatus"></p-tag>
                   </td>
                   <!-- <td> <button type="button" class="link5 widthbox2" data-toggle="modal" data-target="#myModal"
                     (click)="modalOpen(school.schoolRating)" >Rate</button> </td> -->
-                  <td style="text-align: center;">
+                  <td scope="row" style="text-align: center;">
                         <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-lg p-button-outlined" (click)="editSchool(school.id)"></button>
                   </td>
 

@@ -55,30 +55,30 @@
                     <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th>School Name</th>
-                          <th style="text-align: center;">Class</th>
-                          <th>Application No.</th>
-                          <th style="text-align: center;">Application Status</th>
-                          <th style="text-align: center;">Receipt</th>
+                          <th scope="col">School Name</th>
+                          <th scope="col" style="text-align: center;">Class</th>
+                          <th scope="col">Application No.</th>
+                          <th scope="col" style="text-align: center;">Application Status</th>
+                          <th scope="col" style="text-align: center;">Receipt</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor="let item of _shortListDetails; let i = index">
-                          <td><button type="button" (click)="schoolNameClickHandler(item)" title="View School"
+                          <td scope="row"><button type="button" (click)="schoolNameClickHandler(item)" title="View School"
                               class="btn btn-info">{{ item.schoolMstVo['schoolName'] }} </button></td>
-                          <td style="text-align: center;">{{item.admissionForClass}}<span
+                          <td scope="row" style="text-align: center;">{{item.admissionForClass}}<span
                               *ngIf="item.admissionForStream">-{{item.admissionForStream}}</span></td>
-                          <td><span>
+                          <td scope="row"><span>
                               {{item.admissionId ? item.admissionId: "NA"}}
                             </span></td>
-                          <td style="text-align: center;"><button type="button"
+                          <td scope="row" style="text-align: center;"><button type="button"
                               (click)="applicationStatusClickHandler(item)" title="Application Status"
                               class="btn btn-success">{{
                               item.admissionStatus.toLowerCase() === 'applied' ? "Application Draft" :
                               item.admissionStatus === 'Payment Completed' ?
                               "Applied" : item.admissionStatus }}
                             </button></td>
-                           <td *ngIf="item?.admissionId != null" style="text-align: center;"><button (click)="downloadRecipt(item.admissionId)"><i class="fa fa-download" style="color: #000000;"></i></button></td> 
+                           <td scope="row" *ngIf="item?.admissionId != null" style="text-align: center;"><button (click)="downloadRecipt(item.admissionId)"><i class="fa fa-download" style="color: #000000;"></i></button></td> 
                         </tr>
 
 

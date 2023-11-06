@@ -629,13 +629,13 @@
                   <thead>
                     <tr>
                       <!-- <th width="120">Academic Year </th> -->
-                      <th width="">School Level Name</th>
+                      <th scope="col" width="">School Level Name</th>
                       <!-- <th width="">Medium</th> -->
-                      <th width="">Classes From</th>
-                      <th width="">Classes Up To</th>
+                      <th scope="col" width="">Classes From</th>
+                      <th scope="col" width="">Classes Up To</th>
                       <!-- <th width="">Stream</th> -->
-                      <th width="">Additional Info</th>
-                      <th width="60" style="text-align: center;" *ngIf="isEditBtn">Action</th>
+                      <th scope="col" width="">Additional Info</th>
+                      <th scope="col" width="60" style="text-align: center;" *ngIf="isEditBtn">Action</th>
 
                     </tr>
                   </thead>
@@ -645,7 +645,7 @@
                       *ngFor="let result of parameterListArray.controls;let i=index">
                       <tr [formGroupName]="i">
                         <!-- <td>{{ result.value.academicYear }}</td> -->
-                        <td>
+                        <td scope="row">
                           <select class="form-control" formControlName="schoolLevelName" #sclLevelValue
                             (change)="selectSclLevel(sclLevelValue.value, i)" [attr.disabled]="!isEditBtn ? '' : null">
                             <option value="">Select</option>
@@ -655,7 +655,7 @@
                           <!-- <div *ngIf="submitted == true && result.value.boardName == ''" class="invalid-text">Board is required</div> -->
                         </td>
 
-                        <td>
+                        <td scope="row">
                           <!-- <select class="form-control" formControlName="medium" [attr.disabled]="!isEditBtn ? '' : null">
                             <option value="">Select</option>
                             <option *ngFor="let data of _mediumList" value="{{data}}">{{data}}</option>
@@ -664,7 +664,7 @@
                           <input pInputText type="text" placeholder="" class="form-control" formControlName="fromClass" readonly>
                         </td>
 
-                        <td>
+                        <td scope="row">
                           <!-- <select class="form-control" (change)="classFromChange(i,result.value.tempStartCls)" formControlName="tempStartCls" [attr.disabled]="!isEditBtn ? '' : null">
                             <option value="">Select</option>
                             <option *ngFor="let data of _classFromList" value="{{data.slNo}}/{{data.classDisplay}}">{{data.classDisplay}}</option>
@@ -680,7 +680,7 @@
                           </ejs-multiselect>
 
                         </td> -->
-                        <td>
+                        <td scope="row">
                           <!-- <select class="form-control" (change)="classUpToChange(i,result.value.tempEndClass)" formControlName="tempEndClass" [attr.disabled]="!isEditBtn ? '' : null">
                             <option value="">Select</option>
                             <option *ngFor="let data of _uptoClassList" value="{{data.slNo}}/{{data.classDisplay}}">{{data.classDisplay}}</option>
@@ -692,7 +692,7 @@
 
 
 
-                        <td style="text-align: center;" *ngIf="isEditBtn">
+                        <td scope="row" style="text-align: center;" *ngIf="isEditBtn">
                           <button pButton pRipple icon="pi pi-plus" *ngIf="i == 0" type="button" (click)="addBlankParameterList(1)"
                             class="p-button-text p-button-outlined"></button>
                           <button pButton pRipple *ngIf="i != 0" icon="pi pi-trash" type="button" (click)="removeRow(i)" class="p-button-text p-button-danger p-button-outlined"></button>
@@ -746,11 +746,11 @@
                         <table class="table table-striped table-striped Timingbox">
                           <thead>
                             <tr>
-                              <th width="">School Level Name</th>
-                              <th width="">Start Time</th>
-                              <th width="">End Time</th>
-                              <th width="">Additional Info</th>
-                              <th width="100" *ngIf="isEditBtn == true" style="text-align: center;">Action</th>
+                              <th scope="col" width="">School Level Name</th>
+                              <th scope="col" width="">Start Time</th>
+                              <th scope="col" width="">End Time</th>
+                              <th scope="col" width="">Additional Info</th>
+                              <th scope="col" width="100" *ngIf="isEditBtn == true" style="text-align: center;">Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -758,7 +758,7 @@
                             <ng-container formArrayName="schoolTimingDtlVo"
                               *ngFor="let result of parameterListArrayTime.controls;let i=index">
                               <tr [formGroupName]="i">
-                                <td>
+                                <td scope="row">
                                   <select class="form-control" formControlName="schoolLevelName"
                                     [attr.disabled]="!isEditBtn ? '' : null">
                                     <option value="">Select</option>
@@ -769,7 +769,7 @@
                                     class="invalid-text">School Level is required</div>
                                 </td>
 
-                                <td>
+                                <td scope="row">
                                   <div class="form-group">
                                     <!-- <input pInputText formControlName="startTime" class="form-control" type="time"
                                       [readonly]="!isEditBtn" min="06:00" max="12:00" (change)="Validate(i,result.value.startTime,result.value.endTime)"> -->
@@ -778,7 +778,7 @@
                                   <div *ngIf="isSubmit == true && result.value.startTime == ''" class="invalid-text">
                                     Start Time is required</div>
                                 </td>
-                                <td>
+                                <td scope="row">
                                   <div class="form-group time-icon">
                                     <!-- <input pInputText formControlName="endTime" class="form-control" type="time"
                                       [readonly]="!isEditBtn" (change)="Validate(i,result.value.startTime,result.value.endTime)"> -->
@@ -789,14 +789,14 @@
                                     <!-- <div *ngIf="!result.get('endTime').valid">End time should be maintain 30 min gap</div>
    -->
                                 </td>
-                                <td>
+                                <td scope="row">
                                   <div class="form-group">
                                     <textarea pInputTextarea class="form-control" formControlName="additionalInfo"
                                       [readonly]="!isEditBtn"></textarea>
                                   </div>
 
                                 </td>
-                                <td width="100" style="text-align: center;" *ngIf="isEditBtn == true">
+                                <td scope="row" width="100" style="text-align: center;" *ngIf="isEditBtn == true">
                                   <button pButton pRipple type="button" icon="pi pi-plus" *ngIf="i == 0" (click)="addBlankParameterListTime()"
                                     class="p-button-text p-button-outlined"></button>
                                   <!-- *ngIf="i != 0" -->
@@ -1001,24 +1001,24 @@
                   <thead>
                     <tr>
                       <!-- <th width="70" style="text-align: center;">Sl No.</th> -->
-                      <th width="200">Academic Year </th>
+                      <th scope="col" width="200">Academic Year </th>
                       <!-- <th width="300">Performance Title</th> -->
-                      <th >Academic Performance</th>
-                      <th width="100" *ngIf="isEditBtn == true">Action</th>
+                      <th scope="col" >Academic Performance</th>
+                      <th scope="col" width="100" *ngIf="isEditBtn == true">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor='let data of _schoolAcademicList; let i = index'>
                       <!-- <td align="center">{{ i+1 }}</td> -->
-                      <td width="200">{{ data.academicYear }}</td>
+                      <td scope="row" width="200">{{ data.academicYear }}</td>
                       <!-- <td width="300">{{ data.performanceTitle }} </td> -->
-                      <td >
+                      <td scope="row" >
                         <!-- <ejs-richtexteditor id="defaultRTE1" [value]="data?.academicInformation"  [toolbarSettings]="tools1"
                         [quickToolbarSettings]="quickTools1"
                         style="z-index: 100; width: 100%;"></ejs-richtexteditor> -->
                         <div [innerHTML]="data?.academicInformation"></div>
                       </td>
-                      <td *ngIf="isEditBtn == true"><button   pButton pRipple  type="button"
+                      <td scope="row" *ngIf="isEditBtn == true"><button   pButton pRipple  type="button"
                           class="btn p-button-text p-button-outlined mx-1" icon="pi pi-pencil" [routerLink]="['/manage-school/academic-edit/',data?.id,_schoolID]"></button>
                         <button pButton pRipple type="button" icon="pi pi-trash" (click)="deleteAcademic(data.id, i)" class="btn p-button-text p-button-outlined p-button-danger"></button>
                       </td> 
@@ -1057,17 +1057,17 @@
                   <thead>
                     <tr>
                       <!-- <th width="80" style="text-align: center;">Sl No.</th> -->
-                      <th width="200">Infrastructure Name </th>
-                      <th>Infrastructure Description </th>
-                      <th *ngIf="isEditBtn == true">Action</th>
+                      <th scope="col" width="200">Infrastructure Name </th>
+                      <th scope="col">Infrastructure Description </th>
+                      <th scope="col" *ngIf="isEditBtn == true">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let data of _schoolsInfraStList; let i = index">
                       <!-- <td align="center">{{ i+1 }}</td> -->
-                      <td>{{ data.infraName }}</td>
-                      <td>{{ data.infraDesc }}</td>
-                      <td style="text-align: center;" *ngIf="isEditBtn == true">
+                      <td scope="row">{{ data.infraName }}</td>
+                      <td scope="row">{{ data.infraDesc }}</td>
+                      <td scope="row" style="text-align: center;" *ngIf="isEditBtn == true">
                         <button pButton pRipple icon="pi pi-trash" type="button" (click)="deleteInfraSt(data.id, i)" class="btn p-button-text p-button-outlined p-button-danger">
                         </button>
                       </td>

@@ -45,11 +45,11 @@
                   <thead>
                     <tr>
                       <!-- <th width="80" style="text-align: center;">Sl No.</th> -->
-                      <th width="600">Notice </th>
-                      <th>Notice Type</th>
-                      <th>Starts On </th>
-                      <th>Expire On </th>
-                      <th style="text-align: center;">Action</th>
+                      <th scope="col" width="600">Notice </th>
+                      <th scope="col">Notice Type</th>
+                      <th scope="col">Starts On </th>
+                      <th scope="col">Expire On </th>
+                      <th scope="col" style="text-align: center;">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -59,11 +59,11 @@
                       currentPage:currentPage,
                       totalItems:_noticeListSize
                     }; let i = index ">
-                      <td>{{ data.noticeContent }}</td>
-                      <td>{{ data.noticeType }}</td>
-                      <td>{{ data.startsOn | date: 'yyyy-MM-dd' }}</td>
-                      <td>{{ data.expiresOn | date: 'yyyy-MM-dd' }}</td>
-                      <td style="text-align: center;">
+                      <td scope="row">{{ data.noticeContent }}</td>
+                      <td scope="row">{{ data.noticeType }}</td>
+                      <td scope="row">{{ data.startsOn | date: 'yyyy-MM-dd' }}</td>
+                      <td scope="row">{{ data.expiresOn | date: 'yyyy-MM-dd' }}</td>
+                      <td scope="row" style="text-align: center;">
                         <button type="button" [routerLink]="['/manage-notice/edit-notice', data.noticeId]"
                           class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                       </td>

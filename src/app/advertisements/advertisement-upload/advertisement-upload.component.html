@@ -35,26 +35,26 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email Id</th>
-                    <th>Purchase Date</th>
-                    <th>Expire Date</th>
-                    <th>Selected Zone</th>
-                    <th class="text-center">Quantity</th>
-                    <th class="text-center">Total Amount Paid</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email Id</th>
+                    <th scope="col">Purchase Date</th>
+                    <th scope="col">Expire Date</th>
+                    <th scope="col">Selected Zone</th>
+                    <th scope="col" class="text-center">Quantity</th>
+                    <th scope="col" class="text-center">Total Amount Paid</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{{orderDetails?.customerId?.firstName}}</td>
-                    <td>{{orderDetails?.customerId?.lastName}}</td>
-                    <td>{{orderDetails?.customerId?.email}}</td>
-                    <td>{{orderDetails?.startDate | date:"d MMM y" : "UTC"}}</td>
-                    <td>{{orderDetails?.endDate | date:"d MMM y" : "UTC"}}</td>
-                    <td>{{orderDetails?.zoneId?.zoneName}}</td>
-                    <td class="text-center">{{orderDetails?.qty}}</td>
-                    <td class="text-center">{{orderDetails?.transactionId?.amount | currency:"INR"}}</td>
+                    <td scope="row">{{orderDetails?.customerId?.firstName}}</td>
+                    <td scope="row">{{orderDetails?.customerId?.lastName}}</td>
+                    <td scope="row">{{orderDetails?.customerId?.email}}</td>
+                    <td scope="row">{{orderDetails?.startDate | date:"d MMM y" : "UTC"}}</td>
+                    <td scope="row">{{orderDetails?.endDate | date:"d MMM y" : "UTC"}}</td>
+                    <td scope="row">{{orderDetails?.zoneId?.zoneName}}</td>
+                    <td scope="row" class="text-center">{{orderDetails?.qty}}</td>
+                    <td scope="row" class="text-center">{{orderDetails?.transactionId?.amount | currency:"INR"}}</td>
                   </tr>
                 </tbody>
               </table>

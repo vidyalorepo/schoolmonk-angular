@@ -142,11 +142,11 @@
                   <!-- <input style="margin:8px 0 0 0;" (click)="toggleShow()" type="checkbox" [(ngModel)]="selectedAll"
                       (change)="selectAll($event);">
                   </th> -->
-                  <th width="" mat-sort-header="first_name">User Name </th>
-                  <th mat-sort-header="email">Email Address</th>
-                  <th width="" mat-sort-header="phone">Contact Number</th>
-                  <th width="" mat-sort-header="user_type">User Type</th>
-                  <th width="" mat-sort-header="isactive">Status</th>
+                  <th scope="col" width="" mat-sort-header="first_name">User Name </th>
+                  <th scope="col" mat-sort-header="email">Email Address</th>
+                  <th scope="col" width="" mat-sort-header="phone">Contact Number</th>
+                  <th scope="col" width="" mat-sort-header="user_type">User Type</th>
+                  <th scope="col" width="" mat-sort-header="isactive">Status</th>
                   <!-- <th style="text-align: center;">Action </th> -->
                 </tr>
               </thead>
@@ -159,13 +159,13 @@
                     }; let i =index">
                   <!-- <td><input type="checkbox" [(ngModel)]="user.selected" (change)="selectCheck($event,user.userId)">
                   </td> -->
-                  <td><button type="button" title="View Schools" (click)="viewUserDetails(user.userId)"
+                  <td scope="row"><button type="button" title="View Schools" (click)="viewUserDetails(user.userId)"
                       [routerLink]="['/manage-student/view-student', user.userId]" class="btn btn-link text-light-blue">
                       <strong>{{helperService.toCamelCase( user.firstName + " " + user.lastName)}}</strong></button>
                   </td>
-                  <td>{{user.email}}</td>
-                  <td>{{user.phone | phonePipe}} </td>
-                  <td>
+                  <td scope="row">{{user.email}}</td>
+                  <td scope="row">{{user.phone | phonePipe}} </td>
+                  <td scope="row">
                     <p-tag *ngIf="user.userType == 'ADMIN_USER'" styleClass="p-mr-2" severity="success">{{helperService.toCamelCase( user.userType?.split("_")[0])}} </p-tag>
                     <p-tag *ngIf="user.userType == 'SCHOOL_USER'" styleClass="p-mr-2" severity="warning">{{helperService.toCamelCase( user.userType?.split("_")[0])}} </p-tag>
                     <p-tag *ngIf="user.userType == 'CUSTOMER_USER'" styleClass="p-mr-2" severity="Primary">{{helperService.toCamelCase( user.userType?.split("_")[0])}} </p-tag>
@@ -184,7 +184,7 @@
                   <!-- <input *ngIf="school.schoolStatus === 'In-Active'" type="checkbox" [(ngModel)]="school.selected"
                       (change)="selectCheck($event,school.id)"> -->
                   <!-- </td> -->
-                  <td>
+                  <td scope="row">
                     <p-confirmPopup></p-confirmPopup>
                     <p-inputSwitch [(ngModel)]="user.isActive" (click)="confirm($event,user.isActive,user.userId)"></p-inputSwitch>
                   </td>

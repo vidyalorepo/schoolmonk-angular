@@ -70,11 +70,11 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th width="">School Name</th>
-                                    <th width="">Contact Person</th>
-                                    <th width="">Contact Number</th>
-                                    <th width="">Email</th>
-                                    <th width="">Payment (&#8377;)</th>
+                                    <th scope="col" width="">School Name</th>
+                                    <th scope="col" width="">Contact Person</th>
+                                    <th scope="col" width="">Contact Number</th>
+                                    <th scope="col" width="">Email</th>
+                                    <th scope="col" width="">Payment (&#8377;)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -84,12 +84,12 @@
                                   currentPage:currentPage,
                                   totalItems:_schoolsListSize
                                 }; let i =index">
-                                    <td><button type="button" [routerLink]="['/payment/student-collection', item.schoolId,item.schoolName,fiscalYr.value]"
+                                    <td scope="row"><button type="button" [routerLink]="['/payment/student-collection', item.schoolId,item.schoolName,fiscalYr.value]"
                                             title="View Schools" class="btn btn-link text-light-blue"><strong>{{ item.schoolName }} </strong></button></td>
-                                    <td>{{ item.schoolPrincipalName }}</td>
-                                    <td>{{ item.contactPhone }} </td>
-                                    <td>{{ item.contactEmail }} </td>
-                                    <td>{{ item.payment }} </td>
+                                    <td scope="row">{{ item.schoolPrincipalName }}</td>
+                                    <td scope="row">{{ item.contactPhone }} </td>
+                                    <td scope="row">{{ item.contactEmail }} </td>
+                                    <td scope="row">{{ item.payment }} </td>
                                 </tr>
                             </tbody>
                         </table>

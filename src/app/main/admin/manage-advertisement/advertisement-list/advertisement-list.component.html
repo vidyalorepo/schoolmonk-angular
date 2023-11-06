@@ -75,17 +75,17 @@
                         <table class="table table-striped" matSort matSortDirection="desc" matSortDisableClear>
                             <thead>
                                 <tr>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Phone Number</th>
-                                    <th>Start Date</th>
-                                    <th>Expire Date</th>
-                                    <th>Qty</th>
-                                    <th>Zone</th>
-                                    <th>Payment Status</th>
-                                    <th>Status</th>
-                                    <th>View</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Start Date</th>
+                                    <th scope="col">Expire Date</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Zone</th>
+                                    <th scope="col">Payment Status</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">View</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -95,22 +95,22 @@
                                     itemsPerPage: itemsPerPage,
                                     currentPage: currentPage,
                                     totalItems: customersListSize}; let i = index">
-                                    <td><button [routerLink]="['/advertisement/advertisement-view', item.id]" class="btn btn-link text-light-blue">{{ item.customerId?.firstName }} </button></td>
-                                    <td>{{ item.customerId?.lastName }}</td>
-                                    <td>{{ item.customerId?.email }}</td>
-                                    <td>{{ item.customerId?.phone | phonePipe }}</td>
-                                    <td>{{ item?.startDate | date:"d MMM y" : "UTC" }}</td>
-                                    <td>{{ item?.endDate | date:"d MMM y" : "UTC" }}</td>
-                                    <td>{{item?.qty}}</td>
-                                    <td>{{ item?.zoneId?.zoneName }}</td>
-                                    <td style="text-align: center;">
+                                    <td scope="row"><button [routerLink]="['/advertisement/advertisement-view', item.id]" class="btn btn-link text-light-blue">{{ item.customerId?.firstName }} </button></td>
+                                    <td scope="row">{{ item.customerId?.lastName }}</td>
+                                    <td scope="row">{{ item.customerId?.email }}</td>
+                                    <td scope="row">{{ item.customerId?.phone | phonePipe }}</td>
+                                    <td scope="row">{{ item?.startDate | date:"d MMM y" : "UTC" }}</td>
+                                    <td scope="row">{{ item?.endDate | date:"d MMM y" : "UTC" }}</td>
+                                    <td scope="row">{{item?.qty}}</td>
+                                    <td scope="row">{{ item?.zoneId?.zoneName }}</td>
+                                    <td scope="row" style="text-align: center;">
                                         <p-tag styleClass="p-mr-2" icon="pi pi-check" severity="primary" value="{{item?.transactionId?.orderStatus}}"></p-tag>
                                     </td>
-                                    <td>
+                                    <td scope="row">
                                         <p-confirmPopup></p-confirmPopup>
                                         <p-inputSwitch [(ngModel)]="item.status" (click)="confirm($event,item.status,item.id,item?.duration)"></p-inputSwitch>
                                     </td>
-                                    <td><button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-info p-button-outlined" [routerLink]="['/advertisement/advertisement-view',item?.id]"></button></td>
+                                    <td scope="row"><button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-info p-button-outlined" [routerLink]="['/advertisement/advertisement-view',item?.id]"></button></td>
                                 </tr>
                             </tbody>
                         </table>

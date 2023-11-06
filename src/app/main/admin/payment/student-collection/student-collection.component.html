@@ -89,15 +89,15 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th width="">Academic Year</th>
-                                    <th width="">Student Name</th>
-                                    <th width="">Class</th>
-                                    <th width="">Payment Date</th>                                    
-                                    <th width="">Payment Type</th>
+                                    <th scope="col" width="">Academic Year</th>
+                                    <th scope="col" width="">Student Name</th>
+                                    <th scope="col" width="">Class</th>
+                                    <th scope="col" width="">Payment Date</th>                                    
+                                    <th scope="col" width="">Payment Type</th>
                                     <!-- <th width="">Amount</th>                                     -->
-                                    <th width="">GST</th>
-                                    <th width="">Convenience</th>                                    
-                                    <th width="">Total Amount  (&#8377;)</th>
+                                    <th scope="col" width="">GST</th>
+                                    <th scope="col" width="">Convenience</th>                                    
+                                    <th scope="col" width="">Total Amount  (&#8377;)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -107,16 +107,16 @@
                                   currentPage:currentPage,
                                   totalItems:_schoolsListSize
                                 }; let i =index">
-                                    <td>{{ item.academicYear }}</td>
-                                    <td><button type="button" class="btn btn-link text-light-blue"><strong>{{ item.studentName }}
+                                    <td scope="row">{{ item.academicYear }}</td>
+                                    <td scope="row"><button type="button" class="btn btn-link text-light-blue"><strong>{{ item.studentName }}
                                             </strong></button></td>
-                                    <td>{{ item.admissionForClass }} </td>
-                                    <td>{{ item.paymentOn }} </td>                                    
-                                    <td>Admission</td>
+                                    <td scope="row">{{ item.admissionForClass }} </td>
+                                    <td scope="row">{{ item.paymentOn }} </td>                                    
+                                    <td scope="row">Admission</td>
                                     <!-- <td>Amount</td> -->
-                                    <td> {{item?.actualGst}} </td>                                    
-                                    <td> {{item?.actualConvenieceFee}} </td>
-                                    <td>{{ item.payment }} </td>
+                                    <td scope="row"> {{item?.actualGst}} </td>                                    
+                                    <td scope="row"> {{item?.actualConvenieceFee}} </td>
+                                    <td scope="row">{{ item.payment }} </td>
                                 </tr>
                             </tbody>
                         </table>

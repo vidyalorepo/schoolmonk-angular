@@ -85,14 +85,14 @@
               >
                 <thead>
                   <tr>
-                    <th width="300" mat-sort-header="School_Name">School Name</th>
-                    <th width="160" mat-sort-header="Reviewer Name">
+                    <th scope="col" width="300" mat-sort-header="School_Name">School Name</th>
+                    <th scope="col" width="160" mat-sort-header="Reviewer Name">
                       Reviewer Name
                     </th>
-                    <th>Review Details</th>
-                    <th>Created Date</th>
-                    <th>Rating</th>
-                    <th mat-sort-header="Is_Approved">Status</th>
+                    <th scope="col">Review Details</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col" mat-sort-header="Is_Approved">Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -109,12 +109,12 @@
                       let i = index
                     "
                   >
-                    <td width="300" class="text-light-blue" (click)="showPositionDialog('top',review.reviewDetails)">{{review.schoolId?.schoolName}}</td>
-                    <td>{{ review.reviewerName }}</td>
-                    <td class="text-light-blue" (click)="showPositionDialog('top',review.reviewDetails)">{{ (review.reviewDetails.length > 40)?(review.reviewDetails | slice : 0 : 40) + "...":review.reviewDetails }}</td>
-                    <td>{{ review.createdTs | date:"d MMM y" : "UTC"}}</td>
-                    <td><p-rating [(ngModel)]="review.rating" [cancel]="false" [readonly]="true"></p-rating></td>
-                    <td>
+                    <td scope="row" width="300" class="text-light-blue" (click)="showPositionDialog('top',review.reviewDetails)">{{review.schoolId?.schoolName}}</td>
+                    <td scope="row">{{ review.reviewerName }}</td>
+                    <td scope="row" class="text-light-blue" (click)="showPositionDialog('top',review.reviewDetails)">{{ (review.reviewDetails.length > 40)?(review.reviewDetails | slice : 0 : 40) + "...":review.reviewDetails }}</td>
+                    <td scope="row">{{ review.createdTs | date:"d MMM y" : "UTC"}}</td>
+                    <td scope="row"><p-rating [(ngModel)]="review.rating" [cancel]="false" [readonly]="true"></p-rating></td>
+                    <td scope="row">
                       <!-- <p-inputSwitch [(ngModel)]="review.isApproved"></p-inputSwitch>
                       {{ review.isApproved ? 'Active' : 'Inactive' }} -->
                       <p-inputSwitch  [(ngModel)]="review.isApproved" (onChange)="updateStatus(review?.id,review?.isApproved)"></p-inputSwitch>
