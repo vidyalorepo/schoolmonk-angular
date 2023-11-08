@@ -37,8 +37,8 @@
 </section> -->
 <section class="headersection">
     <div class="alert" *ngIf="_headerScrool == true && headerText?.length !=0">
-    <span class="closebtn" (click)="_headerScrool=false">&times;</span> 
-    
+    <span class="closebtn" (click)="_headerScrool=false">&times;</span>
+
     <marquee  direction="left" scrollamount="6" onMouseOver="this.stop()" onMouseOut="this.start()" width="98%" >
      {{headerText}}
    </marquee>
@@ -101,35 +101,28 @@
               </div> -->
               <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
                 <button (click)="searchSchool(schoolName.value, '', '','','')"
-                  type="button" class="btn pull-right"><i class="fa fa-search" aria-hidden="true"></i> &nbsp; <font>Search</font> 
+                  type="button" class="btn pull-right"><i class="fa fa-search" aria-hidden="true"></i> &nbsp; <span>Search</span>
                 </button>
               </div>
             </form>
           </div>
         </div>
-
-
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
 
           <ul class="questionbox">
-            <li> <a routerLink="/auth/add-school" pTooltip="Add Your School" tooltipPosition="left"> <span><img src="/assets/images/add-school-icon.png" alt="" srcset="" width="50px"></span></a></li>
+            <!-- <li> <a routerLink="/auth/suitable-school" pTooltip="Find Your Suitable Schools" tooltipPosition="top" tooltipStyleClass="questionbox_text"> <span><img src="/assets/images/suitable-schools-icon.png" alt="" srcset="" width="50px"></span></a></li> -->
+            <li><button type="button" class="link5 widthbox4" routerLink="/auth/suitable-school">Find Your Suitable Schools</button></li>
+            <li><a routerLink="/auth/add-school" pTooltip="Add Your School" tooltipPosition="top" tooltipStyleClass="questionbox_text"> <span><img src="/assets/images/add-school-icon.png" alt="" srcset="" width="50px"></span></a></li>
+            <!-- <li><p-megaMenu [model]="items"></p-megaMenu></li> -->
           </ul>
-          <!-- <div class="socialbox">
-            Follow Us
-            <a href="https://www.facebook.com/vidyalo.dcc.india" target="_blank">  <img src="assets/images/facebook.svg" alt=""> </a>
-            <a href="https://www.youtube.com/@vidyalo" target="_blank"> <img src="assets/images/youtube.svg" alt=""> </a>
-            <a href="https://www.linkedin.com/company/vidyalo/" target="_blank"> <img src="assets/images/linkedin.svg" alt=""> </a>
-            <a href="https://www.instagram.com/vidyalo.dcc.india/" target="_blank"> <img src="assets/images/instagram.svg" alt=""></a>
-          </div> -->
-          <!-- <div class="headersection-phone">
-            <a href="tel:+913340061204"> <span> <i aria-hidden="true" class="fa fa-phone"></i> </span> +91-33-4006-1204 </a> 
-          </div> -->
-      
-         
+
+
+
+
 
           <!-- <ul class="questionbox">
             <li *ngIf="!displayStudentProfile"> <a data-toggle="modal" data-target="#addschool"> <span><i class="fa fa-university" aria-hidden="true"></i></span> Add School</a></li>
-            
+
             <li><button type="button" data-toggle="modal" data-target="#addschool"> <span><i class="fa fa-university" aria-hidden="true"></i></span>Add School</button></li>
             <li *ngIf="displayLogInStatus"> <a routerLink="/auth/login/0"> <span><i class="fa fa-key"
                     aria-hidden="true"></i></span> Login</a></li>

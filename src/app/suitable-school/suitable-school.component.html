@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="form-group">
-                            <label>1. What is your name?<span class="req">*</span> </label>
+                            <label>1. What is first your name?<span class="req">*</span> </label>
                             <input type="text" class="form-control" pInputText placeholder="Enter First Name..."
                                 formControlName="firstName">
                             <div class="invalid-text"
@@ -40,8 +40,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
+
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="form-group">
                             <label>2. What is your last name?<span class="req">*</span> </label>
@@ -54,8 +53,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
+
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="form-group">
                             <label>3. What is your email id?<span class="req">*</span> </label>
@@ -69,8 +67,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
+
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="form-group">
                             <label>4. What is your phone number? <span class="req">*</span> </label>
@@ -81,12 +78,11 @@
                                 <div *ngIf=" suitableSchoolSearchForm.controls?.phone.errors.required ">Phone Number is
                                     required</div>
                                     <div *ngIf="suitableSchoolSearchForm.controls?.phone.errors.pattern">Please, Enter 10
-                                        digit Phone Number.</div>    
+                                        digit Phone Number.</div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
+
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="form-group">
                             <label>5. What is your date of birth?</label>
@@ -96,13 +92,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="form-group">
                             <label>6. Which type of school do you want?<span class="req">*</span></label><br/>
-                            <input type="radio" style="margin-left: 10px;" formControlName="schoolType" value="higher secondary">Higher Secondary
-                            <input type="radio" style="margin-left: 10px;" formControlName="schoolType" value="kindergarten">Kindergarten
-                            <input type="radio" style="margin-left: 10px;" formControlName="schoolType" value="special">Special
-                            <input type="radio" style="margin-left: 10px;" formControlName="schoolType" value="international">International
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="schoolType" value="higher secondary">Higher Secondary
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="schoolType" value="kindergarten">Kindergarten
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="schoolType" value="special">Special
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="schoolType" value="international">International
                             <div class="invalid-text"
                                 *ngIf="suitableSchoolSearchForm.controls?.schoolType.touched && suitableSchoolSearchForm.controls?.schoolType.errors">
                                 <div *ngIf=" suitableSchoolSearchForm.controls?.schoolType.errors.required ">School type is
@@ -111,36 +107,35 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">    
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-8">
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="form-group">
                             <label>7. Which type of board do you want?</label><br/>
-                            <input type="radio" style="margin-left: 10px;" formControlName="board" value="wBBSE">WBBSE
-                            <input type="radio" style="margin-left: 10px;" formControlName="board" value=" wBCHSE">WBCHSE
-                            <input type="radio" style="margin-left: 10px;" formControlName="board" value=" kINDERGARTEN">KINDERGARTEN
-                            <input type="radio" style="margin-left: 10px;" formControlName="board" value=" iB">IB
-                            <input type="radio" style="margin-left: 10px;" formControlName="board" value="  sPECIAL">SPECIAL
-                            <input type="radio" style="margin-left: 10px;" formControlName="board" value="  iCSE">ICSE
-                            <input type="radio" style="margin-left: 10px;" formControlName="board" value=" cBSE">CBSE
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="board" value="wBBSE">WBBSE
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="board" value=" wBCHSE">WBCHSE
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="board" value=" kINDERGARTEN">KINDERGARTEN
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="board" value=" iB">IB
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="board" value="  sPECIAL">SPECIAL
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="board" value="  iCSE">ICSE
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="board" value=" cBSE">CBSE
                         </div>
                     </div>
-                </div>
-                <div class="row">   
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="form-group">
                             <label>8. Which type of medium do you want?</label><br/>
-                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value="bengali">Bengali
-                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value="english" >English
-                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value="santhali">Santhali
-                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value="urdu">Urdu
-                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value="hindi">Hindi
-                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value=" nepali">Nepali
-                            <input type="radio" style="margin-left: 10px;" formControlName="medium" value="marathi">Marathi
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="medium" value="bengali">Bengali
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="medium" value="english" >English
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="medium" value="santhali">Santhali
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="medium" value="urdu">Urdu
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="medium" value="hindi">Hindi
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="medium" value=" nepali">Nepali
+                            <input type="radio" style="margin:0 5px 0 10px;" formControlName="medium" value="marathi">Marathi
                         </div>
                     </div>
-                </div> 
-                <div class="row">    
+                  </div>
+                  <div class="row">
+
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="form-group">
                             <label>9. Which city do you want?</label><br/>
@@ -151,8 +146,7 @@
                                 formControlName="city">
                         </div>
                     </div>
-                </div>
-                <div class="row">    
+
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="form-group">
                             <label>10. What is your Postal Code?</label><br/>
@@ -160,8 +154,7 @@
                             formControlName="postalCode">
                         </div>
                     </div>
-                </div>
-                <div class="row">
+
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
                         <div style="height: 10px;"></div>
                         <!-- <div class="form-group"> -->
@@ -170,8 +163,7 @@
                         <!-- </div> -->
                         <br>
                     </div>
-                </div>
-                <div class="row">
+
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="form-group">
                             <input type="checkbox" #Isagree (change)="isAgree($event)"  />

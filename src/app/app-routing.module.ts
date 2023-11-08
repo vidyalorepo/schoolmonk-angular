@@ -17,6 +17,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { AddSchoolComponent } from './add-school/add-school.component';
 import { HelpDaskComponent } from './help-dask/help-dask.component';
 import { SuitableSchoolComponent } from './suitable-school/suitable-school.component';
+import { DuplicateCheckComponent } from './duplicate-check/duplicate-check.component';
 
 const routes: Routes = [
  
@@ -68,6 +69,7 @@ const routes: Routes = [
       {path:'about-us',component:AboutUsComponent},
       {path:'add-school',component:AddSchoolComponent},
       {path:'help-desk',component:HelpDaskComponent},
+      { path: 'duplicate-check', component: DuplicateCheckComponent },
       {
         path: 'home-details',
         loadChildren: () =>

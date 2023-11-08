@@ -296,6 +296,11 @@ export class AuthService {
       Authorization: `Bearer ${this.getToken()}`,
     },responseType: 'blob'});
   }
+  fileDownloadRequest1(url: string,data:any) {
+    return this.http.post(this.baseUrl + url,data, {
+      observe: 'body', responseType: 'blob'
+    });
+  }
   getValidResetPasswordToken(ResetToken: string) {
     return this.http.get<any>(
       this.baseUrl + '/users/validateToken?token=' + ResetToken

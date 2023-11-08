@@ -41,19 +41,19 @@
             <ul class="menu">
               <li>
                 <a (click)="changeSelectedStatus('Pending')">
-                  <font><i class="fa fa-spinner" aria-hidden="true"></i></font
+                  <span><i class="fa fa-spinner" aria-hidden="true"></i></span
                   >Pending
                 </a>
               </li>
               <li>
                 <a (click)="changeSelectedStatus('Action Taken')">
-                  <font><i class="fa fa-check" aria-hidden="true"></i></font
+                  <span><i class="fa fa-check" aria-hidden="true"></i></span
                   >Action Taken
                 </a>
               </li>
               <li>
                 <a (click)="changeSelectedStatus('No Action')">
-                  <font><i class="fa fa-times" aria-hidden="true"></i></font>No
+                  <span><i class="fa fa-times" aria-hidden="true"></i></span>No
                   Action
                 </a>
               </li>
@@ -65,7 +65,7 @@
       <div class="box-body">
         <div class="tablesection">
           <div class="table-responsive">
-            <table class="table table-striped" matSort matSortDirection="asc" (matSortChange)="sortData($event)" matSortDisableClear>
+            <table class="table table-striped" matSort matSortDirection="asc" (matSortChange)="sortData($event)" matSortDisableClear aria-label="feedback-list">
               <thead>
                 <tr>
                   <th scope="col" width="40" align="center" style="text-align: center">

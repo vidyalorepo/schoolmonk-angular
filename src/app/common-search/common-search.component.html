@@ -3,9 +3,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <h1>
-          <font>{{_boardName !== "" ? _boardName: ""}}</font> Schools in <font>West Bengal</font>
-          <font>{{_cityName !== ""?
-            helperService.toCamelCase(', '+ _cityName): "" }}</font>
+          <span>{{_boardName !== "" ? _boardName: ""}}</span> Schools in <span>West Bengal</span>
+          <span>{{_cityName !== ""?
+            helperService.toCamelCase(', '+ _cityName): "" }}</span>
         </h1>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -313,7 +313,7 @@
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
           <div class="rightSearchbox">
 
-            <h2> <font *ngIf="_schoolName || _boardName || school_type"> Showing result for: <span style="color: #4c98d1; text-transform: uppercase;">{{_schoolName | replaceSpace}} {{_boardName | replaceSpace}} {{school_type | replaceSpace}} school</span> </font> &nbsp; </h2>
+            <h2> <span *ngIf="_schoolName || _boardName || school_type"> Showing result for: <span style="color: #4c98d1; text-transform: uppercase;">{{_schoolName | replaceSpace}} {{_boardName | replaceSpace}} {{school_type | replaceSpace}} school</span> </span> &nbsp; </h2>
 
             <div [class]="tempClass">
 
@@ -363,9 +363,9 @@
                     </h3>
 
                     <h3>
-                      <font><i class="fa fa-circle" aria-hidden="true"></i> </font> {{school.schoolType }} School
-                      <font><i class="fa fa-circle" aria-hidden="true"></i> </font> {{school.schoolMedium != '' && school.schoolMedium != null ? school.schoolMedium.replace(',', ', ') : 'NA'}}
-                      <font *ngIf="!(school.schoolBoard.toUpperCase() =='KINDERGARTEN' || school.schoolBoard.toUpperCase() =='SPECIAL')"><i class="fa fa-circle" aria-hidden="true"></i> </font>
+                      <span><i class="fa fa-circle" aria-hidden="true"></i> </span> {{school.schoolType }} School
+                      <span><i class="fa fa-circle" aria-hidden="true"></i> </span> {{school.schoolMedium != '' && school.schoolMedium != null ? school.schoolMedium.replace(',', ', ') : 'NA'}}
+                      <span *ngIf="!(school.schoolBoard.toUpperCase() =='KINDERGARTEN' || school.schoolBoard.toUpperCase() =='SPECIAL')"><i class="fa fa-circle" aria-hidden="true"></i> </span>
                       <strong style="font-weight: 400;"  *ngIf="!(school.schoolBoard.toUpperCase() =='KINDERGARTEN' || school.schoolBoard.toUpperCase() =='SPECIAL')"> {{ school.schoolBoard != '' &&
                       school.schoolBoard != null ? school.schoolBoard.replace(',', ', '): 'NA'}} </strong>
                     </h3>
@@ -457,8 +457,8 @@
                 school.landMark}}
                 {{school.districtName}}
                 {{school.stateName}}, {{school.postalCode}} </h4>
-              <h4> <font><i class="fa fa-circle" aria-hidden="true"></i> </font> {{school.schoolType }} School <font><i class="fa fa-circle" aria-hidden="true"></i> </font> {{school.schoolMedium != '' &&
-                school.schoolMedium != null ? school.schoolMedium.replace(',', ', ') : 'NA'}} <font><i class="fa fa-circle" aria-hidden="true"></i> </font> {{ school.schoolBoard != '' &&
+              <h4> <span><i class="fa fa-circle" aria-hidden="true"></i> </span> {{school.schoolType }} School <span><i class="fa fa-circle" aria-hidden="true"></i> </span> {{school.schoolMedium != '' &&
+                school.schoolMedium != null ? school.schoolMedium.replace(',', ', ') : 'NA'}} <span><i class="fa fa-circle" aria-hidden="true"></i> </span> {{ school.schoolBoard != '' &&
                 school.schoolBoard != null ? school.schoolBoard.replace(',', ', '): 'NA'}} </h4>
               <h3 *ngIf="school?.contactPhone"><span><i class="fa fa-phone" aria-hidden="true"></i></span> {{school?.contactPhone | phonePipe}}</h3>
 

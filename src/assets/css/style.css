@@ -247,6 +247,10 @@ a:focus {
   width: 170px !important;
 }
 
+.widthbox4 {
+  width: auto !important;
+}
+
 .button-size {
   width: 100px;
 }
@@ -315,9 +319,9 @@ ul.questionbox {
   text-align: right;
 }
 
-ul.questionbox>li {
-  padding: 5px 4%;
-  margin: 5px;
+ul.questionbox > li {
+  padding: 5px;
+  margin: 0;
   list-style: none;
   display: inline-block;
   /* border: 1px solid #167bab; */
@@ -6486,3 +6490,63 @@ html {
   width: 100%;
 }
 
+
+.questionbox .p-megamenu {
+	padding: 0px 0;
+	background: none;
+	color: #495057;
+	border: none;
+	border-radius: 0;
+	margin: 0 10px;
+	position: relative;
+	top: 9px;
+}
+
+
+.questionbox .p-megamenu-panel {
+	position: absolute;
+	width:250px;
+	z-index: 1;
+	right: 0;
+}
+.p-megamenu-submenu-header{
+  display: none;
+}
+
+.questionbox_text{
+  text-align: center;
+  width: 200px;
+}
+
+.questionbox .p-megamenu .p-megamenu-submenu {
+	padding: 0.25rem 0;
+	width: 100%;
+}
+
+
+.questionbox .p-megamenu .p-megamenu-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link,
+.questionbox .p-megamenu .p-megamenu-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover {
+	background: none;
+}
+
+
+ .p-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link:not(.p-disabled):hover {
+	background: none;
+}
+
+.questionbox .p-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link {
+	padding: 0;
+}
+
+.questionbox ul li.p-menuitem a span.pi{
+  font-size: 25px;
+}
+
+.questionbox .p-megamenu .p-menuitem-link .p-menuitem-text {
+	color: #495057;
+	font-size: 15px;
+}
+.questionbox .p-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-icon {
+	color: #6c757d;
+	margin-right: 0;
+}

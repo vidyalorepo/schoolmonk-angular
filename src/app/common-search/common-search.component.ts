@@ -752,15 +752,13 @@ export class CommonSearchComponent implements OnInit {
     }
 
     fetchDataAndSetImage() {
-      this._loader.openLoader();
       this._authService.loader.next({ load: true });
       this._authService.request('post', 'adsvertisement/fetchattachmentbyzone', this.zones).subscribe(
         (response: any) => {
-          this._loader.closeLoader();
           this.attachedFile= response.result;
         },
         (error) => {
-          this._loader.closeLoader();
+          console.log(error);
         }
       );
     }

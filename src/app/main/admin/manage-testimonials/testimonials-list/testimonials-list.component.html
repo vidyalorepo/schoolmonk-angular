@@ -59,10 +59,10 @@
                         <input class="Rolebox" type="checkbox" id="btn">
                         <ul class="menu">
                             <li (click)="makePublishCall(1)"><a>
-                                    <font><i class="fa fa-check" aria-hidden="true"></i></font>Publish
+                                    <span><i class="fa fa-check" aria-hidden="true"></i></span>Publish
                                 </a></li>
                             <li (click)="makePublishCall(0)"><a>
-                                    <font><i class="fa fa-times" aria-hidden="true"></i></font>Unpublish
+                                    <span><i class="fa fa-times" aria-hidden="true"></i></span>Unpublish
                                 </a></li>
                         </ul>
                     </nav>
@@ -72,7 +72,7 @@
             <div class="box-body">
                 <div class="tablesection">
                     <div class="table-responsive">
-                        <table class="table table-striped" matSort matSortDirection="asc" (matSortChange)="sortData($event)" matSortDisableClear>
+                        <table class="table table-striped" matSort matSortDirection="asc" (matSortChange)="sortData($event)" matSortDisableClear aria-label="testimonials-list">
                             <thead>
                                 <tr>
                                     <th scope="col" style="text-align: center;" width="40" align="center"> <input type="checkbox"

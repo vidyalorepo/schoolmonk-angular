@@ -49,12 +49,12 @@ export class SuitableSchoolComponent implements OnInit {
       email: [null, Validators.compose([Validators.required])],
       phone: [null, Validators.compose([Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")])],
       dob: [''],
-      schoolType: [''],
+      schoolType: ['',Validators.required],
       board: [''],
       medium: [''],
       city: [''],
       postalCode: [''],
-      isAgree: [this.isAgreeChecked]
+      is_agree: [this.isAgreeChecked]
     });
   }
 

@@ -91,13 +91,13 @@
                         <input *ngIf="arraySend.length > 0" class="Rolebox" type="checkbox" id="btn">
                         <ul class="menu">
                             <li><a (click)="changeSelectedStatus('Resolved')">
-                                    <font><i class="fa fa-check" aria-hidden="true"></i></font>Resolve
+                                    <span><i class="fa fa-check" aria-hidden="true"></i></span>Resolve
                                 </a></li>
                             <li><a (click)="changeSelectedStatus('Unresolved')">
-                                    <font><i class="fa fa-times" aria-hidden="true"></i></font>Unresolve
+                                    <span><i class="fa fa-times" aria-hidden="true"></i></span>Unresolve
                                 </a></li>
                             <li><a (click)="changeSelectedStatus('Pending')">
-                                    <font><i class="fa fa-times" aria-hidden="true"></i></font>Pending
+                                    <span><i class="fa fa-times" aria-hidden="true"></i></span>Pending
                             </a></li>    
                         </ul>
                     </nav>
@@ -110,7 +110,7 @@
                 <div class="tablesection">
                     <div class="table-responsive">
                         <table class="table table-striped" matSort (matSortChange)="sortData($event)"
-                            matSortDirection="asc" matSortDisableClear>
+                            matSortDirection="asc" matSortDisableClear aria-label="issue-list">
                             <thead>
                                 <tr>
                                     <th scope="col" width="40" align="center" class="align-center">

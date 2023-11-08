@@ -625,7 +625,7 @@
           <div id="collapseThree" class="box-body panel-collapse collapse">
             <div class="tablesection">
               <div class="table-responsive">
-                <table class="table table-striped table-striped Timingbox">
+                <table class="table table-striped table-striped Timingbox" aria-label="edit-school">
                   <thead>
                     <tr>
                       <!-- <th width="120">Academic Year </th> -->
@@ -743,7 +743,7 @@
                     </div>
                     <div class="tablesection">
                       <div class="table-responsive">
-                        <table class="table table-striped table-striped Timingbox">
+                        <table class="table table-striped table-striped Timingbox" aria-label="school-timing">
                           <thead>
                             <tr>
                               <th scope="col" width="">School Level Name</th>
@@ -852,9 +852,9 @@
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
               <div class="form-group">
                 <label>School Logo </label><br>
-                <span style="font-size: 13px; color:#2098d1;"><i> Acceptable file type .jpg, .jpeg, .png / Size : Max
+                <span style="font-size: 13px; color:#2098d1;"><em> Acceptable file type .jpg, .jpeg, .png / Size : Max
                     100kb / Dimension
-                    is 100px X 100px </i></span>
+                    is 100px X 100px </em></span>
                 <input #logoInput type="file" id="myFile" name="'file[]'"
                   (change)="uploadSchoolLogo($event,'school_logo',_schoolLogoUrl.fileId,100000,logoInput)"
                   [attr.disabled]="!isEditBtn ? '' : null">
@@ -870,9 +870,9 @@
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
               <div class="form-group">
                 <label>School Banner </label> <br>
-                <span style="font-size: 13px; color:#2098d1;"><i>Acceptable file type .jpg, .jpeg, .png / Size : Max
+                <span style="font-size: 13px; color:#2098d1;"><em>Acceptable file type .jpg, .jpeg, .png / Size : Max
                     400kb / Dimension
-                    is 1000px X 500px</i></span>
+                    is 1000px X 500px</em></span>
                 <input type="file" #bannerInput id="myFile" name="file[]"
                   (change)="uploadSchoolBanner($event,'school_banner',_schoolBannerUrl.fileId,400000,bannerInput)"
                   [attr.disabled]="!isEditBtn ? '' : null">
@@ -997,7 +997,7 @@
           <div class="box-body">
             <div class="tablesection">
               <div class="table-responsive">
-                <table class="table table-striped table-striped">
+                <table class="table table-striped table-striped" aria-label="school-academic-list">
                   <thead>
                     <tr>
                       <!-- <th width="70" style="text-align: center;">Sl No.</th> -->
@@ -1053,7 +1053,7 @@
           <div class="box-body">
             <div class="tablesection">
               <div class="table-responsive">
-                <table class="table table-striped table-striped">
+                <table class="table table-striped table-striped" aria-label="school-infrastructure-list">
                   <thead>
                     <tr>
                       <!-- <th width="80" style="text-align: center;">Sl No.</th> -->

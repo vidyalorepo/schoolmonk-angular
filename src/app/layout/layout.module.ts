@@ -22,6 +22,7 @@ import {ButtonModule} from 'primeng-lts/button';
 import {FileUploadModule} from 'primeng-lts/fileupload';
 import { CaptchaModule } from 'primeng-lts/captcha';
 import {TooltipModule} from 'primeng-lts/tooltip';
+import {MegaMenuModule} from 'primeng-lts/megamenu';
 @NgModule({
   declarations: [
     AuthLayoutComponent,
@@ -48,7 +49,8 @@ import {TooltipModule} from 'primeng-lts/tooltip';
     ButtonModule,
     FileUploadModule,
     CaptchaModule,
-    TooltipModule
+    TooltipModule,
+    MegaMenuModule
   ],
 })
 export class LayoutModule {}

@@ -13,7 +13,7 @@
                   <div class="tasksnobox"><img src="assets/images/education_4207247.png" alt="img"></div>
                   <span class="small-box-footer">No of Schools &nbsp;<i class="fa fa-arrow-circle-right"></i></span>
                   <div class="school-count">
-                   <h5>{{ _schoolActiveCount }}</h5>
+                   <h5>{{ _schoolActiveCount || 0}}</h5>
                   </div>
                 </div>
               </a>
@@ -31,7 +31,7 @@
                   <div class="tasksnobox"><img src="assets/images/account_9345243.png" alt="img"></div>
                   <span class="small-box-footer">No of Users &nbsp;<i class="fa fa-arrow-circle-right"></i></span>
                   <div class="school-count">
-                   <h5>{{_totalUsersCount}}</h5>
+                   <h5>{{_totalUsersCount || 0}}</h5>
                   </div>
                 </div>
               </a>
@@ -40,6 +40,136 @@
         </div>
       </div>
 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <div style="text-align: center; margin-bottom: 15px;">
+          <div class="Taskssection">
+            <div class="Tasksbox">
+              <a class="buttonbox" [routerLink]="['/manage-testimonials/testimonials-list']" routerLinkActive="router-link-active">
+                <div class="tasksno">
+                  <div class="tasksnobox"><img src="assets/images/Testimonial_Image.png" alt="img"></div>
+                  <span class="small-box-footer">No of Testimonials &nbsp;<i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="school-count">
+                   <h5>{{ _totalTestimonialsCount || 0 }}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <div style="text-align: center; margin-bottom: 15px;">
+          <div class="Taskssection">
+            <div class="Tasksbox">
+              <a class="buttonbox" [routerLink]="['/manage-issues/issue-list']" routerLinkActive="router-link-active">
+                <div class="tasksno">
+                  <div class="tasksnobox"><img src="assets/images/Issue_Icon.png" alt="img"></div>
+                  <span class="small-box-footer">No of Issues &nbsp;<i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="school-count">
+                   <h5>{{ _totalIssuesCount || 0}}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <div style="text-align: center; margin-bottom: 15px;">
+          <div class="Taskssection">
+            <div class="Tasksbox">
+              <a class="buttonbox" [routerLink]="['/manage-feedback/feedback-list']" routerLinkActive="router-link-active">
+                <div class="tasksno">
+                  <div class="tasksnobox"><img src="assets/images/Feedback_Icon.png" alt="img"></div>
+                  <span class="small-box-footer">No of Feedbacks &nbsp;<i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="school-count">
+                   <h5>{{ _totalFeedbackCount || 0}}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <div style="text-align: center; margin-bottom: 15px;">
+          <div class="Taskssection">
+            <div class="Tasksbox">
+              <a class="buttonbox" [routerLink]="['/news-artical/news-artical-list']" routerLinkActive="router-link-active">
+                <div class="tasksno">
+                  <div class="tasksnobox"><img src="assets/images/News_Icon.png" alt="img"></div>
+                  <span class="small-box-footer">No of News &nbsp;<i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="school-count">
+                   <h5>{{ _totalNewsCount || 0 }}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <div style="text-align: center; margin-bottom: 15px;">
+          <div class="Taskssection">
+            <div class="Tasksbox">
+              <a class="buttonbox" [routerLink]="['/blog']" routerLinkActive="router-link-active">
+                <div class="tasksno">
+                  <div class="tasksnobox"><img src="assets/images/Blog_Icon1.png" alt="img"></div>
+                  <span class="small-box-footer">No of Blogs &nbsp;<i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="school-count">
+                   <h5>{{ _totalBlogsCount || 0}}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <div style="text-align: center; margin-bottom: 15px;">
+          <div class="Taskssection">
+            <div class="Tasksbox">
+              <a class="buttonbox" [routerLink]="['/review']" routerLinkActive="router-link-active">
+                <div class="tasksno">
+                  <div class="tasksnobox"><img src="assets/images/Review-Icon1.png" alt="img"></div>
+                  <span class="small-box-footer">No of Reviews &nbsp;<i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="school-count">
+                   <h5>{{ _totalReviewssCount || 0 }}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <div style="text-align: center; margin-bottom: 15px;">
+          <div class="Taskssection">
+            <div class="Tasksbox">
+              <a class="buttonbox" [routerLink]="['/guardian-enquiry']" routerLinkActive="router-link-active">
+                <div class="tasksno">
+                  <div class="tasksnobox"><img src="assets/images/Enquiry_Icon.png" alt="img"></div>
+                  <span class="small-box-footer">No of Enquiries &nbsp;<i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="school-count">
+                   <h5>{{ _totalGuardianEnquiryCount || 0 }}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="row">

@@ -53,6 +53,7 @@ import { MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
 import {CaptchaModule} from 'primeng-lts/captcha';
 import { HttpInterceptorInterceptor } from './http-interceptor.interceptor';
 import { SuitableSchoolComponent } from './suitable-school/suitable-school.component';
+import { DuplicateCheckComponent } from './duplicate-check/duplicate-check.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +74,7 @@ import { SuitableSchoolComponent } from './suitable-school/suitable-school.compo
     AddSchoolComponent,
     HelpDaskComponent,
     SuitableSchoolComponent,
+    DuplicateCheckComponent,
 
   ],
   imports: [

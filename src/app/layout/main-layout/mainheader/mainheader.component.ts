@@ -3,7 +3,7 @@ import { Component, Injectable, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/_services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar'; 
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-mainheader',
@@ -35,6 +35,20 @@ export class MainheaderComponent implements OnInit, OnDestroy {
   _selectedCityName: any = '';
   _headerScrool:boolean;
   headerText: any;
+  items:any = [
+    {
+      label: '', icon: 'pi pi-user',
+      items: [
+          [
+              {
+                   items: [{label: 'Profile',"routerLink":"/auth/common-search/&&&&"},
+                  {label: 'Login',"routerLink":"/auth/common-search/&&&&"},
+                  {label: 'Logout',"routerLink":"/auth/common-search/&&&&"}]
+              },
+          ]
+      ]
+    }
+  ]
   constructor(
     private router: Router,
     private _authService: AuthService,

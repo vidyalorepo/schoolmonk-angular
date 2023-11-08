@@ -30,23 +30,23 @@
             <div class="tabssection">
               <div class="tabEditProfile">
                   <button  type="button" (click)="handleEdit()" title="Edit Profile" class="btn"> 
-                  <i class="fa fa-pencil" aria-hidden="true"></i><font>&nbsp;&nbsp;Edit Profile</font> </button>
+                  <i class="fa fa-pencil" aria-hidden="true"></i><span>&nbsp;&nbsp;Edit Profile</span> </button>
               </div>
               <ul class="nav nav-tabs">
                 <li [ngClass]="activeTab1"><a data-toggle="tab" href="#menu1" (click)="tabChanged(1)">
-                    <font><img src="assets/images/Student-Details.png" alt=""></font> <span><img
+                    <span><img src="assets/images/Student-Details.png" alt=""></span> <span><img
                         src="assets/images/Student-Details_h.png" alt=""></span> Student Details
                   </a></li>
                 <li [ngClass]="activeTab2"><a data-toggle="tab" (click)="tabChanged(2)">
-                    <font> <img src="assets/images/Parent-Details.png" alt=""> </font><span> <img
+                    <span> <img src="assets/images/Parent-Details.png" alt=""> </span><span> <img
                         src="assets/images/Parent-Details_h.png" alt=""> </span> Parent's Details
                   </a></li>
                 <li [ngClass]="activeTab3"><a data-toggle="tab" (click)="tabChanged(3)">
-                    <font> <img src="assets/images/Address-Details.png" alt=""> </font><span> <img
+                    <span> <img src="assets/images/Address-Details.png" alt=""> </span><span> <img
                         src="assets/images/Address-Details_h.png" alt=""></span> Address Details
                   </a></li>
                 <li [ngClass]="activeTab4"><a data-toggle="tab" (click)="tabChanged(4)">
-                    <font> <img src="assets/images/Document-Uploads.png" alt=""> </font><span> <img
+                    <span> <img src="assets/images/Document-Uploads.png" alt=""> </span><span> <img
                         src="assets/images/Document-Uploads_h.png" alt=""></span> Document Uploads
                   </a></li>
               </ul>

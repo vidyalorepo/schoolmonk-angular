@@ -1,0 +1,63 @@
+<section class="inner-banner-section inner-banner-search">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>Duplicate Check</h1>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="breadcrumbs_section">
+                    <ul>
+                        <li><a routerLink=""><button type="submit">Home</button></a></li>
+                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                        <li><button type="submit">Duplicate Check</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="innersearchsection DuplicateCheckSection">
+    <div class="container">
+        <div class="Student-List-section footer_link">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <h1>Find duplicate school</h1>       
+                </div>
+            </div>
+            <!-- <div class="row"> -->
+                <div class="box box-success2">
+                    <div class="box-header with-border">
+                        <h3 class="box-title card-text">Upload </h3><br>
+                        <span style="font-size: 13px; color:#2098d1;"><i> Acceptable file type : .xlsx /Size : Max 1MB </i></span>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <div class="inputfile-box">
+                                        <input  #fileInput type="file" name="file-5[]" id="file-5" (change)="bulkDuplicateCheck($event,fileInput)" data-multiple-caption="{count} files selected"  class="inputfile inputfile-4" accept=".xlsx">
+                                        <label for="file-5" >
+                                            <figure ><i aria-hidden="true" class="fa fa-upload"></i></figure>
+                                            <span *ngIf="fileName == ''">Choose a file…</span>
+                                            <span *ngIf="fileName != ''">{{ fileName }}</span>
+                                        </label>
+                                    </div>
+                                    <div *ngIf="fileInvalidMsg != ''" style="text-align: center; position: relative;" class="invalid-text">
+                                        {{ fileInvalidMsg }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <div class="text-center">
+                            <button pButton pRipple type="button" [routerLink]="['']" class="btn p-button-info">Back</button>
+                        </div>
+                    </div>
+                </div>
+            <!-- </div>         -->
+        </div>
+    </div>
+</section>
