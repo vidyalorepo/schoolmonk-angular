@@ -39,7 +39,7 @@
     "crypto-js": "^4.1.1",
     "express": "^4.15.2",
     "icomoon-build": "^0.2.8",
-    "jquery": "^3.5.1",
+    "jquery": "^3.7.1",
     "localstorage-polyfill": "^1.0.1",
     "moment": "^2.29.3",
     "ng2-daterangepicker": "^3.0.1",
